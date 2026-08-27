@@ -1,0 +1,6 @@
+/* Homepage stylesheet manifest — split by feature area for maintainability. */
+@import url("../home/hero.css");
+@import url("../home/ecosystem.css");
+@import url("../home/business.css");
+@import url("../home/discovery.css");
+@import url("../home/responsive.css");
