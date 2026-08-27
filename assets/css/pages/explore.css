@@ -1,0 +1,8 @@
+/* QTSC UI/UX — Explore/map page */
+.explore-layout{display:grid;grid-template-columns:380px 1fr;min-height:700px}
+.place-list{border:1px solid var(--line);overflow:auto;max-height:700px}
+.place-card{padding:20px;border-bottom:1px solid var(--line);cursor:pointer}.place-card.active{background:var(--surface)}
+.place-card small{font-size:9px;color:#999;text-transform:uppercase}.place-card strong{display:block;margin:5px 0}.place-card p{font-size:10px;color:#777}
+.explore-map{position:relative;overflow:hidden;background:#222}.explore-map img{width:100%;height:100%;object-fit:cover;opacity:.72}
+.explore-pin{position:absolute;width:16px;height:16px;border:0;background:var(--orange);border-radius:50%;box-shadow:0 0 0 9px rgba(241,118,44,.18)}
+@media(max-width:900px){.explore-layout{min-height:0}.explore-map{height:520px}}

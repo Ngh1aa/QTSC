@@ -8,7 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/core.css">
+  <link rel="stylesheet" href="assets/css/pages/home.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
@@ -19,286 +20,44 @@
         <img src="https://www.qtsc.com.vn/uploads/files/2022/03/08/logo-QTSC-2022-phien-ban-doc.jpg" alt="QTSC — Quality Tech Solution Complex" />
         <span class="brand-fallback"><strong>QTSC</strong><small>Quality Tech Solution Complex</small></span>
       </a>
-
       <nav class="desktop-nav" aria-label="Điều hướng chính">
-        <button class="nav-link" data-mega="qtsc">QTSC</button>
-        <button class="nav-link" data-mega="ecosystem">Hệ sinh thái</button>
-        <button class="nav-link" data-mega="business">Doanh nghiệp</button>
-        <button class="nav-link" data-mega="technology">Công nghệ</button>
-        <button class="nav-link" data-mega="explore">Khám phá</button>
-        <button class="nav-link" data-mega="insights">Tin & nguồn lực</button>
+        <button class="nav-link" data-mega="qtsc">QTSC</button><button class="nav-link" data-mega="ecosystem">Hệ sinh thái</button><button class="nav-link" data-mega="business">Doanh nghiệp</button><button class="nav-link" data-mega="technology">Công nghệ</button><button class="nav-link" data-mega="explore">Khám phá</button><button class="nav-link" data-mega="insights">Tin & nguồn lực</button>
       </nav>
-
-      <div class="header-actions">
-        <button class="icon-action" id="searchOpen" aria-label="Tìm kiếm"><span>⌕</span><em>Search</em></button>
-        <button class="lang-action" id="langToggle" aria-label="Đổi ngôn ngữ">VI</button>
-        <button class="btn btn-brand header-connect" data-open-connect>Kết nối QTSC <span>↗</span></button>
-        <button class="menu-trigger" id="mobileMenuOpen" aria-label="Mở menu" aria-expanded="false"><span></span><span></span></button>
-      </div>
+      <div class="header-actions"><button class="icon-action" id="searchOpen" aria-label="Tìm kiếm"><span>⌕</span><em>Search</em></button><button class="lang-action" id="langToggle" aria-label="Đổi ngôn ngữ">VI</button><button class="btn btn-brand header-connect" data-open-connect>Kết nối QTSC <span>↗</span></button><button class="menu-trigger" id="mobileMenuOpen" aria-label="Mở menu" aria-expanded="false"><span></span><span></span></button></div>
     </div>
-
-    <div class="mega-menu" id="megaMenu" aria-hidden="true">
-      <div class="mega-inner" id="megaContent"></div>
-    </div>
+    <div class="mega-menu" id="megaMenu" aria-hidden="true"><div class="mega-inner" id="megaContent"></div></div>
   </header>
 
   <main id="main">
-    <section class="hero" id="hero">
-      <div class="hero-photo"></div>
-      <div class="hero-shade"></div>
-      <div class="hero-gridlines" aria-hidden="true"></div>
-      <div class="hero-network" aria-hidden="true">
-        <span class="network-ring ring-a"></span>
-        <span class="network-ring ring-b"></span>
-        <span class="network-ring ring-c"></span>
-        <i class="hero-node node-a"></i><i class="hero-node node-b"></i><i class="hero-node node-c"></i><i class="hero-node node-d"></i><i class="hero-node node-e"></i>
-      </div>
+    <section class="hero" id="hero"><div class="hero-photo"></div><div class="hero-shade"></div><div class="hero-gridlines" aria-hidden="true"></div><div class="hero-network" aria-hidden="true"><span class="network-ring ring-a"></span><span class="network-ring ring-b"></span><span class="network-ring ring-c"></span><i class="hero-node node-a"></i><i class="hero-node node-b"></i><i class="hero-node node-c"></i><i class="hero-node node-d"></i><i class="hero-node node-e"></i></div><div class="hero-content container-wide reveal"><p class="micro-label light">Ho Chi Minh City · Vietnam</p><div class="hero-copy"><h1>Quality Tech<br>Solution Complex</h1><p>Một hệ sinh thái công nghệ, doanh nghiệp và con người được kết nối trong cùng một điểm đến.</p></div><div class="hero-actions"><a class="btn btn-white" href="#ecosystem">Khám phá hệ sinh thái <span>↓</span></a><button class="btn btn-glass" data-open-connect>Kết nối QTSC <span>↗</span></button></div></div><div class="hero-foot container-wide"><span>25 năm kiến tạo hệ sinh thái công nghệ số</span><a href="#stats">Scroll to explore <b>↓</b></a></div></section>
 
-      <div class="hero-content container-wide reveal">
-        <p class="micro-label light">Ho Chi Minh City · Vietnam</p>
-        <div class="hero-copy">
-          <h1>Quality Tech<br>Solution Complex</h1>
-          <p>Một hệ sinh thái công nghệ, doanh nghiệp và con người được kết nối trong cùng một điểm đến.</p>
-        </div>
-        <div class="hero-actions">
-          <a class="btn btn-white" href="#ecosystem">Khám phá hệ sinh thái <span>↓</span></a>
-          <button class="btn btn-glass" data-open-connect>Kết nối QTSC <span>↗</span></button>
-        </div>
-      </div>
+    <section class="intent" id="intent" aria-labelledby="intentTitle"><div class="container-wide intent-shell"><div class="intent-heading"><p class="micro-label" id="intentTitle">Tôi muốn</p><span>Chọn nhu cầu để đi thẳng đến đúng khu vực.</span></div><div class="intent-list" role="list"><button role="listitem" data-intent="office"><span>01</span><strong>Tìm văn phòng</strong><i>↗</i></button><button role="listitem" data-intent="investment"><span>02</span><strong>Đầu tư tại QTSC</strong><i>↗</i></button><button role="listitem" data-intent="technology"><span>03</span><strong>Tìm giải pháp</strong><i>↗</i></button><button role="listitem" data-intent="company"><span>04</span><strong>Tìm doanh nghiệp</strong><i>↗</i></button><button role="listitem" data-intent="visit"><span>05</span><strong>Khám phá QTSC</strong><i>↗</i></button></div></div></section>
 
-      <div class="hero-foot container-wide">
-        <span>25 năm kiến tạo hệ sinh thái công nghệ số</span>
-        <a href="#stats">Scroll to explore <b>↓</b></a>
-      </div>
-    </section>
+    <section class="section stats" id="stats" aria-labelledby="statsTitle"><div class="container-wide"><div class="section-top reveal"><p class="micro-label">QTSC at a glance</p><h2 id="statsTitle">Quy mô được nhìn thấy<br>ngay từ những con số.</h2></div><div class="stats-row reveal"><article><strong>43</strong><span>ha</span><p>Diện tích</p></article><article><strong>25</strong><span>năm</span><p>Phát triển</p></article><article><strong>121</strong><span>+</span><p>Doanh nghiệp công nghệ số</p></article><article><strong>22.157</strong><span>+</span><p>Người làm việc & học tập</p></article><article><strong>650</strong><span>+</span><p>Sản phẩm & giải pháp</p></article></div></div></section>
 
-    <section class="intent" id="intent" aria-labelledby="intentTitle">
-      <div class="container-wide intent-shell">
-        <div class="intent-heading">
-          <p class="micro-label" id="intentTitle">Tôi muốn</p>
-          <span>Chọn nhu cầu để đi thẳng đến đúng khu vực.</span>
-        </div>
-        <div class="intent-list" role="list">
-          <button role="listitem" data-intent="office"><span>01</span><strong>Tìm văn phòng</strong><i>↗</i></button>
-          <button role="listitem" data-intent="investment"><span>02</span><strong>Đầu tư tại QTSC</strong><i>↗</i></button>
-          <button role="listitem" data-intent="technology"><span>03</span><strong>Tìm giải pháp</strong><i>↗</i></button>
-          <button role="listitem" data-intent="company"><span>04</span><strong>Tìm doanh nghiệp</strong><i>↗</i></button>
-          <button role="listitem" data-intent="visit"><span>05</span><strong>Khám phá QTSC</strong><i>↗</i></button>
-        </div>
-      </div>
-    </section>
+    <section class="section ecosystem" id="ecosystem" aria-labelledby="ecosystemTitle"><div class="container-wide ecosystem-grid"><div class="ecosystem-intro reveal"><p class="micro-label">Connected ecosystem</p><h2 id="ecosystemTitle">Không chỉ là một địa điểm.<br>Đây là một mạng lưới.</h2><p>Chạm vào từng điểm để khám phá cách doanh nghiệp, công nghệ, đổi mới, giáo dục và cộng đồng cùng vận hành quanh QTSC.</p><a class="text-link" href="#directory">Khám phá doanh nghiệp <span>→</span></a></div><div class="ecosystem-stage reveal"><svg class="eco-lines" viewBox="0 0 660 580" aria-hidden="true"><path d="M330 290 L330 95"/><path d="M330 290 L550 220"/><path d="M330 290 L485 465"/><path d="M330 290 L145 445"/><path d="M330 290 L105 195"/></svg><button class="eco-node center active" data-eco="qtsc"><i></i><span>QTSC</span><small>CORE</small></button><button class="eco-node top" data-eco="innovation"><i></i><span>Đổi mới</span><small>INNOVATION</small></button><button class="eco-node right" data-eco="technology"><i></i><span>Công nghệ</span><small>TECHNOLOGY</small></button><button class="eco-node bottom-right" data-eco="education"><i></i><span>Giáo dục</span><small>EDUCATION</small></button><button class="eco-node bottom-left" data-eco="community"><i></i><span>Cộng đồng</span><small>COMMUNITY</small></button><button class="eco-node left" data-eco="business"><i></i><span>Doanh nghiệp</span><small>BUSINESS</small></button><aside class="eco-detail" id="ecosystemPanel" aria-live="polite"></aside></div></div></section>
 
-    <section class="section stats" id="stats" aria-labelledby="statsTitle">
-      <div class="container-wide">
-        <div class="section-top reveal">
-          <p class="micro-label">QTSC at a glance</p>
-          <h2 id="statsTitle">Quy mô được nhìn thấy<br>ngay từ những con số.</h2>
-        </div>
-        <div class="stats-row reveal">
-          <article><strong>43</strong><span>ha</span><p>Diện tích</p></article>
-          <article><strong>25</strong><span>năm</span><p>Phát triển</p></article>
-          <article><strong>121</strong><span>+</span><p>Doanh nghiệp công nghệ số</p></article>
-          <article><strong>22.157</strong><span>+</span><p>Người làm việc & học tập</p></article>
-          <article><strong>650</strong><span>+</span><p>Sản phẩm & giải pháp</p></article>
-        </div>
-      </div>
-    </section>
+    <section class="section technology" id="technology" aria-labelledby="technologyTitle"><div class="container-wide"><div class="section-top split reveal"><div><p class="micro-label">Technology</p><h2 id="technologyTitle">Hạ tầng số và năng lực<br>công nghệ thực tế.</h2></div><p>Thay vì những card dịch vụ giống nhau, từng năng lực được trình bày như một câu chuyện lớn với visual và proof point riêng.</p></div><div class="tech-editorial reveal"><div class="tech-media" id="techMedia"><div class="tech-photo"></div><div class="tech-caption"><span id="techIndex">01</span><div><small>QTSC Technology</small><strong id="techVisualTitle">Data Center</strong></div></div></div><div class="tech-list" role="tablist" aria-label="Nhóm công nghệ"><button class="tech-tab active" data-tech="data" role="tab" aria-selected="true"><span>01</span><strong>Data Center</strong><i>↗</i></button><button class="tech-tab" data-tech="cloud" role="tab" aria-selected="false"><span>02</span><strong>Cloud</strong><i>↗</i></button><button class="tech-tab" data-tech="cyber" role="tab" aria-selected="false"><span>03</span><strong>Cybersecurity</strong><i>↗</i></button><button class="tech-tab" data-tech="telecom" role="tab" aria-selected="false"><span>04</span><strong>Telecom</strong><i>↗</i></button><p id="techVisualText">Hạ tầng dữ liệu phục vụ vận hành, lưu trữ và kết nối của hệ sinh thái.</p></div></div></div></section>
 
-    <section class="section ecosystem" id="ecosystem" aria-labelledby="ecosystemTitle">
-      <div class="container-wide ecosystem-grid">
-        <div class="ecosystem-intro reveal">
-          <p class="micro-label">Connected ecosystem</p>
-          <h2 id="ecosystemTitle">Không chỉ là một địa điểm.<br>Đây là một mạng lưới.</h2>
-          <p>Chạm vào từng điểm để khám phá cách doanh nghiệp, công nghệ, đổi mới, giáo dục và cộng đồng cùng vận hành quanh QTSC.</p>
-          <a class="text-link" href="#directory">Khám phá doanh nghiệp <span>→</span></a>
-        </div>
+    <section class="section business" id="business" aria-labelledby="businessTitle"><div class="container-wide"><div class="section-top reveal"><p class="micro-label">Business at QTSC</p><h2 id="businessTitle">Một nơi để đặt văn phòng.<br>Một hệ sinh thái để phát triển.</h2></div><div class="business-grid reveal"><article class="business-card office-card"><div class="business-photo"></div><div class="business-shade"></div><div class="business-card-content"><p class="micro-label light">Office leasing</p><h3>Tìm không gian phù hợp.</h3><p>Khám phá tòa nhà, phòng họp và hệ tiện ích ngay trong campus.</p><button class="round-link" data-intent="office" aria-label="Tìm văn phòng">↗</button></div></article><article class="business-card investment-card"><div class="business-photo"></div><div class="business-shade"></div><div class="business-card-content"><p class="micro-label light">Investment</p><h3>Đầu tư cùng QTSC.</h3><p>Tiếp cận ưu đãi, đầu mối hỗ trợ và mạng lưới công nghệ.</p><button class="round-link" data-intent="investment" aria-label="Tìm hiểu đầu tư">↗</button></div></article></div><div class="business-links reveal"><button data-connect-type="business"><span>01</span>Dịch vụ một cửa <i>→</i></button><button data-connect-type="investment"><span>02</span>Chính sách ưu đãi <i>→</i></button><button data-connect-type="support"><span>03</span>Thủ tục & hỗ trợ <i>→</i></button></div></div></section>
 
-        <div class="ecosystem-stage reveal">
-          <svg class="eco-lines" viewBox="0 0 660 580" aria-hidden="true">
-            <path d="M330 290 L330 95"/><path d="M330 290 L550 220"/><path d="M330 290 L485 465"/><path d="M330 290 L145 445"/><path d="M330 290 L105 195"/>
-          </svg>
-          <button class="eco-node center active" data-eco="qtsc"><i></i><span>QTSC</span><small>CORE</small></button>
-          <button class="eco-node top" data-eco="innovation"><i></i><span>Đổi mới</span><small>INNOVATION</small></button>
-          <button class="eco-node right" data-eco="technology"><i></i><span>Công nghệ</span><small>TECHNOLOGY</small></button>
-          <button class="eco-node bottom-right" data-eco="education"><i></i><span>Giáo dục</span><small>EDUCATION</small></button>
-          <button class="eco-node bottom-left" data-eco="community"><i></i><span>Cộng đồng</span><small>COMMUNITY</small></button>
-          <button class="eco-node left" data-eco="business"><i></i><span>Doanh nghiệp</span><small>BUSINESS</small></button>
-          <aside class="eco-detail" id="ecosystemPanel" aria-live="polite"></aside>
-        </div>
-      </div>
-    </section>
+    <section class="section marketplace" id="marketplace" aria-labelledby="marketTitle"><div class="container-wide marketplace-shell reveal"><div class="market-intro"><p class="micro-label">Technology marketplace</p><h2 id="marketTitle">Bạn đang tìm<br>công nghệ gì?</h2><p>Tra cứu theo cách tự nhiên, sau đó thu hẹp bằng nhóm công nghệ. Trải nghiệm mô phỏng như hệ search thật.</p><div class="market-count"><strong>650+</strong><span>sản phẩm, dịch vụ<br>& giải pháp công nghệ</span></div></div><div class="market-workspace"><form class="market-search" id="marketForm" role="search"><label for="marketQuery" class="sr-only">Tìm công nghệ</label><span>⌕</span><input id="marketQuery" type="search" autocomplete="off" placeholder="AI, Cloud, ERP, Cybersecurity..." /><button type="submit">Tìm <b>↗</b></button></form><div class="filter-row" id="marketFilters" aria-label="Lọc công nghệ"></div><div class="results-head"><span id="marketCount"></span><button id="clearMarket">Xóa bộ lọc</button></div><div class="market-results" id="marketResults" aria-live="polite"></div></div></div></section>
 
-    <section class="section technology" id="technology" aria-labelledby="technologyTitle">
-      <div class="container-wide">
-        <div class="section-top split reveal">
-          <div><p class="micro-label">Technology</p><h2 id="technologyTitle">Hạ tầng số và năng lực<br>công nghệ thực tế.</h2></div>
-          <p>Thay vì những card dịch vụ giống nhau, từng năng lực được trình bày như một câu chuyện lớn với visual và proof point riêng.</p>
-        </div>
+    <section class="section directory" id="directory" aria-labelledby="directoryTitle"><div class="container-wide"><div class="section-top split reveal"><div><p class="micro-label">Member directory</p><h2 id="directoryTitle">Tìm đúng doanh nghiệp<br>trong hệ sinh thái.</h2></div><p>Danh bạ không còn là một bảng dài. Search, filter và company card cùng làm việc như một công cụ discovery.</p></div><div class="directory-tools reveal"><label class="search-field"><span>⌕</span><input id="companyQuery" type="search" placeholder="Tên doanh nghiệp hoặc lĩnh vực..." /></label><select id="companyIndustry" aria-label="Lọc theo lĩnh vực"><option value="all">Tất cả lĩnh vực</option></select></div><div class="directory-grid reveal" id="companyResults" aria-live="polite"></div></div></section>
 
-        <div class="tech-editorial reveal">
-          <div class="tech-media" id="techMedia">
-            <div class="tech-photo"></div>
-            <div class="tech-caption"><span id="techIndex">01</span><div><small>QTSC Technology</small><strong id="techVisualTitle">Data Center</strong></div></div>
-          </div>
-          <div class="tech-list" role="tablist" aria-label="Nhóm công nghệ">
-            <button class="tech-tab active" data-tech="data" role="tab" aria-selected="true"><span>01</span><strong>Data Center</strong><i>↗</i></button>
-            <button class="tech-tab" data-tech="cloud" role="tab" aria-selected="false"><span>02</span><strong>Cloud</strong><i>↗</i></button>
-            <button class="tech-tab" data-tech="cyber" role="tab" aria-selected="false"><span>03</span><strong>Cybersecurity</strong><i>↗</i></button>
-            <button class="tech-tab" data-tech="telecom" role="tab" aria-selected="false"><span>04</span><strong>Telecom</strong><i>↗</i></button>
-            <p id="techVisualText">Hạ tầng dữ liệu phục vụ vận hành, lưu trữ và kết nối của hệ sinh thái.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="section green-smart" id="greenSmart" aria-labelledby="greenTitle"><div class="container-wide green-grid"><div class="green-copy reveal"><p class="micro-label">Green & Smart QTSC</p><h2 id="greenTitle">Một campus được vận hành<br>bằng dữ liệu.</h2><p>Open Data được đưa về dạng status trực quan. Với prototype UI/UX, dữ liệu bên dưới chỉ mô phỏng tương tác.</p><button class="text-link" id="refreshData">Mô phỏng cập nhật dữ liệu <span>↻</span></button><div class="data-list" id="dataList"></div></div><div class="campus-map reveal" aria-label="Bản đồ campus mô phỏng"><div class="map-photo"></div><div class="map-overlay"></div><button class="map-pin p1 active" data-place="QTSC Building 1"><i></i><span>01</span></button><button class="map-pin p2" data-place="Helios Building"><i></i><span>02</span></button><button class="map-pin p3" data-place="SBI Building"><i></i><span>03</span></button><button class="map-pin p4" data-place="R&D Labs"><i></i><span>04</span></button><aside class="map-card" id="mapCard"><small>Campus map</small><strong>QTSC Building 1</strong><p>Trụ sở QTSC · doanh nghiệp · tiện ích nội khu</p><button>Khám phá địa điểm <span>↗</span></button></aside><div class="map-legend"><span><i></i>Tòa nhà</span><span><i></i>Technology</span><span><i></i>Tiện ích</span></div></div></div></section>
 
-    <section class="section business" id="business" aria-labelledby="businessTitle">
-      <div class="container-wide">
-        <div class="section-top reveal"><p class="micro-label">Business at QTSC</p><h2 id="businessTitle">Một nơi để đặt văn phòng.<br>Một hệ sinh thái để phát triển.</h2></div>
-        <div class="business-grid reveal">
-          <article class="business-card office-card">
-            <div class="business-photo"></div><div class="business-shade"></div>
-            <div class="business-card-content"><p class="micro-label light">Office leasing</p><h3>Tìm không gian phù hợp.</h3><p>Khám phá tòa nhà, phòng họp và hệ tiện ích ngay trong campus.</p><button class="round-link" data-intent="office" aria-label="Tìm văn phòng">↗</button></div>
-          </article>
-          <article class="business-card investment-card">
-            <div class="business-photo"></div><div class="business-shade"></div>
-            <div class="business-card-content"><p class="micro-label light">Investment</p><h3>Đầu tư cùng QTSC.</h3><p>Tiếp cận ưu đãi, đầu mối hỗ trợ và mạng lưới công nghệ.</p><button class="round-link" data-intent="investment" aria-label="Tìm hiểu đầu tư">↗</button></div>
-          </article>
-        </div>
-        <div class="business-links reveal">
-          <button data-connect-type="business"><span>01</span>Dịch vụ một cửa <i>→</i></button>
-          <button data-connect-type="investment"><span>02</span>Chính sách ưu đãi <i>→</i></button>
-          <button data-connect-type="support"><span>03</span>Thủ tục & hỗ trợ <i>→</i></button>
-        </div>
-      </div>
-    </section>
+    <section class="section stories" aria-labelledby="storiesTitle"><div class="container-wide"><div class="section-top split reveal"><div><p class="micro-label">What's happening</p><h2 id="storiesTitle">QTSC đang diễn ra.</h2></div><a class="text-link" href="#">Xem tất cả tin tức <span>→</span></a></div><div class="stories-grid reveal"><article class="story-feature"><div class="story-photo"></div><div class="story-info"><span>QTSC · 2026</span><h3>25 năm kiến tạo hệ sinh thái công nghệ số tại Việt Nam.</h3><a href="#">Đọc câu chuyện <b>↗</b></a></div></article><div class="story-side"><article><span>27.08.2026 · QTSC News</span><h3>Đoàn doanh nghiệp quốc tế khám phá hệ sinh thái công nghệ số tại QTSC.</h3><a href="#">Đọc tin <b>↗</b></a></article><article><span>27.08.2026 · Careers</span><h3>Cơ hội nghề nghiệp mới trong cộng đồng doanh nghiệp QTSC.</h3><a href="#">Xem tuyển dụng <b>↗</b></a></article></div></div></div></section>
 
-    <section class="section marketplace" id="marketplace" aria-labelledby="marketTitle">
-      <div class="container-wide marketplace-shell reveal">
-        <div class="market-intro">
-          <p class="micro-label">Technology marketplace</p>
-          <h2 id="marketTitle">Bạn đang tìm<br>công nghệ gì?</h2>
-          <p>Tra cứu theo cách tự nhiên, sau đó thu hẹp bằng nhóm công nghệ. Trải nghiệm mô phỏng như hệ search thật.</p>
-          <div class="market-count"><strong>650+</strong><span>sản phẩm, dịch vụ<br>& giải pháp công nghệ</span></div>
-        </div>
-        <div class="market-workspace">
-          <form class="market-search" id="marketForm" role="search">
-            <label for="marketQuery" class="sr-only">Tìm công nghệ</label>
-            <span>⌕</span><input id="marketQuery" type="search" autocomplete="off" placeholder="AI, Cloud, ERP, Cybersecurity..." /><button type="submit">Tìm <b>↗</b></button>
-          </form>
-          <div class="filter-row" id="marketFilters" aria-label="Lọc công nghệ"></div>
-          <div class="results-head"><span id="marketCount"></span><button id="clearMarket">Xóa bộ lọc</button></div>
-          <div class="market-results" id="marketResults" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section directory" id="directory" aria-labelledby="directoryTitle">
-      <div class="container-wide">
-        <div class="section-top split reveal">
-          <div><p class="micro-label">Member directory</p><h2 id="directoryTitle">Tìm đúng doanh nghiệp<br>trong hệ sinh thái.</h2></div>
-          <p>Danh bạ không còn là một bảng dài. Search, filter và company card cùng làm việc như một công cụ discovery.</p>
-        </div>
-        <div class="directory-tools reveal">
-          <label class="search-field"><span>⌕</span><input id="companyQuery" type="search" placeholder="Tên doanh nghiệp hoặc lĩnh vực..." /></label>
-          <select id="companyIndustry" aria-label="Lọc theo lĩnh vực"><option value="all">Tất cả lĩnh vực</option></select>
-        </div>
-        <div class="directory-grid reveal" id="companyResults" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="section green-smart" id="greenSmart" aria-labelledby="greenTitle">
-      <div class="container-wide green-grid">
-        <div class="green-copy reveal">
-          <p class="micro-label">Green & Smart QTSC</p>
-          <h2 id="greenTitle">Một campus được vận hành<br>bằng dữ liệu.</h2>
-          <p>Open Data được đưa về dạng status trực quan. Với prototype UI/UX, dữ liệu bên dưới chỉ mô phỏng tương tác.</p>
-          <button class="text-link" id="refreshData">Mô phỏng cập nhật dữ liệu <span>↻</span></button>
-          <div class="data-list" id="dataList"></div>
-        </div>
-
-        <div class="campus-map reveal" aria-label="Bản đồ campus mô phỏng">
-          <div class="map-photo"></div><div class="map-overlay"></div>
-          <button class="map-pin p1 active" data-place="QTSC Building 1"><i></i><span>01</span></button>
-          <button class="map-pin p2" data-place="Helios Building"><i></i><span>02</span></button>
-          <button class="map-pin p3" data-place="SBI Building"><i></i><span>03</span></button>
-          <button class="map-pin p4" data-place="R&D Labs"><i></i><span>04</span></button>
-          <aside class="map-card" id="mapCard"><small>Campus map</small><strong>QTSC Building 1</strong><p>Trụ sở QTSC · doanh nghiệp · tiện ích nội khu</p><button>Khám phá địa điểm <span>↗</span></button></aside>
-          <div class="map-legend"><span><i></i>Tòa nhà</span><span><i></i>Technology</span><span><i></i>Tiện ích</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section stories" aria-labelledby="storiesTitle">
-      <div class="container-wide">
-        <div class="section-top split reveal"><div><p class="micro-label">What's happening</p><h2 id="storiesTitle">QTSC đang diễn ra.</h2></div><a class="text-link" href="#">Xem tất cả tin tức <span>→</span></a></div>
-        <div class="stories-grid reveal">
-          <article class="story-feature"><div class="story-photo"></div><div class="story-info"><span>QTSC · 2026</span><h3>25 năm kiến tạo hệ sinh thái công nghệ số tại Việt Nam.</h3><a href="#">Đọc câu chuyện <b>↗</b></a></div></article>
-          <div class="story-side">
-            <article><span>27.08.2026 · QTSC News</span><h3>Đoàn doanh nghiệp quốc tế khám phá hệ sinh thái công nghệ số tại QTSC.</h3><a href="#">Đọc tin <b>↗</b></a></article>
-            <article><span>27.08.2026 · Careers</span><h3>Cơ hội nghề nghiệp mới trong cộng đồng doanh nghiệp QTSC.</h3><a href="#">Xem tuyển dụng <b>↗</b></a></article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="final-cta">
-      <div class="final-network" aria-hidden="true"></div>
-      <div class="container-wide final-inner reveal">
-        <p class="micro-label light">Connect with QTSC</p>
-        <h2>Bắt đầu từ nhu cầu<br>của bạn.</h2>
-        <div class="final-options">
-          <button data-connect-type="office">Thuê văn phòng <span>↗</span></button>
-          <button data-connect-type="investment">Đầu tư <span>↗</span></button>
-          <button data-connect-type="technology">Tìm giải pháp <span>↗</span></button>
-          <button data-connect-type="general">Liên hệ QTSC <span>↗</span></button>
-        </div>
-      </div>
-    </section>
+    <section class="final-cta"><div class="final-network" aria-hidden="true"></div><div class="container-wide final-inner reveal"><p class="micro-label light">Connect with QTSC</p><h2>Bắt đầu từ nhu cầu<br>của bạn.</h2><div class="final-options"><button data-connect-type="office">Thuê văn phòng <span>↗</span></button><button data-connect-type="investment">Đầu tư <span>↗</span></button><button data-connect-type="technology">Tìm giải pháp <span>↗</span></button><button data-connect-type="general">Liên hệ QTSC <span>↗</span></button></div></div></section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container-wide footer-main">
-      <div class="footer-brand">
-        <img src="https://www.qtsc.com.vn/uploads/files/2022/03/08/logo-QTSC-2022-phien-ban-doc.jpg" alt="QTSC" />
-        <p>QTSC Building 1, Khu Công viên phần mềm Quang Trung,<br>Phường Trung Mỹ Tây, TP.HCM, Việt Nam.</p>
-      </div>
-      <div class="footer-col"><strong>Khám phá</strong><a href="#ecosystem">Hệ sinh thái</a><a href="#technology">Công nghệ</a><a href="#business">Doanh nghiệp</a><a href="#greenSmart">Green & Smart</a></div>
-      <div class="footer-col"><strong>Nguồn lực</strong><a href="#directory">Danh bạ thành viên</a><a href="#marketplace">Sản phẩm & dịch vụ CNS</a><a href="#">Tin tức</a><a href="#">Văn bản</a></div>
-      <div class="footer-col"><strong>Liên hệ</strong><a href="tel:+842837158888">(84-28) 3715 8888</a><a href="mailto:qtsc@qtsc.com.vn">qtsc@qtsc.com.vn</a><button data-open-connect>Gửi yêu cầu <span>↗</span></button></div>
-    </div>
-    <div class="container-wide footer-bottom"><span>© QTSC — Quality Tech Solution Complex</span><span>Privacy · Legal · Sitemap</span></div>
-  </footer>
+  <footer class="site-footer"><div class="container-wide footer-main"><div class="footer-brand"><img src="https://www.qtsc.com.vn/uploads/files/2022/03/08/logo-QTSC-2022-phien-ban-doc.jpg" alt="QTSC" /><p>QTSC Building 1, Khu Công viên phần mềm Quang Trung,<br>Phường Trung Mỹ Tây, TP.HCM, Việt Nam.</p></div><div class="footer-col"><strong>Khám phá</strong><a href="#ecosystem">Hệ sinh thái</a><a href="#technology">Công nghệ</a><a href="#business">Doanh nghiệp</a><a href="#greenSmart">Green & Smart</a></div><div class="footer-col"><strong>Nguồn lực</strong><a href="#directory">Danh bạ thành viên</a><a href="#marketplace">Sản phẩm & dịch vụ CNS</a><a href="#">Tin tức</a><a href="#">Văn bản</a></div><div class="footer-col"><strong>Liên hệ</strong><a href="tel:+842837158888">(84-28) 3715 8888</a><a href="mailto:qtsc@qtsc.com.vn">qtsc@qtsc.com.vn</a><button data-open-connect>Gửi yêu cầu <span>↗</span></button></div></div><div class="container-wide footer-bottom"><span>© QTSC — Quality Tech Solution Complex</span><span>Privacy · Legal · Sitemap</span></div></footer>
 
-  <div class="overlay" id="searchOverlay" aria-hidden="true">
-    <div class="overlay-backdrop" data-close-search></div>
-    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
-      <div class="dialog-top"><p class="micro-label">Global Search</p><button class="close-btn" data-close-search aria-label="Đóng">×</button></div>
-      <h2 id="searchTitle">Bạn muốn tìm gì?</h2>
-      <label class="global-search-field"><span>⌕</span><input id="globalSearchInput" type="search" placeholder="Doanh nghiệp, công nghệ, địa điểm, tài liệu..." autocomplete="off" /><kbd>ESC</kbd></label>
-      <div class="search-tabs" id="searchTabs"></div>
-      <div class="global-results" id="globalResults" aria-live="polite"></div>
-    </section>
-  </div>
-
-  <div class="overlay" id="connectOverlay" aria-hidden="true">
-    <div class="overlay-backdrop" data-close-connect></div>
-    <section class="connect-drawer" role="dialog" aria-modal="true" aria-labelledby="connectTitle">
-      <div class="dialog-top"><p class="micro-label">Connect</p><button class="close-btn" data-close-connect aria-label="Đóng">×</button></div>
-      <h2 id="connectTitle">Kết nối QTSC</h2>
-      <p class="drawer-lead">Chọn nhu cầu. Form sẽ tự thay đổi để chỉ hỏi thông tin cần thiết.</p>
-      <div class="connect-types" id="connectTypes"></div>
-      <form id="connectForm" class="connect-form"></form>
-      <div class="form-success" id="formSuccess" hidden><i>✓</i><strong>Yêu cầu đã được ghi nhận.</strong><p>Trong prototype UI/UX, đây là trạng thái thành công mô phỏng.</p><button class="btn btn-brand" data-close-connect>Đóng</button></div>
-    </section>
-  </div>
-
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <div class="mobile-menu-head"><div class="brand-fallback"><strong>QTSC</strong><small>Quality Tech Solution Complex</small></div><button class="close-btn" id="mobileMenuClose" aria-label="Đóng menu">×</button></div>
-    <div class="mobile-menu-content" id="mobileMenuContent"></div>
-    <div class="mobile-menu-foot"><button class="btn btn-brand" data-open-connect>Kết nối QTSC <span>↗</span></button><button class="lang-action">VI / EN</button></div>
-  </div>
-
+  <div class="overlay" id="searchOverlay" aria-hidden="true"><div class="overlay-backdrop" data-close-search></div><section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle"><div class="dialog-top"><p class="micro-label">Global Search</p><button class="close-btn" data-close-search aria-label="Đóng">×</button></div><h2 id="searchTitle">Bạn muốn tìm gì?</h2><label class="global-search-field"><span>⌕</span><input id="globalSearchInput" type="search" placeholder="Doanh nghiệp, công nghệ, địa điểm, tài liệu..." autocomplete="off" /><kbd>ESC</kbd></label><div class="search-tabs" id="searchTabs"></div><div class="global-results" id="globalResults" aria-live="polite"></div></section></div>
+  <div class="overlay" id="connectOverlay" aria-hidden="true"><div class="overlay-backdrop" data-close-connect></div><section class="connect-drawer" role="dialog" aria-modal="true" aria-labelledby="connectTitle"><div class="dialog-top"><p class="micro-label">Connect</p><button class="close-btn" data-close-connect aria-label="Đóng">×</button></div><h2 id="connectTitle">Kết nối QTSC</h2><p class="drawer-lead">Chọn nhu cầu. Form sẽ tự thay đổi để chỉ hỏi thông tin cần thiết.</p><div class="connect-types" id="connectTypes"></div><form id="connectForm" class="connect-form"></form><div class="form-success" id="formSuccess" hidden><i>✓</i><strong>Yêu cầu đã được ghi nhận.</strong><p>Trong prototype UI/UX, đây là trạng thái thành công mô phỏng.</p><button class="btn btn-brand" data-close-connect>Đóng</button></div></section></div>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true"><div class="mobile-menu-head"><div class="brand-fallback"><strong>QTSC</strong><small>Quality Tech Solution Complex</small></div><button class="close-btn" id="mobileMenuClose" aria-label="Đóng menu">×</button></div><div class="mobile-menu-content" id="mobileMenuContent"></div><div class="mobile-menu-foot"><button class="btn btn-brand" data-open-connect>Kết nối QTSC <span>↗</span></button><button class="lang-action">VI / EN</button></div></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
+  <script src="assets/js/pages/home.js"></script>
 </body>
 </html>

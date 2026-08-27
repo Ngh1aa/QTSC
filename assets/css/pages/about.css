@@ -1,0 +1,6 @@
+/* QTSC UI/UX — About page */
+.feature-mosaic{display:grid;grid-template-columns:1.4fr .6fr;gap:12px}
+.feature-mosaic .big,.feature-mosaic .small{min-height:480px;background:#ddd;position:relative;overflow:hidden}
+.feature-mosaic .small{display:grid;grid-template-rows:1fr 1fr;gap:12px;background:none}
+.feature-mosaic img{width:100%;height:100%;object-fit:cover}
+@media(max-width:900px){.feature-mosaic,.article-grid{grid-template-columns:1fr}.feature-mosaic .small{display:none}}
