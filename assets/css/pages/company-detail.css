@@ -1,3 +1,7 @@
 /* Company detail page — page-specific composition */
 .page-company-detail .detail-grid article{min-width:0}
+.page-company-detail .detail-title{font-size:var(--type-display-lg);max-width:1050px;line-height:1;letter-spacing:-.04em;margin-bottom:0}
+.page-company-detail .detail-intro-title{font-size:var(--type-h1);max-width:760px}
+.page-company-detail .detail-intro-copy{font-size:var(--type-body);line-height:1.8;color:var(--text-secondary);max-width:760px}
+.page-company-detail .detail-products-section{padding-bottom:0}
 .page-company-detail .entity-list{margin-top:24px}

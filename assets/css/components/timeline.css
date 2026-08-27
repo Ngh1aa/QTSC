@@ -1,2 +1,6 @@
 /* QTSC UI/UX — Timeline component */
-.timeline{border-top:1px solid var(--line)}.timeline-row{display:grid;grid-template-columns:150px 1fr 1fr;gap:32px;padding:27px 0;border-bottom:1px solid var(--line);transition:.18s}.timeline-row:hover,.timeline-row[data-active="true"]{background:linear-gradient(90deg,var(--surface),transparent);padding-left:10px;padding-right:10px}.timeline-row strong{font-size:38px;font-weight:500}.timeline-row h3{font-size:20px}.timeline-row p{color:#666b70;font-size:13px;line-height:1.65}@media(max-width:620px){.timeline-row{grid-template-columns:82px 1fr}.timeline-row p{grid-column:2}.timeline-row strong{font-size:32px}}
+.timeline{border-top:1px solid var(--border-subtle)}
+.timeline-row{display:grid;grid-template-columns:150px 1fr 1fr;gap:32px;padding:27px 0;border-bottom:1px solid var(--border-subtle);transition:var(--motion-fast) var(--ease-standard)}
+.timeline-row:hover,.timeline-row[data-active="true"]{background:linear-gradient(90deg,var(--surface-soft),transparent);padding-left:10px;padding-right:10px}
+.timeline-row strong{font-size:38px;line-height:1;font-weight:500;letter-spacing:-.025em}.timeline-row h3{font-size:20px}.timeline-row p{color:var(--text-secondary);font-size:14px;line-height:1.65}
+@media(max-width:620px){.timeline-row{grid-template-columns:82px 1fr}.timeline-row p{grid-column:2}.timeline-row strong{font-size:32px}}
