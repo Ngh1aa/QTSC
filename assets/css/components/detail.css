@@ -1,5 +1,6 @@
 /* QTSC UI/UX — Entity detail components */
 .detail-hero{padding:var(--section-md) 0 var(--section-sm)}
+.detail-hero .breadcrumb{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--text-tertiary);margin-bottom:var(--space-6)}.detail-hero .breadcrumb a{text-decoration:none;color:inherit}.detail-hero .breadcrumb a:hover{color:var(--brand-red)}
 .detail-meta{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}.detail-meta span{background:var(--surface-soft);border-radius:var(--radius-pill);padding:7px 11px;font-size:12px}
 .detail-actions{display:flex;gap:8px;margin-top:28px}.detail-actions .btn-secondary{background:#fff;color:var(--text-primary);border:1px solid var(--border-default)}.detail-actions .btn-secondary:hover{border-color:var(--brand-red);color:var(--brand-red)}
 .detail-grid{display:grid;grid-template-columns:1fr 320px;gap:72px}
