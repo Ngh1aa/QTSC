@@ -21,7 +21,6 @@
   function initShell() {
     $('#mobileMenuOpen')?.addEventListener('click', () => toast('Mobile navigation được mô phỏng đầy đủ tại Homepage.'));
     $('#searchOpen')?.addEventListener('click', () => toast('Global Search: mở Homepage và dùng Ctrl/Cmd + K.'));
-    $$('[data-demo-contact]').forEach(button => button.addEventListener('click', () => toast('Đã mở luồng liên hệ mô phỏng.')));
   }
 
   window.QTSC = { $, $$, toast, initShell };
