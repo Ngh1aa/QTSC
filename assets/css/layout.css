@@ -1,0 +1,29 @@
+/* QTSC UI Foundation v1.0 — layout */
+.container-wide{width:min(calc(100% - 80px),var(--container));margin-inline:auto}
+.section{padding-block:var(--section-lg)}
+.section-xl{padding-block:var(--section-xl)}
+.section-lg{padding-block:var(--section-lg)}
+.section-md{padding-block:var(--section-md)}
+.section-sm{padding-block:var(--section-sm)}
+.grid-12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gutter)}
+.grid-8{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.section-top{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-12);margin-bottom:var(--space-16)}
+.section-top.split>p{max-width:400px;color:var(--text-secondary);font-size:var(--type-body);line-height:1.7}
+.section-top.split .text-link{align-self:flex-end;margin-bottom:var(--space-1)}
+.section-top h2{max-width:900px}
+
+@media(max-width:900px){
+  .container-wide{width:min(calc(100% - 64px),var(--container))}
+  .section,.section-lg{padding-block:var(--section-md)}
+  .section-xl{padding-block:var(--section-lg)}
+  .section-top{align-items:flex-start;flex-direction:column;margin-bottom:var(--space-12)}
+}
+@media(max-width:620px){
+  .container-wide{width:calc(100% - 40px)}
+  .section,.section-lg{padding-block:64px}
+  .section-xl{padding-block:80px}
+  .section-md{padding-block:56px}
+  .section-sm{padding-block:48px}
+  .section-top{gap:var(--space-6);margin-bottom:var(--space-10)}
+}
