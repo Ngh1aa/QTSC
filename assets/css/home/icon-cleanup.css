@@ -1,0 +1,22 @@
+/* Homepage — normalize remaining generated/static arrow glyphs to the QTSC SVG icon system. */
+.mega-col a>span,
+.story-info a>b,
+.story-side a>b,
+.map-card button>span,
+.site-footer button>span {
+  display:inline-block;
+  width:16px;
+  height:16px;
+  flex:0 0 16px;
+  font-size:0;
+  vertical-align:-3px;
+  background:currentColor;
+  mask:var(--icon-arrow) center/contain no-repeat;
+  -webkit-mask:var(--icon-arrow) center/contain no-repeat;
+}
+
+.mega-col a>span { margin-left:16px; }
+.story-info a>b,
+.story-side a>b,
+.map-card button>span,
+.site-footer button>span { margin-left:6px; }
