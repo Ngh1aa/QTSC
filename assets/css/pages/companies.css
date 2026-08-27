@@ -1,3 +1,2 @@
-/* Companies page — page-specific composition */
-.page-companies .entity-list{align-content:start}
-.page-companies .inner-searchbar{margin-top:4px}
+/* Companies — task-first directory */
+.page-companies .inner-searchbar{margin-top:0}.page-companies .entity-list{align-content:start}.page-companies .inner-section>.container-wide{max-width:1180px}

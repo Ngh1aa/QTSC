@@ -1,28 +1,9 @@
-/* QTSC UI/UX — Shared inner-page layout */
-
-.inner-page{background:#fff}
-.inner-page .site-header{position:sticky;background:#fff;color:var(--ink);border-bottom:1px solid var(--line)}
-.inner-page .header-shell{color:var(--ink);border-bottom:0}
-.inner-page .brand img{filter:none!important;mix-blend-mode:multiply!important;background:#fff!important}
-.inner-page .header-connect{display:inline-flex}
-.inner-hero{padding:120px 0 90px;background:var(--surface)}
-.inner-hero .breadcrumb{display:flex;gap:8px;font-size:10px;color:#777;margin-bottom:48px}
-.inner-hero .breadcrumb a{text-decoration:none;color:#777}
-.inner-hero-grid{display:grid;grid-template-columns:1fr .8fr;gap:80px;align-items:end}
-.inner-hero h1{font-size:clamp(62px,7vw,112px);line-height:.9;font-weight:500;letter-spacing:-.06em;margin:0}
-.inner-hero p{max-width:520px;color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:4px}
-.inner-media{height:600px;position:relative;overflow:hidden;background:#ddd}
-.inner-media img{width:100%;height:100%;object-fit:cover}
-.inner-section{padding:110px 0}
-.inner-section.soft{background:var(--surface)}
-.inner-section.dark{background:#121212;color:#fff}
-.inner-section-head{display:grid;grid-template-columns:.7fr 1.3fr;gap:60px;margin-bottom:60px}
-.inner-section-head h2{font-size:56px}
-.inner-section-head p{color:#777;max-width:550px;line-height:1.8}
-.prose-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:60px}
-.prose-grid aside{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#999}
-.prose-grid article{max-width:800px}
-.prose-grid article p{font-size:16px;line-height:1.9;color:#444}
-.inner-footer-spacer{height:40px}
-@media(max-width:900px){.inner-page .desktop-nav{display:none}.inner-page .menu-trigger{display:block}.inner-hero{padding-top:90px}.inner-media{height:450px}}
-@media(max-width:620px){.inner-hero h1{font-size:58px}.inner-hero-grid{gap:35px}.inner-media{height:340px}.inner-section{padding:75px 0}.inner-section-head h2{font-size:40px}}
+/* QTSC UI/UX — Polished inner-page system */
+.inner-page{background:#fff}.inner-page .site-header{position:sticky;top:0;background:#fff;color:var(--ink);border-bottom:1px solid var(--line);padding:8px 0;z-index:1000}.inner-page .header-shell{color:var(--ink);box-shadow:none}.inner-page .header-connect{display:inline-flex}
+.inner-hero{padding:104px 0 78px;background:var(--surface)}.inner-hero .breadcrumb{display:flex;gap:8px;font-size:12px;color:#6b7074;margin-bottom:38px}.inner-hero .breadcrumb a{text-decoration:none;color:#6b7074}.inner-hero-grid{display:grid;grid-template-columns:1fr .82fr;gap:72px;align-items:end}.inner-hero h1{font-size:clamp(54px,6vw,92px);line-height:.94;font-weight:500;letter-spacing:-.045em;margin:0}.inner-hero p{max-width:520px;color:var(--muted);font-size:16px;line-height:1.75;margin-bottom:4px}.inner-media{height:560px;position:relative;overflow:hidden;background:#ddd}.inner-media img{width:100%;height:100%;object-fit:cover}.inner-section{padding:96px 0}.inner-section.soft{background:var(--surface)}.inner-section.dark{background:#151515;color:#fff}.inner-section-head{display:grid;grid-template-columns:.7fr 1.3fr;gap:56px;margin-bottom:52px}.inner-section-head h2{font-size:clamp(40px,4vw,58px)}.inner-section-head p{color:#6c7175;max-width:550px;line-height:1.75}.prose-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:56px}.prose-grid aside{font-size:12px;text-transform:uppercase;letter-spacing:.11em;color:#73787c}.prose-grid article{max-width:800px}.prose-grid article p{font-size:16px;line-height:1.85;color:#3f4347}.inner-footer-spacer{height:32px}
+/* utility families: task first, compact hero */
+.page-companies .inner-hero,.page-marketplace .inner-hero,.page-insights .inner-hero{padding:72px 0 54px;background:#fff;border-bottom:1px solid var(--line)}.page-companies .inner-hero h1,.page-marketplace .inner-hero h1,.page-insights .inner-hero h1{font-size:clamp(46px,5vw,72px);line-height:.98}.page-companies .inner-hero .breadcrumb,.page-marketplace .inner-hero .breadcrumb,.page-insights .inner-hero .breadcrumb{margin-bottom:26px}.page-companies .inner-section,.page-marketplace .inner-section,.page-insights .inner-section{padding-top:58px}
+/* immersive families */
+.page-office .inner-hero,.page-explore .inner-hero{background:#171717;color:#fff}.page-office .inner-hero p,.page-explore .inner-hero p{color:#c4c7c9}.page-office .inner-hero .breadcrumb,.page-explore .inner-hero .breadcrumb,.page-office .inner-hero .breadcrumb a,.page-explore .inner-hero .breadcrumb a{color:#aeb2b5}
+@media(max-width:900px){.inner-page .desktop-nav{display:none}.inner-page .menu-trigger{display:block}.inner-hero{padding-top:80px}.inner-media{height:430px}.inner-hero-grid,.inner-section-head,.prose-grid{grid-template-columns:1fr;gap:30px}.page-companies .inner-hero,.page-marketplace .inner-hero,.page-insights .inner-hero{padding-top:60px}}
+@media(max-width:620px){.inner-hero h1{font-size:50px}.page-companies .inner-hero h1,.page-marketplace .inner-hero h1,.page-insights .inner-hero h1{font-size:44px}.inner-hero-grid{gap:26px}.inner-media{height:320px}.inner-section{padding:68px 0}.inner-section-head h2{font-size:38px}}
