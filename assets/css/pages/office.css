@@ -1,0 +1,8 @@
+/* QTSC UI/UX — Office/leasing page */
+.office-card .business-photo{background:url("https://info.qtsc.com.vn/upload/contents/qtscbuilding-B811722321392.webp") center/cover}
+.office-selector{display:grid;grid-template-columns:330px 1fr;gap:18px}.office-list{border-top:1px solid var(--line)}
+.office-list button{width:100%;border:0;border-bottom:1px solid var(--line);background:#fff;padding:22px 8px;display:flex;justify-content:space-between;text-align:left}.office-list button.active{color:var(--red)}
+.office-view{min-height:600px;position:relative;overflow:hidden}.office-view img{width:100%;height:100%;object-fit:cover}
+.office-info{position:absolute;left:22px;bottom:22px;background:#fff;padding:22px;max-width:330px}.office-info strong{font-size:23px}.office-info p{font-size:11px;color:#777}
+@media(max-width:900px){.office-list{display:flex;overflow:auto}.office-list button{min-width:220px}}
+@media(max-width:620px){.office-view{min-height:480px}}

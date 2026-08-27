@@ -1,0 +1,5 @@
+/* QTSC UI/UX — Timeline component */
+.timeline{border-top:1px solid var(--line)}
+.timeline-row{display:grid;grid-template-columns:160px 1fr 1fr;gap:35px;padding:30px 0;border-bottom:1px solid var(--line)}
+.timeline-row strong{font-size:42px;font-weight:500}.timeline-row h3{font-size:21px}.timeline-row p{color:#777;font-size:12px}
+@media(max-width:620px){.timeline-row{grid-template-columns:90px 1fr}.timeline-row p{grid-column:2}}

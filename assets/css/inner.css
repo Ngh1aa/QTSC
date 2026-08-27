@@ -1,0 +1,28 @@
+/* QTSC UI/UX — Shared inner-page layout */
+
+.inner-page{background:#fff}
+.inner-page .site-header{position:sticky;background:#fff;color:var(--ink);border-bottom:1px solid var(--line)}
+.inner-page .header-shell{color:var(--ink);border-bottom:0}
+.inner-page .brand img{filter:none!important;mix-blend-mode:multiply!important;background:#fff!important}
+.inner-page .header-connect{display:inline-flex}
+.inner-hero{padding:120px 0 90px;background:var(--surface)}
+.inner-hero .breadcrumb{display:flex;gap:8px;font-size:10px;color:#777;margin-bottom:48px}
+.inner-hero .breadcrumb a{text-decoration:none;color:#777}
+.inner-hero-grid{display:grid;grid-template-columns:1fr .8fr;gap:80px;align-items:end}
+.inner-hero h1{font-size:clamp(62px,7vw,112px);line-height:.9;font-weight:500;letter-spacing:-.06em;margin:0}
+.inner-hero p{max-width:520px;color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:4px}
+.inner-media{height:600px;position:relative;overflow:hidden;background:#ddd}
+.inner-media img{width:100%;height:100%;object-fit:cover}
+.inner-section{padding:110px 0}
+.inner-section.soft{background:var(--surface)}
+.inner-section.dark{background:#121212;color:#fff}
+.inner-section-head{display:grid;grid-template-columns:.7fr 1.3fr;gap:60px;margin-bottom:60px}
+.inner-section-head h2{font-size:56px}
+.inner-section-head p{color:#777;max-width:550px;line-height:1.8}
+.prose-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:60px}
+.prose-grid aside{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#999}
+.prose-grid article{max-width:800px}
+.prose-grid article p{font-size:16px;line-height:1.9;color:#444}
+.inner-footer-spacer{height:40px}
+@media(max-width:900px){.inner-page .desktop-nav{display:none}.inner-page .menu-trigger{display:block}.inner-hero{padding-top:90px}.inner-media{height:450px}}
+@media(max-width:620px){.inner-hero h1{font-size:58px}.inner-hero-grid{gap:35px}.inner-media{height:340px}.inner-section{padding:75px 0}.inner-section-head h2{font-size:40px}}
