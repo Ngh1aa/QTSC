@@ -1,5 +1,6 @@
 /* Technology detail — proof-led presentation */
 .page-technology-detail .detail-hero{background:var(--surface-dark);color:var(--text-inverse);padding:var(--section-md) 0}
+.page-technology-detail .detail-hero .breadcrumb,.page-technology-detail .detail-hero .breadcrumb a{color:#aeb2b5}
 .page-technology-detail .detail-title{font-size:var(--type-display-lg);line-height:1;letter-spacing:-.04em;margin-bottom:var(--space-6)}
 .page-technology-detail .detail-lead{max-width:600px;color:#c5c8ca;font-size:var(--type-body);line-height:1.75}
 .page-technology-detail .detail-meta span{background:#2a2b2c;color:#e0e2e3}
