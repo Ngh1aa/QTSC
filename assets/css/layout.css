@@ -9,9 +9,9 @@
 .grid-8{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:20px}
 .grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .section-top{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-12);margin-bottom:var(--space-16)}
+.section-top h2{max-width:900px;font-size:var(--type-display-lg);line-height:1.02;letter-spacing:-.04em}
 .section-top.split>p{max-width:400px;color:var(--text-secondary);font-size:var(--type-body);line-height:1.7}
 .section-top.split .text-link{align-self:flex-end;margin-bottom:var(--space-1)}
-.section-top h2{max-width:900px}
 
 @media(max-width:900px){
   .container-wide{width:min(calc(100% - 64px),var(--container))}
