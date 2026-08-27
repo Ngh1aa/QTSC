@@ -1,36 +1,48 @@
 # QTSC UI/UX Redesign Prototype
 
-Prototype tập trung vào **giao diện + trải nghiệm người dùng**, không phụ thuộc backend thật.
+Interactive static prototype focused on QTSC UI/UX behavior rather than production backend integration.
 
-## Chạy nhanh
+## Source structure
 
-Mở `index.html` trực tiếp hoặc chạy local server:
+```text
+.
+├── index.html
+├── about.html
+├── companies.html
+├── company-detail.html
+├── marketplace.html
+├── technology-detail.html
+├── office.html
+├── explore.html
+├── insights.html
+├── styles.css              # stylesheet manifest only
+├── app.js                  # Homepage loader only
+├── inner.js                # inner-page loader only
+├── assets/
+│   ├── css/
+│   │   ├── core.css
+│   │   ├── inner.css
+│   │   ├── components/
+│   │   └── pages/
+│   └── js/
+│       ├── shared.js
+│       └── pages/
+└── docs/
+    └── source-architecture.md
+```
+
+Each screen owns a corresponding CSS and JavaScript file under `assets/*/pages/`. Shared design-system primitives stay centralized.
+
+## Run locally
 
 ```bash
 python -m http.server 8080
 ```
 
-Sau đó mở `http://localhost:8080`.
+Then open `http://localhost:8080`.
 
-## Có thể tương tác
+## Notes
 
-- Header sticky + Mega Menu
-- Global Search (`Ctrl/Cmd + K`)
-- Mobile menu accordion
-- Intent routing
-- Interactive ecosystem nodes
-- Technology tabs
-- Marketplace search + filters + URL query
-- Company directory search + filter
-- Open Data state simulation
-- Campus map pins
-- Dynamic contact form
-- VI/EN UI state demo
-- Empty / success states
-- Scroll reveal + reduced motion support
-
-## Lưu ý
-
-- Dữ liệu tương tác trong prototype là mock data phía front-end.
-- Ảnh sử dụng các URL hình ảnh công khai từ QTSC để giữ đúng bối cảnh thương hiệu.
-- Màu đỏ/cam UI là approximated tokens cho prototype; khi có file Brand Guideline/vector master thì thay bằng mã màu chính thức.
+- Prototype data are mock or representative.
+- Remote QTSC imagery is used only to preserve brand context in the UI concept.
+- Replace approximate red/orange tokens with official QTSC master brand values when available.
