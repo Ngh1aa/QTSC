@@ -15,23 +15,49 @@ Interactive static prototype focused on QTSC UI/UX behavior rather than producti
 ├── office.html
 ├── explore.html
 ├── insights.html
-├── styles.css              # stylesheet manifest only
-├── app.js                  # Homepage loader only
-├── inner.js                # inner-page loader only
 ├── assets/
 │   ├── css/
 │   │   ├── core.css
 │   │   ├── inner.css
 │   │   ├── components/
+│   │   │   ├── detail.css
+│   │   │   ├── directory.css
+│   │   │   └── timeline.css
+│   │   ├── home/
+│   │   │   ├── hero.css
+│   │   │   ├── ecosystem.css
+│   │   │   ├── business.css
+│   │   │   ├── discovery.css
+│   │   │   └── responsive.css
 │   │   └── pages/
+│   │       ├── home.css
+│   │       ├── about.css
+│   │       ├── companies.css
+│   │       ├── company-detail.css
+│   │       ├── marketplace.css
+│   │       ├── technology-detail.css
+│   │       ├── office.css
+│   │       ├── explore.css
+│   │       └── insights.css
 │   └── js/
 │       ├── shared.js
 │       └── pages/
+│           ├── home.js
+│           ├── about.js
+│           ├── companies.js
+│           ├── company-detail.js
+│           ├── marketplace.js
+│           ├── technology-detail.js
+│           ├── office.js
+│           ├── explore.js
+│           └── insights.js
 └── docs/
     └── source-architecture.md
 ```
 
-Each screen owns a corresponding CSS and JavaScript file under `assets/*/pages/`. Shared design-system primitives stay centralized.
+Each HTML page imports its own page stylesheet and page script directly. Shared design-system primitives stay centralized under `assets/css/core.css`, `assets/css/inner.css`, reusable components and `assets/js/shared.js`.
+
+Homepage styling is internally split by feature area because it is considerably larger than inner pages.
 
 ## Run locally
 
