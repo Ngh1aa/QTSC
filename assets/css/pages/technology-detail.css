@@ -1,3 +1,2 @@
-/* Technology detail page — page-specific composition */
-.page-technology-detail .detail-hero{background:var(--surface)}
-.page-technology-detail .detail-actions{align-items:center}
+/* Technology detail — proof-led presentation */
+.page-technology-detail .detail-hero{background:#171717;color:#fff;padding:92px 0 68px}.page-technology-detail .detail-hero p{color:#c1c4c7}.page-technology-detail .detail-meta span{background:#2a2a2a;color:#ddd}.page-technology-detail .detail-actions{align-items:center}
