@@ -1,5 +1,6 @@
 @import url("final-polish.css");
 @import url("surface-type-normalization.css");
+@import url("header-hero-parity.css");
 
 /* QTSC UI/UX — unified inner-page system */
 .inner-page{background:var(--surface-primary)}
@@ -12,7 +13,7 @@
 .inner-page .header-connect{display:inline-flex}
 
 /* Inner pages use the same desktop mega-menu interaction as index.html.
-   Nav links remain real anchors on click; hover/focus reveals submenu.
+   Top-level items are treated as menu triggers by shared.js; submenu links navigate.
    No underline is used on inner pages — hover state is handled by the soft surface instead. */
 .inner-page .desktop-nav .nav-link:after{display:none!important;content:none!important}
 .inner-page .desktop-nav .nav-link{position:relative;text-decoration:none;border-bottom:0!important}
