@@ -23,8 +23,9 @@
     { type:'Resources', title:'Download Center', meta:'Profile · Guide · Map · Policies', url:'resources.html', keywords:'download tài liệu profile guide map chính sách văn bản' }
   ];
 
-  /* Shared desktop mega menu for every inner HTML page. Keep anchor click navigation intact;
-     hover/focus only reveals the submenu, matching index.html behaviour. */
+  /* Shared desktop mega menu for every inner HTML page.
+     Top-level navigation is trigger-only, exactly like index.html;
+     only links inside the mega menu perform page navigation. */
   const megaLinkMap = {
     'Về QTSC':'about.html','Tầm nhìn · Sứ mệnh':'about.html#direction','Giá trị cốt lõi':'about.html#values','25 năm QTSC':'about.html#timeline','Tại sao chọn QTSC':'about.html#why','Green & Smart QTSC':'index.html#greenSmart','Tại sao TP.HCM':'about.html#why','Tại sao Việt Nam':'about.html#why',
     'Danh bạ thành viên':'companies.html','Tìm doanh nghiệp':'companies.html','QTSC Chain':'about.html#ecosystem','QTSC DigiTech Center':'technology-detail.html#innovation','DXCenter':'technology-detail.html#innovation','QTSC R&D Labs':'technology-detail.html#innovation','Giáo dục & cộng đồng':'about.html#ecosystem',
@@ -90,7 +91,11 @@
     menu.classList.add('open');
     menu.setAttribute('aria-hidden','false');
     $('#siteHeader')?.classList.add('mega-open');
-    $$('.desktop-nav .nav-link').forEach(link => link.classList.toggle('mega-active', link === trigger));
+    $$('.desktop-nav .nav-link').forEach(link => {
+      const active = link === trigger;
+      link.classList.toggle('mega-active', active);
+      link.setAttribute('aria-expanded', String(active));
+    });
   }
 
   function closeMega() {
@@ -99,7 +104,10 @@
     menu.classList.remove('open');
     menu.setAttribute('aria-hidden','true');
     $('#siteHeader')?.classList.remove('mega-open');
-    $$('.desktop-nav .nav-link').forEach(link => link.classList.remove('mega-active'));
+    $$('.desktop-nav .nav-link').forEach(link => {
+      link.classList.remove('mega-active');
+      link.setAttribute('aria-expanded','false');
+    });
   }
 
   function initMegaMenu() {
@@ -114,12 +122,29 @@
       if (!key) return;
       link.dataset.mega = key;
       link.setAttribute('aria-haspopup','true');
+      link.setAttribute('aria-expanded','false');
+      link.setAttribute('role','button');
+
+      /* Inner pages previously navigated immediately because these are <a> tags.
+         Keep them focusable, but make desktop top-level items trigger-only. */
+      link.addEventListener('click', event => {
+        if (window.matchMedia('(max-width: 900px)').matches) return;
+        event.preventDefault();
+        openMega(key, link);
+      });
       link.addEventListener('mouseenter', () => openMega(key, link));
       link.addEventListener('focus', () => openMega(key, link));
+      link.addEventListener('keydown', event => {
+        if (window.matchMedia('(max-width: 900px)').matches) return;
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openMega(key, link);
+        }
+      });
     });
 
     header.addEventListener('mouseleave', closeMega);
-    header.addEventListener('focusout', event => {
+    header.addEventListener('focusout', () => {
       requestAnimationFrame(() => {
         if (!header.contains(document.activeElement)) closeMega();
       });
