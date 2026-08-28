@@ -67,3 +67,52 @@
 @media(max-width:1100px){.page-extended .inner-hero>.container-wide{padding-right:0!important}.page-extended .inner-hero>.container-wide::before,.page-extended .inner-hero>.container-wide::after{content:none!important;display:none!important}}
 @media(max-width:900px){.extended-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.extended-card.featured{grid-column:span 2}.info-band{grid-template-columns:1fr;gap:24px}.step-row{grid-template-columns:56px 1fr}.step-row p{grid-column:2}}
 @media(max-width:620px){.extended-grid,.contact-grid{grid-template-columns:1fr}.extended-card.featured{grid-column:auto}.extended-card{min-height:230px;padding:24px}.step-row{grid-template-columns:42px 1fr;gap:16px}.step-row p{grid-column:2}.link-list a,.link-list article{grid-template-columns:1fr 26px;gap:12px}.link-list small{grid-column:1/-1}.link-list i{grid-column:2;grid-row:2}}
+
+/* UI Feedback — incentives: stack the opening heading and description, reduce unnecessary wrapping. */
+.page-incentives main>.inner-section:nth-of-type(2) .inner-section-head{
+  display:block;
+  max-width:1040px;
+}
+.page-incentives main>.inner-section:nth-of-type(2) .inner-section-head .micro-label{margin-bottom:18px}
+.page-incentives main>.inner-section:nth-of-type(2) .inner-section-head h2{
+  max-width:1040px;
+  margin:0;
+  text-wrap:pretty;
+}
+.page-incentives main>.inner-section:nth-of-type(2) .inner-section-head>p:not(.micro-label){
+  max-width:1040px;
+  margin:22px 0 0;
+  text-wrap:pretty;
+}
+@media(min-width:1200px){
+  .page-incentives main>.inner-section:nth-of-type(4) .info-band>div{translate:-200px 0}
+}
+@media(max-width:1199px){
+  .page-incentives main>.inner-section:nth-of-type(4) .info-band>div{translate:none}
+}
+
+/* UI Feedback — amenities: add visual context to each amenity card using QTSC-owned campus imagery. */
+.page-amenities .extended-card{overflow:hidden;position:relative}
+.page-amenities .extended-card::before{
+  content:"";
+  display:block;
+  flex:0 0 128px;
+  align-self:stretch;
+  margin:-28px -28px 24px;
+  background-image:linear-gradient(180deg,rgba(17,17,17,.04),rgba(17,17,17,.14)),var(--amenity-image);
+  background-size:cover;
+  background-position:center;
+}
+.page-amenities .extended-card h3{margin-top:24px}
+.page-amenities .extended-card:nth-child(1){--amenity-image:url("https://office.qtsc.com.vn/uploads/images/qtsc_building_1(1).JPG")}
+.page-amenities .extended-card:nth-child(2){--amenity-image:url("https://www.qtsc.com.vn/uploads/files/2021/03/14/Cong-vien-phan-mem-Quang-Trung-nhin-tu-huong-Quoc-lo-1A.jpg")}
+.page-amenities .extended-card:nth-child(3){--amenity-image:url("https://office.qtsc.com.vn/uploads/images/DSC_2022.jpg")}
+.page-amenities .extended-card:nth-child(4){--amenity-image:url("https://office.qtsc.com.vn/uploads/images/DSC_1453.JPG")}
+.page-amenities .extended-card:nth-child(5){--amenity-image:url("https://office.qtsc.com.vn/uploads/images/toa_nha_QTSC_R%26D_LABS_-_Copy.jpg")}
+.page-amenities .extended-card:nth-child(6){--amenity-image:url("https://office.qtsc.com.vn/uploads/images/DSC_1585.jpg")}
+.page-amenities .extended-card:nth-child(7){--amenity-image:url("https://office.qtsc.com.vn/uploads/images/IMG_0708_-_Copy_-_Copy.JPG")}
+.page-amenities .extended-card:nth-child(8){--amenity-image:url("https://www.qtsc.com.vn/uploads/files/2021/03/14/1-goc-Cong-vien-phan-mem-Quang-Trung-02.jpg")}
+.page-amenities .extended-card:nth-child(9){--amenity-image:url("https://www.qtsc.com.vn/uploads/files/2018/02/12/thumbs-1200-628-2--1/qtsc_flycam_640x320.jpg")}
+@media(max-width:620px){
+  .page-amenities .extended-card::before{margin:-24px -24px 22px;flex-basis:116px}
+}
