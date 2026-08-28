@@ -17,6 +17,14 @@
       ['Dữ liệu mở','open-data.html']
     ]
   };
+  const searchExtras = [
+    {type:'Ecosystem',title:'Cộng đồng QTSC',meta:'Trường viện · CEO/CTO Club · Foundation · Museum',url:'community.html',keywords:'cộng đồng community trường viện ceo cto quỹ khuyến học bảo tàng'},
+    {type:'Technology',title:'QTSC DigiTech Center',meta:'Digital infrastructure · Cybersecurity',url:'digitech-center.html',keywords:'digitech telecom cyber security center hạ tầng số'},
+    {type:'Innovation',title:'Agriculture Center of Excellence',meta:'IoT · Cloud · Big Data · Agriculture',url:'innovation-centers.html#agriculture',keywords:'agriculture nông nghiệp iot cloud big data testbed'},
+    {type:'Media',title:'Góc báo chí QTSC',meta:'Press release · Coverage · Photo · Video',url:'media-center.html',keywords:'góc báo chí thông cáo báo chí hình ảnh video media press'},
+    {type:'Newsletter',title:'QTSC Newsletter',meta:'Bản tin định kỳ · Archive',url:'newsletter.html',keywords:'newsletter bản tin qtsc archive đăng ký nhận tin'},
+    {type:'Open Data',title:'Dữ liệu mở QTSC',meta:'Water · Air · Groundwater · Testing',url:'open-data.html',keywords:'dữ liệu mở open data nước thải nước cấp không khí nước ngầm pasteur'}
+  ];
 
   function loadScript(src) {
     if (document.querySelector(`script[src="${src}"]`)) return;
@@ -50,12 +58,36 @@
     root.dataset.legacyExtended = '1';
   }
 
+  function patchSearch() {
+    const results = document.getElementById('globalResults');
+    const input = document.getElementById('globalSearchInput');
+    if (!results || !input) return;
+    results.querySelectorAll('[data-qtsc-extra-search]').forEach(x => x.remove());
+    const q = input.value.trim().toLowerCase();
+    searchExtras.filter(item => !q || `${item.title} ${item.meta} ${item.keywords}`.toLowerCase().includes(q)).forEach(item => {
+      const a = document.createElement('a'); a.className = 'search-result'; a.href = item.url; a.dataset.qtscExtraSearch = '1';
+      a.innerHTML = `<span class="type">${item.type}</span><span><strong>${item.title}</strong><small>${item.meta}</small></span><span>↗</span>`;
+      results.append(a);
+    });
+    if (!input.dataset.qtscExtraBound) {
+      input.dataset.qtscExtraBound = '1';
+      input.addEventListener('input', () => requestAnimationFrame(patchSearch));
+    }
+  }
+
   const observer = new MutationObserver(() => {
     document.querySelectorAll('#megaContent,.mega-inner').forEach(root => {
       root.removeAttribute('data-legacy-extended');
       patchMega(root);
     });
+    patchSearch();
   });
   observer.observe(document.documentElement, {subtree:true, childList:true});
   document.querySelectorAll('#megaContent,.mega-inner').forEach(patchMega);
+  patchSearch();
+
+  if (document.body.classList.contains('page-media-center')) {
+    const type = new URLSearchParams(location.search).get('type');
+    if (type) requestAnimationFrame(() => document.querySelector(`[data-media="${CSS.escape(type)}"]`)?.click());
+  }
 })();
