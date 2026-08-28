@@ -1,4 +1,11 @@
 (() => {
+  if (!document.querySelector('script[data-qtsc-site-extension]')) {
+    const extension = document.createElement('script');
+    extension.src = 'assets/js/site-extension.js?v=20260828';
+    extension.dataset.qtscSiteExtension = 'true';
+    document.head.append(extension);
+  }
+
   import('../../ui-feedback.js?v=4ef8421')
     .then(({ createUIFeedback }) => {
       if (typeof createUIFeedback !== 'function') {
