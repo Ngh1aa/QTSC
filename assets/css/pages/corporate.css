@@ -15,5 +15,210 @@
 .page-resources .pill-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0}
 .page-resources .pill-tabs button{height:40px;border:1px solid var(--border-default);border-radius:var(--radius-pill);background:#fff;padding:0 14px;font-size:12px;color:var(--text-secondary)}
 .page-resources .pill-tabs button.active{background:var(--text-primary);color:#fff;border-color:var(--text-primary)}
+
+/* =====================================================================
+   QTSC × RedesignVAS — editorial adaptation layer
+   Keep QTSC brand/content; borrow VAS visual rhythm, image-led composition,
+   restrained radius, calm motion and mobile-specific density.
+   ===================================================================== */
+
+:root{
+  --editorial-paper:#fbfaf8;
+  --editorial-warm:#f7f3ef;
+  --editorial-line:rgba(35,29,26,.11);
+  --editorial-shadow:0 18px 50px rgba(42,26,23,.075);
+  --editorial-shadow-float:0 24px 70px rgba(42,26,23,.12);
+  --editorial-radius:12px;
+  --editorial-ui-radius:8px;
+}
+html{scroll-padding-top:116px}
+body,button,input,select,textarea{letter-spacing:-.005em}
+
+/* Typography + rhythm */
+.section,.inner-section{padding-top:104px;padding-bottom:104px}
+.section-top,.inner-section-head{margin-bottom:54px}
+.section-top h2,.inner-section-head h2,.why-intro h2,.market-intro h2,.green-copy h2,.hero h1,.inner-hero h1{text-wrap:balance}
+.section-top p,.inner-section-head p,.prose-grid article p{max-width:64ch}
+.micro-label{letter-spacing:.13em;text-transform:uppercase;font-size:11px}
+
+/* Header: calmer VAS-like editorial glass */
+.site-header{top:10px}
+.header-shell{min-height:72px;border-radius:10px!important;background:rgba(255,255,255,.955)!important;border:1px solid rgba(42,26,23,.09)!important;box-shadow:0 12px 38px rgba(42,26,23,.07)!important;backdrop-filter:blur(18px) saturate(1.1)}
+.site-header.scrolled .header-shell,.site-header.mega-open .header-shell{background:rgba(255,255,255,.985)!important}
+.nav-link{border-radius:5px;padding-left:10px;padding-right:10px}
+.nav-link:hover{background:var(--surface-brand-soft)}
+.icon-action,.lang-action,.menu-trigger{min-width:44px;min-height:44px}
+
+/* Primary actions: orange -> red gradient, all key CTA share one language */
+.btn{min-height:48px;border-radius:var(--editorial-ui-radius);padding:12px 22px;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,border-color .2s ease}
+.btn-brand,.header-connect,.market-search button,.office-support-cta .btn,.policy-grid .btn{
+  background:var(--brand-gradient-cta)!important;
+  color:#fff!important;
+  border-color:transparent!important;
+  box-shadow:0 9px 24px rgba(182,32,53,.18)!important;
+}
+.btn-brand:hover,.header-connect:hover,.market-search button:hover,.office-support-cta .btn:hover,.policy-grid .btn:hover{
+  background:var(--brand-gradient-cta-hover)!important;
+  transform:translateY(-2px);
+  box-shadow:0 13px 30px rgba(182,32,53,.23)!important;
+}
+.filter-chip.active,.search-tab.active,.connect-type.active,.pill-tabs button.active{background:var(--brand-gradient-cta)!important;color:#fff!important;border-color:transparent!important}
+
+/* Home hero: VAS-like cinematic image-first composition */
+.hero{min-height:88svh;height:auto}
+.hero-content{min-height:88svh;padding-top:138px;padding-bottom:92px}
+.hero h1{max-width:900px;line-height:.95}
+.hero-copy p{max-width:610px;line-height:1.6}
+.hero-shade{background:linear-gradient(90deg,rgba(35,16,13,.63) 0%,rgba(54,17,15,.34) 48%,rgba(65,21,17,.10) 100%),linear-gradient(180deg,rgba(55,21,18,.20) 0%,rgba(86,26,20,.12) 48%,rgba(60,16,14,.76) 100%)!important}
+.hero-photo{filter:saturate(.88) contrast(1.03) brightness(.94)}
+.hero-network{opacity:.36!important}
+.hero-foot{bottom:30px}
+
+/* Editorial images: calm grade, soft zoom, consistent corners */
+.inner-media,.business-card,.campus-map,.story-feature,.office-view,.feature-mosaic>div,.tech-media{border-radius:var(--editorial-radius)!important;overflow:hidden}
+.inner-media img,.business-photo,.story-photo,.office-view img,.feature-mosaic img,.tech-photo{filter:saturate(.88) contrast(1.02) brightness(.97);transition:transform .55s cubic-bezier(.16,1,.3,1),filter .3s ease}
+@media(hover:hover) and (pointer:fine){
+  .inner-media:hover img,.business-card:hover .business-photo,.story-feature:hover .story-photo,.office-view:hover img,.feature-mosaic>div:hover img{transform:scale(1.025)}
+}
+
+/* Home: clearer light/dark breathing rhythm */
+.stats{background:#fff}
+.why-qtsc{background:var(--editorial-paper)!important}
+.business{background:var(--editorial-warm)!important}
+.marketplace{background:#fff}
+.directory{background:var(--editorial-paper)!important}
+.quick-access{background:#fff}
+.stories{background:#fff}
+
+/* Reduce SaaS-card feel */
+.business-card,.market-item,.company-card,.resource-card,.policy-grid article,.direction-grid article,.value-card{box-shadow:none!important}
+.business-card,.market-card,.company-card,.entity-card,.resource-card,.policy-grid article{border-radius:var(--editorial-radius)!important}
+.business-card:hover,.market-item:hover,.company-card:hover,.entity-card:hover,.resource-card:hover{transform:translateY(-2px);box-shadow:var(--editorial-shadow)!important}
+
+/* Why QTSC: editorial proof, less UI chrome */
+.proof-list{gap:14px}
+.proof-row{border:1px solid var(--editorial-line)!important;background:#fff!important;border-radius:var(--editorial-radius)!important;padding:28px!important;min-height:220px}
+.proof-row:hover{padding:28px!important;transform:translateY(-2px);box-shadow:var(--editorial-shadow)!important}
+
+/* Technology: image-led panel */
+.tech-editorial{border-color:var(--editorial-line);border-radius:var(--editorial-radius);overflow:hidden}
+.tech-tab{min-height:112px}
+.tech-tab.active{background:var(--surface-brand-soft)!important}
+.tech-caption{padding:54px 0 4px;background:linear-gradient(180deg,transparent,rgba(18,10,8,.58));left:0;right:0;bottom:0;padding-left:30px;padding-right:30px;padding-bottom:28px}
+.tech-caption strong{font-size:34px}
+
+/* Business / office: VAS campus-card feeling */
+.business-grid{gap:18px}
+.business-card{height:620px!important}
+.business-card-content{inset:auto 34px 34px}
+.business-card-content h3{font-size:clamp(34px,3.1vw,46px);letter-spacing:-.03em}
+.office-selector{border-radius:var(--editorial-radius);overflow:hidden;border:1px solid var(--editorial-line)}
+.office-list button{min-height:64px}
+.office-list button.active{background:var(--surface-brand-soft);color:var(--brand-deep);box-shadow:inset 3px 0 0 var(--brand-primary)}
+.office-view{min-height:560px}
+
+/* Marketplace: discovery cards remain functional but more editorial */
+.marketplace-shell{gap:88px}
+.market-results{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px!important}
+.market-item{border:1px solid var(--editorial-line)!important;border-radius:var(--editorial-radius)!important;padding:24px!important;min-height:180px;background:#fff;align-content:start}
+.market-item:hover{padding:24px!important;background:var(--surface-brand-soft)!important}
+.market-mark{width:58px!important;height:58px!important;border-radius:10px!important}
+
+/* Directory: identity cards, not data-table rows */
+.directory-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;border-top:0!important}
+.company-card{min-height:210px!important;padding:24px!important;border:1px solid var(--editorial-line)!important;background:#fff!important;display:flex!important;flex-direction:column;align-items:flex-start!important}
+.company-card:hover{padding:24px!important}
+.company-logo{width:58px!important;height:58px!important;border-radius:10px!important;margin-bottom:26px!important}
+.company-card h3{font-size:20px!important;line-height:1.28}.company-card footer{width:100%;margin-top:auto!important;padding-top:22px!important}
+
+/* Inner pages: editorial hero/story pages */
+.inner-page .site-header{position:sticky;padding:8px 0;background:rgba(255,255,255,.96);backdrop-filter:blur(18px)}
+.page-about .inner-hero{padding:136px 0 86px;background:var(--editorial-paper)}
+.page-about .inner-hero-grid{grid-template-columns:1.2fr .8fr;gap:90px}
+.page-about .inner-hero h1{font-size:clamp(58px,7.2vw,104px);line-height:.91}
+.page-about .inner-media{width:min(calc(100% - 48px),1440px);margin:0 auto;height:min(72svh,760px)}
+.page-about .prose-grid{grid-template-columns:.42fr 1.58fr;gap:80px}
+.direction-grid,.policy-grid{gap:14px;background:transparent;border:0}
+.direction-grid article,.policy-grid article{border:1px solid var(--editorial-line)}
+.value-card{transition:transform .2s ease,background .2s ease}
+.value-card:hover{background:var(--surface-brand-soft);transform:translateY(-2px)}
+.future-section{background:linear-gradient(135deg,#161414 0%,#2a1714 60%,#361413 100%)}
+
+/* Utility inner pages stay task-first, but cleaner */
+.page-companies .inner-hero,.page-marketplace .inner-hero,.page-insights .inner-hero{padding:82px 0 58px;background:#fff}
+.page-companies .inner-hero h1,.page-marketplace .inner-hero h1,.page-insights .inner-hero h1{font-size:clamp(48px,5.4vw,74px)}
+.inner-searchbar,.resource-search{border-color:var(--text-primary);min-height:64px}
+.inner-searchbar input,.resource-search input{font-size:16px}
+.entity-list{gap:14px!important}
+.page-companies .entity-card,.page-marketplace .entity-card{border-radius:var(--editorial-radius)!important;border:1px solid var(--editorial-line)!important}
+
+/* Office / Explore receive cinematic page-hero atmosphere without becoming school-like */
+.page-office .inner-hero,.page-explore .inner-hero{min-height:56svh;display:flex;align-items:flex-end;padding:150px 0 70px;background:radial-gradient(circle at 80% 18%,rgba(238,70,35,.18),transparent 32%),linear-gradient(145deg,#151313,#231513 72%,#301411)}
+.page-office .inner-hero h1,.page-explore .inner-hero h1{font-size:clamp(58px,7vw,98px);line-height:.92}
+
+/* Forms / overlays: VAS-like practical controls */
+.form-field input,.form-field textarea,.connect-type,.resource-search input,.inner-searchbar input{font-size:16px}
+.form-field input,.form-field textarea{min-height:50px;border-radius:7px}
+.form-field textarea{min-height:116px}
+.connect-drawer,.search-dialog{border-radius:14px 0 0 14px}
+
+/* Footer: strong brand close, no extra chrome */
+.site-footer{background:linear-gradient(145deg,#251210,#4a1716 55%,#6f1c19 100%)!important}
+.footer-main{gap:70px}
+.footer-col a{opacity:.84;transition:opacity .2s ease,transform .2s ease}
+.footer-col a:hover{opacity:1;transform:translateX(2px)}
+
+/* Tablet */
+@media(max-width:1180px){
+  .section,.inner-section{padding-top:84px;padding-bottom:84px}
+  .directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .marketplace-shell{gap:54px}
+  .page-about .inner-hero-grid{grid-template-columns:1fr;gap:34px}
+}
+
+/* Mobile-specific design, not desktop scale-down */
+@media(max-width:767px){
+  :root{--editorial-radius:10px}
+  html{scroll-padding-top:104px}
+  .container-wide{padding-left:18px!important;padding-right:18px!important}
+  .section,.inner-section{padding-top:64px;padding-bottom:64px}
+  .section-top,.inner-section-head{margin-bottom:34px}
+  .site-header{top:6px}
+  .header-shell{min-height:64px!important;height:64px!important;width:calc(100% - 18px)!important;padding:0 10px!important}
+  .header-actions{gap:3px}
+  .icon-action,.lang-action,.menu-trigger{width:42px;min-width:42px;height:42px;min-height:42px}
+
+  .hero{min-height:86svh}
+  .hero-content{min-height:86svh;padding:122px 18px 58px}
+  .hero h1{font-size:clamp(42px,13vw,64px)}
+  .hero-copy p{font-size:15px;max-width:34ch}
+  .hero-actions{gap:8px}.hero-actions .btn{min-height:48px}
+  .hero-network{opacity:.18!important}
+
+  .business-card{height:470px!important}
+  .business-card-content{inset:auto 22px 24px}
+  .market-results{grid-template-columns:1fr!important}
+  .directory-grid{grid-template-columns:1fr!important}
+  .company-card{min-height:188px!important}
+  .company-logo{margin-bottom:20px!important}
+
+  .page-about .inner-hero{padding:96px 0 56px}
+  .page-about .inner-hero h1{font-size:clamp(46px,14vw,68px)}
+  .page-about .inner-media{width:calc(100% - 24px);height:54svh;border-radius:10px!important}
+  .page-about .prose-grid{grid-template-columns:1fr;gap:24px}
+
+  .page-companies .inner-hero,.page-marketplace .inner-hero,.page-insights .inner-hero{padding:70px 0 44px}
+  .page-office .inner-hero,.page-explore .inner-hero{min-height:60svh;padding:118px 0 48px}
+  .page-office .inner-hero h1,.page-explore .inner-hero h1{font-size:clamp(46px,13vw,68px)}
+
+  .direction-grid,.policy-grid,.resource-grid{grid-template-columns:1fr}
+  .connect-drawer,.search-dialog{border-radius:12px 12px 0 0}
+  .connect-drawer{top:auto;height:min(88dvh,760px);width:100%}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .business-card:hover,.market-item:hover,.company-card:hover,.entity-card:hover,.resource-card:hover,.value-card:hover{transform:none!important}
+}
+
 @media(max-width:1000px){.values-grid{grid-template-columns:repeat(2,1fr)}.value-card{border-bottom:1px solid var(--border-subtle)}.future-grid{grid-template-columns:1fr}.resource-toolbar{grid-template-columns:1fr}.sitemap-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.direction-grid,.resource-grid,.policy-grid{grid-template-columns:1fr}.direction-grid article{min-height:auto}.values-grid{grid-template-columns:1fr}.value-card{min-height:auto;border-right:0}.resource-card{border-right:0;min-height:240px}.resource-card h2{margin-top:36px}.sitemap-grid{grid-template-columns:1fr}.sitemap-grid article{border-right:0;border-bottom:1px solid var(--border-subtle)}}
