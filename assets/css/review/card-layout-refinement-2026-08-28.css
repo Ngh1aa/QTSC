@@ -1,0 +1,363 @@
+/* QTSC card layout refinement — Marketplace / Amenities / Media Center
+   Goals: airy rhythm, content-sized cards, controlled wrapping, stronger orange-red brand highlights. */
+
+/* ================================================================
+   Marketplace — compact vertical discovery cards
+   ================================================================ */
+.page-marketplace .inner-section>.container-wide{
+  max-width:1280px!important;
+}
+.page-marketplace .entity-list{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:18px!important;
+  align-items:start!important;
+  border-top:0!important;
+}
+.page-marketplace .entity-card{
+  position:relative!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  align-self:start!important;
+  min-width:0!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:0 18px 18px!important;
+  gap:0!important;
+  overflow:hidden!important;
+  border:1px solid rgba(238,70,35,.16)!important;
+  border-radius:16px!important;
+  background:#fff!important;
+  box-shadow:0 8px 26px rgba(23,25,26,.045)!important;
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease,background .24s ease!important;
+}
+.page-marketplace .entity-card::before{
+  content:""!important;
+  position:relative!important;
+  inset:auto!important;
+  display:block!important;
+  width:auto!important;
+  height:118px!important;
+  flex:0 0 118px!important;
+  margin:0 -18px 16px!important;
+  border-radius:0!important;
+  background-image:linear-gradient(180deg,rgba(17,17,17,.02),rgba(17,17,17,.16)),var(--market-image)!important;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.page-marketplace .entity-card::after{
+  content:"";
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:0;
+  height:3px;
+  border-radius:999px 999px 0 0;
+  background:var(--brand-gradient);
+  opacity:.72;
+}
+.page-marketplace .entity-card .entity-mark{
+  display:grid!important;
+  place-items:center!important;
+  width:40px!important;
+  height:40px!important;
+  min-width:40px!important;
+  margin:0 0 12px!important;
+  border-radius:11px!important;
+  background:var(--brand-gradient)!important;
+  color:#fff!important;
+  font-size:12px!important;
+  font-weight:700!important;
+  letter-spacing:.04em!important;
+  box-shadow:0 8px 20px rgba(204,45,49,.15)!important;
+}
+.page-marketplace .entity-card h3{
+  margin:0 0 7px!important;
+  max-width:100%!important;
+  min-width:0!important;
+  font-size:18px!important;
+  line-height:1.3!important;
+  letter-spacing:-.02em!important;
+  font-weight:600!important;
+  text-wrap:balance!important;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+}
+.page-marketplace .entity-card>p{
+  margin:0!important;
+  min-width:0!important;
+  min-height:0!important;
+  max-width:100%!important;
+  font-size:12.5px!important;
+  line-height:1.5!important;
+  color:var(--text-secondary)!important;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+}
+.page-marketplace .entity-card footer{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:10px!important;
+  width:100%!important;
+  margin:14px 0 0!important;
+  padding:12px 0 2px!important;
+  border-top:1px solid var(--border-subtle)!important;
+  white-space:nowrap!important;
+}
+.page-marketplace .entity-card footer span:first-child{
+  display:inline-flex!important;
+  align-items:center!important;
+  width:max-content!important;
+  max-width:calc(100% - 34px)!important;
+  padding:5px 9px!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:var(--brand-gradient)!important;
+  color:#fff!important;
+  font-size:10.5px!important;
+  font-weight:700!important;
+  letter-spacing:.04em!important;
+}
+.page-marketplace .entity-card footer span:last-child{
+  flex:0 0 auto;
+  color:var(--brand-red)!important;
+  font-weight:700!important;
+}
+.page-marketplace .entity-card:hover{
+  padding:0 18px 18px!important;
+  transform:translateY(-3px)!important;
+  border-color:rgba(238,70,35,.42)!important;
+  background:linear-gradient(155deg,#fff 0%,#fff7f2 100%)!important;
+  box-shadow:0 16px 36px rgba(169,31,44,.10)!important;
+}
+.page-marketplace .entity-card:hover::after{opacity:1}
+.page-marketplace .entity-card:hover h3{color:var(--brand-deep)!important}
+
+/* ================================================================
+   Amenities — image-led compact cards with persistent brand cues
+   ================================================================ */
+.page-amenities .extended-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:18px!important;
+  align-items:start!important;
+  grid-auto-rows:auto!important;
+}
+.page-amenities .extended-card,
+.page-amenities .extended-card.featured{
+  position:relative!important;
+  align-self:start!important;
+  min-width:0!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:0 20px 20px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(238,70,35,.16)!important;
+  border-radius:16px!important;
+  background:linear-gradient(150deg,#fff 0%,#fff9f5 100%)!important;
+  box-shadow:0 8px 26px rgba(23,25,26,.04)!important;
+}
+.page-amenities .extended-card::before{
+  content:""!important;
+  display:block!important;
+  flex:0 0 116px!important;
+  height:116px!important;
+  align-self:stretch!important;
+  margin:0 -20px 16px!important;
+  background-image:linear-gradient(180deg,rgba(17,17,17,.02),rgba(17,17,17,.14)),var(--amenity-image)!important;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.page-amenities .extended-card::after{
+  content:"";
+  position:absolute;
+  left:20px;
+  right:20px;
+  bottom:0;
+  height:3px;
+  border-radius:999px 999px 0 0;
+  background:var(--brand-gradient);
+  opacity:.72;
+}
+.page-amenities .extended-card>span{
+  display:inline-flex!important;
+  align-items:center!important;
+  width:max-content!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:5px 9px!important;
+  border-radius:999px!important;
+  background:var(--brand-gradient)!important;
+  color:#fff!important;
+  font-size:10.5px!important;
+  line-height:1.2!important;
+  letter-spacing:.055em!important;
+  white-space:nowrap!important;
+}
+.page-amenities .extended-card h3{
+  margin:12px 0 7px!important;
+  font-size:19px!important;
+  line-height:1.28!important;
+  letter-spacing:-.02em!important;
+  font-weight:600!important;
+  text-wrap:balance!important;
+}
+.page-amenities .extended-card p{
+  margin:0!important;
+  font-size:13px!important;
+  line-height:1.55!important;
+  color:var(--text-secondary)!important;
+}
+.page-amenities .extended-card i{
+  margin-top:14px!important;
+  padding-top:0!important;
+  color:var(--brand-red)!important;
+  font-size:11.5px!important;
+  font-weight:700!important;
+}
+.page-amenities .extended-card:hover{
+  transform:translateY(-3px)!important;
+  background:var(--brand-gradient-cta)!important;
+  border-color:transparent!important;
+  color:#fff!important;
+  box-shadow:0 16px 38px rgba(160,34,31,.16)!important;
+}
+.page-amenities .extended-card:hover::after{background:#fff;opacity:.85}
+.page-amenities .extended-card:hover>span{
+  background:rgba(255,255,255,.16)!important;
+  border:1px solid rgba(255,255,255,.26)!important;
+  color:#fff!important;
+}
+.page-amenities .extended-card:hover h3,
+.page-amenities .extended-card:hover p,
+.page-amenities .extended-card:hover i{color:#fff!important}
+.page-amenities .extended-card:hover p{opacity:.88}
+
+/* ================================================================
+   Media Center — compact editorial cards, controlled wrapping
+   ================================================================ */
+.page-media-center .media-list{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:18px!important;
+  align-items:start!important;
+  border-top:0!important;
+}
+.page-media-center .media-list article{
+  position:relative!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  align-self:start!important;
+  min-width:0!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:0 18px 18px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(238,70,35,.15)!important;
+  border-radius:16px!important;
+  background:#fff!important;
+  box-shadow:0 8px 26px rgba(23,25,26,.04)!important;
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease,background .24s ease!important;
+}
+.page-media-center .media-list article::before{
+  content:""!important;
+  display:block!important;
+  flex:0 0 126px!important;
+  width:auto!important;
+  height:126px!important;
+  margin:0 -18px 16px!important;
+  background-image:linear-gradient(180deg,rgba(17,17,17,.01),rgba(17,17,17,.16)),var(--media-image)!important;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.page-media-center .media-list article::after{
+  content:"";
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:0;
+  height:3px;
+  border-radius:999px 999px 0 0;
+  background:var(--brand-gradient);
+  opacity:.72;
+}
+.page-media-center .media-list small{
+  display:block!important;
+  margin:0 0 9px!important;
+  color:var(--brand-red)!important;
+  font-size:11px!important;
+  font-weight:700!important;
+  letter-spacing:.04em!important;
+}
+.page-media-center .media-list strong{
+  display:block!important;
+  margin:0!important;
+  min-width:0!important;
+  font-size:17px!important;
+  line-height:1.4!important;
+  font-weight:600!important;
+  letter-spacing:-.015em!important;
+}
+.page-media-center .media-list strong a{
+  display:-webkit-box!important;
+  -webkit-box-orient:vertical!important;
+  -webkit-line-clamp:3!important;
+  overflow:hidden!important;
+  color:inherit!important;
+  text-decoration:none!important;
+  text-wrap:pretty!important;
+}
+.page-media-center .media-list .media-kind{
+  display:inline-flex!important;
+  align-items:center!important;
+  width:max-content!important;
+  max-width:calc(100% - 34px)!important;
+  margin-top:14px!important;
+  padding:5px 9px!important;
+  border-radius:999px!important;
+  background:var(--brand-gradient)!important;
+  color:#fff!important;
+  font-size:10.5px!important;
+  font-weight:700!important;
+  letter-spacing:.04em!important;
+  white-space:nowrap!important;
+}
+.page-media-center .media-list i{
+  position:absolute!important;
+  right:18px!important;
+  bottom:20px!important;
+  color:var(--brand-red)!important;
+  font-size:15px!important;
+  font-style:normal!important;
+}
+.page-media-center .media-list article:hover{
+  transform:translateY(-3px)!important;
+  border-color:rgba(238,70,35,.4)!important;
+  background:linear-gradient(155deg,#fff 0%,#fff7f2 100%)!important;
+  box-shadow:0 16px 36px rgba(169,31,44,.10)!important;
+}
+.page-media-center .media-list article:hover::after{opacity:1}
+.page-media-center .media-list article:hover strong{color:var(--brand-deep)!important}
+
+/* Responsive — keep breathing room without forcing narrow text columns. */
+@media(max-width:1080px){
+  .page-marketplace .entity-list,
+  .page-amenities .extended-grid,
+  .page-media-center .media-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:680px){
+  .page-marketplace .entity-list,
+  .page-amenities .extended-grid,
+  .page-media-center .media-list{grid-template-columns:1fr!important;gap:14px!important}
+  .page-marketplace .entity-card::before{height:108px!important;flex-basis:108px!important}
+  .page-amenities .extended-card::before{height:108px!important;flex-basis:108px!important}
+  .page-media-center .media-list article::before{height:116px!important;flex-basis:116px!important}
+}
