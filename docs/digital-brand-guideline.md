@@ -4,13 +4,39 @@
 - Positioning: **QTSC — Quality Tech Solution Complex**.
 - Brand character: quality, technology, connection, progress; efficient, dynamic, creative.
 - The digital visual language is derived from the official 2022 Q/power symbol, radial dots, connection and continuous red-to-orange energy.
-- Current digital red/orange values remain approximations until QTSC provides official master RGB/HEX.
+- QTSC officially describes the identity as red-orange with a transition from deep red to light orange.
+- **#EE4623** is the selected digital primary for this prototype. Treat it as a digital design token, not an official Pantone/HEX master value unless QTSC confirms it.
 
 ## Color usage
-- White / neutral surfaces dominate.
-- Red and orange are accents for primary actions, key numbers, selected states and brand transitions.
-- Use the red → orange gradient only as a signature accent, not as a default section background.
+- White / neutral surfaces dominate the interface.
+- Red and orange are used for primary actions, key numbers, selected states, network energy and brand transitions.
+- Main signature gradient: deep red → red → `#EE4623` → light orange.
+- Use a darker red-orange gradient for small primary CTA backgrounds so white UI text retains stronger contrast.
+- Use the full bright gradient for large numbers, decorative lines, selected states, glow and non-text visual accents.
+- Soft gradient surfaces are allowed for hover, utility panels, card emphasis and section transitions.
+- Do **not** turn every section into a saturated gradient background.
 - Do not introduce blue/purple/green as secondary brand colors just because they appear in individual infographics.
+
+### Gradient tokens
+Defined in `assets/css/tokens.css`:
+- `--brand-primary`
+- `--brand-gradient`
+- `--brand-gradient-cta`
+- `--brand-gradient-soft`
+- `--brand-gradient-surface`
+- `--brand-radial`
+- `--brand-glow`
+- `--brand-glow-soft`
+
+The site-wide visual layer lives in `assets/css/gradient-system.css`.
+
+## Gradient hierarchy
+1. **Hero / Brand moment** — image remains dominant; use radial red-orange energy and connected glowing nodes.
+2. **Primary CTA** — use the darker accessible red-orange gradient plus restrained glow.
+3. **Key proof / KPI** — gradient text is acceptable for large display numbers.
+4. **Selected / active UI** — gradient pills, tabs, node pulses and thin gradient rules.
+5. **Soft surface** — low-opacity orange/red tint only, with white remaining dominant.
+6. **Dark sections** — use radial brand glow over charcoal rather than flat red backgrounds.
 
 ## Network language
 Use radial rings, dots, connection lines and subtle pulses for:
@@ -25,6 +51,7 @@ Avoid repeating the network pattern as decoration in every section.
 ## Typography
 - Manrope is the prototype web typeface until an official corporate/web font is supplied.
 - Preserve the shared type scale in `typography.css`.
+- Do not use gradient text for long paragraphs or small labels. Reserve it for large display headings/numbers where readability remains strong.
 
 ## Photography
 Prioritise official QTSC imagery:
@@ -62,7 +89,8 @@ Target WCAG 2.2 AA:
 - skip links;
 - reduced-motion support;
 - minimum contrast targets already documented in `ui-foundation.md`;
-- semantic headings and labels.
+- semantic headings and labels;
+- prefer `--brand-gradient-cta` over the bright display gradient behind small white text.
 
 ## Public vs internal
 Public website:
@@ -73,4 +101,5 @@ Internal guideline only:
 - spacing/radius rules;
 - photography direction;
 - component and interaction rules;
+- gradient hierarchy and usage rules;
 - do/don't examples.
