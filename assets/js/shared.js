@@ -2,6 +2,16 @@
 (() => {
   const $ = (q, root = document) => root.querySelector(q);
   const $$ = (q, root = document) => [...root.querySelectorAll(q)];
+
+  /* Load the visual signature after page CSS so the gradient layer can refine every inner screen consistently. */
+  if (!document.querySelector('link[data-qtsc-gradient]')) {
+    const gradient = document.createElement('link');
+    gradient.rel = 'stylesheet';
+    gradient.href = 'assets/css/gradient-system.css';
+    gradient.dataset.qtscGradient = 'true';
+    document.head.append(gradient);
+  }
+
   const searchItems = [
     { type:'QTSC', title:'Giới thiệu QTSC', meta:'Tầm nhìn · Sứ mệnh · Giá trị cốt lõi', url:'about.html', keywords:'qtsc giới thiệu tầm nhìn sứ mệnh giá trị lịch sử' },
     { type:'Ecosystem', title:'Danh bạ doanh nghiệp', meta:'Member Directory', url:'companies.html', keywords:'doanh nghiệp công ty member software data ai education telecom' },
