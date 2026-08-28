@@ -23,6 +23,109 @@
     { type:'Resources', title:'Download Center', meta:'Profile · Guide · Map · Policies', url:'resources.html', keywords:'download tài liệu profile guide map chính sách văn bản' }
   ];
 
+  /* Shared desktop mega menu for every inner HTML page. Keep anchor click navigation intact;
+     hover/focus only reveals the submenu, matching index.html behaviour. */
+  const megaLinkMap = {
+    'Về QTSC':'about.html','Tầm nhìn · Sứ mệnh':'about.html#direction','Giá trị cốt lõi':'about.html#values','25 năm QTSC':'about.html#timeline','Tại sao chọn QTSC':'about.html#why','Green & Smart QTSC':'index.html#greenSmart','Tại sao TP.HCM':'about.html#why','Tại sao Việt Nam':'about.html#why',
+    'Danh bạ thành viên':'companies.html','Tìm doanh nghiệp':'companies.html','QTSC Chain':'about.html#ecosystem','QTSC DigiTech Center':'technology-detail.html#innovation','DXCenter':'technology-detail.html#innovation','QTSC R&D Labs':'technology-detail.html#innovation','Giáo dục & cộng đồng':'about.html#ecosystem',
+    'Văn phòng cho thuê':'office.html','Tòa nhà':'office.html#buildings','Phòng họp & hội nghị':'office.html','Đầu tư tại QTSC':'office.html#support','Chính sách ưu đãi':'office.html#support','Dịch vụ một cửa':'office.html#support','Thủ tục doanh nghiệp':'office.html#support',
+    'Data Center':'technology-detail.html','Cloud':'technology-detail.html','Cybersecurity':'technology-detail.html','Telecom':'technology-detail.html','Sản phẩm CNS':'marketplace.html','Dịch vụ CNS':'marketplace.html','Tìm nhà cung cấp':'marketplace.html','R&D & Innovation':'technology-detail.html#innovation',
+    'Bản đồ QTSC':'explore.html','3D / 360 Tour':'explore.html#tour','Giao thông':'explore.html#mobility','Ăn uống & café':'explore.html#places','Ngân hàng / ATM':'explore.html#places','Giáo dục':'explore.html#places','Thể thao & dịch vụ':'explore.html#places',
+    'Tin QTSC':'insights.html','Tin thành viên':'insights.html?cat=member','Sự kiện':'insights.html?cat=event','Tuyển dụng':'insights.html?cat=career','Thông cáo báo chí':'insights.html','Hình ảnh & video':'insights.html','Tài liệu':'resources.html','Văn bản pháp luật':'resources.html?cat=legal'
+  };
+
+  const megaData = {
+    qtsc:{label:'QTSC',columns:[['Giới thiệu',['Về QTSC','Tầm nhìn · Sứ mệnh','Giá trị cốt lõi','25 năm QTSC']],['Lý do chọn QTSC',['Tại sao chọn QTSC','Green & Smart QTSC','Tại sao TP.HCM','Tại sao Việt Nam']]],feature:['Quality Tech Solution Complex','Trung tâm thúc đẩy kết nối và giải pháp công nghệ chất lượng cao.']},
+    ecosystem:{label:'Hệ sinh thái',columns:[['Doanh nghiệp',['Danh bạ thành viên','Tìm doanh nghiệp','QTSC Chain']],['Đổi mới & cộng đồng',['QTSC DigiTech Center','DXCenter','QTSC R&D Labs','Giáo dục & cộng đồng']]],feature:['121 doanh nghiệp','Mạng lưới công nghệ, đào tạo và cộng đồng cùng phát triển tại QTSC.']},
+    business:{label:'Doanh nghiệp',columns:[['Không gian',['Văn phòng cho thuê','Tòa nhà','Phòng họp & hội nghị']],['Đầu tư & hỗ trợ',['Đầu tư tại QTSC','Chính sách ưu đãi','Dịch vụ một cửa','Thủ tục doanh nghiệp']]],feature:['Business at QTSC','Không gian, hạ tầng và hỗ trợ trong cùng một hệ sinh thái.']},
+    technology:{label:'Công nghệ',columns:[['Hạ tầng số',['Data Center','Cloud','Cybersecurity','Telecom']],['Marketplace',['Sản phẩm CNS','Dịch vụ CNS','Tìm nhà cung cấp','R&D & Innovation']]],feature:['650+ giải pháp','Tra cứu sản phẩm, dịch vụ và nhà cung cấp trong hệ sinh thái.']},
+    explore:{label:'Khám phá',columns:[['Campus',['Bản đồ QTSC','3D / 360 Tour','Tòa nhà','Giao thông']],['Tiện ích',['Ăn uống & café','Ngân hàng / ATM','Giáo dục','Thể thao & dịch vụ']]],feature:['43 ha campus','Khám phá tòa nhà, tiện ích, giao thông và không gian công nghệ trong campus.']},
+    insights:{label:'Tin & nguồn lực',columns:[['Cập nhật',['Tin QTSC','Tin thành viên','Sự kiện','Tuyển dụng']],['Media & tài liệu',['Thông cáo báo chí','Hình ảnh & video','Tài liệu','Văn bản pháp luật']]],feature:['QTSC Insights','Tin tức, tài liệu và câu chuyện từ toàn hệ sinh thái.']}
+  };
+
+  const megaKeyByLabel = {
+    'QTSC':'qtsc',
+    'Hệ sinh thái':'ecosystem',
+    'Doanh nghiệp':'business',
+    'Công nghệ':'technology',
+    'Khám phá':'explore',
+    'Tin & nguồn lực':'insights'
+  };
+
+  function ensureMegaMenu() {
+    const header = $('#siteHeader');
+    if (!header || !$('.desktop-nav', header)) return null;
+    let menu = $('#megaMenu', header);
+    if (!menu) {
+      menu = document.createElement('div');
+      menu.className = 'mega-menu';
+      menu.id = 'megaMenu';
+      menu.setAttribute('aria-hidden','true');
+      menu.innerHTML = '<div class="mega-inner" id="megaContent"></div>';
+      header.append(menu);
+    }
+    return menu;
+  }
+
+  function renderMega(key) {
+    const data = megaData[key];
+    const content = $('#megaContent');
+    if (!data || !content) return;
+    content.innerHTML = data.columns.map(([title, links]) => `
+      <div class="mega-col">
+        <small>${title}</small>
+        ${links.map(label => `<a href="${megaLinkMap[label] || '#'}">${label}<span>↗</span></a>`).join('')}
+      </div>`).join('') + `
+      <aside class="mega-feature">
+        <span>${data.label}</span>
+        <strong>${data.feature[0]}</strong>
+        <span>${data.feature[1]}</span>
+      </aside>`;
+  }
+
+  function openMega(key, trigger) {
+    const menu = ensureMegaMenu();
+    if (!menu || !megaData[key] || window.matchMedia('(max-width: 900px)').matches) return;
+    renderMega(key);
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden','false');
+    $('#siteHeader')?.classList.add('mega-open');
+    $$('.desktop-nav .nav-link').forEach(link => link.classList.toggle('mega-active', link === trigger));
+  }
+
+  function closeMega() {
+    const menu = $('#megaMenu');
+    if (!menu) return;
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden','true');
+    $('#siteHeader')?.classList.remove('mega-open');
+    $$('.desktop-nav .nav-link').forEach(link => link.classList.remove('mega-active'));
+  }
+
+  function initMegaMenu() {
+    const header = $('#siteHeader');
+    const nav = $('.desktop-nav', header || document);
+    if (!header || !nav || !document.body.classList.contains('inner-page')) return;
+    ensureMegaMenu();
+
+    $$('.nav-link', nav).forEach(link => {
+      const label = link.textContent.trim();
+      const key = megaKeyByLabel[label];
+      if (!key) return;
+      link.dataset.mega = key;
+      link.setAttribute('aria-haspopup','true');
+      link.addEventListener('mouseenter', () => openMega(key, link));
+      link.addEventListener('focus', () => openMega(key, link));
+    });
+
+    header.addEventListener('mouseleave', closeMega);
+    header.addEventListener('focusout', event => {
+      requestAnimationFrame(() => {
+        if (!header.contains(document.activeElement)) closeMega();
+      });
+    });
+  }
+
   function toast(message) {
     let el = $('#toast');
     if (!el) {
@@ -75,7 +178,7 @@
     render();
     return overlay;
   }
-  function openSearch() { const el = ensureSearch(); el.classList.add('open'); el.setAttribute('aria-hidden','false'); lock(true); setTimeout(() => $('#globalSearchInput',el)?.focus(), 20); }
+  function openSearch() { closeMega(); const el = ensureSearch(); el.classList.add('open'); el.setAttribute('aria-hidden','false'); lock(true); setTimeout(() => $('#globalSearchInput',el)?.focus(), 20); }
   function closeSearch() { const el = $('#searchOverlay'); if (!el) return; el.classList.remove('open'); el.setAttribute('aria-hidden','true'); lock(false); }
 
   function ensureContact() {
@@ -94,7 +197,7 @@
     });
     return overlay;
   }
-  function openContact(need='Liên hệ QTSC') { const el = ensureContact(); const field = $('#innerContactNeed',el); if(field) field.value = need; $('#innerConnectForm',el).hidden=false; $('#innerFormSuccess',el).hidden=true; el.classList.add('open'); el.setAttribute('aria-hidden','false'); lock(true); }
+  function openContact(need='Liên hệ QTSC') { closeMega(); const el = ensureContact(); const field = $('#innerContactNeed',el); if(field) field.value = need; $('#innerConnectForm',el).hidden=false; $('#innerFormSuccess',el).hidden=true; el.classList.add('open'); el.setAttribute('aria-hidden','false'); lock(true); }
   function closeContact() { const el=$('#connectOverlay'); if(!el) return; el.classList.remove('open'); el.setAttribute('aria-hidden','true'); lock(false); }
 
   function ensureMobileMenu() {
@@ -107,10 +210,11 @@
     $('#innerMobileConnect',menu).addEventListener('click',()=>{closeMobileMenu();openContact();});
     return menu;
   }
-  function openMobileMenu(){ const menu=ensureMobileMenu(); menu.classList.add('open'); menu.setAttribute('aria-hidden','false'); $('#mobileMenuOpen')?.setAttribute('aria-expanded','true'); lock(true); }
+  function openMobileMenu(){ closeMega(); const menu=ensureMobileMenu(); menu.classList.add('open'); menu.setAttribute('aria-hidden','false'); $('#mobileMenuOpen')?.setAttribute('aria-expanded','true'); lock(true); }
   function closeMobileMenu(){ const menu=$('#innerMobileMenu'); if(!menu)return; menu.classList.remove('open'); menu.setAttribute('aria-hidden','true'); $('#mobileMenuOpen')?.setAttribute('aria-expanded','false'); lock(false); }
 
   function initShell() {
+    initMegaMenu();
     enhanceInlineArrows();
     $('#mobileMenuOpen')?.addEventListener('click', openMobileMenu);
     $('#searchOpen')?.addEventListener('click', openSearch);
@@ -120,11 +224,11 @@
       openContact(need);
     }));
     document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') { closeSearch(); closeContact(); closeMobileMenu(); }
+      if (event.key === 'Escape') { closeMega(); closeSearch(); closeContact(); closeMobileMenu(); }
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); openSearch(); }
     });
   }
 
-  window.QTSC = { $, $$, toast, initShell, enhanceInlineArrows, openSearch, openContact, openMobileMenu };
+  window.QTSC = { $, $$, toast, initShell, enhanceInlineArrows, openSearch, openContact, openMobileMenu, openMega, closeMega };
   document.addEventListener('DOMContentLoaded', initShell);
 })();
