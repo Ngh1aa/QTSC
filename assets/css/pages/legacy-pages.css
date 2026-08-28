@@ -40,6 +40,36 @@
 .source-note{margin-top:28px;padding-top:20px;border-top:1px solid var(--border-subtle);font-size:12px;color:var(--text-tertiary)}
 .source-note a{color:var(--brand-red);text-decoration:none;font-weight:600}
 
+/* Parent navigation state for the new routes. */
+.page-chain .desktop-nav .nav-link:nth-child(2),
+.page-services .desktop-nav .nav-link:nth-child(3),
+.page-investment .desktop-nav .nav-link:nth-child(3),
+.page-amenities .desktop-nav .nav-link:nth-child(5),
+.page-careers .desktop-nav .nav-link:nth-child(6){font-weight:700!important;color:var(--brand-red)!important}
+@supports ((background-clip:text) or (-webkit-background-clip:text)){
+  .page-chain .desktop-nav .nav-link:nth-child(2),
+  .page-services .desktop-nav .nav-link:nth-child(3),
+  .page-investment .desktop-nav .nav-link:nth-child(3),
+  .page-amenities .desktop-nav .nav-link:nth-child(5),
+  .page-careers .desktop-nav .nav-link:nth-child(6){background:var(--brand-gradient)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
+}
+.page-extended .desktop-nav .nav-link::after{display:none!important}
+
+/* Contextual hero companions for desktop; same language as the existing pages. */
+@media(min-width:1101px){
+  .page-extended .inner-hero>.container-wide{padding-right:clamp(360px,31vw,500px)!important}
+  .page-extended .inner-hero-grid{max-width:760px!important}
+  .page-extended .inner-hero>.container-wide::before{position:absolute;right:0;top:50%;transform:translateY(-48%);width:clamp(300px,27vw,410px);height:282px;box-sizing:border-box;padding:30px 30px 24px;border:1px solid rgba(255,255,255,.22);border-radius:16px;background:radial-gradient(circle at 84% 18%,rgba(255,255,255,.16),transparent 30%),rgba(255,255,255,.075);box-shadow:0 24px 60px rgba(78,16,20,.16);backdrop-filter:blur(6px);color:#fff;font-size:clamp(46px,4vw,68px);font-weight:500;line-height:.96;letter-spacing:-.045em;white-space:pre-line;pointer-events:none}
+  .page-extended .inner-hero>.container-wide::after{position:absolute;right:30px;top:calc(50% + 40px);width:clamp(245px,22vw,350px);color:rgba(255,255,255,.84);font-size:11px;font-weight:600;line-height:1.85;letter-spacing:.12em;text-transform:uppercase;white-space:pre-line;pointer-events:none}
+  .page-services .inner-hero>.container-wide::before{content:"01"}.page-services .inner-hero>.container-wide::after{content:"ONE-STOP BUSINESS SUPPORT\AOFFICE · DIGITAL INFRASTRUCTURE\ACAMPUS SERVICES"}
+  .page-amenities .inner-hero>.container-wide::before{content:"09"}.page-amenities .inner-hero>.container-wide::after{content:"CAMPUS AMENITIES\AFOOD · MOBILITY · HEALTHCARE\AATM · EDUCATION · SPORTS"}
+  .page-chain .inner-hero>.container-wide::before{content:"CHAIN";font-size:clamp(38px,3.5vw,58px)}.page-chain .inner-hero>.container-wide::after{content:"QTSC NETWORK MODEL\ASHARED BRAND · INFRASTRUCTURE\AINVESTMENT & OPERATIONS"}
+  .page-investment .inner-hero>.container-wide::before{content:"2026"}.page-investment .inner-hero>.container-wide::after{content:"INVESTMENT AT QTSC\ADIGITAL TECHNOLOGY BUSINESSES\ACURRENT OPPORTUNITIES"}
+  .page-careers .inner-hero>.container-wide::before{content:"CAREERS";font-size:clamp(34px,3vw,52px)}.page-careers .inner-hero>.container-wide::after{content:"QTSC ECOSYSTEM\ATECHNOLOGY JOBS & INTERNSHIPS\ALATEST OPPORTUNITIES"}
+  .page-contact .inner-hero>.container-wide::before{content:"02"}.page-contact .inner-hero>.container-wide::after{content:"OFFICIAL CONTACT POINTS\AHEAD OFFICE · QTSC CAMPUS\APHONE · EMAIL"}
+}
+
+@media(max-width:1100px){.page-extended .inner-hero>.container-wide{padding-right:0!important}.page-extended .inner-hero>.container-wide::before,.page-extended .inner-hero>.container-wide::after{content:none!important;display:none!important}}
 @media(max-width:900px){
   .extended-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .extended-card.featured{grid-column:span 2}
