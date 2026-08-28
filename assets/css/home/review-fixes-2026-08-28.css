@@ -1,0 +1,57 @@
+/* UI Feedback review — 28 Aug 2026
+   Targeted fixes only; keep the existing layout and component system intact. */
+
+/* Header: icon-only search. Language action is removed globally in the shared header layer. */
+#searchOpen em{display:none!important}
+
+/* Ecosystem: reviewer requested white node markers throughout. */
+.eco-node i,
+.eco-node:hover i,
+.eco-node.active i{
+  background:#fff!important;
+}
+.eco-node:hover i,
+.eco-node.active i{
+  box-shadow:0 0 0 8px rgba(255,255,255,.12)!important;
+}
+
+/* One-stop support: remove decorative arrow/shape icons from each action. */
+.support-action i{display:none!important}
+.support-action{justify-content:flex-start!important}
+
+/* Campus map: keep interactive pins, remove non-interactive legend dots. */
+.map-legend i{display:none!important}
+
+/* Green & Smart data: white separators, no decorative status dots. */
+.data-list{border-top-color:#fff!important}
+.data-row{border-bottom-color:#fff!important}
+.status-dot{display:none!important}
+.data-row>div{gap:0!important}
+
+/* News links: stronger brand emphasis and keep arrow aligned with the label. */
+.stories .section-top .text-link,
+.story-side article>a{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:6px!important;
+  width:max-content!important;
+  max-width:100%!important;
+  font-weight:700!important;
+  white-space:nowrap!important;
+  color:var(--brand-red)!important;
+}
+.stories .section-top .text-link span,
+.story-side article>a b{
+  display:inline!important;
+  line-height:1!important;
+}
+@supports ((background-clip:text) or (-webkit-background-clip:text)){
+  .stories .section-top .text-link,
+  .story-side article>a{
+    background:var(--brand-gradient)!important;
+    background-clip:text!important;
+    -webkit-background-clip:text!important;
+    color:transparent!important;
+    -webkit-text-fill-color:transparent!important;
+  }
+}
