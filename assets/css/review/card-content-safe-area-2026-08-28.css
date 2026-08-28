@@ -1,0 +1,156 @@
+/* QTSC card content safe-area audit — 28 Aug 2026
+   Keep full-bleed media while guaranteeing readable 12–16px inner spacing.
+   Scope: repeated card systems where text could visually touch card edges. */
+
+/* Shared sizing guard. */
+.page-marketplace .entity-card,
+.page-amenities .extended-card,
+.page-media-center .media-list article,
+.page-insights .article-card,
+.page-investment main>.inner-section:nth-of-type(2) .extended-card,
+.page-companies .entity-card{
+  box-sizing:border-box!important;
+}
+
+/* Marketplace: full-bleed image, 16px safe text area. */
+.page-marketplace .entity-card{
+  padding:0 0 16px!important;
+}
+.page-marketplace .entity-card::before{
+  margin:0 0 16px!important;
+}
+.page-marketplace .entity-card .entity-mark,
+.page-marketplace .entity-card h3,
+.page-marketplace .entity-card>p{
+  margin-left:16px!important;
+  margin-right:16px!important;
+  max-width:calc(100% - 32px)!important;
+}
+.page-marketplace .entity-card footer{
+  width:calc(100% - 32px)!important;
+  margin-left:16px!important;
+  margin-right:16px!important;
+  box-sizing:border-box!important;
+}
+.page-marketplace .entity-card:hover{
+  padding:0 0 16px!important;
+}
+
+/* Amenities: keep photography full bleed, inset text consistently. */
+.page-amenities .extended-card,
+.page-amenities .extended-card.featured{
+  padding:0 0 18px!important;
+}
+.page-amenities .extended-card::before{
+  margin:0 0 16px!important;
+}
+.page-amenities .extended-card>span,
+.page-amenities .extended-card h2,
+.page-amenities .extended-card h3,
+.page-amenities .extended-card p,
+.page-amenities .extended-card i{
+  margin-left:16px!important;
+  margin-right:16px!important;
+  max-width:calc(100% - 32px)!important;
+  box-sizing:border-box!important;
+}
+
+/* Media Center: editorial content must never touch the card edge. */
+.page-media-center .media-list article{
+  padding:0 0 16px!important;
+}
+.page-media-center .media-list article::before{
+  margin:0 0 16px!important;
+}
+.page-media-center .media-list small,
+.page-media-center .media-list strong,
+.page-media-center .media-list .media-kind{
+  margin-left:16px!important;
+  margin-right:16px!important;
+  max-width:calc(100% - 32px)!important;
+  box-sizing:border-box!important;
+}
+.page-media-center .media-list strong a{
+  max-width:100%!important;
+  overflow-wrap:anywhere;
+}
+.page-media-center .media-list i{
+  right:16px!important;
+}
+
+/* Insights: same safe-area rule for image-led news cards. */
+.page-insights .article-card{
+  padding:0 0 18px!important;
+}
+.page-insights .article-card::before{
+  margin:0 0 18px!important;
+}
+.page-insights .article-card>small,
+.page-insights .article-card>h3,
+.page-insights .article-card>a{
+  margin-left:16px!important;
+  margin-right:16px!important;
+  max-width:calc(100% - 32px)!important;
+  box-sizing:border-box!important;
+}
+
+/* Investment image cards: preserve image width, inset copy. */
+.page-investment main>.inner-section:nth-of-type(2) .extended-card{
+  padding:0 0 20px!important;
+}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card::before{
+  margin:0 0 18px!important;
+}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card>span,
+.page-investment main>.inner-section:nth-of-type(2) .extended-card h3,
+.page-investment main>.inner-section:nth-of-type(2) .extended-card p,
+.page-investment main>.inner-section:nth-of-type(2) .extended-card i{
+  margin-left:16px!important;
+  margin-right:16px!important;
+  max-width:calc(100% - 32px)!important;
+  box-sizing:border-box!important;
+}
+
+/* Company directory previously used only 4px horizontal padding. */
+.page-companies .entity-card{
+  padding-left:16px!important;
+  padding-right:16px!important;
+}
+.page-companies .entity-card:hover{
+  padding-left:16px!important;
+  padding-right:16px!important;
+}
+
+/* Mobile keeps cards compact while retaining a minimum safe inset. */
+@media(max-width:680px){
+  .page-marketplace .entity-card .entity-mark,
+  .page-marketplace .entity-card h3,
+  .page-marketplace .entity-card>p,
+  .page-amenities .extended-card>span,
+  .page-amenities .extended-card h2,
+  .page-amenities .extended-card h3,
+  .page-amenities .extended-card p,
+  .page-amenities .extended-card i,
+  .page-media-center .media-list small,
+  .page-media-center .media-list strong,
+  .page-media-center .media-list .media-kind,
+  .page-insights .article-card>small,
+  .page-insights .article-card>h3,
+  .page-insights .article-card>a,
+  .page-investment main>.inner-section:nth-of-type(2) .extended-card>span,
+  .page-investment main>.inner-section:nth-of-type(2) .extended-card h3,
+  .page-investment main>.inner-section:nth-of-type(2) .extended-card p,
+  .page-investment main>.inner-section:nth-of-type(2) .extended-card i{
+    margin-left:14px!important;
+    margin-right:14px!important;
+    max-width:calc(100% - 28px)!important;
+  }
+  .page-marketplace .entity-card footer{
+    width:calc(100% - 28px)!important;
+    margin-left:14px!important;
+    margin-right:14px!important;
+  }
+  .page-media-center .media-list i{right:14px!important}
+  .page-companies .entity-card,
+  .page-companies .entity-card:hover{padding-left:12px!important;padding-right:12px!important}
+}
