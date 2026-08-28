@@ -1,0 +1,51 @@
+/* Homepage compact-card refinement — reduce empty card area without changing the visual language. */
+
+/* Technology cards: keep the image dominant, but make the 4 capability cards content-sized. */
+.tech-editorial{
+  min-height:0!important;
+  align-items:start!important;
+}
+.tech-editorial .tech-media{
+  min-height:520px!important;
+  height:520px!important;
+}
+.tech-editorial .tech-list{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-template-rows:repeat(2,142px) auto!important;
+  align-content:start!important;
+  align-self:start!important;
+}
+.tech-editorial .tech-tab{
+  min-height:142px!important;
+  height:142px!important;
+  padding:20px!important;
+  grid-template-rows:auto auto!important;
+  align-content:start!important;
+  gap:20px 12px!important;
+}
+.tech-editorial .tech-tab strong{
+  align-self:start!important;
+  font-size:21px!important;
+  line-height:1.2!important;
+}
+.tech-editorial .tech-list>p{
+  min-height:0!important;
+  padding:18px 20px!important;
+  font-size:13.5px!important;
+  line-height:1.58!important;
+}
+
+/* Keep other homepage card families restrained as well. */
+.support-action{min-height:118px!important}
+.story-side article{min-height:0!important}
+
+@media(max-width:900px){
+  .tech-editorial .tech-media{min-height:460px!important;height:460px!important}
+  .tech-editorial .tech-list{grid-template-rows:repeat(2,132px) auto!important}
+  .tech-editorial .tech-tab{min-height:132px!important;height:132px!important}
+}
+@media(max-width:620px){
+  .tech-editorial .tech-media{min-height:360px!important;height:360px!important}
+  .tech-editorial .tech-list{grid-template-columns:1fr!important;grid-template-rows:none!important}
+  .tech-editorial .tech-tab{min-height:104px!important;height:auto!important}
+}
