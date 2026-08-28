@@ -1,0 +1,100 @@
+name: UI / UX improvement
+description: Ghi nhận vấn đề giao diện, trải nghiệm hoặc polish cần nâng cấp
+title: "[UI/UX] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Dùng form này cho các thay đổi UI/UX không phải bug chức năng thuần túy.
+
+  - type: input
+    id: page
+    attributes:
+      label: Trang / khu vực
+      placeholder: "Ví dụ: Homepage Hero, Header, /technology"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: Vấn đề hiện tại
+      description: Giao diện hoặc trải nghiệm hiện tại chưa tốt ở điểm nào?
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Kết quả mong muốn
+      description: Mô tả trạng thái mong muốn sau khi chỉnh sửa.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Nhóm thay đổi
+      options:
+        - Visual hierarchy
+        - Typography
+        - Spacing / Layout
+        - Color / Brand
+        - Responsive
+        - Navigation / User flow
+        - CTA / Conversion
+        - Component state
+        - Animation / Motion
+        - Image / Media
+        - Accessibility
+        - Khác
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Ưu tiên
+      options:
+        - P0 - Critical
+        - P1 - High
+        - P2 - Medium
+        - P3 - Polish
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Hướng xử lý đề xuất
+      description: Nếu đã có ý tưởng cụ thể, ghi ngắn gọn tại đây.
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: Các điều kiện để xem Issue là hoàn thành.
+      placeholder: |
+        - [ ] Không overflow ở 375px
+        - [ ] Đúng Design System
+        - [ ] CTA rõ ràng
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Ảnh / reference / ghi chú
+      description: Kéo thả screenshot hoặc thêm link/reference liên quan.
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: Không thay đổi backend nếu không thật sự cần thiết.
+          required: true
+        - label: Không phá vỡ Design System và flow hiện có nếu Issue không yêu cầu.
+          required: true
