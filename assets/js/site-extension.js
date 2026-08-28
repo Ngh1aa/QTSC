@@ -18,6 +18,14 @@
     ]
   };
 
+  function loadScript(src) {
+    if (document.querySelector(`script[src="${src}"]`)) return;
+    const s = document.createElement('script'); s.src = src; s.defer = true; document.body.append(s);
+  }
+  if (document.body.classList.contains('page-companies')) loadScript('assets/js/data/companies-data.js');
+  if (document.body.classList.contains('page-marketplace')) loadScript('assets/js/data/marketplace-data.js');
+  if (document.body.classList.contains('page-insights')) loadScript('assets/js/data/insights-data.js');
+
   function patchMega(root) {
     if (!root || root.dataset.legacyExtended === '1') return;
     root.querySelectorAll('a').forEach(a => {
