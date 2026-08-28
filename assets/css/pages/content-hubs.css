@@ -1,0 +1,54 @@
+/* QTSC content hubs migrated from the legacy utility navigation. */
+.page-community .desktop-nav .nav-link:nth-child(2),
+.page-digitech .desktop-nav .nav-link:nth-child(4),
+.page-media-center .desktop-nav .nav-link:nth-child(6),
+.page-newsletter .desktop-nav .nav-link:nth-child(6),
+.page-open-data .desktop-nav .nav-link:nth-child(6){font-weight:700!important;color:var(--brand-red)!important}
+@supports ((background-clip:text) or (-webkit-background-clip:text)){
+  .page-community .desktop-nav .nav-link:nth-child(2),
+  .page-digitech .desktop-nav .nav-link:nth-child(4),
+  .page-media-center .desktop-nav .nav-link:nth-child(6),
+  .page-newsletter .desktop-nav .nav-link:nth-child(6),
+  .page-open-data .desktop-nav .nav-link:nth-child(6){background:var(--brand-gradient)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
+}
+.page-community .desktop-nav .nav-link::after,
+.page-digitech .desktop-nav .nav-link::after,
+.page-media-center .desktop-nav .nav-link::after,
+.page-newsletter .desktop-nav .nav-link::after,
+.page-open-data .desktop-nav .nav-link::after{display:none!important}
+
+.hub-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 30px}
+.hub-toolbar a,.hub-toolbar button{height:40px;padding:0 15px;border:1px solid var(--border-default);border-radius:999px;background:#fff;display:inline-flex;align-items:center;text-decoration:none;font-size:12px;color:var(--text-secondary)}
+.hub-toolbar a:hover,.hub-toolbar a.active,.hub-toolbar button:hover,.hub-toolbar button.active{background:var(--text-primary);border-color:var(--text-primary);color:#fff}
+
+.open-data-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.data-card{min-height:270px;padding:26px;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);background:#fff;display:flex;flex-direction:column}
+.data-card>span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--brand-red);font-weight:700}
+.data-card h2{font-size:26px;line-height:1.2;font-weight:500;margin:34px 0 10px}
+.data-card p{font-size:13px;line-height:1.65;color:var(--text-secondary);margin:0}
+.data-card footer{margin-top:auto;padding-top:26px;display:flex;justify-content:space-between;align-items:flex-end;border:0}
+.data-card footer strong{font-size:30px;font-weight:500;letter-spacing:-.04em}.data-card footer small{font-size:11px;color:var(--text-tertiary);text-align:right}
+.data-spark{height:48px;display:flex;align-items:end;gap:4px;margin-top:22px}
+.data-spark i{display:block;flex:1;min-width:4px;border-radius:3px 3px 0 0;background:var(--brand-gradient)}
+.data-disclaimer{margin-top:26px;padding:18px 20px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);background:var(--surface-soft);font-size:12px;line-height:1.6;color:var(--text-secondary)}
+
+.media-list article[hidden],.newsletter-list article[hidden]{display:none!important}
+.media-list article{grid-template-columns:110px 1fr 120px 28px}
+.media-list article .media-kind{font-size:11px;color:var(--brand-red);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.media-list article a{color:inherit;text-decoration:none}.media-list article a:hover{color:var(--brand-red)}
+
+.newsletter-hero-card{padding:30px;border:1px solid var(--border-brand);border-radius:var(--radius-lg);background:var(--brand-gradient-surface);display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}
+.newsletter-hero-card h2{font-size:clamp(30px,3vw,46px);font-weight:500;line-height:1.08;margin:8px 0 14px}.newsletter-hero-card p{max-width:68ch;color:var(--text-secondary);line-height:1.7}
+.newsletter-archive{margin-top:28px;border-top:1px solid var(--border-subtle)}
+.newsletter-item{display:grid;grid-template-columns:120px 1fr 110px 28px;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid var(--border-subtle)}
+.newsletter-item small{color:var(--text-tertiary);font-size:12px}.newsletter-item strong{font-size:18px;font-weight:500}.newsletter-item span{font-size:11px;color:var(--brand-red);font-weight:700;text-transform:uppercase}.newsletter-item a{text-decoration:none;color:inherit}.newsletter-item a:hover strong{color:var(--brand-red)}
+
+@media(min-width:1101px){
+  .page-community .inner-hero>.container-wide::before{content:"COMMUNITY";font-size:clamp(32px,2.8vw,48px)}.page-community .inner-hero>.container-wide::after{content:"SCHOOLS · CEO / CTO CLUBS\ASCHOLARSHIP · QTSC MUSEUM\AECOSYSTEM ACTIVITIES"}
+  .page-media-center .inner-hero>.container-wide::before{content:"MEDIA";font-size:clamp(38px,3.2vw,54px)}.page-media-center .inner-hero>.container-wide::after{content:"PRESS RELEASES · MEDIA COVERAGE\APHOTOS · VIDEO CLIPS\AOFFICIAL QTSC ARCHIVE"}
+  .page-newsletter .inner-hero>.container-wide::before{content:"263"}.page-newsletter .inner-hero>.container-wide::after{content:"QTSC NEWSLETTER ARCHIVE\AUPDATES · EVENTS · RECRUITMENT\ALEGAL ENVIRONMENT"}
+  .page-open-data .inner-hero>.container-wide::before{content:"OPEN";font-size:clamp(40px,3.4vw,58px)}.page-open-data .inner-hero>.container-wide::after{content:"ENVIRONMENTAL DATA\AWATER · AIR · GROUNDWATER\AOFFICIAL DATA SOURCES"}
+  .page-digitech .inner-hero>.container-wide::before{content:"DIGI"}.page-digitech .inner-hero>.container-wide::after{content:"QTSC DIGITECH CENTER\ACYBER SECURITY CENTER\ADIGITAL INFRASTRUCTURE"}
+}
+@media(max-width:900px){.open-data-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.media-list article,.newsletter-item{grid-template-columns:90px 1fr 28px}.media-list article .media-kind,.newsletter-item span{grid-column:2}.newsletter-hero-card{grid-template-columns:1fr}}
+@media(max-width:620px){.open-data-grid{grid-template-columns:1fr}.media-list article,.newsletter-item{grid-template-columns:1fr 24px;gap:10px}.media-list article small,.newsletter-item small{grid-column:1/-1}.media-list article .media-kind,.newsletter-item span{grid-column:1}.newsletter-hero-card{padding:24px}}
