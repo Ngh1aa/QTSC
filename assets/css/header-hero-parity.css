@@ -12,6 +12,9 @@ html body .site-header.mega-open .header-shell{
   -webkit-backdrop-filter:none !important;
 }
 
+/* Language switch is intentionally hidden until a complete bilingual experience is available. */
+html body .header-actions .lang-action{display:none !important}
+
 /* Inner routes use the same floating header geometry as the homepage. */
 html body.inner-page .site-header,
 html body.inner-page .site-header.scrolled,
