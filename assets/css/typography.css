@@ -1,14 +1,21 @@
-/* QTSC UI Foundation v1.0 — typography */
+/* QTSC UI Foundation v1.1 — unified typography */
 :root{
   --font-primary:"Manrope",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  --type-display-xl:clamp(52px,7vw,96px);
-  --type-display-lg:clamp(44px,5.5vw,72px);
-  --type-h1:clamp(40px,4vw,56px);
-  --type-h2:clamp(34px,3.4vw,44px);
-  --type-h3:clamp(26px,2.4vw,32px);
-  --type-h4:24px;
-  --type-lead:20px;
-  --type-body-lg:18px;
+
+  /* Global editorial scale */
+  --type-display-xl:clamp(58px,6.6vw,92px);
+  --type-display-lg:clamp(48px,5vw,72px);
+  --type-page-title:clamp(52px,5.1vw,72px);
+  --type-page-title-mobile:clamp(38px,10vw,48px);
+  --type-section-title:clamp(34px,3.2vw,44px);
+  --type-section-title-mobile:clamp(30px,8vw,36px);
+  --type-h1:var(--type-page-title);
+  --type-h2:var(--type-section-title);
+  --type-h3:clamp(24px,2.2vw,30px);
+  --type-h4:22px;
+  --type-page-lead:18px;
+  --type-lead:18px;
+  --type-body-lg:17px;
   --type-body:16px;
   --type-body-sm:14px;
   --type-label:12px;
@@ -19,18 +26,25 @@ body{font-family:var(--font-primary);font-size:var(--type-body);line-height:1.62
 button,input,select,textarea{font:inherit}
 h1,h2,h3,h4,p{margin-top:0}
 h1,h2,h3,h4{font-weight:500;color:inherit}
-h1{font-size:var(--type-h1);line-height:1.08;letter-spacing:-.035em}
-h2{font-size:var(--type-h2);line-height:1.18;letter-spacing:-.025em}
-h3{font-size:var(--type-h3);line-height:1.25;letter-spacing:-.015em}
+h1{font-size:var(--type-h1);line-height:1.04;letter-spacing:-.038em;text-wrap:balance}
+h2{font-size:var(--type-h2);line-height:1.12;letter-spacing:-.028em;text-wrap:balance}
+h3{font-size:var(--type-h3);line-height:1.25;letter-spacing:-.015em;text-wrap:balance}
 h4{font-size:var(--type-h4);line-height:1.32;letter-spacing:-.01em}
 p{font-size:var(--type-body);line-height:1.625}
-.type-display-xl{font-size:var(--type-display-xl);line-height:.98;letter-spacing:-.045em;font-weight:500}
-.type-display-lg{font-size:var(--type-display-lg);line-height:1;letter-spacing:-.04em;font-weight:500}
-.type-lead{font-size:var(--type-lead);line-height:1.5}
+.type-display-xl{font-size:var(--type-display-xl);line-height:.98;letter-spacing:-.045em;font-weight:500;text-wrap:balance}
+.type-display-lg{font-size:var(--type-display-lg);line-height:1;letter-spacing:-.04em;font-weight:500;text-wrap:balance}
+.type-lead{font-size:var(--type-lead);line-height:1.6;text-wrap:pretty}
 .type-body-lg{font-size:var(--type-body-lg);line-height:1.65}
 .type-body-sm{font-size:var(--type-body-sm);line-height:1.55}
 .micro-label{font-size:var(--type-label);line-height:1.35;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary)}
 
 @media(max-width:620px){
-  :root{--type-display-xl:52px;--type-display-lg:44px;--type-h1:40px;--type-h2:34px;--type-h3:26px;--type-h4:22px}
+  :root{
+    --type-display-xl:52px;
+    --type-display-lg:44px;
+    --type-h1:var(--type-page-title-mobile);
+    --type-h2:var(--type-section-title-mobile);
+    --type-h3:24px;
+    --type-h4:21px;
+  }
 }
