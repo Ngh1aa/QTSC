@@ -37,11 +37,11 @@ html body.inner-page .site-header.scrolled .header-shell,
 html body.inner-page .site-header.mega-open .header-shell{height:70px !important}
 
 /* Mega menu geometry shared by homepage + every inner route.
-   It is visually detached from the header by 16px, but a transparent
+   It is visually detached from the header by 8px, while a transparent
    hover bridge preserves pointer continuity across that gap. */
 html body .site-header .mega-menu,
 html body.inner-page .site-header .mega-menu{
-  top:calc(100% + 16px) !important;
+  top:calc(100% + 8px) !important;
   border-radius:12px !important;
   overflow:visible !important;
   border:1px solid rgba(42,26,23,.09) !important;
@@ -55,8 +55,8 @@ html body.inner-page .site-header .mega-menu::before{
   position:absolute !important;
   left:0 !important;
   right:0 !important;
-  top:-17px !important;
-  height:17px !important;
+  top:-9px !important;
+  height:9px !important;
   background:transparent !important;
   pointer-events:auto !important;
 }
