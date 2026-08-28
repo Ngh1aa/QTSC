@@ -1,0 +1,335 @@
+/* UI Feedback Tool — 28 Aug 2026 · 16:34
+   Scope: innovation centers, investment, marketplace, amenities, explore,
+   insights and media center only. Keep all unrelated UI unchanged. */
+
+/* ------------------------------------------------------------------
+   Innovation centers
+   ------------------------------------------------------------------ */
+.page-innovation-centers #rd-labs .extended-card:hover{
+  background:var(--brand-gradient-cta)!important;
+  border-color:transparent!important;
+  color:#fff!important;
+  box-shadow:0 18px 42px rgba(160,34,31,.20)!important;
+}
+.page-innovation-centers #rd-labs .extended-card:hover>span,
+.page-innovation-centers #rd-labs .extended-card:hover h2,
+.page-innovation-centers #rd-labs .extended-card:hover h3,
+.page-innovation-centers #rd-labs .extended-card:hover p,
+.page-innovation-centers #rd-labs .extended-card:hover i{
+  color:#fff!important;
+}
+.page-innovation-centers #rd-labs .extended-card:hover>span,
+.page-innovation-centers #rd-labs .extended-card:hover p{opacity:.88}
+
+.page-innovation-centers #agriculture .extended-grid{
+  align-items:stretch!important;
+  grid-auto-rows:1fr;
+}
+.page-innovation-centers #agriculture .extended-card{
+  height:100%!important;
+  min-height:0!important;
+}
+.page-innovation-centers #agriculture .extended-card.featured{
+  background:var(--brand-gradient-cta)!important;
+  border-color:transparent!important;
+  color:#fff!important;
+  box-shadow:0 18px 42px rgba(160,34,31,.18)!important;
+}
+.page-innovation-centers #agriculture .extended-card.featured>span,
+.page-innovation-centers #agriculture .extended-card.featured h2,
+.page-innovation-centers #agriculture .extended-card.featured h3,
+.page-innovation-centers #agriculture .extended-card.featured p,
+.page-innovation-centers #agriculture .extended-card.featured i{
+  color:#fff!important;
+}
+.page-innovation-centers #agriculture .extended-card.featured>span,
+.page-innovation-centers #agriculture .extended-card.featured p{opacity:.88}
+
+/* ------------------------------------------------------------------
+   Investment — add official QTSC imagery to the 10 investment fields
+   ------------------------------------------------------------------ */
+.page-investment main>.inner-section:nth-of-type(2) .extended-grid{
+  align-items:stretch!important;
+}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card{
+  position:relative;
+  overflow:hidden;
+  height:100%!important;
+  padding:0 22px 22px!important;
+  background:#fff!important;
+}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card::before{
+  content:"";
+  display:block;
+  height:150px;
+  margin:0 -22px 20px;
+  background-image:linear-gradient(180deg,rgba(17,17,17,.03),rgba(17,17,17,.18)),var(--investment-image);
+  background-size:cover;
+  background-position:center;
+}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card>span{margin-top:0}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card h3{margin:14px 0 9px!important}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card:nth-child(1){--investment-image:url("https://office.qtsc.com.vn/uploads/images/toa_nha_QTSC_R%26D_LABS_-_Copy.jpg")}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card:nth-child(2){--investment-image:url("https://www.qtsc.com.vn/uploads/files/2026/05/08/tuan-le-CNS-QTSC-01.jpg")}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card:nth-child(3){--investment-image:url("https://www.qtsc.com.vn/uploads/files/2021/03/14/1-goc-Cong-vien-phan-mem-Quang-Trung.jpg")}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card:nth-child(4){--investment-image:url("https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg")}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card:nth-child(5){--investment-image:url("https://office.qtsc.com.vn/uploads/images/qtsc_building_1(1).JPG")}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card:nth-child(6){--investment-image:url("https://office.qtsc.com.vn/uploads/images/DSC_2022.jpg")}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card:nth-child(7){--investment-image:url("https://www.qtsc.com.vn/uploads/files/2021/03/14/Cong-vien-phan-mem-Quang-Trung-nhin-tu-huong-Quoc-lo-1A.jpg")}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card:nth-child(8){--investment-image:url("https://office.qtsc.com.vn/uploads/images/IMG_0708_-_Copy_-_Copy.JPG")}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card:nth-child(9){--investment-image:url("https://www.qtsc.com.vn/uploads/files/2018/02/12/thumbs-1200-628-2--1/qtsc_flycam_640x320.jpg")}
+.page-investment main>.inner-section:nth-of-type(2) .extended-card:nth-child(10){--investment-image:url("https://www.qtsc.com.vn/uploads/files/2021/03/14/1-goc-Cong-vien-phan-mem-Quang-Trung-02.jpg")}
+
+/* ------------------------------------------------------------------
+   Marketplace — vertical discovery cards with visual area
+   ------------------------------------------------------------------ */
+.page-marketplace .entity-list{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:16px!important;
+  border-top:0!important;
+}
+.page-marketplace .entity-card{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  gap:0!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:0 18px 18px!important;
+  border:1px solid var(--border-subtle)!important;
+  border-radius:16px!important;
+  overflow:hidden!important;
+  background:#fff!important;
+}
+.page-marketplace .entity-card::before{
+  content:"";
+  display:block;
+  height:156px;
+  margin:0 -18px 18px;
+  background-image:linear-gradient(180deg,rgba(17,17,17,.02),rgba(17,17,17,.17)),var(--market-image);
+  background-size:cover;
+  background-position:center;
+}
+.page-marketplace .entity-card[data-category="cloud"]{--market-image:url("https://www.qtsc.com.vn/uploads/files/2021/03/14/1-goc-Cong-vien-phan-mem-Quang-Trung.jpg")}
+.page-marketplace .entity-card[data-category="cyber"]{--market-image:url("https://www.qtsc.com.vn/uploads/files/2026/05/08/tuan-le-CNS-QTSC-01.jpg")}
+.page-marketplace .entity-card[data-category="ai"]{--market-image:url("https://office.qtsc.com.vn/uploads/images/toa_nha_QTSC_R%26D_LABS_-_Copy.jpg")}
+.page-marketplace .entity-card[data-category="erp"]{--market-image:url("https://office.qtsc.com.vn/uploads/images/qtsc_building_1(1).JPG")}
+.page-marketplace .entity-card .entity-mark{
+  width:44px!important;
+  height:44px!important;
+  margin:0 0 16px!important;
+}
+.page-marketplace .entity-card h3{
+  margin:0 0 8px!important;
+  font-size:19px!important;
+  line-height:1.28!important;
+}
+.page-marketplace .entity-card p{
+  margin:0 0 18px!important;
+  min-height:0!important;
+  font-size:13px!important;
+  line-height:1.5!important;
+}
+.page-marketplace .entity-card footer{
+  width:100%!important;
+  margin-top:auto!important;
+  padding-top:14px!important;
+  border-top:1px solid var(--border-subtle)!important;
+  display:flex!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+  white-space:nowrap!important;
+}
+.page-marketplace .entity-card:hover{
+  padding:0 18px 18px!important;
+  transform:translateY(-3px)!important;
+  border-color:var(--border-brand)!important;
+  box-shadow:0 18px 40px rgba(169,31,44,.09)!important;
+}
+
+/* ------------------------------------------------------------------
+   Amenities — stronger QTSC gradient personality while keeping images
+   ------------------------------------------------------------------ */
+.page-amenities .extended-card{
+  border-color:rgba(238,70,35,.18)!important;
+  background:linear-gradient(145deg,#fff 0%,#fff4ee 100%)!important;
+  box-shadow:0 10px 28px rgba(169,31,44,.05)!important;
+}
+.page-amenities .extended-card:hover{
+  background:var(--brand-gradient-cta)!important;
+  border-color:transparent!important;
+  color:#fff!important;
+  box-shadow:0 18px 42px rgba(160,34,31,.18)!important;
+}
+.page-amenities .extended-card:hover>span,
+.page-amenities .extended-card:hover h3,
+.page-amenities .extended-card:hover p,
+.page-amenities .extended-card:hover i{color:#fff!important}
+.page-amenities .extended-card:hover>span,
+.page-amenities .extended-card:hover p{opacity:.88}
+
+/* ------------------------------------------------------------------
+   Explore — stronger place cards + standalone utility section
+   ------------------------------------------------------------------ */
+.page-explore .place-card{
+  position:relative;
+  border-left:3px solid transparent;
+}
+.page-explore .place-card::before{
+  content:"";
+  position:absolute;
+  left:-1px;
+  top:18px;
+  bottom:18px;
+  width:3px;
+  border-radius:999px;
+  background:var(--brand-gradient);
+  opacity:.45;
+}
+.page-explore .place-card:hover,
+.page-explore .place-card.active{
+  background:var(--brand-gradient-cta)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+.page-explore .place-card:hover small,
+.page-explore .place-card:hover p,
+.page-explore .place-card.active small,
+.page-explore .place-card.active p{color:rgba(255,255,255,.82)!important}
+.page-explore .place-card:hover::before,
+.page-explore .place-card.active::before{background:#fff;opacity:.92}
+
+.page-explore .explore-utility-section{background:var(--surface-soft)}
+.page-explore .explore-utility-section .explore-utilities{
+  margin-top:0!important;
+  border-top:0!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.page-explore .explore-utility-section .explore-utility{
+  display:grid!important;
+  grid-template-columns:44px 1fr 18px!important;
+  grid-template-rows:auto auto!important;
+  gap:10px 16px!important;
+  padding:22px!important;
+  border:1px solid rgba(238,70,35,.18)!important;
+  border-radius:16px!important;
+  background:linear-gradient(145deg,#fff 0%,#fff3ed 100%)!important;
+  box-shadow:0 10px 28px rgba(169,31,44,.05)!important;
+}
+.page-explore .explore-utility-section .explore-utility>span{grid-column:1;grid-row:1;color:var(--brand-red)!important}
+.page-explore .explore-utility-section .explore-utility strong{grid-column:2;grid-row:1;font-size:18px!important}
+.page-explore .explore-utility-section .explore-utility p{grid-column:2;grid-row:2;margin:0!important}
+.page-explore .explore-utility-section .explore-utility i{grid-column:3;grid-row:1}
+.page-explore .explore-utility-section .explore-utility:hover{
+  padding:22px!important;
+  transform:translateY(-3px);
+  background:var(--brand-gradient-cta)!important;
+  border-color:transparent!important;
+  color:#fff!important;
+  box-shadow:0 18px 42px rgba(160,34,31,.18)!important;
+}
+.page-explore .explore-utility-section .explore-utility:hover>span,
+.page-explore .explore-utility-section .explore-utility:hover p,
+.page-explore .explore-utility-section .explore-utility:hover i{color:rgba(255,255,255,.88)!important}
+
+/* ------------------------------------------------------------------
+   Insights — image-led news cards, 3 per row
+   ------------------------------------------------------------------ */
+.page-insights .article-stack,
+.page-insights .article-grid.is-filtered .article-stack{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  grid-template-rows:none!important;
+  grid-auto-rows:1fr;
+  gap:16px!important;
+}
+.page-insights .article-grid{grid-template-columns:1fr!important}
+.page-insights .article-card{
+  position:relative;
+  overflow:hidden;
+  min-height:0!important;
+  padding:0 20px 20px!important;
+  border:1px solid var(--border-subtle);
+  border-radius:16px;
+  background:#fff!important;
+}
+.page-insights .article-card::before{
+  content:"";
+  display:block;
+  height:170px;
+  margin:0 -20px 18px;
+  background-image:linear-gradient(180deg,rgba(17,17,17,.02),rgba(17,17,17,.16)),var(--news-image);
+  background-size:cover;
+  background-position:center;
+}
+.page-insights .article-card[data-category="news"]{--news-image:url("https://www.qtsc.com.vn/uploads/files/2026/05/08/tuan-le-CNS-QTSC-01.jpg")}
+.page-insights .article-card[data-category="member"]{--news-image:url("https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg")}
+.page-insights .article-card[data-category="event"]{--news-image:url("https://www.qtsc.com.vn/uploads/files/2021/03/14/Cong-vien-phan-mem-Quang-Trung-nhin-tu-huong-Quoc-lo-1A.jpg")}
+.page-insights .article-card[data-category="career"]{--news-image:url("https://office.qtsc.com.vn/uploads/images/qtsc_building_1(1).JPG")}
+.page-insights .article-card[data-category="dxcenter"]{--news-image:url("https://office.qtsc.com.vn/uploads/images/toa_nha_QTSC_R%26D_LABS_-_Copy.jpg")}
+.page-insights .article-card[data-category="solution"]{--news-image:url("https://www.qtsc.com.vn/uploads/files/2026/05/08/tuan-le-CNS-QTSC-01.jpg")}
+.page-insights .article-card[data-category="industry"]{--news-image:url("https://www.qtsc.com.vn/uploads/files/2018/02/12/thumbs-1200-628-2--1/qtsc_flycam_640x320.jpg")}
+.page-insights .article-card[data-category="investment"]{--news-image:url("https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg")}
+.page-insights .article-card small{color:var(--brand-red)!important}
+.page-insights .article-card h3{margin:14px 0 20px!important;font-size:20px!important;line-height:1.38!important}
+
+/* ------------------------------------------------------------------
+   Media center — every archive item gets an image-led card
+   ------------------------------------------------------------------ */
+.page-media-center .media-list{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  border-top:0!important;
+}
+.page-media-center .media-list article{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  gap:0!important;
+  padding:0 20px 20px!important;
+  border:1px solid var(--border-subtle)!important;
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+}
+.page-media-center .media-list article::before{
+  content:"";
+  display:block;
+  height:168px;
+  margin:0 -20px 18px;
+  background-image:linear-gradient(180deg,rgba(17,17,17,.02),rgba(17,17,17,.16)),var(--media-image);
+  background-size:cover;
+  background-position:center;
+}
+.page-media-center .media-list article[data-media-item="press"]{--media-image:url("https://www.qtsc.com.vn/uploads/files/2026/05/08/tuan-le-CNS-QTSC-01.jpg")}
+.page-media-center .media-list article[data-media-item="coverage"]{--media-image:url("https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg")}
+.page-media-center .media-list article[data-media-item="photo"]{--media-image:url("https://www.qtsc.com.vn/uploads/files/2018/02/12/thumbs-1200-628-2--1/qtsc_flycam_640x320.jpg")}
+.page-media-center .media-list article[data-media-item="video"]{--media-image:url("https://office.qtsc.com.vn/uploads/images/toa_nha_QTSC_R%26D_LABS_-_Copy.jpg")}
+.page-media-center .media-list article small{margin-bottom:10px}
+.page-media-center .media-list article strong{font-size:18px;line-height:1.4}
+.page-media-center .media-list article .media-kind{margin-top:auto;padding-top:20px}
+.page-media-center .media-list article>i{display:none}
+.page-media-center .media-list article:hover{border-color:var(--border-brand)!important;box-shadow:0 18px 40px rgba(169,31,44,.08)}
+
+@media(max-width:1000px){
+  .page-marketplace .entity-list,
+  .page-insights .article-stack,
+  .page-insights .article-grid.is-filtered .article-stack,
+  .page-media-center .media-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
+@media(max-width:700px){
+  .page-marketplace .entity-list,
+  .page-insights .article-stack,
+  .page-insights .article-grid.is-filtered .article-stack,
+  .page-media-center .media-list,
+  .page-explore .explore-utility-section .explore-utilities{grid-template-columns:1fr!important}
+  .page-investment main>.inner-section:nth-of-type(2) .extended-card::before{height:132px}
+  .page-marketplace .entity-card::before,
+  .page-insights .article-card::before,
+  .page-media-center .media-list article::before{height:148px}
+}
