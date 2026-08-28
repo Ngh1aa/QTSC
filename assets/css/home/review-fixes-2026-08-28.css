@@ -15,11 +15,34 @@
   box-shadow:0 0 0 8px rgba(255,255,255,.12)!important;
 }
 
-/* One-stop support: remove decorative arrow/shape icons from each action. */
-.support-action i{display:none!important}
-.support-action{justify-content:flex-start!important}
+/* One-stop support: remove decorative shapes/arrows and promote the text to the top of each card. */
+.support-action::before,
+.support-action i{
+  content:none!important;
+  display:none!important;
+}
+.support-action,
+.support-action:nth-child(odd){
+  justify-content:flex-start!important;
+  align-items:flex-start!important;
+  padding:20px!important;
+}
+.support-action span{
+  padding-top:0!important;
+  display:block!important;
+  font-size:18px!important;
+  line-height:1.35!important;
+  font-weight:600!important;
+}
+.support-action small{
+  display:block!important;
+  margin-top:6px!important;
+  font-size:12px!important;
+  line-height:1.45!important;
+  font-weight:500!important;
+}
 
-/* Campus map: keep interactive pins, remove non-interactive legend dots. */
+/* Campus map: keep only the interactive CSS pins; remove decorative legend dots. */
 .map-legend i{display:none!important}
 
 /* Green & Smart data: white separators, no decorative status dots. */
@@ -28,12 +51,12 @@
 .status-dot{display:none!important}
 .data-row>div{gap:0!important}
 
-/* News links: stronger brand emphasis and keep arrow aligned with the label. */
+/* News links: gradient label + a real arrow icon on the right. */
 .stories .section-top .text-link,
 .story-side article>a{
   display:inline-flex!important;
   align-items:center!important;
-  gap:6px!important;
+  gap:8px!important;
   width:max-content!important;
   max-width:100%!important;
   font-weight:700!important;
@@ -42,8 +65,18 @@
 }
 .stories .section-top .text-link span,
 .story-side article>a b{
-  display:inline!important;
-  line-height:1!important;
+  display:none!important;
+}
+.stories .section-top .text-link::after,
+.story-side article>a::after{
+  content:"";
+  display:block;
+  width:16px;
+  height:16px;
+  flex:0 0 16px;
+  background:var(--brand-gradient)!important;
+  mask:var(--icon-arrow) center/contain no-repeat;
+  -webkit-mask:var(--icon-arrow) center/contain no-repeat;
 }
 @supports ((background-clip:text) or (-webkit-background-clip:text)){
   .stories .section-top .text-link,
@@ -54,4 +87,21 @@
     color:transparent!important;
     -webkit-text-fill-color:transparent!important;
   }
+}
+
+/* Featured story: concentrate the scrim at the bottom, directly behind the copy. */
+.story-feature::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:58%;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(18,10,8,0) 0%,rgba(18,10,8,.28) 34%,rgba(18,10,8,.84) 100%);
+}
+.story-feature .story-info{
+  position:absolute;
+  z-index:2!important;
 }
