@@ -62,16 +62,24 @@
     const results = document.getElementById('globalResults');
     const input = document.getElementById('globalSearchInput');
     if (!results || !input) return;
-    results.querySelectorAll('[data-qtsc-extra-search]').forEach(x => x.remove());
     const q = input.value.trim().toLowerCase();
-    searchExtras.filter(item => !q || `${item.title} ${item.meta} ${item.keywords}`.toLowerCase().includes(q)).forEach(item => {
+    const matches = searchExtras.filter(item => !q || `${item.title} ${item.meta} ${item.keywords}`.toLowerCase().includes(q));
+    const signature = `${q}|${matches.map(item => item.url).join(',')}`;
+    const current = [...results.querySelectorAll('[data-qtsc-extra-search]')];
+    if (results.dataset.qtscExtraSignature === signature && current.length === matches.length) return;
+    current.forEach(x => x.remove());
+    matches.forEach(item => {
       const a = document.createElement('a'); a.className = 'search-result'; a.href = item.url; a.dataset.qtscExtraSearch = '1';
       a.innerHTML = `<span class="type">${item.type}</span><span><strong>${item.title}</strong><small>${item.meta}</small></span><span>↗</span>`;
       results.append(a);
     });
+    results.dataset.qtscExtraSignature = signature;
     if (!input.dataset.qtscExtraBound) {
       input.dataset.qtscExtraBound = '1';
-      input.addEventListener('input', () => requestAnimationFrame(patchSearch));
+      input.addEventListener('input', () => {
+        results.dataset.qtscExtraSignature = '';
+        requestAnimationFrame(patchSearch);
+      });
     }
   }
 
