@@ -1,51 +1,76 @@
 /* Homepage compact-card refinement — reduce empty card area without changing the visual language. */
 
-/* Technology cards: keep the image dominant, but make the 4 capability cards content-sized. */
+/* Technology: keep the 2x2 capability pattern, but size the cards around their actual content. */
 .tech-editorial{
+  grid-template-columns:minmax(0,1.42fr) minmax(360px,.58fr)!important;
   min-height:0!important;
   align-items:start!important;
 }
 .tech-editorial .tech-media{
-  min-height:520px!important;
-  height:520px!important;
+  min-height:440px!important;
+  height:440px!important;
 }
 .tech-editorial .tech-list{
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  grid-template-rows:repeat(2,142px) auto!important;
+  grid-template-rows:repeat(2,104px) auto!important;
   align-content:start!important;
   align-self:start!important;
+  gap:10px!important;
 }
 .tech-editorial .tech-tab{
-  min-height:142px!important;
-  height:142px!important;
-  padding:20px!important;
+  min-height:104px!important;
+  height:104px!important;
+  padding:16px 18px!important;
+  grid-template-columns:1fr auto!important;
   grid-template-rows:auto auto!important;
-  align-content:start!important;
-  gap:20px 12px!important;
+  align-content:space-between!important;
+  gap:10px 8px!important;
+}
+.tech-editorial .tech-tab span{
+  font-size:11px!important;
+  line-height:1!important;
+}
+.tech-editorial .tech-tab i{
+  width:16px!important;
+  height:16px!important;
 }
 .tech-editorial .tech-tab strong{
-  align-self:start!important;
-  font-size:21px!important;
-  line-height:1.2!important;
+  align-self:end!important;
+  margin:0!important;
+  font-size:18px!important;
+  line-height:1.18!important;
+  font-weight:600!important;
 }
 .tech-editorial .tech-list>p{
   min-height:0!important;
-  padding:18px 20px!important;
-  font-size:13.5px!important;
-  line-height:1.58!important;
+  margin:0!important;
+  padding:15px 18px!important;
+  border-radius:14px!important;
+  font-size:13px!important;
+  line-height:1.55!important;
 }
 
 /* Keep other homepage card families restrained as well. */
 .support-action{min-height:118px!important}
 .story-side article{min-height:0!important}
 
-@media(max-width:900px){
-  .tech-editorial .tech-media{min-height:460px!important;height:460px!important}
-  .tech-editorial .tech-list{grid-template-rows:repeat(2,132px) auto!important}
-  .tech-editorial .tech-tab{min-height:132px!important;height:132px!important}
+@media(max-width:1100px){
+  .tech-editorial{
+    grid-template-columns:minmax(0,1.22fr) minmax(340px,.78fr)!important;
+  }
+  .tech-editorial .tech-media{min-height:420px!important;height:420px!important}
 }
+
+@media(max-width:900px){
+  .tech-editorial{grid-template-columns:1fr!important}
+  .tech-editorial .tech-media{min-height:430px!important;height:430px!important}
+  .tech-editorial .tech-list{grid-template-rows:repeat(2,100px) auto!important}
+  .tech-editorial .tech-tab{min-height:100px!important;height:100px!important}
+}
+
 @media(max-width:620px){
-  .tech-editorial .tech-media{min-height:360px!important;height:360px!important}
+  .tech-editorial .tech-media{min-height:340px!important;height:340px!important}
   .tech-editorial .tech-list{grid-template-columns:1fr!important;grid-template-rows:none!important}
-  .tech-editorial .tech-tab{min-height:104px!important;height:auto!important}
+  .tech-editorial .tech-tab{min-height:88px!important;height:88px!important;padding:14px 16px!important}
+  .tech-editorial .tech-tab strong{font-size:17px!important}
 }
