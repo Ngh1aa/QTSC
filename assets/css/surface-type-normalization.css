@@ -107,14 +107,24 @@ html body .hero-photo{
   filter:saturate(.90) contrast(1.05) brightness(.90) !important;
 }
 
-/* All inner-page hero banners receive the same branded overlay treatment. */
+/* All inner-page hero banners receive the same branded overlay treatment
+   and occupy almost one viewport, matching the immersive scale of index.html. */
 html body.inner-page .inner-hero{
+  min-height:clamp(640px,86svh,980px) !important;
+  padding:clamp(118px,15vh,176px) 0 clamp(72px,9vh,104px) !important;
+  display:flex !important;
+  align-items:flex-end !important;
+  position:relative !important;
+  box-sizing:border-box !important;
   background-color:#d74437 !important;
   background-image:var(--qtsc-overlay-strong),var(--qtsc-campus-image) !important;
   background-size:cover !important;
   background-position:center 44% !important;
   background-repeat:no-repeat !important;
   color:#fff !important;
+}
+html body.inner-page .inner-hero>.container-wide{
+  width:100% !important;
 }
 html body.page-office .inner-hero{
   background-image:var(--qtsc-overlay-strong),url("https://info.qtsc.com.vn/upload/contents/qtscbuilding-B811722321392.webp") !important;
@@ -265,9 +275,13 @@ html body .support-copy h3 {
 }
 
 /* ---------------------------------------------------------
-   04. RESPONSIVE — preserve readable titles without over-wrapping
+   04. RESPONSIVE — preserve readable titles and immersive hero scale
    --------------------------------------------------------- */
 @media(max-width:900px){
+  html body.inner-page .inner-hero{
+    min-height:82svh !important;
+    padding:116px 0 68px !important;
+  }
   html body .inner-hero-grid{
     grid-template-columns:1fr !important;
     gap:24px !important;
@@ -281,6 +295,11 @@ html body .support-copy h3 {
 }
 
 @media(max-width:620px){
+  html body.inner-page .inner-hero{
+    min-height:78svh !important;
+    padding:104px 0 54px !important;
+    align-items:flex-end !important;
+  }
   html body .inner-hero h1{
     font-size:var(--type-page-title-mobile) !important;
     line-height:1.04 !important;
