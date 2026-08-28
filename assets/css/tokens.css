@@ -113,3 +113,36 @@
   --r-lg:var(--radius-lg);
   --ease:var(--ease-standard);
 }
+
+/* Global footer lock: footer must remain pure black on every route,
+   regardless of later page/gradient layers. */
+html body .site-footer{
+  background:#080808!important;
+  background-color:#080808!important;
+  background-image:none!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+html body .site-footer::before,
+html body .site-footer::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+}
+html body .site-footer .footer-brand p,
+html body .site-footer .footer-col a,
+html body .site-footer .footer-col button,
+html body .site-footer .footer-bottom,
+html body .site-footer .footer-bottom a{
+  color:rgba(255,255,255,.78)!important;
+}
+html body .site-footer .footer-col strong,
+html body .site-footer .footer-col a:hover,
+html body .site-footer .footer-col button:hover,
+html body .site-footer .footer-bottom a:hover{
+  color:#fff!important;
+  text-shadow:none!important;
+}
+html body .site-footer .footer-bottom{
+  border-top-color:rgba(255,255,255,.16)!important;
+}
