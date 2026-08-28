@@ -105,3 +105,220 @@
   position:absolute;
   z-index:2!important;
 }
+
+/* =====================================================================
+   index_qtsc.md — review round 2
+   ===================================================================== */
+
+/* 01. KPMG ranking: the whole rank is solid white, including /08. */
+.asia-rank strong,
+.asia-rank strong span{
+  background:none!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+}
+
+/* 02. Ecosystem connector lines: white at 70% opacity. */
+.eco-lines path{
+  stroke:rgba(255,255,255,.70)!important;
+  opacity:1!important;
+}
+
+/* 03. Technology: convert the old split list into the same card language used elsewhere. */
+.tech-editorial{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.18fr) minmax(380px,.82fr)!important;
+  gap:16px!important;
+  min-height:620px!important;
+  border:0!important;
+  background:transparent!important;
+  overflow:visible!important;
+}
+.tech-editorial .tech-media{
+  min-height:620px!important;
+  border:1px solid var(--border-subtle)!important;
+  border-radius:16px!important;
+  overflow:hidden!important;
+  box-shadow:0 10px 30px rgba(23,25,26,.04)!important;
+}
+.tech-editorial .tech-list{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-template-rows:repeat(2,minmax(0,1fr)) auto!important;
+  gap:12px!important;
+  border:0!important;
+  min-width:0!important;
+}
+.tech-editorial .tech-tab{
+  position:relative!important;
+  flex:none!important;
+  min-height:0!important;
+  padding:22px!important;
+  border:1px solid var(--border-subtle)!important;
+  border-radius:16px!important;
+  background:linear-gradient(150deg,#fff 0%,#fffaf7 100%)!important;
+  box-shadow:0 10px 30px rgba(23,25,26,.035)!important;
+  display:grid!important;
+  grid-template-columns:1fr auto!important;
+  grid-template-rows:auto 1fr!important;
+  gap:18px 12px!important;
+  align-items:start!important;
+  text-align:left!important;
+  overflow:hidden!important;
+  transition:transform var(--motion-fast),border-color var(--motion-fast),box-shadow var(--motion-fast),background var(--motion-fast)!important;
+}
+.tech-editorial .tech-tab::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:3px;
+  background:var(--brand-gradient)!important;
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform var(--motion-fast);
+}
+.tech-editorial .tech-tab span{
+  grid-column:1;
+  grid-row:1;
+  font-size:12px!important;
+  color:var(--text-tertiary)!important;
+}
+.tech-editorial .tech-tab i{
+  grid-column:2;
+  grid-row:1;
+  width:18px!important;
+  height:18px!important;
+  background:var(--text-primary)!important;
+}
+.tech-editorial .tech-tab strong{
+  grid-column:1/-1;
+  grid-row:2;
+  align-self:end;
+  font-size:22px!important;
+  line-height:1.2!important;
+  font-weight:600!important;
+  color:var(--text-primary)!important;
+}
+.tech-editorial .tech-tab:hover{
+  transform:translateY(-3px)!important;
+  border-color:var(--border-brand)!important;
+  box-shadow:0 18px 42px rgba(169,31,44,.09)!important;
+  background:#fff!important;
+}
+.tech-editorial .tech-tab.active{
+  flex:none!important;
+  background:var(--brand-gradient-surface)!important;
+  border-color:var(--border-brand)!important;
+  box-shadow:0 16px 38px rgba(169,31,44,.10)!important;
+}
+.tech-editorial .tech-tab.active::before{transform:scaleX(1)}
+.tech-editorial .tech-tab.active strong{color:var(--brand-deep)!important}
+.tech-editorial .tech-list>p{
+  grid-column:1/-1!important;
+  margin:0!important;
+  padding:20px 22px!important;
+  border:1px solid var(--border-subtle)!important;
+  border-radius:16px!important;
+  background:#fff!important;
+  color:var(--text-secondary)!important;
+  line-height:1.65!important;
+}
+
+/* 04. Business heading: place the label and title side-by-side, left aligned. */
+.business .section-top{
+  display:grid!important;
+  grid-template-columns:190px minmax(0,1fr)!important;
+  gap:34px!important;
+  align-items:start!important;
+  text-align:left!important;
+}
+.business .section-top .micro-label{
+  grid-column:1!important;
+  margin:8px 0 0!important;
+  text-align:left!important;
+}
+.business #businessTitle{
+  grid-column:2!important;
+  margin:0!important;
+  text-align:left!important;
+  justify-self:start!important;
+}
+
+/* 05. Featured story: the card behind the headline is the QTSC orange-red gradient. */
+.story-feature::after{display:none!important}
+.story-feature .story-info{
+  left:30px!important;
+  right:30px!important;
+  bottom:28px!important;
+  padding:24px 26px!important;
+  border-radius:14px!important;
+  background:var(--brand-gradient-cta)!important;
+  box-shadow:0 18px 42px rgba(111,20,28,.26)!important;
+  color:#fff!important;
+}
+.story-feature .story-info>span{color:rgba(255,255,255,.78)!important}
+.story-feature .story-info h3{color:#fff!important}
+.story-feature .story-info a{color:#fff!important;font-weight:700!important}
+
+/* 06. Side stories: stronger cards, clear hierarchy and brand emphasis. */
+.story-side{
+  gap:16px!important;
+}
+.story-side article{
+  position:relative!important;
+  overflow:hidden!important;
+  border:1px solid var(--border-brand)!important;
+  border-radius:16px!important;
+  background:linear-gradient(145deg,#fff 0%,#fff7f3 100%)!important;
+  box-shadow:0 12px 30px rgba(169,31,44,.06)!important;
+  padding:30px!important;
+  transition:transform var(--motion-fast),box-shadow var(--motion-fast),border-color var(--motion-fast)!important;
+}
+.story-side article::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:4px;
+  background:var(--brand-gradient)!important;
+}
+.story-side article>span{
+  color:var(--brand-deep)!important;
+  font-weight:700!important;
+}
+.story-side h3{
+  font-size:24px!important;
+  line-height:1.35!important;
+  color:var(--text-primary)!important;
+}
+.story-side article:hover{
+  transform:translateY(-3px)!important;
+  border-color:var(--brand-primary)!important;
+  box-shadow:0 18px 42px rgba(169,31,44,.11)!important;
+}
+
+@media(max-width:900px){
+  .tech-editorial{
+    grid-template-columns:1fr!important;
+    min-height:0!important;
+  }
+  .tech-editorial .tech-media{min-height:500px!important;height:500px!important}
+  .business .section-top{grid-template-columns:150px minmax(0,1fr)!important;gap:24px!important}
+}
+
+@media(max-width:620px){
+  .tech-editorial .tech-media{min-height:380px!important;height:380px!important}
+  .tech-editorial .tech-list{grid-template-columns:1fr!important;grid-template-rows:none!important}
+  .tech-editorial .tech-tab{min-height:118px!important}
+  .business .section-top{grid-template-columns:1fr!important;gap:14px!important}
+  .business .section-top .micro-label,
+  .business #businessTitle{grid-column:1!important}
+  .business .section-top .micro-label{margin-top:0!important}
+  .story-feature .story-info{left:16px!important;right:16px!important;bottom:16px!important;padding:20px!important}
+  .story-feature .story-info h3{font-size:24px!important}
+  .story-side article{padding:24px!important}
+  .story-side h3{font-size:21px!important}
+}
