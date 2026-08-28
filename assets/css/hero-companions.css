@@ -1,0 +1,181 @@
+/* QTSC hero companions — contextual right-side compositions for inner routes.
+   Purpose: use the empty right side of immersive heroes without turning every page
+   into the same card layout. Desktop only; mobile/tablet keeps a clean text-first hero. */
+
+/* Detail pages also inherit the immersive index-like hero treatment. */
+html body.inner-page .detail-hero{
+  height:clamp(720px,92vh,860px)!important;
+  min-height:720px!important;
+  padding:0!important;
+  position:relative!important;
+  overflow:hidden!important;
+  color:#fff!important;
+  background-color:#d74437!important;
+  background-image:var(--qtsc-overlay-strong),var(--qtsc-campus-image)!important;
+  background-size:cover!important;
+  background-position:center 44%!important;
+  background-repeat:no-repeat!important;
+}
+html body.page-technology-detail .detail-hero{
+  background-image:var(--qtsc-overlay-strong),var(--qtsc-campus-image-story)!important;
+}
+html body.page-company-detail .detail-hero{
+  background-image:var(--qtsc-overlay),var(--qtsc-campus-image-alt)!important;
+}
+html body.inner-page .detail-hero>.container-wide{
+  width:min(calc(100% - 48px),var(--container))!important;
+  height:100%!important;
+  margin-inline:auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  position:relative!important;
+  z-index:2!important;
+  padding-top:94px!important;
+}
+html body.inner-page .detail-hero .breadcrumb,
+html body.inner-page .detail-hero .breadcrumb a{color:rgba(255,255,255,.82)!important}
+html body.inner-page .detail-title{
+  color:#fff!important;
+  font-size:var(--type-display-xl)!important;
+  line-height:.96!important;
+  letter-spacing:-.045em!important;
+  font-weight:500!important;
+  max-width:760px!important;
+  text-wrap:balance!important;
+}
+html body.inner-page .detail-lead{color:rgba(255,255,255,.9)!important;font-size:var(--type-body-lg)!important;line-height:1.65!important;max-width:560px!important}
+html body.inner-page .detail-meta span{background:rgba(255,255,255,.12)!important;border:1px solid rgba(255,255,255,.18)!important;color:#fff!important;backdrop-filter:blur(5px)}
+
+@media(min-width:1101px){
+  /* Reserve a clear right-side lane for the companion. */
+  html body.inner-page .inner-hero>.container-wide,
+  html body.inner-page .detail-hero>.container-wide{padding-right:clamp(360px,31vw,500px)!important}
+  html body.inner-page .inner-hero-grid{max-width:760px!important}
+
+  /* Shared companion shell. ::before = large signal, ::after = supporting proof. */
+  html body.inner-page .inner-hero>.container-wide::before,
+  html body.inner-page .detail-hero>.container-wide::before{
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateY(-48%);
+    width:clamp(300px,27vw,410px);
+    height:282px;
+    box-sizing:border-box;
+    padding:30px 30px 24px;
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:16px;
+    background:
+      radial-gradient(circle at 84% 18%,rgba(255,255,255,.16),transparent 30%),
+      rgba(255,255,255,.075);
+    box-shadow:0 24px 60px rgba(78,16,20,.16);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    color:#fff;
+    font-size:clamp(48px,4.4vw,72px);
+    font-weight:500;
+    line-height:.96;
+    letter-spacing:-.045em;
+    white-space:pre-line;
+    pointer-events:none;
+  }
+  html body.inner-page .inner-hero>.container-wide::after,
+  html body.inner-page .detail-hero>.container-wide::after{
+    position:absolute;
+    right:30px;
+    top:calc(50% + 40px);
+    width:clamp(245px,22vw,350px);
+    color:rgba(255,255,255,.84);
+    font-size:11px;
+    font-weight:600;
+    line-height:1.85;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    white-space:pre-line;
+    pointer-events:none;
+  }
+
+  /* ABOUT — credibility/proof composition. */
+  body.page-about .inner-hero>.container-wide::before{content:"25"}
+  body.page-about .inner-hero>.container-wide::after{content:"YEARS OF QTSC\A#3 / 08 · KPMG 2026\A120+ TECHNOLOGY COMPANIES"}
+
+  /* MEMBER DIRECTORY — ecosystem scale. */
+  body.page-companies .inner-hero>.container-wide::before{content:"120+"}
+  body.page-companies .inner-hero>.container-wide::after{content:"TECHNOLOGY COMPANIES\A650+ PRODUCTS & SERVICES\A30+ INTERNATIONAL MARKETS"}
+
+  /* OFFICE — physical-campus proof. */
+  body.page-office .inner-hero>.container-wide::before{content:"43 ha"}
+  body.page-office .inner-hero>.container-wide::after{content:"TECHNOLOGY CAMPUS\AOFFICE · INFRASTRUCTURE\AONE-STOP BUSINESS SUPPORT"}
+
+  /* MARKETPLACE — discovery/category composition. */
+  body.page-marketplace .inner-hero>.container-wide::before{content:"650+"}
+  body.page-marketplace .inner-hero>.container-wide::after{content:"PRODUCTS & SERVICES\ACLOUD · CYBERSECURITY\ADATA · DIGITAL TRANSFORMATION"}
+
+  /* EXPLORE — map/orbit-like treatment. */
+  body.page-explore .inner-hero>.container-wide::before{
+    content:"43 ha";
+    background:
+      radial-gradient(circle at 74% 38%,transparent 0 28px,rgba(255,255,255,.19) 29px 30px,transparent 31px 58px,rgba(255,255,255,.11) 59px 60px,transparent 61px),
+      rgba(255,255,255,.07);
+  }
+  body.page-explore .inner-hero>.container-wide::after{content:"QTSC CAMPUS\A3D / 360 VIRTUAL TOUR\AMAP · BUILDINGS · MOBILITY"}
+
+  /* INSIGHTS — editorial/current-content signal. */
+  body.page-insights .inner-hero>.container-wide::before{content:"2026"}
+  body.page-insights .inner-hero>.container-wide::after{content:"QTSC INSIGHTS\ANEWS · EVENTS · MEMBER STORIES\ACAREERS & RESOURCES"}
+
+  /* RESOURCES — document stack feeling. */
+  body.page-resources .inner-hero>.container-wide::before{
+    content:"PDF";
+    background:
+      linear-gradient(90deg,rgba(255,255,255,.09),rgba(255,255,255,.03)),
+      repeating-linear-gradient(0deg,transparent 0 35px,rgba(255,255,255,.08) 36px 37px);
+  }
+  body.page-resources .inner-hero>.container-wide::after{content:"QTSC PROFILE · A GUIDE\ACAMPUS MAP · CULTURE HANDBOOK\AOFFICIAL DOCUMENTS"}
+
+  /* PRIVACY / LEGAL — deliberately quieter than commercial pages. */
+  body.page-policy .inner-hero>.container-wide::before{
+    content:"QTSC";
+    background:
+      radial-gradient(circle at 72% 28%,transparent 0 34px,rgba(255,255,255,.18) 35px 36px,transparent 37px 70px,rgba(255,255,255,.10) 71px 72px,transparent 73px),
+      rgba(255,255,255,.045);
+    border-color:rgba(255,255,255,.16);
+    box-shadow:none;
+  }
+  body.page-policy .inner-hero>.container-wide::after{content:"TRUST · PRIVACY · LEGAL\AOFFICIAL QTSC INFORMATION"}
+
+  /* SITEMAP — navigation/network composition. */
+  body.page-sitemap .inner-hero>.container-wide::before{content:"06"}
+  body.page-sitemap .inner-hero>.container-wide::after{content:"PRIMARY NAVIGATION GROUPS\AQ T S C · ECOSYSTEM · BUSINESS\ATECHNOLOGY · EXPLORE · INSIGHTS"}
+
+  /* COMPANY DETAIL — identity composition. */
+  body.page-company-detail .detail-hero>.container-wide::before{content:"HDS"}
+  body.page-company-detail .detail-hero>.container-wide::after{content:"SOFTWARE & DIGITAL\AHELIOS BUILDING · QTSC\AMEMBER COMPANY PROFILE"}
+
+  /* TECHNOLOGY DETAIL — technical credibility. */
+  body.page-technology-detail .detail-hero>.container-wide::before{content:"TIER\AIII";font-size:clamp(42px,3.7vw,62px)}
+  body.page-technology-detail .detail-hero>.container-wide::after{content:"QTSC DATA CENTER\ACLOUD · SECURITY · TELECOM\AUPTIME TIER III"}
+}
+
+/* Tablet/mobile: content remains text-first and uncluttered. */
+@media(max-width:1100px){
+  html body.inner-page .inner-hero>.container-wide,
+  html body.inner-page .detail-hero>.container-wide{padding-right:0!important}
+  html body.inner-page .inner-hero>.container-wide::before,
+  html body.inner-page .inner-hero>.container-wide::after,
+  html body.inner-page .detail-hero>.container-wide::before,
+  html body.inner-page .detail-hero>.container-wide::after{content:none!important;display:none!important}
+}
+
+@media(max-width:900px){
+  html body.inner-page .detail-hero{height:780px!important;min-height:0!important}
+  html body.inner-page .detail-hero>.container-wide{width:min(calc(100% - 48px),var(--container))!important;padding-top:84px!important}
+  html body.inner-page .detail-title{font-size:64px!important;max-width:12ch!important}
+}
+@media(max-width:620px){
+  html body.inner-page .detail-hero{height:700px!important}
+  html body.inner-page .detail-hero>.container-wide{width:min(calc(100% - 32px),var(--container))!important;padding-top:76px!important}
+  html body.inner-page .detail-title{font-size:var(--type-display-xl)!important;line-height:.98!important;max-width:11ch!important}
+  html body.inner-page .detail-lead{font-size:16px!important;max-width:340px!important}
+}
