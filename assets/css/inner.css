@@ -1,3 +1,5 @@
+@import url("final-polish.css");
+
 /* QTSC UI/UX — unified inner-page system */
 .inner-page{background:var(--surface-primary)}
 .inner-page .site-header{position:sticky;top:0;background:#fff;color:var(--text-primary);border-bottom:1px solid var(--border-subtle);padding:8px 0;z-index:1000}
