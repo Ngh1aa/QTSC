@@ -1,0 +1,94 @@
+name: Feature / Enhancement
+description: Đề xuất tính năng, tương tác hoặc cải tiến mới cho prototype
+title: "[FEATURE] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Dùng form này cho tính năng hoặc cải tiến mới có giá trị rõ ràng cho người dùng.
+
+  - type: input
+    id: area
+    attributes:
+      label: Trang / khu vực liên quan
+      placeholder: "Ví dụ: Homepage, Directory, Explore, Search"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Nhu cầu / vấn đề cần giải quyết
+      description: Người dùng đang thiếu gì hoặc gặp trở ngại gì?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Giải pháp đề xuất
+      description: Mô tả ngắn gọn tính năng hoặc cải tiến mong muốn.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Tác động chính
+      options:
+        - Điều hướng / tìm thông tin
+        - Conversion / CTA
+        - Khám phá nội dung
+        - Tương tác prototype
+        - Tốc độ thao tác
+        - Khả năng hiểu giao diện
+        - Khác
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Ưu tiên
+      options:
+        - P1 - High
+        - P2 - Medium
+        - P3 - Nice to have
+    validations:
+      required: true
+
+  - type: textarea
+    id: userflow
+    attributes:
+      label: User flow dự kiến
+      placeholder: "Ví dụ: Homepage → Directory → Filter → Detail → CTA"
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: Điều kiện cụ thể để tính năng được xem là hoàn thành.
+      placeholder: |
+        - [ ] Có thể thao tác trên desktop và mobile
+        - [ ] Có trạng thái hover/focus/active
+        - [ ] Không cần backend thật cho prototype
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: Reference / ghi chú
+      description: Thêm screenshot, link hoặc website tham khảo nếu có.
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: Tính năng này có mục tiêu người dùng rõ ràng, không chỉ thêm cho đẹp.
+          required: true
+        - label: Với prototype, ưu tiên interaction thật nhưng không yêu cầu backend production nếu không cần.
+          required: true
