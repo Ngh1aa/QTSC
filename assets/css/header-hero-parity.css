@@ -36,6 +36,44 @@ html body.inner-page .header-shell{
 html body.inner-page .site-header.scrolled .header-shell,
 html body.inner-page .site-header.mega-open .header-shell{height:70px !important}
 
+/* Persistent parent-nav state for inner routes.
+   Example: about.html#direction keeps QTSC highlighted after choosing
+   “Tầm nhìn · Sứ mệnh” from the mega menu. */
+html body.page-about .desktop-nav .nav-link:nth-child(1),
+html body.page-companies .desktop-nav .nav-link:nth-child(2),
+html body.page-company-detail .desktop-nav .nav-link:nth-child(2),
+html body.page-office .desktop-nav .nav-link:nth-child(3),
+html body.page-marketplace .desktop-nav .nav-link:nth-child(4),
+html body.page-technology-detail .desktop-nav .nav-link:nth-child(4),
+html body.page-explore .desktop-nav .nav-link:nth-child(5),
+html body.page-insights .desktop-nav .nav-link:nth-child(6),
+html body.page-resources .desktop-nav .nav-link:nth-child(6){
+  font-weight:700 !important;
+  color:var(--brand-red) !important;
+  text-shadow:none !important;
+}
+
+@supports ((background-clip:text) or (-webkit-background-clip:text)){
+  html body.page-about .desktop-nav .nav-link:nth-child(1),
+  html body.page-companies .desktop-nav .nav-link:nth-child(2),
+  html body.page-company-detail .desktop-nav .nav-link:nth-child(2),
+  html body.page-office .desktop-nav .nav-link:nth-child(3),
+  html body.page-marketplace .desktop-nav .nav-link:nth-child(4),
+  html body.page-technology-detail .desktop-nav .nav-link:nth-child(4),
+  html body.page-explore .desktop-nav .nav-link:nth-child(5),
+  html body.page-insights .desktop-nav .nav-link:nth-child(6),
+  html body.page-resources .desktop-nav .nav-link:nth-child(6){
+    background:var(--brand-gradient) !important;
+    background-clip:text !important;
+    -webkit-background-clip:text !important;
+    color:transparent !important;
+    -webkit-text-fill-color:transparent !important;
+  }
+}
+
+/* Current route is indicated by type/color only; inner pages do not use an underline. */
+html body.inner-page .desktop-nav .nav-link::after{display:none !important}
+
 /* Mega menu geometry shared by homepage + every inner route.
    It is visually detached from the header by 8px, while a transparent
    hover bridge preserves pointer continuity across that gap. */
