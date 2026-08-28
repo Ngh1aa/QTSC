@@ -1,12 +1,20 @@
-/* QTSC UI Foundation v1.0 — design tokens
-   Brand color values remain prototype approximations until official QTSC master RGB/HEX is supplied. */
+/* QTSC UI Foundation v1.1 — design tokens
+   QTSC officially defines a red-orange identity with a deep-red to light-orange transition.
+   #EE4623 is the selected digital primary for this prototype; replace with official master values if supplied. */
 :root{
   /* Brand */
-  --brand-deep:#a91f2c;
-  --brand-red:#d92f31;
-  --brand-orange:#f1762c;
-  --brand-light:#f6a14a;
-  --brand-gradient:linear-gradient(112deg,var(--brand-deep) 0%,var(--brand-red) 58%,var(--brand-orange) 100%);
+  --brand-primary:#EE4623;
+  --brand-deep:#A91F2C;
+  --brand-red:#CC2D31;
+  --brand-orange:#EE4623;
+  --brand-light:#FF8438;
+  --brand-gradient:linear-gradient(118deg,var(--brand-deep) 0%,var(--brand-red) 42%,var(--brand-orange) 72%,var(--brand-light) 100%);
+  --brand-gradient-cta:linear-gradient(118deg,#981D29 0%,#B9252E 42%,#C9362A 72%,#D84424 100%);
+  --brand-gradient-soft:linear-gradient(135deg,rgba(169,31,44,.10) 0%,rgba(238,70,35,.09) 52%,rgba(255,132,56,.08) 100%);
+  --brand-gradient-surface:linear-gradient(135deg,#FFF8F5 0%,#FFF2EC 48%,#FFF9F5 100%);
+  --brand-radial:radial-gradient(circle at 72% 28%,rgba(238,70,35,.20) 0%,rgba(238,70,35,.07) 24%,transparent 58%);
+  --brand-glow:0 18px 48px rgba(204,45,49,.20),0 6px 22px rgba(238,70,35,.16);
+  --brand-glow-soft:0 12px 34px rgba(204,45,49,.10),0 4px 16px rgba(238,70,35,.08);
 
   /* Text */
   --text-primary:#17191a;
@@ -16,14 +24,17 @@
 
   /* Surfaces */
   --surface-primary:#fff;
-  --surface-soft:#f6f6f3;
-  --surface-muted:#eceDE9;
+  --surface-soft:#f7f6f3;
+  --surface-muted:#eeece8;
   --surface-dark:#151617;
+  --surface-brand-soft:#fff6f1;
+  --surface-brand-muted:#ffede5;
 
   /* Borders */
-  --border-subtle:#e6e7e3;
-  --border-default:#d3d5d1;
-  --border-strong:#aeb2af;
+  --border-subtle:#e8e5e1;
+  --border-default:#d6d2cd;
+  --border-strong:#afa9a4;
+  --border-brand:rgba(238,70,35,.22);
 
   /* Status */
   --status-success:#247a57;
@@ -63,8 +74,8 @@
   --radius-pill:999px;
 
   /* Elevation */
-  --shadow-dropdown:0 12px 36px rgba(0,0,0,.07);
-  --shadow-dialog:0 30px 80px rgba(0,0,0,.16);
+  --shadow-dropdown:0 14px 42px rgba(23,25,26,.08),0 3px 14px rgba(238,70,35,.05);
+  --shadow-dialog:0 34px 90px rgba(0,0,0,.18);
 
   /* Motion */
   --ease-standard:cubic-bezier(.2,.8,.2,1);
