@@ -10,76 +10,60 @@
 .extended-card p{color:var(--text-secondary);font-size:14px;line-height:1.7;margin:0}
 .extended-card i{font-style:normal;margin-top:auto;padding-top:28px;font-size:12px;font-weight:700}
 .extended-card.featured{grid-column:span 2;min-height:320px;background-image:var(--brand-gradient-soft)!important}
-
 .info-band{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px;align-items:start;border-top:1px solid var(--border-subtle);padding-top:32px}
 .info-band>aside{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-tertiary)}
 .info-band>div h2{font-size:var(--type-section-title);font-weight:500;line-height:1.12;letter-spacing:-.03em;margin:0 0 22px;max-width:760px;text-wrap:balance}
 .info-band>div>p{color:var(--text-secondary);font-size:16px;line-height:1.75;max-width:72ch}
-
 .step-list{border-top:1px solid var(--border-subtle)}
 .step-row{display:grid;grid-template-columns:72px minmax(220px,.75fr) 1.25fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--border-subtle);align-items:start}
-.step-row>span{font-size:12px;color:var(--brand-red);font-weight:700}
-.step-row h3{margin:0;font-size:22px;line-height:1.3;font-weight:500}
-.step-row p{margin:0;color:var(--text-secondary);font-size:14px;line-height:1.7}
-
+.step-row>span{font-size:12px;color:var(--brand-red);font-weight:700}.step-row h3{margin:0;font-size:22px;line-height:1.3;font-weight:500}.step-row p{margin:0;color:var(--text-secondary);font-size:14px;line-height:1.7}
 .link-list{border-top:1px solid var(--border-subtle)}
 .link-list a,.link-list article{display:grid;grid-template-columns:130px 1fr 32px;gap:24px;align-items:center;padding:24px 0;border-bottom:1px solid var(--border-subtle);text-decoration:none}
-.link-list small{color:var(--text-tertiary);font-size:12px}
-.link-list strong{font-size:18px;font-weight:500;line-height:1.4}
-.link-list i{font-style:normal;text-align:right}
-.link-list a:hover strong{color:var(--brand-red)}
-
+.link-list small{color:var(--text-tertiary);font-size:12px}.link-list strong{font-size:18px;font-weight:500;line-height:1.4}.link-list i{font-style:normal;text-align:right}.link-list a:hover strong{color:var(--brand-red)}
 .contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .contact-panel{padding:30px;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);background:#fff;min-height:300px}
-.contact-panel>span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--brand-red);font-weight:700}
-.contact-panel h2{font-size:30px;line-height:1.2;font-weight:500;margin:42px 0 18px}
-.contact-panel p,.contact-panel a{color:var(--text-secondary);font-size:14px;line-height:1.8;text-decoration:none}
-.contact-panel a:hover{color:var(--brand-red)}
-.contact-panel .contact-lines{display:flex;flex-direction:column;gap:4px;margin-top:20px}
+.contact-panel>span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--brand-red);font-weight:700}.contact-panel h2{font-size:30px;line-height:1.2;font-weight:500;margin:42px 0 18px}.contact-panel p,.contact-panel a{color:var(--text-secondary);font-size:14px;line-height:1.8;text-decoration:none}.contact-panel a:hover{color:var(--brand-red)}.contact-panel .contact-lines{display:flex;flex-direction:column;gap:4px;margin-top:20px}
+.source-note{margin-top:28px;padding-top:20px;border-top:1px solid var(--border-subtle);font-size:12px;color:var(--text-tertiary)}.source-note a{color:var(--brand-red);text-decoration:none;font-weight:600}
 
-.source-note{margin-top:28px;padding-top:20px;border-top:1px solid var(--border-subtle);font-size:12px;color:var(--text-tertiary)}
-.source-note a{color:var(--brand-red);text-decoration:none;font-weight:600}
-
-/* Parent navigation state for the new routes. */
+/* Parent navigation state for the extended routes. */
 .page-chain .desktop-nav .nav-link:nth-child(2),
+.page-innovation-centers .desktop-nav .nav-link:nth-child(2),
+.page-awards .desktop-nav .nav-link:nth-child(2),
 .page-services .desktop-nav .nav-link:nth-child(3),
 .page-investment .desktop-nav .nav-link:nth-child(3),
+.page-incentives .desktop-nav .nav-link:nth-child(3),
+.page-telecom .desktop-nav .nav-link:nth-child(4),
 .page-amenities .desktop-nav .nav-link:nth-child(5),
 .page-careers .desktop-nav .nav-link:nth-child(6){font-weight:700!important;color:var(--brand-red)!important}
 @supports ((background-clip:text) or (-webkit-background-clip:text)){
   .page-chain .desktop-nav .nav-link:nth-child(2),
+  .page-innovation-centers .desktop-nav .nav-link:nth-child(2),
+  .page-awards .desktop-nav .nav-link:nth-child(2),
   .page-services .desktop-nav .nav-link:nth-child(3),
   .page-investment .desktop-nav .nav-link:nth-child(3),
+  .page-incentives .desktop-nav .nav-link:nth-child(3),
+  .page-telecom .desktop-nav .nav-link:nth-child(4),
   .page-amenities .desktop-nav .nav-link:nth-child(5),
   .page-careers .desktop-nav .nav-link:nth-child(6){background:var(--brand-gradient)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
 }
 .page-extended .desktop-nav .nav-link::after{display:none!important}
 
-/* Contextual hero companions for desktop; same language as the existing pages. */
+/* Contextual hero companions for desktop. */
 @media(min-width:1101px){
-  .page-extended .inner-hero>.container-wide{padding-right:clamp(360px,31vw,500px)!important}
-  .page-extended .inner-hero-grid{max-width:760px!important}
+  .page-extended .inner-hero>.container-wide{padding-right:clamp(360px,31vw,500px)!important}.page-extended .inner-hero-grid{max-width:760px!important}
   .page-extended .inner-hero>.container-wide::before{position:absolute;right:0;top:50%;transform:translateY(-48%);width:clamp(300px,27vw,410px);height:282px;box-sizing:border-box;padding:30px 30px 24px;border:1px solid rgba(255,255,255,.22);border-radius:16px;background:radial-gradient(circle at 84% 18%,rgba(255,255,255,.16),transparent 30%),rgba(255,255,255,.075);box-shadow:0 24px 60px rgba(78,16,20,.16);backdrop-filter:blur(6px);color:#fff;font-size:clamp(46px,4vw,68px);font-weight:500;line-height:.96;letter-spacing:-.045em;white-space:pre-line;pointer-events:none}
   .page-extended .inner-hero>.container-wide::after{position:absolute;right:30px;top:calc(50% + 40px);width:clamp(245px,22vw,350px);color:rgba(255,255,255,.84);font-size:11px;font-weight:600;line-height:1.85;letter-spacing:.12em;text-transform:uppercase;white-space:pre-line;pointer-events:none}
   .page-services .inner-hero>.container-wide::before{content:"01"}.page-services .inner-hero>.container-wide::after{content:"ONE-STOP BUSINESS SUPPORT\AOFFICE · DIGITAL INFRASTRUCTURE\ACAMPUS SERVICES"}
   .page-amenities .inner-hero>.container-wide::before{content:"09"}.page-amenities .inner-hero>.container-wide::after{content:"CAMPUS AMENITIES\AFOOD · MOBILITY · HEALTHCARE\AATM · EDUCATION · SPORTS"}
   .page-chain .inner-hero>.container-wide::before{content:"CHAIN";font-size:clamp(38px,3.5vw,58px)}.page-chain .inner-hero>.container-wide::after{content:"QTSC NETWORK MODEL\ASHARED BRAND · INFRASTRUCTURE\AINVESTMENT & OPERATIONS"}
-  .page-investment .inner-hero>.container-wide::before{content:"2026"}.page-investment .inner-hero>.container-wide::after{content:"INVESTMENT AT QTSC\ADIGITAL TECHNOLOGY BUSINESSES\ACURRENT OPPORTUNITIES"}
+  .page-investment .inner-hero>.container-wide::before{content:"10"}.page-investment .inner-hero>.container-wide::after{content:"INVESTMENT FIELDS · 2026\ADIGITAL TECHNOLOGY INDUSTRY\ACURRENT OPPORTUNITIES"}
+  .page-incentives .inner-hero>.container-wide::before{content:"2026"}.page-incentives .inner-hero>.container-wide::after{content:"INVESTMENT · LAND · TAX\ADIGITAL TECHNOLOGY INCENTIVES\AOFFICIAL QTSC GUIDANCE"}
   .page-careers .inner-hero>.container-wide::before{content:"CAREERS";font-size:clamp(34px,3vw,52px)}.page-careers .inner-hero>.container-wide::after{content:"QTSC ECOSYSTEM\ATECHNOLOGY JOBS & INTERNSHIPS\ALATEST OPPORTUNITIES"}
   .page-contact .inner-hero>.container-wide::before{content:"02"}.page-contact .inner-hero>.container-wide::after{content:"OFFICIAL CONTACT POINTS\AHEAD OFFICE · QTSC CAMPUS\APHONE · EMAIL"}
+  .page-telecom .inner-hero>.container-wide::before{content:"MPLS";font-size:clamp(38px,3.5vw,58px)}.page-telecom .inner-hero>.container-wide::after{content:"FIBER · INTERNET GATEWAY\ADATA CENTER · CLOUD · SECURITY\ARESILIENT CONNECTIVITY"}
+  .page-innovation-centers .inner-hero>.container-wide::before{content:"R&D"}.page-innovation-centers .inner-hero>.container-wide::after{content:"DXCENTER · QTSC R&D LABS\ADIGITAL TRANSFORMATION\ARESEARCH · STARTUP · INNOVATION"}
+  .page-awards .inner-hero>.container-wide::before{content:"AWARDS";font-size:clamp(34px,3vw,52px)}.page-awards .inner-hero>.container-wide::after{content:"QTSC AWARDS OF THE YEAR\ATOP ENTERPRISES ARCHIVE\AECOSYSTEM RECOGNITION"}
 }
-
 @media(max-width:1100px){.page-extended .inner-hero>.container-wide{padding-right:0!important}.page-extended .inner-hero>.container-wide::before,.page-extended .inner-hero>.container-wide::after{content:none!important;display:none!important}}
-@media(max-width:900px){
-  .extended-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .extended-card.featured{grid-column:span 2}
-  .info-band{grid-template-columns:1fr;gap:24px}
-  .step-row{grid-template-columns:56px 1fr}.step-row p{grid-column:2}
-}
-@media(max-width:620px){
-  .extended-grid,.contact-grid{grid-template-columns:1fr}
-  .extended-card.featured{grid-column:auto}
-  .extended-card{min-height:230px;padding:24px}
-  .step-row{grid-template-columns:42px 1fr;gap:16px}.step-row p{grid-column:2}
-  .link-list a,.link-list article{grid-template-columns:1fr 26px;gap:12px}.link-list small{grid-column:1/-1}.link-list i{grid-column:2;grid-row:2}
-}
+@media(max-width:900px){.extended-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.extended-card.featured{grid-column:span 2}.info-band{grid-template-columns:1fr;gap:24px}.step-row{grid-template-columns:56px 1fr}.step-row p{grid-column:2}}
+@media(max-width:620px){.extended-grid,.contact-grid{grid-template-columns:1fr}.extended-card.featured{grid-column:auto}.extended-card{min-height:230px;padding:24px}.step-row{grid-template-columns:42px 1fr;gap:16px}.step-row p{grid-column:2}.link-list a,.link-list article{grid-template-columns:1fr 26px;gap:12px}.link-list small{grid-column:1/-1}.link-list i{grid-column:2;grid-row:2}}
