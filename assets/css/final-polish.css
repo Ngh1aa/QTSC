@@ -1,0 +1,89 @@
+/* QTSC final visual polish — shared across home + inner pages */
+
+/* Mega menu: same width/radius language as the floating header */
+.mega-menu{
+  left:50%!important;
+  right:auto!important;
+  width:min(calc(100% - 32px),1460px)!important;
+  margin:0!important;
+  border:1px solid rgba(42,26,23,.09)!important;
+  border-top-color:rgba(238,70,35,.16)!important;
+  border-radius:0 0 12px 12px!important;
+  overflow:hidden!important;
+  box-shadow:0 24px 60px rgba(42,26,23,.12)!important;
+  transform:translate(-50%,-6px)!important;
+}
+.mega-menu.open{
+  transform:translate(-50%,0)!important;
+}
+.inner-page .mega-menu.open{
+  transform:translate(-50%,0)!important;
+}
+.mega-inner{
+  width:100%!important;
+  max-width:var(--container)!important;
+  padding-left:48px!important;
+  padding-right:48px!important;
+}
+
+/* Footer: pure black close with white typography */
+.site-footer{
+  background:#080808!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+.site-footer:before,
+.site-footer:after{display:none!important}
+.footer-brand p,
+.footer-col a,
+.footer-col button,
+.footer-bottom,
+.site-footer .footer-bottom a{
+  color:rgba(255,255,255,.78)!important;
+}
+.footer-col strong,
+.footer-brand strong{
+  color:#fff!important;
+}
+.footer-col a:hover,
+.footer-col button:hover,
+.site-footer .footer-bottom a:hover{
+  color:#fff!important;
+  text-shadow:none!important;
+}
+.footer-bottom{
+  border-top-color:rgba(255,255,255,.16)!important;
+}
+
+/* Hero: stronger cinematic contrast and deeper landing gradient */
+.hero-shade{
+  background:
+    linear-gradient(90deg,rgba(13,10,9,.84) 0%,rgba(27,15,13,.62) 40%,rgba(39,18,15,.34) 68%,rgba(30,14,12,.20) 100%),
+    linear-gradient(180deg,rgba(20,12,10,.28) 0%,rgba(31,15,13,.20) 38%,rgba(20,10,9,.58) 72%,rgba(10,8,7,.86) 100%)!important;
+}
+.hero-photo{
+  filter:saturate(.86) contrast(1.05) brightness(.88)!important;
+}
+.hero-copy p{
+  color:rgba(255,255,255,.91)!important;
+}
+
+/* Inner immersive heroes: darker red-black atmosphere */
+.page-office .inner-hero,
+.page-explore .inner-hero{
+  background:
+    radial-gradient(circle at 80% 16%,rgba(238,70,35,.18),transparent 30%),
+    linear-gradient(145deg,#090909 0%,#17100f 52%,#24100d 100%)!important;
+}
+.page-office .inner-hero p,
+.page-explore .inner-hero p{
+  color:rgba(255,255,255,.82)!important;
+}
+
+@media(max-width:900px){
+  .mega-menu{display:none!important}
+}
+
+@media(max-width:620px){
+  .mega-inner{padding-left:20px!important;padding-right:20px!important}
+}
