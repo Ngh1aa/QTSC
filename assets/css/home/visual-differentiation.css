@@ -1,0 +1,176 @@
+/* QTSC Homepage Visual Differentiation v1.0
+   Purpose: give different content types clearly different visual archetypes.
+   Loaded after responsive.css and gradient-system.css. */
+
+/* ---------------------------------------------------------
+   01. HERO — stronger QTSC identity + a softer landing edge
+   --------------------------------------------------------- */
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:132px;background:linear-gradient(180deg,transparent 0%,rgba(8,8,8,.16) 44%,rgba(8,8,8,.55) 100%);pointer-events:none;z-index:1}
+.hero-content,.hero-foot{z-index:3}
+.hero-photo{filter:saturate(.82) contrast(1.06) brightness(.94) sepia(.035)}
+.intent{box-shadow:0 -18px 48px rgba(0,0,0,.05)}
+
+/* Keep stats intentionally LIGHT before the dark KPMG proof block. */
+.stats{background:#fff}
+.stats-row{background:#fff}
+
+/* ---------------------------------------------------------
+   02. WHY QTSC — proof bento, NOT another row list
+   --------------------------------------------------------- */
+.why-layout{grid-template-columns:minmax(280px,.52fr) minmax(0,1.48fr);gap:78px}
+.proof-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;border-top:0}
+.proof-row{min-height:230px;padding:24px;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);display:flex;flex-direction:column;gap:0;background:rgba(255,255,255,.72);backdrop-filter:blur(8px);position:relative;overflow:hidden}
+.proof-row:nth-child(1),.proof-row:nth-child(4){min-height:270px}
+.proof-row:nth-child(3){transform:translateY(28px)}
+.proof-row:nth-child(4){transform:translateY(28px)}
+.proof-row>span{font-size:12px;letter-spacing:.08em;color:var(--brand-primary);margin-bottom:auto}
+.proof-row strong{font-size:clamp(22px,2vw,30px);line-height:1.15;max-width:280px;margin-top:42px}
+.proof-row p{font-size:13px;line-height:1.7;max-width:440px;margin-top:15px}
+.proof-row:after{content:"↗";position:absolute;right:20px;top:20px;width:38px;height:38px;border-radius:50%;border:1px solid var(--border-brand);display:grid;place-items:center;font-size:14px;color:var(--brand-deep);transition:transform var(--motion-fast),background var(--motion-fast),color var(--motion-fast)}
+.proof-row:hover{padding:24px;transform:translateY(-4px);box-shadow:0 18px 44px rgba(169,31,44,.09);background:#fff}
+.proof-row:nth-child(3):hover,.proof-row:nth-child(4):hover{transform:translateY(24px)}
+.proof-row:hover:after{transform:rotate(45deg);background:var(--brand-gradient-cta);color:#fff;border-color:transparent}
+.proof-row:before{width:100%;height:3px;left:0;right:0;top:0;bottom:auto;transform:scaleX(0);transform-origin:left}
+.proof-row:hover:before{transform:scaleX(1)}
+
+/* ---------------------------------------------------------
+   03. ONE-STOP SUPPORT — action launcher / service console
+   --------------------------------------------------------- */
+.support-hub{margin-top:68px;padding:42px;border:0;border-radius:24px;grid-template-columns:.62fr 1.38fr;gap:46px;background:radial-gradient(circle at 18% 15%,rgba(238,70,35,.18),transparent 34%),linear-gradient(135deg,#181615 0%,#221716 55%,#151617 100%);color:#fff;position:relative;overflow:hidden;box-shadow:0 28px 68px rgba(23,25,26,.14)}
+.support-hub:after{content:"";position:absolute;width:360px;height:360px;border:1px solid rgba(255,122,70,.12);border-radius:50%;left:-140px;bottom:-250px;box-shadow:0 0 0 70px rgba(238,70,35,.025),0 0 0 140px rgba(238,70,35,.018);pointer-events:none}
+.support-copy{position:relative;z-index:1;align-self:center}
+.support-copy .micro-label{color:#ffb08b}
+.support-copy h3{font-size:clamp(30px,3vw,46px);line-height:1.08;letter-spacing:-.035em;max-width:420px;margin:18px 0}
+.support-copy p{color:rgba(255,255,255,.66);max-width:380px;font-size:14px}
+.support-actions{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;border:0}
+.support-action,.support-action:nth-child(odd){min-height:118px;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.055);padding:18px 18px 16px;display:flex;align-items:flex-end;color:#fff;backdrop-filter:blur(8px);transition:transform var(--motion-fast),background var(--motion-fast),border-color var(--motion-fast)}
+.support-action:before{content:"";align-self:flex-start;width:36px;height:36px;border-radius:10px;position:absolute;top:15px;left:16px;background:linear-gradient(135deg,rgba(238,70,35,.9),rgba(255,132,56,.76));box-shadow:0 8px 24px rgba(238,70,35,.18)}
+.support-action:nth-child(1):before{clip-path:polygon(18% 24%,82% 24%,82% 76%,18% 76%)}
+.support-action:nth-child(2):before{clip-path:circle(42% at 50% 50%)}
+.support-action:nth-child(3):before{clip-path:polygon(50% 10%,90% 35%,75% 90%,25% 90%,10% 35%)}
+.support-action:nth-child(4):before{clip-path:polygon(14% 20%,86% 20%,86% 80%,14% 80%,14% 55%,42% 55%,42% 80%)}
+.support-action:nth-child(5):before{clip-path:polygon(50% 8%,92% 50%,50% 92%,8% 50%)}
+.support-action:nth-child(6):before{clip-path:polygon(16% 18%,84% 18%,84% 82%,16% 82%)}
+.support-action span{font-size:14px;line-height:1.4;padding-top:34px}
+.support-action small{color:rgba(255,255,255,.5)}
+.support-action i{color:#ff9562}
+.support-action:hover{transform:translateY(-3px);background:linear-gradient(145deg,rgba(238,70,35,.18),rgba(255,255,255,.07));border-color:rgba(255,129,75,.36);color:#fff}
+
+/* ---------------------------------------------------------
+   04. MARKETPLACE — product discovery cards
+   --------------------------------------------------------- */
+.marketplace{background:#fff}
+.market-workspace{min-width:0}
+.market-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-top:14px}
+.market-item{min-height:196px;padding:22px;border:1px solid var(--border-subtle);border-radius:16px;background:linear-gradient(150deg,#fff 0%,#fffaf7 100%);display:grid;grid-template-columns:58px 1fr 32px;grid-template-rows:auto 1fr auto;gap:12px 15px;align-items:start;position:relative;overflow:hidden;cursor:pointer;box-shadow:0 10px 30px rgba(23,25,26,.035)}
+.market-item:before{content:"";position:absolute;right:-46px;bottom:-70px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(238,70,35,.10),transparent 68%);pointer-events:none}
+.market-mark{grid-row:1/3;width:56px;height:56px;border-radius:14px;font-size:13px}
+.market-item>div:nth-child(2){min-width:0}
+.market-item h3{font-size:19px;line-height:1.35;margin:2px 0 7px}
+.market-item p{font-size:12px}
+.market-item>small{grid-column:2;align-self:end;width:max-content;padding:6px 9px;border:1px solid var(--border-brand);border-radius:999px;background:rgba(255,255,255,.78);color:var(--brand-deep)}
+.market-item>span:last-child{grid-column:3;grid-row:1;width:32px;height:32px;border-radius:50%;border:1px solid var(--border-subtle);display:grid;place-items:center;font-size:13px;transition:transform var(--motion-fast),background var(--motion-fast),color var(--motion-fast)}
+.market-item:hover{padding:22px;transform:translateY(-4px);background:#fff;box-shadow:0 18px 45px rgba(169,31,44,.09);border-color:var(--border-brand)}
+.market-item:hover h3{color:var(--brand-deep)}
+.market-item:hover>span:last-child{transform:rotate(45deg);background:var(--brand-gradient-cta);color:#fff;border-color:transparent}
+
+/* ---------------------------------------------------------
+   05. MEMBER DIRECTORY — company/logo grid
+   --------------------------------------------------------- */
+.directory{background:linear-gradient(160deg,#f6f6f3 0%,#fff 38%,#fff8f4 100%)}
+.directory-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border-top:0}
+.company-card{min-height:248px;padding:22px;border:1px solid var(--border-subtle);border-radius:16px;background:rgba(255,255,255,.88);display:flex;flex-direction:column;align-items:flex-start;gap:0;position:relative;overflow:hidden;cursor:pointer;box-shadow:0 10px 28px rgba(23,25,26,.035)}
+.company-card:after{content:"";position:absolute;right:-70px;top:-82px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(238,70,35,.07);box-shadow:0 0 0 34px rgba(238,70,35,.018),0 0 0 68px rgba(238,70,35,.012)}
+.company-logo{width:64px;height:64px;border-radius:15px;font-size:13px;margin-bottom:38px;position:relative;z-index:1;background:#fff;border:1px solid var(--border-brand);box-shadow:0 10px 24px rgba(238,70,35,.08)}
+.company-card h3{font-size:19px;line-height:1.35;margin:0 0 9px;position:relative;z-index:1}
+.company-card p{display:inline-flex;width:max-content;max-width:100%;padding:5px 8px;border-radius:999px;background:var(--brand-gradient-soft);color:var(--brand-deep);font-size:11px;position:relative;z-index:1}
+.company-card footer{margin-top:auto;padding-top:24px;width:100%;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+.company-card footer span:last-child{width:34px;height:34px;border:1px solid var(--border-subtle);border-radius:50%;display:grid;place-items:center;background:currentColor;mask:none;-webkit-mask:none;font-size:0}
+.company-card footer span:last-child:after{content:"↗";font-size:13px;color:var(--text-primary)}
+.company-card:hover{padding:22px;transform:translateY(-4px);background:#fff;border-color:var(--border-brand);box-shadow:0 18px 45px rgba(169,31,44,.08)}
+.company-card:hover h3{color:var(--brand-deep)}
+.company-card:hover footer span:last-child{background:var(--brand-gradient-cta)}
+.company-card:hover footer span:last-child:after{color:#fff}
+
+/* ---------------------------------------------------------
+   06. IMAGE SYSTEM — consistent grading + protected captions
+   --------------------------------------------------------- */
+.tech-photo,.business-photo,.story-photo{filter:saturate(.82) contrast(1.06) brightness(.96) sepia(.035)}
+.tech-media:before{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;z-index:1;background:linear-gradient(0deg,rgba(9,9,9,.76) 0%,rgba(9,9,9,.36) 44%,transparent 100%);pointer-events:none}
+.tech-caption{z-index:2}
+.business-card:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(14,9,8,.48),transparent 55%);pointer-events:none}
+.business-card-content{z-index:2}
+
+/* ---------------------------------------------------------
+   07. MOBILE — content-specific alternatives, no scale-down
+   --------------------------------------------------------- */
+@media(max-width:900px){
+  .why-layout{grid-template-columns:1fr;gap:42px}
+  .proof-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .proof-row:nth-child(3),.proof-row:nth-child(4){transform:none}
+  .proof-row:nth-child(3):hover,.proof-row:nth-child(4):hover{transform:translateY(-4px)}
+  .support-hub{grid-template-columns:1fr;padding:32px}
+  .directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:620px){
+  /* Hero intent: no compressed horizontal strip */
+  .intent-shell{display:block}
+  .intent-heading{padding:20px 0 15px}
+  .intent-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible!important;border-top:1px solid var(--border-subtle)}
+  .intent-list button{min-width:0!important;width:auto;height:auto!important;min-height:96px;padding:16px 14px;border-right:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)}
+  .intent-list button:nth-child(even){border-right:0}
+  .intent-list button:nth-child(5){grid-column:1/-1;border-right:0;min-height:82px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px}
+  .intent-list button:nth-child(5) strong{max-width:none}
+  .intent-list button:nth-child(5) i{align-self:center}
+
+  /* Why QTSC becomes stacked proof cards */
+  .proof-list{grid-template-columns:1fr;gap:10px}
+  .proof-row,.proof-row:nth-child(1),.proof-row:nth-child(4){min-height:190px;padding:20px}
+  .proof-row strong{font-size:24px;margin-top:32px}
+  .proof-row:hover{padding:20px}
+
+  /* Ecosystem becomes vertical touch list + detail panel */
+  .ecosystem-stage{height:auto!important;margin:0!important;display:flex;flex-direction:column;gap:0;max-width:none}
+  .ecosystem-stage .eco-lines{display:none}
+  .eco-node,.eco-node.center,.eco-node.top,.eco-node.right,.eco-node.bottom-right,.eco-node.bottom-left,.eco-node.left{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;width:100%!important;height:68px!important;border:0;border-bottom:1px solid rgba(255,255,255,.12);border-radius:0;background:transparent;display:grid;grid-template-columns:32px 1fr auto;align-items:center;justify-items:start;padding:0 4px;gap:12px;backdrop-filter:none;text-align:left}
+  .eco-node i,.eco-node.center i{position:relative;left:auto;top:auto;transform:none;width:12px;height:12px;grid-column:1}
+  .eco-node span{grid-column:2;font-size:15px}
+  .eco-node small{grid-column:3;font-size:10px;justify-self:end}
+  .eco-node.active{background:linear-gradient(90deg,rgba(238,70,35,.15),transparent)}
+  .eco-detail{position:relative!important;right:auto!important;bottom:auto!important;transform:none!important;width:100%!important;padding:22px 4px 2px!important;border:0;background:transparent;pointer-events:auto;order:20}
+  .eco-detail:before{display:none}
+  .eco-detail strong{font-size:22px}
+  .eco-detail p{display:block;font-size:13px;color:#bfc2c4}
+
+  /* Task launcher mobile */
+  .support-hub{padding:25px 18px;border-radius:18px;margin-left:calc(var(--gutter) * -1);margin-right:calc(var(--gutter) * -1)}
+  .support-copy h3{font-size:32px}
+  .support-actions{grid-template-columns:1fr;gap:8px}
+  .support-action,.support-action:nth-child(odd){min-height:105px}
+
+  /* Marketplace = product card stack */
+  .market-results{grid-template-columns:1fr;gap:9px}
+  .market-item{min-height:170px;padding:18px;grid-template-columns:50px 1fr 32px}
+  .market-item:hover{padding:18px}
+  .market-mark{width:48px;height:48px}
+  .market-item>small{display:inline-flex!important;grid-column:2}
+
+  /* Company directory = visual card stack, no table-like rows */
+  .directory-grid{grid-template-columns:1fr;gap:9px}
+  .company-card{min-height:220px;padding:20px!important;display:flex!important}
+  .company-card:hover{padding:20px!important}
+  .company-logo{width:60px;height:60px;margin-bottom:28px}
+  .company-card footer{grid-column:auto}
+
+  /* Campus map becomes a location list on mobile. Map graphic is not shrunk. */
+  .green-grid{display:block}
+  .campus-map{min-height:0!important;height:auto!important;margin:38px calc(var(--gutter) * -1) 0;border-radius:0;background:#1a1b1c;padding:0 var(--gutter) 22px;overflow:visible}
+  .campus-map .map-photo,.campus-map .map-overlay,.campus-map .map-legend{display:none}
+  .campus-map .map-pin,.campus-map .map-pin.p1,.campus-map .map-pin.p2,.campus-map .map-pin.p3,.campus-map .map-pin.p4{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:100%;height:62px;display:grid;grid-template-columns:30px 34px 1fr;align-items:center;justify-items:start;border-bottom:1px solid #353638;color:#fff}
+  .campus-map .map-pin i{position:relative;width:12px;height:12px;grid-column:1}
+  .campus-map .map-pin span{position:relative;top:auto;grid-column:2;color:#888d90;font-size:11px}
+  .campus-map .map-pin:after{content:attr(data-place);grid-column:3;font-size:14px;font-weight:600;color:#fff}
+  .campus-map .map-pin.active{background:linear-gradient(90deg,rgba(238,70,35,.11),transparent)}
+  .campus-map .map-card{position:relative;left:auto;right:auto;bottom:auto;width:100%;margin:18px 0 0;padding:18px;border-radius:14px;background:#fff}
+}
