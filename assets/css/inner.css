@@ -4,6 +4,20 @@
 .inner-page .header-shell{color:var(--text-primary);box-shadow:none}
 .inner-page .header-connect{display:inline-flex}
 
+/* Inner pages use the same desktop mega-menu interaction as index.html.
+   Nav links remain real anchors on click; hover/focus reveals submenu.
+   No underline is used on inner pages — hover state is handled by the soft surface instead. */
+.inner-page .desktop-nav .nav-link:after{display:none!important;content:none!important}
+.inner-page .desktop-nav .nav-link{position:relative;text-decoration:none;border-bottom:0!important}
+.inner-page .desktop-nav .nav-link:hover,
+.inner-page .desktop-nav .nav-link:focus-visible,
+.inner-page .desktop-nav .nav-link.mega-active{background:var(--surface-brand-soft);color:var(--brand-deep)}
+.inner-page .mega-menu{top:86px}
+.inner-page .mega-menu.open{opacity:1;transform:none;pointer-events:auto}
+.inner-page .mega-feature{border:1px solid var(--border-brand);background:var(--brand-gradient-surface)}
+.inner-page .mega-col a{text-decoration:none}
+.inner-page .mega-col a:hover{color:var(--brand-deep)}
+
 /* Brand-story hero */
 .inner-hero{padding:var(--section-lg) 0 var(--section-md);background:var(--surface-soft)}
 .inner-hero .breadcrumb{display:flex;gap:8px;font-size:12px;color:var(--text-tertiary);margin-bottom:var(--space-10)}
@@ -40,6 +54,7 @@
 
 @media(max-width:900px){
   .inner-page .desktop-nav{display:none}.inner-page .menu-trigger{display:block}
+  .inner-page .mega-menu{display:none!important}
   .inner-hero{padding-top:var(--section-md)}
   .inner-media{height:430px}
   .inner-hero-grid,.inner-section-head,.prose-grid{grid-template-columns:1fr;gap:30px}
