@@ -3,6 +3,7 @@
 @import url("header-hero-parity.css");
 @import url("hero-companions.css");
 @import url("inner-index-parity.css");
+@import url("review/ui-feedback-2026-08-28-1634.css");
 
 /* QTSC UI/UX — unified inner-page system */
 .inner-page{background:var(--surface-primary)}
