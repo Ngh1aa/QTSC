@@ -38,6 +38,18 @@ The site-wide visual layer lives in `assets/css/gradient-system.css`.
 5. **Soft surface** — low-opacity orange/red tint only, with white remaining dominant.
 6. **Dark sections** — use radial brand glow over charcoal rather than flat red backgrounds.
 
+## Content archetypes — avoid visual repetition
+Different information types must not collapse into the same row-list pattern.
+
+1. **Credibility / Why QTSC** → proof bento cards with large hierarchy, evidence and editorial spacing.
+2. **Administrative / One-stop support** → task launcher / service console with clear touch targets and action-oriented grouping.
+3. **Technology Marketplace** → product discovery cards with a technology mark, provider, category chip and strong search/filter workspace.
+4. **Member Directory** → company identity cards / logo grid with industry and building metadata.
+5. **Live news / activity feed** → chronological rows are acceptable because time ordering is the primary information model.
+6. **Quick utilities** → compact utility tiles are acceptable, but must not visually imitate marketplace or directory cards.
+
+Do not reuse one component simply because all content items happen to have a title and arrow.
+
 ## Network language
 Use radial rings, dots, connection lines and subtle pulses for:
 - hero / brand moments;
@@ -63,6 +75,19 @@ Prioritise official QTSC imagery:
 6. Green & smart campus
 
 Avoid generic AI/server/code stock imagery where a real QTSC image exists.
+
+### Image consistency
+- Apply restrained, consistent grading across campus / technology / office photography.
+- Protect white captions on photography with a local bottom scrim; never depend on the source image being dark enough.
+- Hero imagery should communicate recognisable QTSC campus/architecture rather than generic roads, server rooms or abstract technology.
+
+## Mobile interaction rules
+- Do not scale complex desktop spatial interfaces down until labels become unreadable.
+- Ecosystem hub-spoke becomes a vertical selectable list + detail panel on narrow screens.
+- Campus map uses a building/location list as the primary mobile control; map graphics can remain contextual rather than carrying tiny touch targets.
+- Primary mobile controls should target roughly **44×44px or larger** when practical; WCAG 2.2 AA minimum target requirements must always be respected.
+- Avoid compressed horizontal navigation with multiple small text targets immediately below the hero.
+- Preserve content hierarchy before preserving desktop geometry.
 
 ## Content voice
 - Direct, credible, concise and task-oriented.
@@ -90,7 +115,8 @@ Target WCAG 2.2 AA:
 - reduced-motion support;
 - minimum contrast targets already documented in `ui-foundation.md`;
 - semantic headings and labels;
-- prefer `--brand-gradient-cta` over the bright display gradient behind small white text.
+- prefer `--brand-gradient-cta` over the bright display gradient behind small white text;
+- WCAG 2.2 AA target sizing/spacing rules are the baseline, while primary mobile actions should usually be larger for practical touch comfort.
 
 ## Public vs internal
 Public website:
@@ -102,4 +128,5 @@ Internal guideline only:
 - photography direction;
 - component and interaction rules;
 - gradient hierarchy and usage rules;
+- content archetypes and mobile transformation rules;
 - do/don't examples.
