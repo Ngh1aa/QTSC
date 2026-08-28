@@ -17,4 +17,9 @@
   }
 
   main.dataset.legacyDetailsExpanded = '1';
+  requestAnimationFrame(() => {
+    if (!location.hash) return;
+    const target = document.getElementById(location.hash.slice(1));
+    target?.scrollIntoView({block:'start'});
+  });
 })();
