@@ -2,6 +2,7 @@
 @import url("surface-type-normalization.css");
 @import url("header-hero-parity.css");
 @import url("hero-companions.css");
+@import url("inner-index-parity.css");
 
 /* QTSC UI/UX — unified inner-page system */
 .inner-page{background:var(--surface-primary)}
