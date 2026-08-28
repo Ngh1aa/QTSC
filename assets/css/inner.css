@@ -3,8 +3,12 @@
 
 /* QTSC UI/UX — unified inner-page system */
 .inner-page{background:var(--surface-primary)}
-.inner-page .site-header{position:sticky;top:0;background:#fff;color:var(--text-primary);border-bottom:1px solid var(--border-subtle);padding:8px 0;z-index:1000}
-.inner-page .header-shell{color:var(--text-primary);box-shadow:none}
+.inner-page .site-header{position:sticky;top:0;background:transparent!important;background-color:transparent!important;background-image:none!important;color:var(--text-primary);border:0!important;border-bottom:0!important;box-shadow:none!important;padding:8px 0;z-index:1000;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.inner-page .site-header.scrolled,
+.inner-page .site-header.mega-open{background:transparent!important;background-color:transparent!important;background-image:none!important;border:0!important;border-bottom:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.inner-page .site-header::before,
+.inner-page .site-header::after{content:none!important;display:none!important;background:none!important;box-shadow:none!important}
+.inner-page .header-shell{color:var(--text-primary)}
 .inner-page .header-connect{display:inline-flex}
 
 /* Inner pages use the same desktop mega-menu interaction as index.html.
