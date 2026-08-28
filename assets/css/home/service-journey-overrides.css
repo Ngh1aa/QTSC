@@ -1,0 +1,26 @@
+/* Final homepage task-first refinements. */
+body:not(.inner-page) .intent-heading{display:grid;grid-template-columns:150px minmax(320px,1fr) minmax(260px,360px);align-items:end;gap:30px}
+body:not(.inner-page) .intent-heading .micro-label{order:0;margin:0;color:var(--brand-red);align-self:start;padding-top:7px}
+body:not(.inner-page) .intent-heading:before{grid-column:2;content:"Bắt đầu từ việc bạn cần làm"}
+body:not(.inner-page) .intent-heading>span{grid-column:3;margin:0}
+
+/* Make the primary hero action task-led without changing the underlying anchor behavior. */
+body:not(.inner-page) .hero-actions .btn-white{font-size:0}
+body:not(.inner-page) .hero-actions .btn-white:before{content:"Bắt đầu từ nhu cầu";font-size:13px}
+body:not(.inner-page) .hero-actions .btn-white>span{margin-left:5px}
+
+/* Keep the evidence flow compact after the service launcher. */
+body:not(.inner-page) .stats{padding-top:72px}
+body:not(.inner-page) .business{padding-bottom:80px}
+
+@media(max-width:900px){
+  body:not(.inner-page) .intent-heading{grid-template-columns:1fr 1.2fr;gap:18px}
+  body:not(.inner-page) .intent-heading .micro-label{grid-column:1/-1}
+  body:not(.inner-page) .intent-heading:before{grid-column:1}
+  body:not(.inner-page) .intent-heading>span{grid-column:2}
+}
+@media(max-width:680px){
+  body:not(.inner-page) .intent-heading{display:block}
+  body:not(.inner-page) .intent-heading .micro-label{padding-top:0;margin-bottom:12px}
+  body:not(.inner-page) .intent-heading:before{display:block;margin-bottom:12px}
+}
