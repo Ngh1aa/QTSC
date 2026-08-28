@@ -1,6 +1,5 @@
-/* QTSC UI Foundation v1.2 — design tokens
-   QTSC officially defines a red-orange identity with a deep-red to light-orange transition.
-   #EE4623 is the selected digital primary for this prototype; replace with official master values if supplied. */
+/* QTSC UI Foundation v1.3 — design tokens
+   Brand accents remain red-orange; page surfaces are normalized to white / #111111. */
 :root{
   /* Brand */
   --brand-primary:#EE4623;
@@ -9,11 +8,10 @@
   --brand-orange:#EE4623;
   --brand-light:#FF8438;
   --brand-gradient:linear-gradient(118deg,var(--brand-deep) 0%,var(--brand-red) 42%,var(--brand-orange) 72%,var(--brand-light) 100%);
-  /* Accessible button gradient: orange-red direction with darker stops for white text contrast. */
   --brand-gradient-cta:linear-gradient(110deg,#CE4B1E 0%,#C43E24 48%,#B62035 100%);
   --brand-gradient-cta-hover:linear-gradient(110deg,#C9471B 0%,#B93628 48%,#A91F2C 100%);
   --brand-gradient-soft:linear-gradient(135deg,rgba(169,31,44,.10) 0%,rgba(238,70,35,.09) 52%,rgba(255,132,56,.08) 100%);
-  --brand-gradient-surface:linear-gradient(135deg,#FFF8F5 0%,#FFF2EC 48%,#FFF9F5 100%);
+  --brand-gradient-surface:#fff;
   --brand-radial:radial-gradient(circle at 72% 28%,rgba(238,70,35,.20) 0%,rgba(238,70,35,.07) 24%,transparent 58%);
   --brand-glow:0 18px 48px rgba(204,45,49,.20),0 6px 22px rgba(238,70,35,.16);
   --brand-glow-soft:0 12px 34px rgba(204,45,49,.10),0 4px 16px rgba(238,70,35,.08);
@@ -24,13 +22,13 @@
   --text-tertiary:#70777b;
   --text-inverse:#fff;
 
-  /* Surfaces */
+  /* Surface system — only white and #111111 for page blocks */
   --surface-primary:#fff;
-  --surface-soft:#f7f6f3;
-  --surface-muted:#eeece8;
-  --surface-dark:#151617;
-  --surface-brand-soft:#fff6f1;
-  --surface-brand-muted:#ffede5;
+  --surface-soft:#fff;
+  --surface-muted:#fff;
+  --surface-dark:#111111;
+  --surface-brand-soft:#fff;
+  --surface-brand-muted:#fff;
 
   /* Borders */
   --border-subtle:#e8e5e1;
@@ -91,7 +89,7 @@
   --icon-right:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M14 7l5 5-5 5'/%3E%3C/svg%3E");
   --icon-close:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='m6 6 12 12M18 6 6 18'/%3E%3C/svg%3E");
 
-  /* Backward-compatible aliases while page styles are progressively migrated. */
+  /* Backward-compatible aliases */
   --red:var(--brand-red);
   --red-deep:var(--brand-deep);
   --orange:var(--brand-orange);
@@ -114,11 +112,10 @@
   --ease:var(--ease-standard);
 }
 
-/* Global footer lock: footer must remain pure black on every route,
-   regardless of later page/gradient layers. */
+/* Footer follows the shared dark surface exactly. */
 html body .site-footer{
-  background:#080808!important;
-  background-color:#080808!important;
+  background:#111111!important;
+  background-color:#111111!important;
   background-image:none!important;
   color:#fff!important;
   box-shadow:none!important;
