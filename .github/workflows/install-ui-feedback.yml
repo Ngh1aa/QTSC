@@ -1,0 +1,74 @@
+name: Install UI Feedback Tool
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/install-ui-feedback.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout QTSC
+        uses: actions/checkout@v4
+
+      - name: Install canonical UI Feedback bundle
+        run: |
+          set -euo pipefail
+          SOURCE_SHA="4ef8421d0dc38bdc5f0af198aab94f6943821657"
+          curl -fsSL "https://raw.githubusercontent.com/Ngh1aa/ui-feedback-tool/${SOURCE_SHA}/src/ui-feedback.js" -o ui-feedback.js
+          mkdir -p assets/js
+          cat > assets/js/ui-feedback-init.js <<'EOF'
+          import { createUIFeedback } from '../../ui-feedback.js';
+
+          createUIFeedback({
+            storageKey: 'qtsc-ui-feedback',
+            githubRepo: 'Ngh1aa/QTSC',
+            accent: '#EE4623',
+          });
+          EOF
+
+      - name: Load the tool on every HTML page
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          tag = '<script type="module" src="assets/js/ui-feedback-init.js?v=0.14.0"></script>'
+          for path in Path('.').glob('*.html'):
+              text = path.read_text(encoding='utf-8')
+              if 'ui-feedback-init.js' in text:
+                  continue
+              if '</body>' not in text:
+                  continue
+              text = text.replace('</body>', f'{tag}</body>')
+              path.write_text(text, encoding='utf-8')
+              print(f'Injected UI Feedback into {path}')
+          PY
+
+      - name: Verify integration
+        run: |
+          set -euo pipefail
+          test -s ui-feedback.js
+          test -s assets/js/ui-feedback-init.js
+          grep -q "ui-feedback-init.js" index.html
+          grep -q "ui-feedback-init.js" about.html
+          grep -q "ui-feedback-init.js" office.html
+
+      - name: Commit installation
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ui-feedback.js assets/js/ui-feedback-init.js '*.html'
+          if git diff --cached --quiet; then
+            echo "UI Feedback is already installed."
+            exit 0
+          fi
+          git commit -m "feat: install UI Feedback Tool across QTSC"
+          git push
