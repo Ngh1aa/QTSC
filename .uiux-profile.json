@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "profile": "uiux-corporate",
+  "packs": [
+    "research-validation",
+    "experience-strategy",
+    "inclusive-trust",
+    "designops-governance",
+    "measurement-reliability"
+  ],
+  "additional_skills": [
+    "website-audit-and-redesign",
+    "site-search-and-findability",
+    "state-feedback-and-error-recovery"
+  ],
+  "exclude_skills": [],
+  "project": {
+    "name": "QTSC",
+    "mode": "interactive-prototype",
+    "domain": "technology-park-corporate"
+  },
+  "source_of_truth": [
+    "docs/digital-brand-guideline.md",
+    "docs/ui-foundation.md",
+    "docs/source-architecture.md",
+    "README.md"
+  ],
+  "constraints": [
+    "Prioritize UI/UX fidelity and realistic interactions over production backend scope",
+    "Preserve QTSC's white-dominant red-orange digital brand system with #EE4623 as the selected prototype primary token",
+    "Reuse existing design tokens, shared components and source architecture before adding local styles or new component patterns",
+    "Treat statistics, rankings and proof points as dated evidence and retain source/date context",
+    "Do not claim user research, accessibility conformance, UX improvement, brand-recognition validation or agent reliability without the evidence required by V5",
+    "Keep the current static HTML/CSS/JS prototype architecture unless a task explicitly requires a stack migration"
+  ]
+}
