@@ -1,0 +1,164 @@
+/* Cross-template visual grammar for corporate, discovery, service and content routes. */
+
+.inner-page .inner-hero {
+  position: relative;
+  overflow: clip;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.inner-page .inner-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: min(44%, 42rem);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--brand-primary) 9%, transparent), transparent);
+  pointer-events: none;
+}
+
+.inner-page .inner-hero-grid,
+.inner-page .inner-hero > .container-wide {
+  position: relative;
+  z-index: 1;
+}
+
+.inner-page .inner-hero h1 {
+  max-inline-size: 10ch;
+  text-wrap: balance;
+}
+
+.inner-page .inner-hero p {
+  max-inline-size: 55ch;
+}
+
+.inner-page .inner-section-head {
+  gap: var(--space-8);
+}
+
+.inner-page .inner-section-head h2 {
+  max-inline-size: 18ch;
+  text-wrap: balance;
+}
+
+/* Discovery uses a quiet workspace, with the result as the focal point. */
+.page-companies .filter-layout,
+.page-marketplace .filter-layout,
+.page-insights .filter-layout,
+.page-resources .filter-layout {
+  gap: var(--space-8);
+}
+
+.filter-sidebar,
+.directory-tools,
+.market-search,
+.resource-search {
+  border-color: var(--border-default);
+}
+
+.entity-card,
+.company-card,
+.market-card,
+.market-item,
+.resource-card,
+.story-card {
+  border: 1px solid var(--border-subtle);
+  box-shadow: none;
+}
+
+.entity-card,
+.company-card,
+.resource-card {
+  background:
+    linear-gradient(180deg, var(--surface-primary), var(--surface-primary)) padding-box,
+    linear-gradient(180deg, var(--border-subtle), transparent) border-box;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .entity-card:hover,
+  .company-card:hover,
+  .market-card:hover,
+  .market-item:hover,
+  .resource-card:hover,
+  .story-card:hover {
+    border-color: var(--brand-primary);
+    box-shadow: 0 16px 32px rgba(var(--brand-deep-rgb),.09);
+  }
+}
+
+/* Commercial pages use direct comparison/action hierarchy rather than decorative tiles. */
+.page-office .office-selector,
+.page-services .service-request,
+.page-investment .investment-grid,
+.page-incentives .policy-grid {
+  border-color: var(--border-default);
+}
+
+.page-office .office-info,
+.page-services .service-result,
+.page-investment .investment-card,
+.page-incentives .policy-grid article {
+  border: 1px solid var(--border-subtle);
+  box-shadow: none;
+}
+
+.page-office .office-info {
+  border-inline-start: 4px solid var(--brand-primary);
+}
+
+/* Content hubs distinguish chronological reading from catalogue discovery. */
+.page-insights .story-feature,
+.page-media-center .media-feature,
+.page-community .community-feature {
+  border-inline-start: 4px solid var(--brand-primary);
+}
+
+.page-insights .story-side article,
+.page-newsletter .newsletter-item,
+.page-resources .resource-card {
+  border-bottom-color: var(--border-subtle);
+}
+
+@media (max-width: 900px) {
+  .inner-page .inner-hero {
+    padding-block: clamp(5rem, 15vw, 7rem) var(--space-12);
+  }
+
+  .inner-page .inner-hero-grid {
+    gap: var(--space-6);
+  }
+
+  .inner-page .inner-hero::before {
+    width: 100%;
+    height: 42%;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--brand-primary) 8%, transparent), transparent);
+  }
+
+  .inner-page .inner-section-head h2,
+  .inner-page .inner-hero h1 {
+    max-inline-size: 100%;
+  }
+
+  .filter-sidebar {
+    border-bottom: 1px solid var(--border-subtle);
+  }
+}
+
+@media (max-width: 620px) {
+  .inner-page .inner-hero h1 {
+    font-size: clamp(2.75rem, 13vw, 4.2rem);
+    line-height: .96;
+    letter-spacing: -.055em;
+  }
+
+  .inner-page .inner-hero p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .entity-card,
+  .company-card,
+  .market-card,
+  .market-item,
+  .resource-card {
+    border-radius: var(--radius-md);
+  }
+}

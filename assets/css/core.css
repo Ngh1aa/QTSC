@@ -2,6 +2,7 @@
 @import url("typography.css");
 @import url("layout.css");
 @import url("components/navigation-experience.css");
+@import url("components/template-experience.css");
 
 /* QTSC UI/UX — shared shell and components */
 *{box-sizing:border-box}
