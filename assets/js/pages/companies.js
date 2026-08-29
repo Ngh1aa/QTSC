@@ -12,7 +12,8 @@ const apply = () => {
 };
 search?.addEventListener('input', apply);
 $$('[data-filter]').forEach(button => button.addEventListener('click', () => {
-  $$('.pill-tabs button').forEach(item => item.classList.remove('active'));
+  $$('.pill-tabs button').forEach(item => {item.classList.remove('active');item.setAttribute('aria-selected','false')});
   button.classList.add('active');
+  button.setAttribute('aria-selected','true');
   apply();
 }));

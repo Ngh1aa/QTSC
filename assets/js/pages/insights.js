@@ -14,7 +14,7 @@ function applyFilter(value = 'all') {
   buttons.forEach(button => {
     const active = button.dataset.filter === filter;
     button.classList.toggle('active', active);
-    button.setAttribute('aria-pressed', String(active));
+    button.setAttribute('aria-selected', String(active));
   });
 
   if (feature) feature.hidden = filter !== 'all' && feature.dataset.category !== filter;

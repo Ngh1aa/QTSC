@@ -3,8 +3,8 @@
    QTSC red-orange image overlay; page/section typography follows one shared scale. */
 
 :root{
-  --qtsc-overlay:linear-gradient(118deg,rgba(185,34,47,.94) 0%,rgba(214,53,45,.92) 48%,rgba(238,70,35,.90) 100%);
-  --qtsc-overlay-strong:linear-gradient(105deg,rgba(151,24,40,.96) 0%,rgba(196,43,45,.92) 46%,rgba(238,70,35,.84) 100%);
+  --qtsc-overlay:linear-gradient(118deg,rgba(185,34,47,.94) 0%,rgba(214,53,45,.92) 48%,rgba(var(--brand-primary-rgb),.90) 100%);
+  --qtsc-overlay-strong:linear-gradient(105deg,rgba(151,24,40,.96) 0%,rgba(196,43,45,.92) 46%,rgba(var(--brand-primary-rgb),.84) 100%);
   --qtsc-overlay-soft:linear-gradient(118deg,rgba(190,35,46,.88) 0%,rgba(222,57,44,.84) 54%,rgba(241,88,45,.80) 100%);
   --qtsc-campus-image:url("https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg");
   --qtsc-campus-image-alt:url("https://www.qtsc.com.vn/uploads/files/2021/03/14/Cong-vien-phan-mem-Quang-Trung-nhin-tu-huong-Quoc-lo-1A.jpg");
@@ -100,7 +100,7 @@ html body .site-footer::after {
 /* Hero banners: consistent red-orange image wash across the site. */
 html body .hero-shade{
   background:
-    linear-gradient(90deg,rgba(143,22,38,.94) 0%,rgba(187,35,42,.86) 40%,rgba(221,55,39,.72) 70%,rgba(238,70,35,.58) 100%),
+    linear-gradient(90deg,rgba(143,22,38,.94) 0%,rgba(187,35,42,.86) 40%,rgba(221,55,39,.72) 70%,rgba(var(--brand-primary-rgb),.58) 100%),
     linear-gradient(180deg,rgba(161,30,38,.32) 0%,rgba(190,36,38,.22) 42%,rgba(146,24,34,.72) 100%) !important;
 }
 html body .hero-photo{

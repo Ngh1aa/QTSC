@@ -145,16 +145,16 @@
   padding:0 18px 18px!important;
   transform:translateY(-3px)!important;
   border-color:var(--border-brand)!important;
-  box-shadow:0 18px 40px rgba(169,31,44,.09)!important;
+  box-shadow:0 18px 40px rgba(var(--brand-deep-rgb),.09)!important;
 }
 
 /* ------------------------------------------------------------------
    Amenities — stronger QTSC gradient personality while keeping images
    ------------------------------------------------------------------ */
 .page-amenities .extended-card{
-  border-color:rgba(238,70,35,.18)!important;
+  border-color:rgba(var(--brand-primary-rgb),.18)!important;
   background:linear-gradient(145deg,#fff 0%,#fff4ee 100%)!important;
-  box-shadow:0 10px 28px rgba(169,31,44,.05)!important;
+  box-shadow:0 10px 28px rgba(var(--brand-deep-rgb),.05)!important;
 }
 .page-amenities .extended-card:hover{
   background:var(--brand-gradient-cta)!important;
@@ -214,10 +214,10 @@
   grid-template-rows:auto auto!important;
   gap:10px 16px!important;
   padding:22px!important;
-  border:1px solid rgba(238,70,35,.18)!important;
+  border:1px solid rgba(var(--brand-primary-rgb),.18)!important;
   border-radius:16px!important;
   background:linear-gradient(145deg,#fff 0%,#fff3ed 100%)!important;
-  box-shadow:0 10px 28px rgba(169,31,44,.05)!important;
+  box-shadow:0 10px 28px rgba(var(--brand-deep-rgb),.05)!important;
 }
 .page-explore .explore-utility-section .explore-utility>span{grid-column:1;grid-row:1;color:var(--brand-red)!important}
 .page-explore .explore-utility-section .explore-utility strong{grid-column:2;grid-row:1;font-size:18px!important}
@@ -313,7 +313,7 @@
 .page-media-center .media-list article strong{font-size:18px;line-height:1.4}
 .page-media-center .media-list article .media-kind{margin-top:auto;padding-top:20px}
 .page-media-center .media-list article>i{display:none}
-.page-media-center .media-list article:hover{border-color:var(--border-brand)!important;box-shadow:0 18px 40px rgba(169,31,44,.08)}
+.page-media-center .media-list article:hover{border-color:var(--border-brand)!important;box-shadow:0 18px 40px rgba(var(--brand-deep-rgb),.08)}
 
 @media(max-width:1000px){
   .page-marketplace .entity-list,

@@ -3,9 +3,14 @@ const { $, $$ } = window.QTSC;
 const search = $('#innerSearch');
 const params = new URLSearchParams(location.search);
 const initial = params.get('technology');
+function activateTab(button){
+  $$('.pill-tabs button').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false')});
+  button.classList.add('active');
+  button.setAttribute('aria-selected','true');
+}
 if (initial) {
   const button = $$('[data-filter]').find(item => item.dataset.filter.toLowerCase() === initial.toLowerCase());
-  if (button) { $$('.pill-tabs button').forEach(x => x.classList.remove('active')); button.classList.add('active'); }
+  if (button) activateTab(button);
 }
 function applyFilters(){
   const q=(search?.value||'').trim().toLowerCase();
@@ -21,7 +26,7 @@ function applyFilters(){
 }
 search?.addEventListener('input',applyFilters);
 $$('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
-  $$('.pill-tabs button').forEach(x=>x.classList.remove('active'));
-  button.classList.add('active');applyFilters();
+  activateTab(button);
+  applyFilters();
 }));
 applyFilters();

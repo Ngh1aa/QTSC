@@ -1,0 +1,2 @@
+{"task_id":"sample-filter","trial_id":"run-01","status":"passed","grader":{"verdict":"pass","method":"deterministic","notes":"Sample only."}}
+{"task_id":"sample-filter","trial_id":"run-02","status":"failed","grader":{"verdict":"fail","method":"deterministic","notes":"Sample only."}}

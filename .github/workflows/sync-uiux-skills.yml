@@ -36,6 +36,9 @@ jobs:
       - name: Resolve and install project skills
         run: python /tmp/skills_UIUX/scripts/install-project.py "$GITHUB_WORKSPACE"
 
+      - name: Validate synchronized UI/UX skill contract
+        run: python scripts/validate-v2.py
+
       - name: Commit synchronized skills when changed
         shell: bash
         run: |

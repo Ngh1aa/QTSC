@@ -1,29 +1,9 @@
-/* Extended QTSC pages sourced from the official legacy site.
-   Uses the existing design tokens and inner-page visual language. */
+/* QTSC Extended inner pages — page-specific overrides.
+   Reusable patterns live in components/extended.css.
+   This file owns: section head sizing, parent nav state, hero companions,
+   incentives / amenities page-specific tweaks. */
 .page-extended .inner-section-head{max-width:860px}
 .page-extended .inner-section-head>p:not(.micro-label){color:var(--text-secondary);max-width:68ch}
-.extended-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.extended-card{min-height:260px;padding:28px;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);background:#fff;display:flex;flex-direction:column;text-decoration:none;transition:transform var(--motion-fast),border-color var(--motion-fast),box-shadow var(--motion-fast)}
-.extended-card:hover{transform:translateY(-2px);border-color:var(--border-brand);box-shadow:var(--brand-glow-soft)}
-.extended-card>span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-red);font-weight:700}
-.extended-card h2,.extended-card h3{font-size:clamp(22px,2vw,30px);line-height:1.2;margin:42px 0 14px;font-weight:500;letter-spacing:-.025em;text-wrap:balance}
-.extended-card p{color:var(--text-secondary);font-size:14px;line-height:1.7;margin:0}
-.extended-card i{font-style:normal;margin-top:auto;padding-top:28px;font-size:12px;font-weight:700}
-.extended-card.featured{grid-column:span 2;min-height:320px;background-image:var(--brand-gradient-soft)!important}
-.info-band{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px;align-items:start;border-top:1px solid var(--border-subtle);padding-top:32px}
-.info-band>aside{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-tertiary)}
-.info-band>div h2{font-size:var(--type-section-title);font-weight:500;line-height:1.12;letter-spacing:-.03em;margin:0 0 22px;max-width:760px;text-wrap:balance}
-.info-band>div>p{color:var(--text-secondary);font-size:16px;line-height:1.75;max-width:72ch}
-.step-list{border-top:1px solid var(--border-subtle)}
-.step-row{display:grid;grid-template-columns:72px minmax(220px,.75fr) 1.25fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--border-subtle);align-items:start}
-.step-row>span{font-size:12px;color:var(--brand-red);font-weight:700}.step-row h3{margin:0;font-size:22px;line-height:1.3;font-weight:500}.step-row p{margin:0;color:var(--text-secondary);font-size:14px;line-height:1.7}
-.link-list{border-top:1px solid var(--border-subtle)}
-.link-list a,.link-list article{display:grid;grid-template-columns:130px 1fr 32px;gap:24px;align-items:center;padding:24px 0;border-bottom:1px solid var(--border-subtle);text-decoration:none}
-.link-list small{color:var(--text-tertiary);font-size:12px}.link-list strong{font-size:18px;font-weight:500;line-height:1.4}.link-list i{font-style:normal;text-align:right}.link-list a:hover strong{color:var(--brand-red)}
-.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.contact-panel{padding:30px;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);background:#fff;min-height:300px}
-.contact-panel>span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--brand-red);font-weight:700}.contact-panel h2{font-size:30px;line-height:1.2;font-weight:500;margin:42px 0 18px}.contact-panel p,.contact-panel a{color:var(--text-secondary);font-size:14px;line-height:1.8;text-decoration:none}.contact-panel a:hover{color:var(--brand-red)}.contact-panel .contact-lines{display:flex;flex-direction:column;gap:4px;margin-top:20px}
-.source-note{margin-top:28px;padding-top:20px;border-top:1px solid var(--border-subtle);font-size:12px;color:var(--text-tertiary)}.source-note a{color:var(--brand-red);text-decoration:none;font-weight:600}
 
 /* Parent navigation state for the extended routes. */
 .page-chain .desktop-nav .nav-link:nth-child(2),
@@ -65,8 +45,6 @@
   .page-awards .inner-hero>.container-wide::before{content:"AWARDS";font-size:clamp(34px,3vw,52px)}.page-awards .inner-hero>.container-wide::after{content:"QTSC AWARDS OF THE YEAR\ATOP ENTERPRISES ARCHIVE\AECOSYSTEM RECOGNITION"}
 }
 @media(max-width:1100px){.page-extended .inner-hero>.container-wide{padding-right:0!important}.page-extended .inner-hero>.container-wide::before,.page-extended .inner-hero>.container-wide::after{content:none!important;display:none!important}}
-@media(max-width:900px){.extended-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.extended-card.featured{grid-column:span 2}.info-band{grid-template-columns:1fr;gap:24px}.step-row{grid-template-columns:56px 1fr}.step-row p{grid-column:2}}
-@media(max-width:620px){.extended-grid,.contact-grid{grid-template-columns:1fr}.extended-card.featured{grid-column:auto}.extended-card{min-height:230px;padding:24px}.step-row{grid-template-columns:42px 1fr;gap:16px}.step-row p{grid-column:2}.link-list a,.link-list article{grid-template-columns:1fr 26px;gap:12px}.link-list small{grid-column:1/-1}.link-list i{grid-column:2;grid-row:2}}
 
 /* UI Feedback — incentives: stack the opening heading and description, reduce unnecessary wrapping. */
 .page-incentives main>.inner-section:nth-of-type(2) .inner-section-head{

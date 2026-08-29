@@ -55,22 +55,16 @@ function openConnect(type='general'){if(!connectConfigs[type])type='general';sta
 function renderMobileMenu(){const el=$('#mobileMenuContent');if(!el)return;el.innerHTML=Object.values(megaData).map(d=>`<section class="mobile-acc"><button aria-expanded="false">${d.label}<span>+</span></button><div class="mobile-acc-panel">${d.columns.flatMap(c=>c[1]).slice(0,8).map(x=>`<a href="${linkMap[x]||'#'}">${x}</a>`).join('')}</div></section>`).join('')}
 function handleIntent(type){const routes={office:'office.html',investment:'investment.html',technology:'marketplace.html',company:'companies.html',visit:'explore.html'};if(routes[type])location.href=routes[type]}
 
+// Strategy switching is now opt-in for dev preview only.
+// Default rendering follows the HTML; append ?strategy=variant-A to preview the compact variant.
 function applyHomepageStrategy(){
+  const variant=new URLSearchParams(location.search).get('strategy');
+  if(variant!=='variant-A')return;
   ['.why-qtsc','.marketplace','.directory','.quick-access','.ecosystem-live'].forEach(sel=>$(sel)?.remove());
-  const heroLead=$('.hero-copy p');if(heroLead)heroLead.textContent='Nơi doanh nghiệp công nghệ kết nối hạ tầng số, không gian làm việc, giải pháp và mạng lưới đối tác trong một hệ sinh thái 43 ha tại TP.HCM.';
-  const intentLead=$('.intent-heading span');if(intentLead)intentLead.textContent='Chọn mục tiêu để đi thẳng đến trang chuyên sâu phù hợp.';
-  const statsLabel=$('#stats .micro-label');if(statsLabel)statsLabel.textContent='Why QTSC';
-  const statsTitle=$('#statsTitle');if(statsTitle)statsTitle.innerHTML='Quy mô và năng lực<br>được chứng minh bằng dữ liệu.';
-  const statArticles=$$('#stats .stats-row article');[2,3,4].forEach(i=>{const unit=statArticles[i]?.querySelector('span');if(unit)unit.textContent=''});
-  const asiaFirst=$('.asia-proof-facts div:first-child strong');if(asiaFirst)asiaFirst.textContent='121';
-  const ecoLink=$('.ecosystem-intro .text-link');if(ecoLink){ecoLink.href='companies.html';ecoLink.innerHTML='Xem danh bạ doanh nghiệp <span>→</span>'}
-  const supportLabel=$('.support-copy .micro-label');if(supportLabel)supportLabel.textContent='Dịch vụ một cửa';
   const refresh=$('#refreshData');if(refresh){refresh.innerHTML='Khám phá dữ liệu campus <span>↗</span>';refresh.addEventListener('click',()=>{location.href='explore.html#data'})}
   const storyFeature=$('.story-feature');if(storyFeature){const meta=storyFeature.querySelector('.story-info>span'),title=storyFeature.querySelector('h3'),link=storyFeature.querySelector('a');if(meta)meta.textContent='QTSC · 25/08/2026';if(title)title.textContent='QTSC giới thiệu giải pháp công nghệ và an ninh mạng tại Hội thảo Chuyển đổi số của Quân khu 7 năm 2026.';if(link){link.href='https://www.qtsc.com.vn/tin-tuc/qtsc-gioi-thieu-giai-phap-cong-nghe-va-an-ninh-mang-tai-hoi-thao-chuyen-doi-so-cua-quan-khu-7-nam-2026';link.target='_blank';link.rel='noopener'}}
   const sideStories=$$('.story-side article');if(sideStories[0]){sideStories[0].querySelector('span').textContent='Hợp tác quốc tế · 25/08/2026';sideStories[0].querySelector('h3').textContent='Tập đoàn Sunwah cùng đoàn doanh nghiệp Trung Quốc tìm hiểu hệ sinh thái công nghệ số và cơ hội hợp tác tại QTSC.';const a=sideStories[0].querySelector('a');a.href='https://www.qtsc.com.vn/tin-tuc/tap-doan-doanh-nghiep-sunwah-cung-doan-doanh-nghiep-trung-quoc-tim-hieu-he-sinh-thai-cong-nghe-so-va-co-hoi-hop-tac-tai-qtsc';a.target='_blank';a.rel='noopener';a.innerHTML='Đọc tin <b>↗</b>'}
   if(sideStories[1]){sideStories[1].querySelector('span').textContent='Cộng đồng · 21/08/2026';sideStories[1].querySelector('h3').textContent='Sinh viên FPT Greenwich Việt Nam tìm hiểu môi trường làm việc và định hướng nghề nghiệp tại QTSC.';const a=sideStories[1].querySelector('a');a.href='https://www.qtsc.com.vn/tin-tuc/sinh-vien-truong-dai-hoc-fpt-greenwich-viet-nam-tim-hieu-moi-truong-lam-viec-va-dinh-huong-nghe-nghiep-tai-qtsc';a.target='_blank';a.rel='noopener';a.innerHTML='Đọc tin <b>↗</b>'}
-  const storyLink=$('#storiesTitle')?.closest('.section-top')?.querySelector('.text-link');if(storyLink){storyLink.href='insights.html';storyLink.innerHTML='Xem tất cả tin tức <span>→</span>'}
-  $$('.site-footer a').forEach(a=>{if(a.getAttribute('href')==='#directory')a.href='companies.html';if(a.getAttribute('href')==='#marketplace')a.href='marketplace.html'});
 }
 
 applyHomepageStrategy();
