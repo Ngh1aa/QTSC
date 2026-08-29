@@ -27,7 +27,7 @@ Performed: local static-server route checks, desktop and 390px Chrome-headless r
 
 | Finding | Status | Evidence / remaining limit |
 |---|---|---|
-| F-01 Home content suppression | Resolved before the remediation pass | Current code only enables compact removal with the explicit preview query parameter strategy=variant-A; default Home retains the sections. |
+| F-01 Home content suppression / overload | Resolved in Home Experience v2 | Home no longer removes content at runtime or carries the former 17-section default. Seven visible blocks now cover intent, proof, capabilities, campus, business decisions, current signals and contact. |
 | F-03 Overlay dialog/contact intent | Implemented in static frontend | Focus trap/return, live status and the need-field selector were corrected. Keyboard and screen-reader verification is still required. |
 | F-02 Real delivery | Blocked outside static frontend | No approved endpoint, CRM, privacy/consent process or service SLA exists in the repository. The UI now states that email must be sent before QTSC receives the request. |
 

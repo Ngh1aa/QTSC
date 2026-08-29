@@ -1,17 +1,2 @@
-/* Homepage stylesheet manifest — split by feature area for maintainability. */
-@import url("../home/hero.css");
-@import url("../home/ecosystem.css");
-@import url("../home/business.css");
-@import url("../home/discovery.css");
-@import url("../home/legacy-strengths.css");
-@import url("../home/icon-cleanup.css");
-@import url("../home/responsive.css");
-@import url("../gradient-system.css");
-@import url("../home/visual-differentiation.css");
-@import url("../final-polish.css");
-@import url("../surface-type-normalization.css");
-@import url("../header-hero-parity.css");
-@import url("../home/review-fixes-2026-08-28.css");
-@import url("../home/compact-card-parity.css");
-@import url("../service-experience.css");
-@import url("../home/journey-system.css");
+/* Homepage v2 — one owned composition, no legacy override cascade. */
+@import url("../home/experience-v2.css");

@@ -1,4 +1,21 @@
 (() => {
+  const primaryNavigation = [
+    ['Về QTSC','about.html'],
+    ['Hạ tầng & Dịch vụ','services.html'],
+    ['Doanh nghiệp & Giải pháp','companies.html'],
+    ['Đầu tư & Hợp tác','investment.html'],
+    ['Tin tức & Sự kiện','insights.html'],
+    ['Tài nguyên','resources.html']
+  ];
+  document.querySelectorAll('.desktop-nav').forEach(nav => {
+    const links = [...nav.querySelectorAll('.nav-link')];
+    if (links.length !== primaryNavigation.length) return;
+    links.forEach((link,index) => {
+      link.textContent = primaryNavigation[index][0];
+      link.href = primaryNavigation[index][1];
+    });
+  });
+
   const linkMap = {
     'QTSC DigiTech Center': 'digitech-center.html',
     'Giáo dục & cộng đồng': 'community.html',
