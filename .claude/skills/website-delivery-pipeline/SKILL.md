@@ -16,6 +16,8 @@ If `.uiux-profile.json` exists, read it plus every `source_of_truth` file before
 ## Step 1 — Classify scope and risk
 Use `adaptive-skill-routing-and-context-budget` principles. A local component fix and a whole-service redesign should not activate the same context.
 
+For an **existing implemented UI** where the user asks to fix, improve, polish, modernize or make the interface more professional without necessarily redesigning the whole product, route through `ui-improvement`. It owns the remediation loop and should activate only the visual/system/frontend specialists justified by the actual issue.
+
 ## Step 2 — Choose base profile + conditional packs
 - Substantial content/layout redesign, experiential service, brand differentiation or online/offline journey → `experience-strategy`.
 - High product/behavior uncertainty, redesign validation or IA risk → `research-validation`.

@@ -1,0 +1,219 @@
+/*
+ * Home journey system
+ * Orientation → choose a task → proof → explore → evaluate → connect.
+ * Uses existing QTSC tokens and the existing page structure; no new brand palette.
+ */
+
+:root {
+  --journey-rail: color-mix(in srgb, var(--brand-primary) 18%, transparent);
+  --journey-surface: color-mix(in srgb, var(--brand-primary) 5%, var(--surface-primary));
+  --journey-gap: clamp(3.5rem, 7vw, 7rem);
+}
+
+.site-header .desktop-nav {
+  gap: clamp(.15rem, 1vw, 1rem);
+}
+
+.site-header .nav-link {
+  min-height: 44px;
+  padding-inline: .55rem;
+  font-weight: 700;
+}
+
+.btn,
+.intent-list button,
+.support-action,
+.round-link {
+  min-height: 44px;
+}
+
+.btn:focus-visible,
+.intent-list button:focus-visible,
+.support-action:focus-visible,
+.eco-node:focus-visible,
+.tech-tab:focus-visible {
+  outline: 3px solid var(--brand-orange);
+  outline-offset: 3px;
+}
+
+.hero {
+  min-height: min(820px, 100dvh);
+}
+
+.hero-copy h1 {
+  max-inline-size: 11ch;
+  text-wrap: balance;
+}
+
+.hero-copy > p {
+  max-inline-size: 62ch;
+}
+
+.hero-actions {
+  align-items: stretch;
+}
+
+.hero-actions .btn {
+  justify-content: center;
+}
+
+/* Primary routing: the visitor selects a goal before consuming the full inventory. */
+.intent {
+  position: relative;
+  background: var(--surface-primary);
+  border-block: 1px solid var(--border-subtle);
+}
+
+.intent-shell {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.intent-heading {
+  max-inline-size: 34rem;
+}
+
+.intent-heading span,
+.section-top > p,
+.ecosystem-intro > p {
+  overflow-wrap: anywhere;
+}
+
+.intent-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .75rem;
+}
+
+.intent-list button {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  min-inline-size: 0;
+  padding: 1rem;
+  text-align: left;
+  background: var(--journey-surface);
+  border: 1px solid var(--journey-rail);
+  border-radius: var(--radius-md);
+  transition: transform var(--motion-fast), border-color var(--motion-fast), background var(--motion-fast);
+}
+
+.intent-list button strong {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .intent-list button:hover {
+    transform: translateY(-2px);
+    border-color: var(--brand-primary);
+    background: color-mix(in srgb, var(--brand-primary) 9%, var(--surface-primary));
+  }
+}
+
+.intent-list button:active,
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Each major decision area gets a distinct information treatment, not generic cards. */
+.stats,
+.asia-proof,
+.why-qtsc,
+.ecosystem,
+.technology,
+.business,
+.marketplace,
+.directory {
+  scroll-margin-top: 7rem;
+}
+
+.stats + .asia-proof {
+  margin-top: 0;
+}
+
+.why-qtsc .why-layout,
+.ecosystem .ecosystem-grid,
+.business .business-grid {
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+.marketplace,
+.directory {
+  background: linear-gradient(180deg, var(--surface-primary), var(--journey-surface));
+}
+
+.section-bridge {
+  border-inline-start: 3px solid var(--brand-primary);
+  padding-inline-start: 1rem;
+}
+
+.final-cta .final-options button,
+.support-action {
+  min-height: 52px;
+}
+
+@media (max-width: 1024px) {
+  .intent-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: 44rem;
+    min-height: 100dvh;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(3rem, 14vw, 4.8rem);
+    line-height: .94;
+    max-inline-size: 9ch;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .75rem;
+  }
+
+  .intent-shell {
+    padding-block: 2.75rem;
+  }
+
+  .intent-heading h2,
+  .intent-heading span {
+    max-inline-size: 100%;
+    white-space: normal;
+  }
+
+  .intent-list {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+  }
+
+  .intent-list button {
+    min-height: 56px;
+    padding: .875rem 1rem;
+  }
+
+  .section-top h2,
+  .why-intro h2,
+  .ecosystem-intro h2,
+  .market-intro h2 {
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .section-bridge {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intent-list button,
+  .btn {
+    transition: none;
+  }
+}
