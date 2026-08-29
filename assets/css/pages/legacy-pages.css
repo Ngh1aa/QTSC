@@ -28,6 +28,13 @@
 }
 .page-extended .desktop-nav .nav-link::after{display:none!important}
 
+/* Investment — info-band spacing inside the process section. */
+.info-band-tight{margin-top:54px}
+
+/* Services — step-row meta line (đầu mối, thời gian xử lý). */
+.step-row small{display:block;margin-top:14px;padding-top:14px;border-top:1px dashed var(--border-subtle);font-size:12px;color:var(--text-tertiary);line-height:1.65}
+.step-row small strong{color:var(--text-secondary);font-weight:600;margin-right:2px}
+
 /* Contextual hero companions for desktop. */
 @media(min-width:1101px){
   .page-extended .inner-hero>.container-wide{padding-right:clamp(360px,31vw,500px)!important}.page-extended .inner-hero-grid{max-width:760px!important}
