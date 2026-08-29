@@ -1,0 +1,59 @@
+/* QTSC Digital Technology Ecosystem Redesign Layer */
+/* Phase: visual hierarchy + enterprise ecosystem direction */
+
+:root {
+  --qtsc-orange: #EE4623;
+  --qtsc-navy: #0B1F33;
+  --qtsc-surface: #F7F8FA;
+}
+
+.qtsc-ecosystem-title {
+  font-size: clamp(42px, 6vw, 88px);
+  line-height: .98;
+  letter-spacing: -.05em;
+  font-weight: 700;
+}
+
+.qtsc-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: rgba(11,31,51,.12);
+}
+
+.qtsc-proof-grid article {
+  background: #fff;
+  padding: 32px;
+}
+
+.qtsc-proof-grid strong {
+  display:block;
+  font-size:48px;
+  line-height:1;
+  color:var(--qtsc-navy);
+}
+
+.qtsc-ecosystem-map {
+  background: var(--qtsc-navy);
+  color:#fff;
+  padding:64px;
+}
+
+.qtsc-ecosystem-map .node {
+  border:1px solid rgba(255,255,255,.24);
+  padding:20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.qtsc-cta {
+  background:linear-gradient(120deg,#EE4623,#ff8b4f);
+  color:#fff;
+  padding:48px;
+}
+
+@media(max-width:900px){
+ .qtsc-proof-grid{grid-template-columns:repeat(2,1fr)}
+ .qtsc-ecosystem-map{padding:32px}
+}
