@@ -1,0 +1,88 @@
+/* Shared navigation experience contract: task clarity, touch comfort and safe reflow. */
+
+.header-shell {
+  border-color: var(--border-subtle);
+}
+
+.nav-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-link:focus-visible,
+.mega-col a:focus-visible,
+.mobile-acc > button:focus-visible,
+.mobile-acc-panel a:focus-visible {
+  outline: 3px solid var(--brand-primary);
+  outline-offset: 3px;
+}
+
+.mega-col a {
+  min-height: 44px;
+  align-items: center;
+}
+
+.mega-feature {
+  border: 1px solid var(--border-subtle);
+}
+
+.mobile-menu {
+  padding-top: env(safe-area-inset-top, 0);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.mobile-menu-head {
+  min-height: 72px;
+  height: auto;
+}
+
+.mobile-menu-content {
+  padding: var(--space-4) var(--space-5) calc(var(--space-20) + env(safe-area-inset-bottom, 0));
+}
+
+.mobile-acc > button {
+  min-height: 52px;
+  padding: var(--space-3) 0;
+  font-size: var(--type-body-lg);
+  font-weight: 700;
+}
+
+.mobile-acc-panel {
+  gap: 2px;
+}
+
+.mobile-acc-panel a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) 0;
+}
+
+.mobile-menu-foot {
+  position: sticky;
+  bottom: 0;
+  padding: var(--space-3) var(--space-5) calc(var(--space-3) + env(safe-area-inset-bottom, 0));
+  background: rgba(255,255,255,.97);
+  border-top: 1px solid var(--border-subtle);
+  backdrop-filter: blur(12px);
+}
+
+@media (max-width: 900px) {
+  .menu-trigger,
+  .icon-action,
+  .lang-action {
+    min-width: 44px;
+  }
+
+  .mobile-menu.open {
+    box-shadow: -16px 0 48px rgba(23,25,26,.14);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mega-col a:hover {
+    color: var(--brand-deep);
+    background: var(--brand-gradient-soft);
+  }
+}
