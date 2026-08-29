@@ -1,4 +1,4 @@
-name: Sync UIUX V5 Skills
+name: Sync UIUX Skills
 
 on:
   push:
@@ -6,48 +6,24 @@ on:
       - '.uiux-profile.json'
       - '.github/workflows/sync-uiux-skills.yml'
   workflow_dispatch:
+    inputs:
+      source_ref:
+        description: 'skills_UIUX branch, tag, or commit'
+        required: false
+        default: 'main'
+        type: string
+  repository_dispatch:
+    types: [skills-uiux-release]
   schedule:
     - cron: '17 3 * * 1'
 
 permissions:
   contents: write
-
-concurrency:
-  group: uiux-skills-${{ github.ref }}
-  cancel-in-progress: true
+  pull-requests: write
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout QTSC
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Fetch latest skills_UIUX
-        run: git clone --depth=1 https://github.com/Ngh1aa/skills_UIUX.git /tmp/skills_UIUX
-
-      - name: Resolve and install project skills
-        run: python /tmp/skills_UIUX/scripts/install-project.py "$GITHUB_WORKSPACE"
-
-      - name: Validate synchronized UI/UX skill contract
-        run: python scripts/validate-v2.py
-
-      - name: Commit synchronized skills when changed
-        shell: bash
-        run: |
-          if git diff --quiet -- .claude/skills && [ -z "$(git status --porcelain -- .claude/skills)" ]; then
-            echo "UIUX skills are already current."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .claude/skills
-          git commit -m "chore: sync skills_UIUX V5"
-          git push origin HEAD:"${GITHUB_REF_NAME}"
+    uses: Ngh1aa/skills_UIUX/.github/workflows/sync-project-skills.yml@main
+    with:
+      source_ref: ${{ inputs.source_ref || github.event.client_payload.source_ref || 'main' }}
+    secrets: inherit
