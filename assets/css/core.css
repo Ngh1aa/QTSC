@@ -30,7 +30,7 @@ img{max-width:100%}
 .reveal.in{opacity:1;transform:none}
 
 /* Header */
-.site-header{position:fixed;z-index:1000;left:0;right:0;top:0;background:rgba(255,255,255,.97);border-bottom:1px solid rgba(20,20,20,.09);backdrop-filter:blur(16px);transition:box-shadow var(--motion-normal) var(--ease-standard)}
+.site-header{position:fixed;z-index:1000;left:env(safe-area-inset-left,0);right:env(safe-area-inset-right,0);top:env(safe-area-inset-top,0);background:rgba(255,255,255,.97);border-bottom:1px solid rgba(20,20,20,.09);backdrop-filter:blur(16px);transition:box-shadow var(--motion-normal) var(--ease-standard)}
 .header-shell{height:76px;display:flex;align-items:center;width:min(calc(100% - 48px),var(--container));margin:auto;padding:0;background:transparent;border:0;border-radius:0;color:var(--text-primary);box-shadow:none;transition:height var(--motion-normal) var(--ease-standard)}
 .site-header.scrolled{box-shadow:0 10px 32px rgba(23,25,26,.07)}
 .site-header.scrolled .header-shell,.site-header.mega-open .header-shell{height:68px;background:transparent}
@@ -42,13 +42,14 @@ img{max-width:100%}
 .desktop-nav{display:flex;gap:22px;margin:auto}
 .nav-link{border:0;background:none;padding:25px 0;font-size:12px;font-weight:600;white-space:nowrap;position:relative;color:#313438;text-decoration:none}
 .nav-link:after{content:"";position:absolute;left:0;right:100%;bottom:18px;height:2px;background:var(--brand-red);transition:right var(--motion-fast)}
-.nav-link:hover:after,.nav-link.active:after{right:0}
+.nav-link:hover:after,.nav-link.active:after,.nav-link[aria-current="page"]:after{right:0}
+.nav-link[aria-current="page"]{color:var(--brand-deep);font-weight:700}
 .header-actions{display:flex;align-items:center;gap:6px}
 .icon-action,.lang-action,.menu-trigger{height:44px;border:0;background:transparent;color:inherit}
 .icon-action{display:flex;align-items:center;gap:7px;padding:0 10px}
 .icon-action span{font-size:0;width:19px;height:19px;background:currentColor;mask:var(--icon-search) center/contain no-repeat;-webkit-mask:var(--icon-search) center/contain no-repeat}
 .icon-action em{font-size:12px;font-style:normal}
-.lang-action{font-weight:700;font-size:12px;width:40px}
+.lang-action{font-weight:700;font-size:12px;width:40px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
 .btn{border:0;min-height:48px;padding:0 19px;border-radius:var(--radius-md);display:inline-flex;gap:10px;align-items:center;justify-content:center;font-size:13px;font-weight:600;text-decoration:none;transition:var(--motion-fast) var(--ease-standard)}
 .btn>span{font-size:0;width:17px;height:17px;background:currentColor;mask:var(--icon-arrow) center/contain no-repeat;-webkit-mask:var(--icon-arrow) center/contain no-repeat}
 .btn-brand{background:var(--brand-red);color:var(--text-inverse);box-shadow:none}
@@ -76,7 +77,7 @@ img{max-width:100%}
 .round-link:hover{background:#fff;color:#111;transform:translateY(-2px)}
 
 /* Footer */
-.site-footer{background:var(--surface-dark);color:var(--text-inverse);padding:76px 0 28px}
+.site-footer{background:var(--surface-dark);color:var(--text-inverse);padding:76px 0 calc(28px + env(safe-area-inset-bottom,0))}
 .footer-main{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:60px}
 .footer-brand img{content:url("https://www.qtsc.com.vn/uploads/files/2022/03/08/logo-QTSC-2022-phien-ban-ngang-02.jpg");width:160px;background:#fff;padding:4px;margin-bottom:26px}
 .footer-brand p{font-size:14px;color:#b3b5b6;line-height:1.7}

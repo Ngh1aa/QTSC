@@ -25,7 +25,8 @@
       link.href = primaryNavigation[index][1];
       link.removeAttribute('aria-current');
     });
-    const currentIndex = routeSections[document.body.dataset.page];
+    const routeKey = location.pathname.split('/').pop()?.replace(/\.html$/,'') || document.body.dataset.page || 'home';
+    const currentIndex = routeSections[routeKey] ?? routeSections[document.body.dataset.page];
     if (Number.isInteger(currentIndex)) links[currentIndex]?.setAttribute('aria-current','page');
   });
 

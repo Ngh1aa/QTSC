@@ -48,3 +48,26 @@
 - **Trade-off:** One more expansion action for secondary links.
 - **How to verify:** 320/375/414/768px reflow, target-size and keyboard/touch checks.
 
+## Decision: Resolve every route to one shared site shell
+
+- **User task:** Recognise the current location and recover to another high-value route from any page.
+- **Law applied:** Jakob's Law, consistency and recognition over recall.
+- **Rationale:** One six-group navigation, language action, contact action and footer prevents the mental model from changing between templates.
+- **Trade-off:** Specialist pages cannot invent a different top-level navigation even when their local content is unique.
+- **How to verify:** Compare header/footer DOM and active parent state across every HTML route; run route smoke and keyboard navigation.
+
+## Decision: Keep five shared goal shortcuts on inner entry pages
+
+- **User task:** Recover quickly when a deep-linked page is not the right route for the visitor's need.
+- **Law applied:** Hick's Law and recognition over recall.
+- **Rationale:** Five stable outcome labels are easier to scan than the complete sitemap and match the high-value journeys already defined for Home.
+- **Trade-off:** The rail adds vertical space below the hero; lower-priority tasks remain in global navigation and search.
+- **How to verify:** First-click testing, shortcut progression analytics and mobile reflow at 320–768px.
+
+## Decision: Merge conflict recovery preserves the richer journey branch
+
+- **User task:** Read one coherent page and reach a relevant next action without duplicate content.
+- **Heuristic applied:** Consistency and standards, error prevention and aesthetic-minimalist design.
+- **Rationale:** The enriched branch contains dated proof, related-route transitions and contextual final actions; the newer shared shell is retained separately as the global component contract.
+- **Trade-off:** The merge is intentionally reconciled rather than selecting either parent unchanged.
+- **How to verify:** Zero conflict markers, one document/body/main/H1/site shell per route and deployed DOM inspection.

@@ -1,5 +1,13 @@
 # QTSC UI Improvement — 2026-08-29
 
+## Continuation — 2026-08-30
+
+- Removed committed merge-conflict artefacts from 26 HTML files; each route now contains one coherent document instead of two concatenated versions.
+- Preserved the journey-rich page bodies while standardising the latest six-group header, contact action, official English link and footer across all public routes.
+- Enabled the shared route/experience extension sitewide so deep-linked users receive stable active navigation, five goal shortcuts, image-loading defaults and the intended inner-page polish layer.
+- Added safe-area-aware shell/footer behavior, visible active navigation and a balanced odd proof cell on mobile.
+- Added a repository-backed UX review and updated the decision log with evidence, trade-offs and verification requirements.
+
 ## Scope changed
 
 - Rebuilt Home as a seven-block journey surface instead of a 17-section content inventory.
@@ -47,4 +55,3 @@
 - Validate the six-group taxonomy through tree testing and query logs.
 - Confirm data owners, source dates and completeness for Directory/Marketplace.
 - Run rendered viewport, keyboard, screen-reader, performance and deployed SEO checks before production claims.
-

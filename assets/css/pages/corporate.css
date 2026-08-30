@@ -44,7 +44,7 @@ body,button,input,select,textarea{letter-spacing:-.005em}
 .micro-label{letter-spacing:.13em;text-transform:uppercase;font-size:11px}
 
 /* Header: calmer VAS-like editorial glass */
-.site-header{top:10px}
+.site-header{top:max(10px,env(safe-area-inset-top,0))}
 .header-shell{min-height:72px;border-radius:10px!important;background:rgba(255,255,255,.955)!important;border:1px solid rgba(42,26,23,.09)!important;box-shadow:0 12px 38px rgba(42,26,23,.07)!important;backdrop-filter:blur(18px) saturate(1.1)}
 .site-header.scrolled .header-shell,.site-header.mega-open .header-shell{background:rgba(255,255,255,.985)!important}
 .nav-link{border-radius:5px;padding-left:10px;padding-right:10px}

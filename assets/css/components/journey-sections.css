@@ -63,6 +63,7 @@
   .proof-rail .proof-cell{width:100%}
   .proof-rail .proof-cell:nth-child(2){border-right:0}
   .proof-rail .proof-cell:nth-child(n+3){border-top:1px solid var(--border-subtle)}
+  .proof-rail .proof-cell:last-child:nth-child(odd){grid-column:1/-1;border-right:0}
 }
 
 /* ─────────────────────────────────────────────────────────────
