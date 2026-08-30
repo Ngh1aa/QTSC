@@ -65,10 +65,11 @@ html body.inner-page .detail-meta span{background:rgba(255,255,255,.12)!importan
     box-sizing:border-box;
     padding:30px 30px 24px;
     border:1px solid rgba(255,255,255,.22);
-    border-radius:16px;
+    border-radius:0!important;
     background:
       radial-gradient(circle at 84% 18%,rgba(255,255,255,.16),transparent 30%),
       rgba(255,255,255,.075);
+
     box-shadow:0 24px 60px rgba(78,16,20,.16);
     backdrop-filter:blur(6px);
     -webkit-backdrop-filter:blur(6px);

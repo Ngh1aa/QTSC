@@ -68,13 +68,14 @@ html body.inner-page .desktop-nav .nav-link::after{display:none !important}
 html body .site-header .mega-menu,
 html body.inner-page .site-header .mega-menu{
   top:calc(100% + 8px) !important;
-  border-radius:12px !important;
+  border-radius:0 !important;
   overflow:visible !important;
   border:1px solid rgba(42,26,23,.09) !important;
   background:#fff !important;
   background-image:none !important;
   box-shadow:0 24px 60px rgba(42,26,23,.12) !important;
 }
+
 html body .site-header .mega-menu::before,
 html body.inner-page .site-header .mega-menu::before{
   content:"" !important;

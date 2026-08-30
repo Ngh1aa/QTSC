@@ -72,11 +72,17 @@
   --section-md:80px;
   --section-sm:56px;
 
-  /* Radius */
-  --radius-sm:6px;
-  --radius-md:10px;
-  --radius-lg:16px;
-  --radius-pill:999px;
+  /* Radius — Square architectural design */
+  --radius-sm:0px;
+  --radius-md:0px;
+  --radius-lg:0px;
+  --radius-pill:0px;
+  --radius-card:0px;
+
+  /* Image Overlay & Real Photo Background Tokens */
+  --brand-media-overlay:linear-gradient(135deg,rgba(var(--brand-deep-rgb),.28) 0%,rgba(var(--brand-primary-rgb),.20) 50%,rgba(var(--brand-light-rgb),.14) 100%);
+  --brand-dark-hero-bg:linear-gradient(135deg,rgba(20,8,10,.88) 0%,rgba(169,31,44,.84) 50%,rgba(238,70,35,.78) 100%),url("https://www.qtsc.com.vn/uploads/files/2021/03/14/1-goc-Cong-vien-phan-mem-Quang-Trung-02.jpg");
+  --brand-dark-footer-bg:linear-gradient(135deg,rgba(17,17,17,.90) 0%,rgba(169,31,44,.86) 55%,rgba(204,45,49,.82) 100%),url("https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg");
 
   /* Elevation */
   --shadow-dropdown:0 14px 42px rgba(23,25,26,.08),0 3px 14px rgba(var(--brand-primary-rgb),.05);
@@ -117,13 +123,17 @@
   --ease:var(--ease-standard);
 }
 
-/* Footer follows the shared dark surface exactly. */
+/* Footer: real QTSC campus photography + brand red-orange gradient overlay + square border */
 html body .site-footer{
-  background:#111111!important;
   background-color:#111111!important;
-  background-image:none!important;
+  background-image:linear-gradient(135deg,rgba(17,17,17,.91) 0%,rgba(169,31,44,.86) 55%,rgba(204,45,49,.82) 100%),url("https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg")!important;
+  background-size:cover!important;
+  background-position:center bottom!important;
+  background-repeat:no-repeat!important;
   color:#fff!important;
   box-shadow:none!important;
+  border-top:1px solid rgba(255,255,255,.18)!important;
+  border-radius:0!important;
 }
 html body .site-footer::before,
 html body .site-footer::after{
@@ -136,7 +146,7 @@ html body .site-footer .footer-col a,
 html body .site-footer .footer-col button,
 html body .site-footer .footer-bottom,
 html body .site-footer .footer-bottom a{
-  color:rgba(255,255,255,.78)!important;
+  color:rgba(255,255,255,.84)!important;
 }
 html body .site-footer .footer-col strong,
 html body .site-footer .footer-col a:hover,
@@ -146,5 +156,5 @@ html body .site-footer .footer-bottom a:hover{
   text-shadow:none!important;
 }
 html body .site-footer .footer-bottom{
-  border-top-color:rgba(255,255,255,.16)!important;
+  border-top-color:rgba(255,255,255,.20)!important;
 }

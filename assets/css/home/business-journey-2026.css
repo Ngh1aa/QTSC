@@ -23,8 +23,8 @@
 .page-home .campus-copy>p,
 .page-home .decision-heading>p,
 .page-home .final-layout>div:last-child>p{margin:0;color:var(--text-secondary);font-size:clamp(16px,1.25vw,19px);line-height:1.72;max-width:580px}
-.page-home .micro-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-.page-home .pill{display:inline-flex;align-items:center;min-height:30px;padding:0 10px;border:1px solid var(--border-default);border-radius:var(--radius-pill);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.page-home .pill{display:inline-flex;align-items:center;min-height:30px;padding:0 10px;border:1px solid var(--border-default);border-radius:0!important;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+
 
 /* HERO ------------------------------------------------------------- */
 .page-home .home-hero{position:relative;min-height:100svh;padding:76px 0 0;background:#111;color:#fff;overflow:hidden}
@@ -127,8 +127,9 @@
 .page-home .resource-rail a:hover strong{color:var(--brand-primary)}
 
 /* FINAL CONNECTION ------------------------------------------------- */
-.page-home .home-final{background:#111;color:#fff;padding:clamp(88px,10vw,144px) 0}
+.page-home .home-final{background:var(--brand-dark-footer-bg);border-top:1px solid var(--border-subtle);color:#fff;padding:clamp(88px,10vw,144px) 0}
 .page-home .home-final:before{content:"";position:absolute;width:min(70vw,980px);aspect-ratio:1;right:-28%;top:-65%;border-radius:50%;background:radial-gradient(circle,rgba(var(--brand-primary-rgb),.34) 0%,rgba(var(--brand-primary-rgb),.08) 32%,transparent 68%)}
+
 .page-home .final-network{position:absolute;right:7%;top:16%;width:250px;height:250px;border:1px solid rgba(255,255,255,.11);border-radius:50%}
 .page-home .final-network:before,.page-home .final-network:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.09);border-radius:50%}.page-home .final-network:before{inset:20%}.page-home .final-network:after{inset:39%}
 .page-home .final-network i{position:absolute;width:7px;height:7px;background:var(--brand-primary);border-radius:50%}.page-home .final-network i:nth-child(1){left:11%;top:42%}.page-home .final-network i:nth-child(2){right:14%;top:22%}.page-home .final-network i:nth-child(3){right:25%;bottom:9%}

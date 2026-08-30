@@ -91,7 +91,7 @@
   align-items:center;
   gap:10px;
   padding:7px 12px;
-  border-radius:999px;
+  border-radius:0!important;
   background:rgba(var(--brand-primary-rgb),.08);
   color:var(--brand-deep);
   font-size:11px;
@@ -99,9 +99,10 @@
   letter-spacing:.12em;
   text-transform:uppercase;
   margin-bottom:18px;
+  border:1px solid var(--border-subtle);
 }
 .qtsc-journey-pill i{
-  width:6px;height:6px;border-radius:50%;
+  width:6px;height:6px;border-radius:0!important;
   background:var(--brand-primary);
   box-shadow:0 0 0 4px rgba(var(--brand-primary-rgb),.18);
 }
@@ -123,7 +124,7 @@
   min-height:44px;
   padding:0 16px;
   border:1px solid var(--border-default);
-  border-radius:999px;
+  border-radius:0!important;
   background:#fff;
   color:var(--text-primary);
   font-size:12px;
@@ -196,6 +197,7 @@
    ───────────────────────────────────────────────────────────── */
 .inner-page a.btn,.inner-page button.btn{
   min-height:48px;
+  border-radius:0!important;
   transition:
     background var(--motion-fast) var(--ease-standard),
     transform var(--motion-fast) var(--ease-standard),
@@ -203,6 +205,7 @@
 }
 .inner-page a.btn:active,.inner-page button.btn:active{transform:translateY(1px)}
 .inner-page .card-link,.inner-page .ecosystem-link,.inner-page .pathway-item{
+  border-radius:0!important;
   transition:
     background var(--motion-fast) var(--ease-standard),
     transform var(--motion-fast) var(--ease-standard),
@@ -216,8 +219,9 @@
 .inner-page :where(a,button,input,select,textarea):focus-visible{
   outline:2px solid var(--brand-red);
   outline-offset:3px;
-  border-radius:var(--radius-sm);
+  border-radius:0!important;
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    7. Accessible dark band — contrast-safe white text on brand-CTA

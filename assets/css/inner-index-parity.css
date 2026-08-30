@@ -73,7 +73,8 @@ html body.inner-page .extended-card.featured{
   min-height:0!important;
   height:auto!important;
   padding:22px!important;
-  border-radius:16px!important;
+  border-radius:0!important;
+  border:1px solid var(--border-subtle)!important;
   justify-content:flex-start!important;
   background-color:#fff!important;
 }
@@ -111,7 +112,8 @@ html body.inner-page .data-card{
   min-height:0!important;
   height:auto!important;
   padding:22px!important;
-  border-radius:16px!important;
+  border-radius:0!important;
+  border:1px solid var(--border-subtle)!important;
 }
 html body.inner-page .data-card h2{
   margin:20px 0 9px!important;
@@ -134,8 +136,10 @@ html body.inner-page .resource-card,
 html body.inner-page .newsletter-hero-card{
   min-height:0!important;
   height:auto!important;
-  border-radius:16px!important;
+  border-radius:0!important;
+  border:1px solid var(--border-subtle)!important;
 }
+
 html body.inner-page .contact-panel{padding:24px!important}
 html body.inner-page .contact-panel h2{margin:22px 0 12px!important;font-size:26px!important}
 html body.inner-page .newsletter-hero-card{padding:24px!important}

@@ -45,10 +45,12 @@
   min-height:0!important;
   margin:0!important;
   padding:15px 18px!important;
-  border-radius:14px!important;
+  border-radius:0!important;
+  border:1px solid var(--border-subtle)!important;
   font-size:13px!important;
   line-height:1.55!important;
 }
+
 
 /* Keep other homepage card families restrained as well. */
 .support-action{min-height:118px!important}

@@ -1,14 +1,15 @@
 /* Marketplace — product discovery cards, distinct from company directory */
 .page-marketplace .pill-tabs{margin-top:0}.page-marketplace .inner-section>.container-wide{max-width:1180px}
 .page-marketplace .entity-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;border-top:0}
-.page-marketplace .entity-card{cursor:pointer;min-height:190px;padding:22px;border:1px solid var(--border-subtle);border-radius:16px;background:linear-gradient(150deg,#fff 0%,#fffaf7 100%);display:grid;grid-template-columns:60px 1fr 28px;grid-template-rows:auto 1fr auto;gap:12px 15px;align-items:start;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(23,25,26,.035)}
-.page-marketplace .entity-card:before{content:"";position:absolute;right:-48px;bottom:-72px;width:155px;height:155px;border-radius:50%;background:radial-gradient(circle,rgba(var(--brand-primary-rgb),.11),transparent 68%)}
-.page-marketplace .entity-card .entity-mark{grid-row:1/3;width:56px;height:56px;border-radius:14px;background:var(--brand-gradient);color:#fff;box-shadow:0 9px 24px rgba(var(--brand-red-rgb),.14)}
+.page-marketplace .entity-card{cursor:pointer;min-height:190px;padding:22px;border:1px solid var(--border-subtle);border-radius:0!important;background:linear-gradient(150deg,#fff 0%,#fffaf7 100%);display:grid;grid-template-columns:60px 1fr 28px;grid-template-rows:auto 1fr auto;gap:12px 15px;align-items:start;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(23,25,26,.035)}
+.page-marketplace .entity-card:before{content:"";position:absolute;right:-48px;bottom:-72px;width:155px;height:155px;border-radius:0!important;background:radial-gradient(circle,rgba(var(--brand-primary-rgb),.11),transparent 68%)}
+.page-marketplace .entity-card .entity-mark{grid-row:1/3;width:56px;height:56px;border-radius:0!important;background:var(--brand-gradient);color:#fff;box-shadow:0 9px 24px rgba(var(--brand-red-rgb),.14)}
 .page-marketplace .entity-card h3{font-size:19px;line-height:1.35;margin:2px 0 7px}
 .page-marketplace .entity-card>p{font-size:12px;color:var(--text-secondary)}
 .page-marketplace .entity-card footer{grid-column:2/4;width:100%;align-self:end;margin-top:auto;padding-top:12px;padding-right:16px;box-sizing:border-box}
-.page-marketplace .entity-card footer span:first-child{display:inline-flex;padding:6px 9px;border:1px solid var(--border-brand);border-radius:999px;background:#fff;color:var(--brand-deep)}
+.page-marketplace .entity-card footer span:first-child{display:inline-flex;padding:6px 9px;border:1px solid var(--border-brand);border-radius:0!important;background:#fff;color:var(--brand-deep)}
 .page-marketplace .entity-card:hover{padding:22px;transform:translateY(-4px);border-color:var(--border-brand);background:#fff;box-shadow:0 18px 45px rgba(var(--brand-deep-rgb),.09)}
 .page-marketplace .entity-card:hover h3{color:var(--brand-deep)}
+
 @media(max-width:760px){.page-marketplace .entity-list{grid-template-columns:1fr}}
 @media(max-width:620px){.page-marketplace .entity-card{min-height:170px;padding:18px;grid-template-columns:52px 1fr 24px}.page-marketplace .entity-card:hover{padding:18px}.page-marketplace .entity-card .entity-mark{width:48px;height:48px}.page-marketplace .entity-card footer{padding-right:16px}}

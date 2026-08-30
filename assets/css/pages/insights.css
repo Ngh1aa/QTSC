@@ -1,5 +1,5 @@
 /* QTSC UI/UX — Insights page */
-.article-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:16px}.article-feature{min-height:540px;position:relative;overflow:hidden;color:#fff}.article-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62);content:url("https://www.qtsc.com.vn/uploads/files/2026/05/08/tuan-le-CNS-QTSC-01.jpg")}.article-feature div{position:absolute;left:30px;right:30px;bottom:30px}.article-feature small,.article-card small{font-size:12px;text-transform:uppercase;letter-spacing:.08em}.article-feature h2{font-size:var(--type-h2);line-height:1.14}.article-feature a,.article-card a{font-size:13px;text-decoration:none}.article-stack{display:grid;grid-template-rows:repeat(2,1fr);gap:16px}.article-card{background:var(--surface-soft);padding:28px;display:flex;flex-direction:column}.article-card h3{font-size:23px;margin-top:22px}.article-card a{margin-top:auto}
+.article-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:16px}.article-feature{min-height:540px;position:relative;overflow:hidden;color:#fff;border-radius:0!important;border:1px solid var(--border-subtle)}.article-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62);border-radius:0!important;content:url("https://www.qtsc.com.vn/uploads/files/2026/05/08/tuan-le-CNS-QTSC-01.jpg")}.article-feature div{position:absolute;left:30px;right:30px;bottom:30px}.article-feature small,.article-card small{font-size:12px;text-transform:uppercase;letter-spacing:.08em}.article-feature h2{font-size:var(--type-h2);line-height:1.14}.article-feature a,.article-card a{font-size:13px;text-decoration:none}.article-stack{display:grid;grid-template-rows:repeat(2,1fr);gap:16px}.article-card{background:var(--surface-soft);padding:28px;display:flex;flex-direction:column;border-radius:0!important;border:1px solid var(--border-subtle)}.article-card h3{font-size:23px;margin-top:22px}.article-card a{margin-top:auto}
 
 /* Review fix: replace the loose pill cluster with a clear, scrollable category tab bar. */
 .page-insights .pill-tabs{display:flex;align-items:center;gap:0;margin:0 0 32px;border-bottom:1px solid var(--border-subtle);overflow-x:auto;scrollbar-width:none;white-space:nowrap}
@@ -8,8 +8,9 @@
 .page-insights .pill-tabs button:first-child{padding-left:0}
 .page-insights .pill-tabs button:hover{color:var(--brand-deep)!important}
 .page-insights .pill-tabs button.active{background:transparent!important;color:var(--brand-red)!important;box-shadow:none!important}
-.page-insights .pill-tabs button.active::after{content:"";position:absolute;left:18px;right:18px;bottom:-1px;height:3px;background:var(--brand-gradient);border-radius:999px}
+.page-insights .pill-tabs button.active::after{content:"";position:absolute;left:18px;right:18px;bottom:-1px;height:3px;background:var(--brand-gradient);border-radius:0!important}
 .page-insights .pill-tabs button:first-child.active::after{left:0}
+
 
 /* Filtering should reflow results instead of leaving an empty first column. */
 .article-grid.is-filtered{grid-template-columns:1fr}
