@@ -164,11 +164,12 @@ body,button,input,select,textarea{letter-spacing:-.005em}
 .form-field textarea{min-height:116px}
 .connect-drawer,.search-dialog{border-radius:14px 0 0 14px}
 
-/* Footer: strong brand close, no extra chrome */
-.site-footer{background:linear-gradient(145deg,#251210,#4a1716 55%,#6f1c19 100%)!important}
+/* Footer: strong brand close, canonical dark surface #111111 */
+.site-footer{background:#111111!important;background-color:#111111!important;color:#fff!important}
 .footer-main{gap:70px}
-.footer-col a{opacity:.84;transition:opacity .2s ease,transform .2s ease}
-.footer-col a:hover{opacity:1;transform:translateX(2px)}
+.footer-col a{opacity:.88;transition:opacity .2s ease,transform .2s ease;color:rgba(255,255,255,.82)!important}
+.footer-col a:hover{opacity:1;transform:translateX(2px);color:#fff!important}
+
 
 /* Tablet */
 @media(max-width:1180px){
