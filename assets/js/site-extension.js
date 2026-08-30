@@ -52,6 +52,15 @@
   if (document.body.classList.contains('page-insights')) loadScript('assets/js/data/insights-data.js');
   if (document.body.classList.contains('page-innovation-centers') || document.body.classList.contains('page-chain') || document.body.classList.contains('page-services')) loadScript('assets/js/data/legacy-detail-extension.js');
 
+  /* Experience polish: opt-in markers (data-journey-pill, data-trust, data-audience-tabs)
+     are honoured automatically by experience-polish.js. We always load it so the
+     intent rail under the hero is available on every page that already ships with
+     `.inner-hero` or `.home-hero`. Skipped on the homepage itself, which already has
+     its own top-task dock. */
+  if (!document.body.classList.contains('page-home') && !document.body.classList.contains('qtsc-home')) {
+    loadScript('assets/js/experience-polish.js');
+  }
+
   function patchMega(root) {
     if (!root || root.dataset.legacyExtended === '1') return;
     root.querySelectorAll('a').forEach(a => {

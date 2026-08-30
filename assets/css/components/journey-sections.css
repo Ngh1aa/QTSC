@@ -1,0 +1,409 @@
+/* QTSC Journey Section Archetypes — promoted from per-page work.
+   Used by ≥3 inner pages. Single source of truth for:
+   - .proof-rail        — KPI/số liệu sau hero (visual-direction "editorial proof rail")
+   - .decision-grid     — lưới so sánh dạng bảng (Investor/Tenant persona)
+   - .ecosystem-strip   — dải ngang "tiếp tục hành trình" sang trang ngang hàng
+   - .cta-panel         — panel cuối trang với heading ngắn + 1-2 CTA
+*/
+
+/* ─────────────────────────────────────────────────────────────
+   .proof-rail  — dải 5 KPI ngay sau hero
+   ───────────────────────────────────────────────────────────── */
+.proof-rail{
+  background:var(--surface-soft);
+  border-top:1px solid var(--border-subtle);
+  border-bottom:1px solid var(--border-subtle);
+  padding:54px 0;
+}
+.proof-rail .container-wide{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:0;
+}
+.proof-rail .proof-cell{
+  padding:0 24px;
+  border-right:1px solid var(--border-subtle);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  min-height:96px;
+  justify-content:center;
+}
+.proof-rail .proof-cell:last-child{border-right:0}
+.proof-rail .proof-cell>span{
+  font-size:11px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--text-tertiary);
+  font-weight:600;
+}
+.proof-rail .proof-cell strong{
+  font-size:clamp(28px,2.6vw,40px);
+  font-weight:500;
+  letter-spacing:-.03em;
+  line-height:1;
+  color:var(--text-primary);
+}
+.proof-rail .proof-cell em{
+  font-style:normal;
+  font-size:13px;
+  color:var(--text-secondary);
+  line-height:1.55;
+}
+.proof-rail.compact .container-wide{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+@media(max-width:1100px){
+  .proof-rail .container-wide{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .proof-rail .proof-cell:nth-child(3){border-right:0}
+  .proof-rail .proof-cell{padding:18px 16px;min-height:auto}
+  .proof-rail .proof-cell:nth-child(n+4){border-top:1px solid var(--border-subtle)}
+}
+@media(max-width:680px){
+  .proof-rail .container-wide{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .proof-rail .proof-cell{width:100%}
+  .proof-rail .proof-cell:nth-child(2){border-right:0}
+  .proof-rail .proof-cell:nth-child(n+3){border-top:1px solid var(--border-subtle)}
+}
+
+/* ─────────────────────────────────────────────────────────────
+   .decision-grid  — Investor/Tenant persona so sánh nhanh
+   Dùng cho các trang có nhiều lựa chọn ngang hàng (lĩnh vực,
+   gói ưu đãi, tiêu chuẩn, tiện ích theo nhóm)
+   ───────────────────────────────────────────────────────────── */
+.decision-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1px;
+  background:var(--border-subtle);
+  border:1px solid var(--border-subtle);
+}
+.decision-cell{
+  background:#fff;
+  padding:34px 32px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  min-height:220px;
+  position:relative;
+  transition:background var(--motion-fast) var(--ease-standard);
+}
+.decision-cell:hover{background:var(--surface-soft)}
+.decision-cell>span{
+  font-size:11px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--brand-red);
+  font-weight:700;
+}
+.decision-cell h3,.decision-cell h2{
+  margin:0;
+  font-size:clamp(20px,1.9vw,26px);
+  font-weight:500;
+  letter-spacing:-.025em;
+  line-height:1.25;
+  text-wrap:balance;
+}
+.decision-cell p{margin:0;color:var(--text-secondary);font-size:14px;line-height:1.7}
+.decision-cell .decision-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px dashed var(--border-subtle);
+}
+.decision-cell .decision-meta .chip{
+  font-size:11px;
+  padding:5px 10px;
+  border:1px solid var(--border-default);
+  border-radius:999px;
+  color:var(--text-secondary);
+  background:#fff;
+}
+.decision-cell .decision-meta .chip.brand{
+  border-color:transparent;
+  background:var(--brand-gradient-cta);
+  color:#fff;
+  font-weight:600;
+}
+.decision-cell.featured{
+  background:linear-gradient(140deg,var(--editorial-paper),#fff 65%);
+}
+
+@media(max-width:900px){
+  .decision-grid{grid-template-columns:1fr}
+  .decision-cell{padding:26px 22px;min-height:auto}
+}
+
+/* ─────────────────────────────────────────────────────────────
+   .ecosystem-strip  — dải "tiếp tục hành trình"
+   ───────────────────────────────────────────────────────────── */
+.ecosystem-strip{
+  background:var(--editorial-paper);
+  border-top:1px solid var(--border-subtle);
+  border-bottom:1px solid var(--border-subtle);
+  padding:60px 0;
+}
+.ecosystem-strip .container-wide{display:flex;flex-direction:column;gap:24px}
+.ecosystem-strip .ecosystem-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.ecosystem-strip .ecosystem-head .micro-label{margin:0 0 8px}
+.ecosystem-strip .ecosystem-head h2{
+  margin:0;
+  font-size:clamp(24px,2.4vw,34px);
+  font-weight:500;
+  letter-spacing:-.025em;
+  text-wrap:balance;
+  max-width:680px;
+}
+.ecosystem-strip .ecosystem-track{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1px;
+  background:var(--border-subtle);
+  border:1px solid var(--border-subtle);
+}
+.ecosystem-strip .ecosystem-link{
+  background:#fff;
+  padding:24px 22px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  text-decoration:none;
+  color:inherit;
+  transition:background var(--motion-fast) var(--ease-standard),transform var(--motion-fast) var(--ease-standard);
+  min-height:160px;
+}
+.ecosystem-strip .ecosystem-link:hover{
+  background:var(--surface-soft);
+  transform:translateY(-2px);
+}
+.ecosystem-strip .ecosystem-link>span{
+  font-size:11px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--text-tertiary);
+  font-weight:600;
+}
+.ecosystem-strip .ecosystem-link h3{margin:0;font-size:18px;font-weight:500;letter-spacing:-.02em;line-height:1.3}
+.ecosystem-strip .ecosystem-link p{margin:0;color:var(--text-secondary);font-size:13px;line-height:1.6}
+.ecosystem-strip .ecosystem-link i{font-style:normal;font-size:12px;font-weight:700;color:var(--brand-red);margin-top:auto}
+.ecosystem-strip .ecosystem-head .btn{white-space:nowrap}
+
+@media(max-width:1100px){
+  .ecosystem-strip .ecosystem-track{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ecosystem-strip .ecosystem-link{min-height:140px}
+}
+@media(max-width:600px){
+  .ecosystem-strip .ecosystem-track{grid-template-columns:1fr}
+}
+
+/* ─────────────────────────────────────────────────────────────
+   .cta-panel  — panel cuối trang với heading + 1-2 CTA
+   Thay cho .info-band ở vị trí đóng journey
+   ───────────────────────────────────────────────────────────── */
+.cta-panel{
+  background:var(--surface-dark);
+  color:var(--text-inverse);
+  padding:88px 0;
+}
+.cta-panel .container-wide{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:60px;
+  align-items:end;
+}
+.cta-panel .cta-text .micro-label{
+  color:rgba(255,255,255,.7);
+  margin:0 0 16px;
+}
+.cta-panel .cta-text h2{
+  margin:0 0 18px;
+  font-size:clamp(28px,3vw,44px);
+  font-weight:500;
+  letter-spacing:-.03em;
+  line-height:1.15;
+  text-wrap:balance;
+  color:#fff;
+  max-width:14ch;
+}
+.cta-panel .cta-text p{
+  margin:0;
+  color:rgba(255,255,255,.78);
+  font-size:15px;
+  line-height:1.7;
+  max-width:48ch;
+}
+.cta-panel .cta-actions{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  align-items:flex-start;
+}
+.cta-panel .cta-actions .btn{
+  min-width:220px;
+  justify-content:center;
+}
+.cta-panel .cta-actions .btn-secondary{
+  background:transparent;
+  color:#fff;
+  border-color:rgba(255,255,255,.3);
+}
+.cta-panel .cta-actions .btn-secondary:hover{
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.55);
+  color:#fff;
+}
+.cta-panel .cta-actions .cta-meta{
+  font-size:12px;
+  color:rgba(255,255,255,.6);
+  letter-spacing:.04em;
+  border-top:1px solid rgba(255,255,255,.18);
+  padding-top:18px;
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+}
+.cta-panel .cta-actions .cta-meta a{
+  color:#fff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.32);
+  padding-bottom:2px;
+}
+.cta-panel .cta-actions .cta-meta a:hover{border-color:#fff}
+.cta-panel.compact{padding:64px 0}
+.cta-panel.compact .cta-text h2{font-size:clamp(22px,2.4vw,32px)}
+
+@media(max-width:900px){
+  .cta-panel{padding:64px 0}
+  .cta-panel .container-wide{grid-template-columns:1fr;gap:32px;align-items:flex-start}
+  .cta-panel .cta-actions .btn{width:100%}
+}
+
+/* ─────────────────────────────────────────────────────────────
+   .immersive-hero  — full-bleed image + dark scrim + 1 CTA + proof-rail
+   Family: Immersive (per ui-foundation.md §8)
+   Used by: digitech-center, technology-detail, explore
+   ───────────────────────────────────────────────────────────── */
+.immersive-hero{
+  position:relative;
+  isolation:isolate;
+  min-height:640px;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  overflow:hidden;
+}
+.immersive-hero .immersive-photo{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background-image:var(--immersive-image,url("https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg"));
+  background-size:cover;
+  background-position:center 46%;
+  filter:saturate(.82) contrast(1.05) brightness(.94);
+}
+.immersive-hero .immersive-shade{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    linear-gradient(90deg,rgba(12,12,12,.78) 0%,rgba(12,12,12,.5) 42%,rgba(12,12,12,.18) 78%),
+    linear-gradient(0deg,rgba(0,0,0,.5) 0%,transparent 50%),
+    linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,0) 30%);
+}
+.immersive-hero .immersive-content{
+  position:relative;
+  padding:160px 0 56px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:60px;
+  align-items:end;
+}
+.immersive-hero .breadcrumb{margin-bottom:18px}
+.immersive-hero .breadcrumb a,.immersive-hero .breadcrumb span{color:rgba(255,255,255,.78)}
+.immersive-hero .breadcrumb a:hover{color:#fff}
+.immersive-hero .immersive-text .micro-label{color:rgba(255,255,255,.72);margin:0 0 16px}
+.immersive-hero .immersive-text h1{
+  margin:0;
+  font-size:clamp(40px,5vw,76px);
+  font-weight:500;
+  letter-spacing:-.04em;
+  line-height:.96;
+  color:#fff;
+  text-wrap:balance;
+  max-width:18ch;
+}
+.immersive-hero .immersive-text p.immersive-lead{
+  margin:22px 0 28px;
+  font-size:clamp(16px,1.4vw,19px);
+  line-height:1.55;
+  color:rgba(255,255,255,.86);
+  max-width:46ch;
+}
+.immersive-hero .immersive-actions{display:flex;flex-wrap:wrap;gap:12px}
+.immersive-hero .immersive-actions .btn{min-width:200px;justify-content:center}
+.immersive-hero .immersive-actions .btn-secondary{
+  background:transparent;
+  color:#fff;
+  border-color:rgba(255,255,255,.32);
+}
+.immersive-hero .immersive-actions .btn-secondary:hover{
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  border-color:rgba(255,255,255,.6);
+}
+.immersive-hero .immersive-side{
+  border-left:1px solid rgba(255,255,255,.22);
+  padding-left:30px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  font-size:13px;
+  color:rgba(255,255,255,.78);
+}
+.immersive-hero .immersive-side .side-row{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.immersive-hero .immersive-side .side-row strong{
+  font-size:clamp(24px,2vw,32px);
+  font-weight:500;
+  letter-spacing:-.025em;
+  color:#fff;
+  line-height:1;
+}
+.immersive-hero .immersive-side .side-row span{
+  font-size:11px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+  font-weight:600;
+}
+
+@media(max-width:1100px){
+  .immersive-hero .immersive-content{grid-template-columns:1fr;gap:36px;padding:140px 0 48px}
+  .immersive-hero .immersive-side{
+    border-left:0;
+    border-top:1px solid rgba(255,255,255,.22);
+    padding-left:0;padding-top:18px;
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:32px;
+  }
+  .immersive-hero .immersive-side .side-row{flex:1 1 140px}
+}
+@media(max-width:640px){
+  .immersive-hero{min-height:560px}
+  .immersive-hero .immersive-content{padding:130px 0 40px;gap:28px}
+  .immersive-hero .immersive-text h1{font-size:42px}
+  .immersive-hero .immersive-actions .btn{width:100%}
+}

@@ -9,7 +9,21 @@
       "Bash(sed -i \"s|<input id='companyQuery' type='search' placeholder='Tên doanh nghiệp hoặc lĩnh vực...'>|<input id='companyQuery' type='search' aria-label='Tìm doanh nghiệp' placeholder='Tên doanh nghiệp hoặc lĩnh vực...'>|\" index.html)",
       "Bash(sed -i \"s|<input id='globalSearchInput' type='search' placeholder='Doanh nghiệp, công nghệ, địa điểm, tài liệu...' autocomplete='off'>|<input id='globalSearchInput' type='search' aria-label='Tìm kiếm toàn site' placeholder='Doanh nghiệp, công nghệ, địa điểm, tài liệu...' autocomplete='off'>|\" index.html)",
       "Bash(grep -v ':0$')",
-      "Bash(sort -t: -k2 -rn)"
+      "Bash(sort -t: -k2 -rn)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git stash *)",
+      "Bash(git ls-remote *)",
+      "Bash(python -c ' *)",
+      "Bash(python scripts/validate-uiux-skills.py)",
+      "Bash(python -m http.server 8765)",
+      "Bash(sleep 2 echo \"server PID: $!\" curl -sI http://127.0.0.1:8765/index.html)",
+      "Bash(curl -sI http://127.0.0.1:8765/gradient-system.css)",
+      "Bash(curl -sI http://127.0.0.1:8765/index.html)",
+      "Bash(curl -sI http://127.0.0.1:8765/about.html)",
+      "Bash(curl -sI http://127.0.0.1:8765/assets/css/gradient-system.css)"
     ]
   }
 }
