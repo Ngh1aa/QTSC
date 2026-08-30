@@ -45,7 +45,7 @@ body:not(.inner-page) .final-cta{display:none!important}
 .service-assistant-body{padding:20px}
 .service-question{margin-bottom:18px}
 .service-question:last-of-type{margin-bottom:8px}
-.service-question>label{display:block;font-size:12px;font-weight:700;margin-bottom:9px}
+.service-question-label{display:block;font-size:12px;font-weight:700;margin-bottom:9px}
 .service-options{display:flex;gap:7px;flex-wrap:wrap}
 .service-option{min-height:38px;padding:0 12px;border:1px solid var(--border-subtle);border-radius:999px;background:#fff;font-size:12px;transition:.2s ease}
 .service-option:hover,.service-option.active{background:var(--brand-gradient-cta);border-color:transparent;color:#fff;transform:none}
@@ -54,6 +54,7 @@ body:not(.inner-page) .final-cta{display:none!important}
 .service-result strong{display:block;font-size:18px;line-height:1.35}
 .service-result p{font-size:12px;line-height:1.6;color:var(--text-secondary);margin:7px 0 0;max-width:440px}
 .service-result .btn{min-height:42px;white-space:nowrap}
+.service-result-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
 
 /* Transaction-style action drawer. */
 .service-request-overlay{position:fixed;inset:0;z-index:6000;opacity:0;pointer-events:none;transition:.2s ease}
@@ -83,6 +84,7 @@ body:not(.inner-page) .final-cta{display:none!important}
 .service-request-done i{width:64px;height:64px;border-radius:50%;margin:0 auto 20px;display:grid;place-items:center;background:var(--brand-gradient-cta);color:#fff;font-size:24px;font-style:normal}
 .service-request-done strong{display:block;font-size:23px;margin-bottom:9px}
 .service-request-done p{font-size:13px;line-height:1.65;color:var(--text-secondary);max-width:420px;margin:0 auto 24px}
+.service-request-done-actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
 
 /* Page-specific refinements: direct task areas come before catalogs. */
 .page-office .service-route + .inner-section,
@@ -127,7 +129,7 @@ body:not(.inner-page) .final-cta{display:none!important}
   .service-route{padding:22px 0 28px}
   .service-route-copy h2{font-size:32px}
   .service-progress{gap:5px}.service-progress span{padding:6px 8px}
-  .service-assistant-body{padding:16px}.service-result{grid-template-columns:1fr}.service-result .btn{width:100%}
+  .service-assistant-body{padding:16px}.service-result{grid-template-columns:1fr}.service-result .btn{width:100%}.service-result-actions{display:grid;grid-template-columns:1fr;width:100%}
   .service-request-drawer{padding:22px 18px}.service-request-summary,.service-request-form{grid-template-columns:1fr}.service-request-field,.service-request-field.full,.service-request-actions{grid-column:1}
   .page-services #one-stop .step-list{grid-template-columns:1fr}
   .page-marketplace .inner-searchbar{position:static}

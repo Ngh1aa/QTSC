@@ -6,6 +6,10 @@
   --qtsc-overlay:linear-gradient(118deg,rgba(185,34,47,.94) 0%,rgba(214,53,45,.92) 48%,rgba(var(--brand-primary-rgb),.90) 100%);
   --qtsc-overlay-strong:linear-gradient(105deg,rgba(151,24,40,.96) 0%,rgba(196,43,45,.92) 46%,rgba(var(--brand-primary-rgb),.84) 100%);
   --qtsc-overlay-soft:linear-gradient(118deg,rgba(190,35,46,.88) 0%,rgba(222,57,44,.84) 54%,rgba(241,88,45,.80) 100%);
+  --qtsc-overlay-story:linear-gradient(108deg,rgba(122,15,39,.96) 0%,rgba(177,33,45,.91) 52%,rgba(var(--brand-primary-rgb),.78) 100%);
+  --qtsc-overlay-business:linear-gradient(108deg,rgba(108,28,23,.96) 0%,rgba(178,47,30,.90) 55%,rgba(235,89,35,.76) 100%);
+  --qtsc-overlay-technology:linear-gradient(108deg,rgba(13,17,20,.97) 0%,rgba(54,23,24,.94) 55%,rgba(185,48,31,.76) 100%);
+  --qtsc-overlay-resource:linear-gradient(108deg,rgba(39,29,28,.96) 0%,rgba(92,32,31,.90) 58%,rgba(196,58,35,.72) 100%);
   --qtsc-campus-image:url("https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg");
   --qtsc-campus-image-alt:url("https://www.qtsc.com.vn/uploads/files/2021/03/14/Cong-vien-phan-mem-Quang-Trung-nhin-tu-huong-Quoc-lo-1A.jpg");
   --qtsc-campus-image-story:url("https://www.qtsc.com.vn/uploads/files/2021/03/14/1-goc-Cong-vien-phan-mem-Quang-Trung-02.jpg");
@@ -133,6 +137,40 @@ html body.page-office .inner-hero{
 html body.page-explore .inner-hero{
   background-image:var(--qtsc-overlay),var(--qtsc-campus-image-alt) !important;
   background-position:center 45% !important;
+}
+/* Four tonal families keep the brand recognizable while making the page role
+   legible before the user reads the heading. Content sections remain white. */
+html body.page-about .inner-hero,
+html body.page-chain .inner-hero,
+html body.page-community .inner-hero,
+html body.page-awards .inner-hero,
+html body.page-innovation-centers .inner-hero{
+  background-image:var(--qtsc-overlay-story),var(--qtsc-campus-image-alt) !important;
+}
+html body.page-office .inner-hero,
+html body.page-services .inner-hero,
+html body.page-investment .inner-hero,
+html body.page-incentives .inner-hero,
+html body.page-amenities .inner-hero{
+  background-image:var(--qtsc-overlay-business),var(--qtsc-campus-image) !important;
+}
+html body.page-companies .inner-hero,
+html body.page-marketplace .inner-hero,
+html body.page-telecom .inner-hero,
+html body.page-digitech-center .inner-hero{
+  background-image:var(--qtsc-overlay-technology),var(--qtsc-campus-image-story) !important;
+}
+html body.page-insights .inner-hero,
+html body.page-media-center .inner-hero,
+html body.page-newsletter .inner-hero,
+html body.page-open-data .inner-hero,
+html body.page-resources .inner-hero,
+html body.page-careers .inner-hero,
+html body.page-contact .inner-hero,
+html body.page-policy .inner-hero,
+html body.page-sitemap .inner-hero,
+html body.page-explore .inner-hero{
+  background-image:var(--qtsc-overlay-resource),var(--qtsc-campus-image-alt) !important;
 }
 html body.inner-page .inner-hero h1,
 html body.inner-page .inner-hero p,

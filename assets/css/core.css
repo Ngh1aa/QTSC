@@ -24,7 +24,9 @@ img{max-width:100%}
 .text-link{background:none;border:0;padding:0;display:inline-flex;align-items:center;gap:10px;font-size:var(--type-body-sm);font-weight:600;text-decoration:none}
 .text-link>span{font-size:0;width:18px;height:18px;background:currentColor;mask:var(--icon-right) center/contain no-repeat;-webkit-mask:var(--icon-right) center/contain no-repeat;transition:transform var(--motion-fast)}
 .text-link:hover>span{transform:translateX(4px)}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .62s var(--ease-standard),transform .62s var(--ease-standard)}
+/* Content stays visible by default. Motion must never become a dependency for
+   reading the page when JavaScript, IntersectionObserver or a remote asset fails. */
+.reveal{opacity:1;transform:none;transition:opacity .42s var(--ease-standard),transform .42s var(--ease-standard)}
 .reveal.in{opacity:1;transform:none}
 
 /* Header */
@@ -115,14 +117,14 @@ img{max-width:100%}
 .toast{position:fixed;z-index:5000;bottom:28px;left:50%;transform:translate(-50%,15px);background:var(--surface-dark);color:#fff;padding:12px 18px;border-radius:var(--radius-sm);font-size:12px;opacity:0;pointer-events:none;transition:var(--motion-fast)}.toast.show{opacity:1;transform:translate(-50%,0)}
 
 /* Mobile navigation */
-.mobile-menu{display:none;position:fixed;inset:0;z-index:4000;background:#fff;overflow:auto;transform:translateX(100%);transition:var(--motion-normal) var(--ease-standard)}
-.mobile-menu.open{transform:none}.mobile-menu-head{height:75px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--border-subtle)}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:4000;background:#fff;overflow:auto;transform:translateX(100%);visibility:hidden;transition:transform var(--motion-normal) var(--ease-standard),visibility 0s linear var(--motion-normal)}
+.mobile-menu.open{transform:none;visibility:visible;transition-delay:0s}.mobile-menu-head{height:75px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--border-subtle)}
 .mobile-menu-head .brand-fallback{display:flex}.mobile-menu-content{padding:20px}.mobile-acc{border-bottom:1px solid var(--border-subtle)}
 .mobile-acc>button{width:100%;border:0;background:none;padding:18px 0;display:flex;justify-content:space-between;font-size:18px}
 .mobile-acc-panel{display:none;padding:0 0 14px}.mobile-acc.open .mobile-acc-panel{display:flex;flex-direction:column}.mobile-acc-panel a{text-decoration:none;color:var(--text-secondary);font-size:14px;padding:8px 0}
 .mobile-menu-foot{padding:20px;display:flex;gap:8px}.mobile-menu-foot .btn{flex:1}
 
 @media(max-width:1240px){.desktop-nav{gap:14px}.nav-link{font-size:11px}.header-connect{display:none}}
-@media(max-width:1080px){.desktop-nav,.icon-action em{display:none}.menu-trigger{display:block}.mobile-menu{display:block}.header-shell{width:calc(100% - 32px);height:68px}.site-header.scrolled .header-shell,.site-header.mega-open .header-shell{height:64px}.brand{width:150px}.brand img{width:128px;height:40px}.footer-main{grid-template-columns:2fr 1fr 1fr}.footer-col:last-child{grid-column:2}.search-dialog{padding:30px 24px}.global-results{grid-template-columns:1fr}}
+@media(max-width:1080px){.desktop-nav,.icon-action em{display:none}.menu-trigger{display:block}.mobile-menu{display:block}.header-shell{width:calc(100% - 32px);height:68px}.site-header.scrolled .header-shell,.site-header.mega-open .header-shell{height:64px}.brand{width:150px}.brand img{width:128px;height:40px}.footer-main{grid-template-columns:repeat(2,minmax(0,1fr));gap:42px}.footer-brand{grid-column:1/-1}.footer-col:last-child{grid-column:auto}.search-dialog{padding:30px 24px}.global-results{grid-template-columns:1fr}}
 @media(max-width:620px){.header-actions{gap:0}.lang-action{display:block}.footer-main{grid-template-columns:1fr 1fr;gap:38px}.footer-brand{grid-column:1/-1}.footer-col:last-child{grid-column:auto}.footer-bottom{flex-direction:column;gap:8px}.search-dialog h2,.connect-drawer h2{font-size:36px}.global-search-field input{font-size:16px}.global-search-field kbd{display:none}.connect-drawer{padding:25px 20px}.connect-form{grid-template-columns:1fr}.form-field{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}

@@ -7,13 +7,38 @@
     ['Tin tức & Sự kiện','insights.html'],
     ['Tài nguyên','resources.html']
   ];
+  const routeSections = {
+    about: 0,
+    services: 1, office: 1, 'technology-detail': 1, telecom: 1, amenities: 1,
+    companies: 2, 'company-detail': 2, marketplace: 2, chain: 2,
+    'innovation-centers': 2, awards: 2, 'digitech-center': 2,
+    investment: 3, incentives: 3, community: 3,
+    insights: 4, 'media-center': 4, newsletter: 4, careers: 4,
+    resources: 5, 'open-data': 5, explore: 5, contact: 5,
+    legal: 5, privacy: 5, sitemap: 5
+  };
   document.querySelectorAll('.desktop-nav').forEach(nav => {
     const links = [...nav.querySelectorAll('.nav-link')];
     if (links.length !== primaryNavigation.length) return;
     links.forEach((link,index) => {
       link.textContent = primaryNavigation[index][0];
       link.href = primaryNavigation[index][1];
+      link.removeAttribute('aria-current');
     });
+    const currentIndex = routeSections[document.body.dataset.page];
+    if (Number.isInteger(currentIndex)) links[currentIndex]?.setAttribute('aria-current','page');
+  });
+
+  document.querySelectorAll('.lang-action').forEach(link => {
+    link.href = 'https://www.qtsc.com.vn/en';
+    link.textContent = 'EN';
+    link.setAttribute('aria-label','English version');
+  });
+
+  document.querySelectorAll('img').forEach(image => {
+    if (!image.hasAttribute('decoding')) image.decoding = 'async';
+    if (image.closest('main') && !image.hasAttribute('loading') && image.getAttribute('fetchpriority') !== 'high') image.loading = 'lazy';
+    if (image.closest('.site-footer') && !image.hasAttribute('loading')) image.loading = 'lazy';
   });
 
   const linkMap = {
@@ -60,7 +85,7 @@
     });
     const feature = root.querySelector('.mega-feature');
     const label = feature?.firstElementChild?.textContent.trim();
-    const key = label === 'Hệ sinh thái' ? 'ecosystem' : label === 'Tin & nguồn lực' ? 'insights' : null;
+    const key = label === 'Hệ sinh thái' || label === 'Doanh nghiệp & Giải pháp' ? 'ecosystem' : label === 'Tin & nguồn lực' || label === 'Tin tức & Sự kiện' ? 'insights' : null;
     if (key && extras[key]) {
       const cols = root.querySelectorAll('.mega-col');
       const target = cols[cols.length - 1];
