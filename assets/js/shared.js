@@ -84,6 +84,9 @@
     menu.className='mobile-menu';
     menu.id='innerMobileMenu';
     menu.setAttribute('aria-hidden','true');
+    menu.setAttribute('role','dialog');
+    menu.setAttribute('aria-modal','true');
+    menu.setAttribute('aria-label','Điều hướng chính');
     const groups=[
       ['Về QTSC',[['Giới thiệu','about.html'],['Tại sao chọn QTSC','about.html#why'],['25 năm QTSC','about.html#timeline'],['Khám phá campus','explore.html']]],
       ['Hạ tầng & Dịch vụ',[['Văn phòng','office.html'],['Data Center & Cloud','technology-detail.html'],['Viễn thông','telecom.html'],['Dịch vụ một cửa','services.html']]],
@@ -92,7 +95,7 @@
       ['Tin tức & Sự kiện',[['Tin QTSC','insights.html'],['Sự kiện','insights.html?cat=event'],['Góc báo chí','media-center.html'],['Tuyển dụng','careers.html']]],
       ['Tài nguyên',[['Download Center','resources.html'],['Dữ liệu mở','open-data.html'],['Bản đồ QTSC','explore.html'],['Liên hệ','contact.html']]]
     ];
-    menu.innerHTML=`<div class="mobile-menu-head"><div class="brand-fallback" style="display:flex"><strong>QTSC</strong><small>Quality Tech Solution Complex</small></div><button class="close-btn" id="innerMobileClose" aria-label="Đóng menu">×</button></div><nav class="mobile-menu-content" aria-label="Điều hướng mobile">${groups.map((group,index)=>`<section class="mobile-acc ${index===0?'open':''}"><button type="button" aria-expanded="${index===0}">${group[0]}<span>${index===0?'−':'+'}</span></button><div class="mobile-acc-panel">${group[1].map(item=>`<a href="${item[1]}">${item[0]}</a>`).join('')}</div></section>`).join('')}</nav><div class="mobile-menu-foot"><button class="btn btn-brand" id="innerMobileConnect">Kết nối QTSC <span>↗</span></button><a class="btn" href="sitemap.html">Sitemap</a></div>`;
+    menu.innerHTML=`<div class="mobile-menu-head"><div class="brand-fallback"><strong>QTSC</strong><small>Quality Tech Solution Complex</small></div><button class="close-btn" id="innerMobileClose" aria-label="Đóng menu">×</button></div><nav class="mobile-menu-content" aria-label="Điều hướng mobile">${groups.map((group,index)=>`<section class="mobile-acc ${index===0?'open':''}"><button type="button" aria-expanded="${index===0}">${group[0]}<span>${index===0?'−':'+'}</span></button><div class="mobile-acc-panel">${group[1].map(item=>`<a href="${item[1]}">${item[0]}</a>`).join('')}</div></section>`).join('')}</nav><div class="mobile-menu-foot"><button class="btn btn-brand" id="innerMobileConnect">Kết nối QTSC <span>↗</span></button><a class="btn" href="sitemap.html">Sitemap</a></div>`;
     document.body.append(menu);
     enhanceInlineArrows(menu);
     $('.mobile-menu-content',menu).addEventListener('click',event=>{
@@ -103,11 +106,12 @@
       button.setAttribute('aria-expanded',String(open));
       button.querySelector('span').textContent=open?'−':'+';
     });
+    menu.addEventListener('keydown',event=>trapDialogFocus(event,menu));
     $('#innerMobileClose',menu).addEventListener('click',closeMobileMenu);
     $('#innerMobileConnect',menu).addEventListener('click',()=>{closeMobileMenu();openContact()});
     return menu;
   }
-  function openMobileMenu(){closeMega();const menu=ensureMobileMenu();menu.classList.add('open');menu.setAttribute('aria-hidden','false');$('#mobileMenuOpen')?.setAttribute('aria-expanded','true');lock(true)}function closeMobileMenu(){const menu=$('#innerMobileMenu');if(!menu)return;menu.classList.remove('open');menu.setAttribute('aria-hidden','true');$('#mobileMenuOpen')?.setAttribute('aria-expanded','false');lock(false)}
+  function openMobileMenu(){closeMega();const menu=ensureMobileMenu();menu._returnFocus=document.activeElement instanceof HTMLElement?document.activeElement:null;menu.classList.add('open');menu.setAttribute('aria-hidden','false');$('#mobileMenuOpen')?.setAttribute('aria-expanded','true');lock(true);setTimeout(()=>$('#innerMobileClose',menu)?.focus(),20)}function closeMobileMenu(){const menu=$('#innerMobileMenu');if(!menu)return;menu.classList.remove('open');menu.setAttribute('aria-hidden','true');$('#mobileMenuOpen')?.setAttribute('aria-expanded','false');lock(false);const trigger=menu._returnFocus;if(trigger&&document.contains(trigger))setTimeout(()=>trigger.focus(),0)}
 
   function contactNeedForPage(){const page=document.body.dataset.page||'';if(page==='office')return'Văn phòng / đặt lịch tham quan';if(page==='technology-detail')return'Tư vấn công nghệ';if(page==='company-detail')return'Kết nối doanh nghiệp';if(page==='services')return'Dịch vụ một cửa / hỗ trợ doanh nghiệp';if(page==='investment')return'Đầu tư tại QTSC';return'Liên hệ QTSC'}
   function initShell(){initMegaMenu();enhanceInlineArrows();$('#mobileMenuOpen')?.addEventListener('click',openMobileMenu);$('#searchOpen')?.addEventListener('click',openSearch);$$('[data-demo-contact],[data-open-connect]').forEach(button=>button.addEventListener('click',event=>{if(button.tagName==='A')event.preventDefault();openContact(contactNeedForPage())}));const header=$('#siteHeader');const syncScroll=()=>header?.classList.toggle('scrolled',window.scrollY>16);syncScroll();window.addEventListener('scroll',syncScroll,{passive:true});document.addEventListener('keydown',event=>{if(event.key==='Escape'){closeMega();closeSearch();closeContact();closeMobileMenu()}if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){event.preventDefault();openSearch()}})}

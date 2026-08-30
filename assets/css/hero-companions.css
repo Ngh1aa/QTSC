@@ -17,10 +17,10 @@ html body.inner-page .detail-hero{
   background-repeat:no-repeat!important;
 }
 html body.page-technology-detail .detail-hero{
-  background-image:var(--qtsc-overlay-strong),var(--qtsc-campus-image-story)!important;
+  background-image:var(--qtsc-overlay-technology),var(--qtsc-campus-image-story)!important;
 }
 html body.page-company-detail .detail-hero{
-  background-image:var(--qtsc-overlay),var(--qtsc-campus-image-alt)!important;
+  background-image:var(--qtsc-overlay-story),var(--qtsc-campus-image-alt)!important;
 }
 html body.inner-page .detail-hero>.container-wide{
   width:min(calc(100% - 48px),var(--container))!important;
@@ -98,19 +98,19 @@ html body.inner-page .detail-meta span{background:rgba(255,255,255,.12)!importan
 
   /* ABOUT — credibility/proof composition. */
   body.page-about .inner-hero>.container-wide::before{content:"25"}
-  body.page-about .inner-hero>.container-wide::after{content:"YEARS OF QTSC\A#3 / 08 · KPMG 2026\A120+ TECHNOLOGY COMPANIES"}
+  body.page-about .inner-hero>.container-wide::after{content:"YEARS OF QTSC\A #3 / 08 · KPMG 2026\A 120+ TECHNOLOGY COMPANIES"}
 
   /* MEMBER DIRECTORY — ecosystem scale. */
   body.page-companies .inner-hero>.container-wide::before{content:"120+"}
-  body.page-companies .inner-hero>.container-wide::after{content:"TECHNOLOGY COMPANIES\A650+ PRODUCTS & SERVICES\A30+ INTERNATIONAL MARKETS"}
+  body.page-companies .inner-hero>.container-wide::after{content:"TECHNOLOGY COMPANIES\A 650+ PRODUCTS & SERVICES\A 30+ INTERNATIONAL MARKETS"}
 
   /* OFFICE — physical-campus proof. */
   body.page-office .inner-hero>.container-wide::before{content:"43 ha"}
-  body.page-office .inner-hero>.container-wide::after{content:"TECHNOLOGY CAMPUS\AOFFICE · INFRASTRUCTURE\AONE-STOP BUSINESS SUPPORT"}
+  body.page-office .inner-hero>.container-wide::after{content:"TECHNOLOGY CAMPUS\A OFFICE · INFRASTRUCTURE\A ONE-STOP BUSINESS SUPPORT"}
 
   /* MARKETPLACE — discovery/category composition. */
   body.page-marketplace .inner-hero>.container-wide::before{content:"650+"}
-  body.page-marketplace .inner-hero>.container-wide::after{content:"PRODUCTS & SERVICES\ACLOUD · CYBERSECURITY\ADATA · DIGITAL TRANSFORMATION"}
+  body.page-marketplace .inner-hero>.container-wide::after{content:"PRODUCTS & SERVICES\A CLOUD · CYBERSECURITY\A DATA · DIGITAL TRANSFORMATION"}
 
   /* EXPLORE — map/orbit-like treatment. */
   body.page-explore .inner-hero>.container-wide::before{
@@ -119,11 +119,11 @@ html body.inner-page .detail-meta span{background:rgba(255,255,255,.12)!importan
       radial-gradient(circle at 74% 38%,transparent 0 28px,rgba(255,255,255,.19) 29px 30px,transparent 31px 58px,rgba(255,255,255,.11) 59px 60px,transparent 61px),
       rgba(255,255,255,.07);
   }
-  body.page-explore .inner-hero>.container-wide::after{content:"QTSC CAMPUS\A3D / 360 VIRTUAL TOUR\AMAP · BUILDINGS · MOBILITY"}
+  body.page-explore .inner-hero>.container-wide::after{content:"QTSC CAMPUS\A 3D / 360 VIRTUAL TOUR\A MAP · BUILDINGS · MOBILITY"}
 
   /* INSIGHTS — editorial/current-content signal. */
   body.page-insights .inner-hero>.container-wide::before{content:"2026"}
-  body.page-insights .inner-hero>.container-wide::after{content:"QTSC INSIGHTS\ANEWS · EVENTS · MEMBER STORIES\ACAREERS & RESOURCES"}
+  body.page-insights .inner-hero>.container-wide::after{content:"QTSC INSIGHTS\A NEWS · EVENTS · MEMBER STORIES\A CAREERS & RESOURCES"}
 
   /* RESOURCES — document stack feeling. */
   body.page-resources .inner-hero>.container-wide::before{
@@ -132,7 +132,7 @@ html body.inner-page .detail-meta span{background:rgba(255,255,255,.12)!importan
       linear-gradient(90deg,rgba(255,255,255,.09),rgba(255,255,255,.03)),
       repeating-linear-gradient(0deg,transparent 0 35px,rgba(255,255,255,.08) 36px 37px);
   }
-  body.page-resources .inner-hero>.container-wide::after{content:"QTSC PROFILE · A GUIDE\ACAMPUS MAP · CULTURE HANDBOOK\AOFFICIAL DOCUMENTS"}
+  body.page-resources .inner-hero>.container-wide::after{content:"QTSC PROFILE · A GUIDE\A CAMPUS MAP · CULTURE HANDBOOK\A OFFICIAL DOCUMENTS"}
 
   /* PRIVACY / LEGAL — deliberately quieter than commercial pages. */
   body.page-policy .inner-hero>.container-wide::before{
@@ -143,19 +143,19 @@ html body.inner-page .detail-meta span{background:rgba(255,255,255,.12)!importan
     border-color:rgba(255,255,255,.16);
     box-shadow:none;
   }
-  body.page-policy .inner-hero>.container-wide::after{content:"TRUST · PRIVACY · LEGAL\AOFFICIAL QTSC INFORMATION"}
+  body.page-policy .inner-hero>.container-wide::after{content:"TRUST · PRIVACY · LEGAL\A OFFICIAL QTSC INFORMATION"}
 
   /* SITEMAP — navigation/network composition. */
   body.page-sitemap .inner-hero>.container-wide::before{content:"06"}
-  body.page-sitemap .inner-hero>.container-wide::after{content:"PRIMARY NAVIGATION GROUPS\AQ T S C · ECOSYSTEM · BUSINESS\ATECHNOLOGY · EXPLORE · INSIGHTS"}
+  body.page-sitemap .inner-hero>.container-wide::after{content:"PRIMARY NAVIGATION GROUPS\A Q T S C · ECOSYSTEM · BUSINESS\A TECHNOLOGY · EXPLORE · INSIGHTS"}
 
   /* COMPANY DETAIL — identity composition. */
   body.page-company-detail .detail-hero>.container-wide::before{content:"HDS"}
-  body.page-company-detail .detail-hero>.container-wide::after{content:"SOFTWARE & DIGITAL\AHELIOS BUILDING · QTSC\AMEMBER COMPANY PROFILE"}
+  body.page-company-detail .detail-hero>.container-wide::after{content:"SOFTWARE & DIGITAL\A HELIOS BUILDING · QTSC\A MEMBER COMPANY PROFILE"}
 
   /* TECHNOLOGY DETAIL — technical credibility. */
-  body.page-technology-detail .detail-hero>.container-wide::before{content:"TIER\AIII";font-size:clamp(42px,3.7vw,62px)}
-  body.page-technology-detail .detail-hero>.container-wide::after{content:"QTSC DATA CENTER\ACLOUD · SECURITY · TELECOM\AUPTIME TIER III"}
+  body.page-technology-detail .detail-hero>.container-wide::before{content:"TIER\A III";font-size:clamp(42px,3.7vw,62px)}
+  body.page-technology-detail .detail-hero>.container-wide::after{content:"QTSC DATA CENTER\A CLOUD · SECURITY · TELECOM\A UPTIME TIER III"}
 }
 
 /* Tablet/mobile: content remains text-first and uncluttered. */

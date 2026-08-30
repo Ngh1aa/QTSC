@@ -12,8 +12,9 @@ html body .site-header.mega-open .header-shell{
   -webkit-backdrop-filter:none !important;
 }
 
-/* Language switch is intentionally hidden until a complete bilingual experience is available. */
-html body .header-actions .lang-action{display:none !important}
+/* The English route is the official QTSC English website, so the switch is a
+   real destination rather than a placeholder. */
+html body .header-actions .lang-action{display:inline-grid !important;place-items:center}
 
 /* Inner routes use the same floating header geometry as the homepage. */
 html body.inner-page .site-header,
@@ -42,30 +43,14 @@ html body.inner-page .site-header.mega-open .header-shell{height:70px !important
 /* Persistent parent-nav state for inner routes.
    Example: about.html#direction keeps QTSC highlighted after choosing
    “Tầm nhìn · Sứ mệnh” from the mega menu. */
-html body.page-about .desktop-nav .nav-link:nth-child(1),
-html body.page-companies .desktop-nav .nav-link:nth-child(2),
-html body.page-company-detail .desktop-nav .nav-link:nth-child(2),
-html body.page-office .desktop-nav .nav-link:nth-child(3),
-html body.page-marketplace .desktop-nav .nav-link:nth-child(4),
-html body.page-technology-detail .desktop-nav .nav-link:nth-child(4),
-html body.page-explore .desktop-nav .nav-link:nth-child(5),
-html body.page-insights .desktop-nav .nav-link:nth-child(6),
-html body.page-resources .desktop-nav .nav-link:nth-child(6){
+html body.inner-page .desktop-nav .nav-link[aria-current="page"]{
   font-weight:700 !important;
   color:var(--brand-red) !important;
   text-shadow:none !important;
 }
 
 @supports ((background-clip:text) or (-webkit-background-clip:text)){
-  html body.page-about .desktop-nav .nav-link:nth-child(1),
-  html body.page-companies .desktop-nav .nav-link:nth-child(2),
-  html body.page-company-detail .desktop-nav .nav-link:nth-child(2),
-  html body.page-office .desktop-nav .nav-link:nth-child(3),
-  html body.page-marketplace .desktop-nav .nav-link:nth-child(4),
-  html body.page-technology-detail .desktop-nav .nav-link:nth-child(4),
-  html body.page-explore .desktop-nav .nav-link:nth-child(5),
-  html body.page-insights .desktop-nav .nav-link:nth-child(6),
-  html body.page-resources .desktop-nav .nav-link:nth-child(6){
+  html body.inner-page .desktop-nav .nav-link[aria-current="page"]{
     background:var(--brand-gradient) !important;
     background-clip:text !important;
     -webkit-background-clip:text !important;
@@ -194,6 +179,7 @@ html body.inner-page .page-insights .inner-hero p{
 }
 
 @media(max-width:620px){
+  html body .header-actions .lang-action{display:none !important}
   html body.inner-page .inner-hero{height:700px !important;min-height:0 !important}
   html body.inner-page .inner-hero>.container-wide{width:min(calc(100% - 32px),var(--container)) !important;padding-top:76px !important}
   html body.inner-page .inner-hero .breadcrumb{margin-bottom:22px !important}

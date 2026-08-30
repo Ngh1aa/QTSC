@@ -2,6 +2,14 @@
 (() => {
   const $ = (q, r=document) => r.querySelector(q);
   const $$ = (q, r=document) => [...r.querySelectorAll(q)];
+  const focusable = root => $$('a[href],button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])',root).filter(el=>!el.hidden&&el.offsetParent!==null);
+  const trapFocus = (event,root) => {
+    if(event.key!=='Tab') return;
+    const controls=focusable(root);if(!controls.length){event.preventDefault();return}
+    const first=controls[0],last=controls[controls.length-1];
+    if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
+    else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
+  };
 
   const page = document.body.dataset.page || '';
   const configs = {
@@ -133,25 +141,29 @@
     if(!hero||!config||$('.service-route')) return;
     const section=document.createElement('section');
     section.className='service-route';
-    section.innerHTML=`<div class="container-wide service-route-shell"><div class="service-route-copy"><div class="service-route-kicker">${config.kicker}</div><h2>${config.title}</h2><p>${config.desc}</p><div class="service-progress">${config.progress.map((x,i)=>`<span><b>${String(i+1).padStart(2,'0')}</b>${x}</span>`).join('')}</div></div><div class="service-assistant"><div class="service-assistant-head"><strong>Trợ lý nhu cầu</strong><span>Start here</span></div><div class="service-assistant-body"></div></div></div>`;
+    const titleId=`${page}-service-route-title`;
+    section.setAttribute('aria-labelledby',titleId);
+    section.innerHTML=`<div class="container-wide service-route-shell"><div class="service-route-copy"><div class="service-route-kicker">${config.kicker}</div><h2 id="${titleId}">${config.title}</h2><p>${config.desc}</p><div class="service-progress" aria-label="Các bước dự kiến">${config.progress.map((x,i)=>`<span><b>${String(i+1).padStart(2,'0')}</b>${x}</span>`).join('')}</div></div><div class="service-assistant"><div class="service-assistant-head"><strong>Trợ lý nhu cầu</strong><span>Bắt đầu tại đây</span></div><div class="service-assistant-body"></div></div></div>`;
     hero.insertAdjacentElement('afterend',section);
     const body=$('.service-assistant-body',section);
     const state={};
     config.questions.forEach((q,qi)=>{
       const wrap=document.createElement('div');wrap.className='service-question';
-      wrap.innerHTML=`<label>${q.label}</label><div class="service-options">${q.options.map((o,i)=>`<button type="button" class="service-option ${i===0?'active':''}" data-key="${q.key}" data-value="${o}">${o}</button>`).join('')}</div>`;
+      const labelId=`${page}-${q.key}-label`;
+      wrap.innerHTML=`<span class="service-question-label" id="${labelId}">${q.label}</span><div class="service-options" role="group" aria-labelledby="${labelId}">${q.options.map((o,i)=>`<button type="button" class="service-option ${i===0?'active':''}" data-key="${q.key}" data-value="${o}" aria-pressed="${i===0}">${o}</button>`).join('')}</div>`;
       state[q.key]=q.options[0];body.append(wrap);
     });
     const result=document.createElement('div');result.className='service-result';body.append(result);
     const render=()=>{
       const [title,desc]=config.result(state);
-      result.innerHTML=`<div><small>Gợi ý tiếp theo</small><strong>${title}</strong><p>${desc}</p></div><div style="display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end"><button type="button" class="btn btn-secondary" data-service-request>${config.requestLabel}</button><button type="button" class="btn btn-brand" data-service-continue>${config.cta} <span>↗</span></button></div>`;
+      result.innerHTML=`<div><small>Gợi ý tiếp theo</small><strong>${title}</strong><p>${desc}</p></div><div class="service-result-actions"><button type="button" class="btn btn-secondary" data-service-request>${config.requestLabel}</button><button type="button" class="btn btn-brand" data-service-continue>${config.cta} <span>↗</span></button></div>`;
       $('[data-service-continue]',result)?.addEventListener('click',()=>config.action(state));
       $('[data-service-request]',result)?.addEventListener('click',()=>openRequest(config,state,title));
     };
     $$('.service-option',section).forEach(btn=>btn.addEventListener('click',()=>{
       $$(`.service-option[data-key="${btn.dataset.key}"]`,section).forEach(x=>x.classList.remove('active'));
-      btn.classList.add('active');state[btn.dataset.key]=btn.dataset.value;render();
+      $$(`.service-option[data-key="${btn.dataset.key}"]`,section).forEach(x=>x.setAttribute('aria-pressed','false'));
+      btn.classList.add('active');btn.setAttribute('aria-pressed','true');state[btn.dataset.key]=btn.dataset.value;render();
     }));
     render();
   }
@@ -160,24 +172,28 @@
     let overlay=$('.service-request-overlay');
     if(overlay) return overlay;
     overlay=document.createElement('div');overlay.className='service-request-overlay';overlay.setAttribute('aria-hidden','true');
-    overlay.innerHTML='<div class="service-request-backdrop"></div><aside class="service-request-drawer" role="dialog" aria-modal="true"><div class="service-request-top"><span>QTSC Service Request</span><button type="button" class="service-request-close" aria-label="Đóng">×</button></div><div class="service-request-content"></div></aside>';
+    overlay.innerHTML='<div class="service-request-backdrop"></div><aside class="service-request-drawer" role="dialog" aria-modal="true" aria-labelledby="serviceRequestTitle"><div class="service-request-top"><span>Yêu cầu dịch vụ QTSC</span><button type="button" class="service-request-close" aria-label="Đóng">×</button></div><div class="service-request-content"></div></aside>';
     document.body.append(overlay);
-    const close=()=>{overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');document.body.classList.remove('is-locked')};
+    const close=()=>{overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');document.body.classList.remove('is-locked');const trigger=overlay._returnFocus;if(trigger&&document.contains(trigger))setTimeout(()=>trigger.focus(),0)};
     $('.service-request-backdrop',overlay).addEventListener('click',close);$('.service-request-close',overlay).addEventListener('click',close);
+    overlay.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();close()}else trapFocus(event,overlay)});
     overlay._close=close;return overlay;
   }
 
   function openRequest(config,state,recommendation){
     const overlay=ensureDrawer(),content=$('.service-request-content',overlay);
     const selections=Object.entries(state);
-    content.innerHTML=`<h2>${config.requestLabel}</h2><p class="service-request-lead">Thông tin bạn vừa chọn đã được đưa vào yêu cầu để không phải nhập lại từ đầu.</p><div class="service-request-summary">${selections.map(([k,v])=>`<div><small>${k}</small><strong>${v}</strong></div>`).join('')}<div><small>Gợi ý</small><strong>${recommendation}</strong></div></div><form class="service-request-form"><div class="service-request-field"><label for="srf-name">Họ và tên</label><input id="srf-name" name="name" required placeholder="Nguyễn Văn A"></div><div class="service-request-field"><label for="srf-company">Công ty / tổ chức</label><input id="srf-company" name="company" placeholder="Tên doanh nghiệp"></div><div class="service-request-field"><label for="srf-email">Email</label><input id="srf-email" name="email" type="email" required placeholder="name@company.com"></div><div class="service-request-field"><label for="srf-phone">Điện thoại</label><input id="srf-phone" name="phone" placeholder="09xx xxx xxx"></div><div class="service-request-field full"><label for="srf-note">Thông tin bổ sung</label><textarea id="srf-note" name="note" placeholder="Mô tả ngắn nhu cầu, thời gian dự kiến hoặc câu hỏi cần QTSC hỗ trợ..."></textarea></div><div class="service-request-actions"><button type="button" class="btn btn-secondary" data-cancel>Đóng</button><button class="btn btn-brand" type="submit">Xác nhận yêu cầu <span>↗</span></button></div></form>`;
+    content.innerHTML=`<h2 id="serviceRequestTitle">${config.requestLabel}</h2><p class="service-request-lead">Thông tin bạn vừa chọn đã được đưa vào yêu cầu để không phải nhập lại từ đầu. Bản mẫu này sẽ mở ứng dụng email; QTSC chỉ nhận được thông tin sau khi bạn bấm gửi.</p><div class="service-request-summary">${selections.map(([k,v])=>`<div><small>${k}</small><strong>${v}</strong></div>`).join('')}<div><small>Gợi ý</small><strong>${recommendation}</strong></div></div><form class="service-request-form"><div class="service-request-field"><label for="srf-name">Họ và tên</label><input id="srf-name" name="name" required autocomplete="name" placeholder="Nguyễn Văn A"></div><div class="service-request-field"><label for="srf-company">Công ty / tổ chức</label><input id="srf-company" name="company" autocomplete="organization" placeholder="Tên doanh nghiệp"></div><div class="service-request-field"><label for="srf-email">Email</label><input id="srf-email" name="email" type="email" required autocomplete="email" placeholder="name@company.com"></div><div class="service-request-field"><label for="srf-phone">Điện thoại</label><input id="srf-phone" name="phone" type="tel" autocomplete="tel" placeholder="09xx xxx xxx"></div><div class="service-request-field full"><label for="srf-note">Thông tin bổ sung</label><textarea id="srf-note" name="note" placeholder="Mô tả ngắn nhu cầu, thời gian dự kiến hoặc câu hỏi cần QTSC hỗ trợ..."></textarea></div><div class="service-request-actions"><button type="button" class="btn btn-secondary" data-cancel>Đóng</button><button class="btn btn-brand" type="submit">Chuẩn bị nội dung gửi <span>↗</span></button></div></form>`;
     $('[data-cancel]',content).addEventListener('click',()=>overlay._close());
     $('form',content).addEventListener('submit',e=>{
       e.preventDefault();
       const data=new FormData(e.currentTarget);const name=data.get('name')||'bạn';
-      content.innerHTML=`<div class="service-request-done"><i>✓</i><strong>Đã hoàn tất bước khai báo.</strong><p>Cảm ơn ${name}. Thông tin nhu cầu đã được tổng hợp thành một yêu cầu rõ ràng để tiếp tục trao đổi với QTSC.</p><a class="btn btn-brand" href="contact.html">Mở thông tin liên hệ QTSC <span>↗</span></a></div>`;
+      const requestLines=[...selections.map(([key,value])=>`${key}: ${value}`),`Gợi ý: ${recommendation}`,`Họ và tên: ${data.get('name')||''}`,`Công ty / tổ chức: ${data.get('company')||''}`,`Email: ${data.get('email')||''}`,`Điện thoại: ${data.get('phone')||''}`,`Thông tin bổ sung: ${data.get('note')||''}`];
+      const mailto=`mailto:qtsc@qtsc.com.vn?subject=${encodeURIComponent(config.requestLabel)}&body=${encodeURIComponent(['Kính gửi QTSC,','',...requestLines,'','Trân trọng.'].join('\n'))}`;
+      content.innerHTML=`<div class="service-request-done" role="status" tabindex="-1"><i>✓</i><strong>Nội dung yêu cầu đã sẵn sàng.</strong><p>Cảm ơn ${name}. QTSC chỉ nhận được thông tin sau khi bạn mở ứng dụng email và bấm gửi.</p><div class="service-request-done-actions"><a class="btn btn-brand" href="${mailto}">Mở email để gửi <span>↗</span></a><a class="btn btn-secondary" href="contact.html">Xem đầu mối liên hệ</a></div></div>`;
+      $('.service-request-done',content)?.focus();
     });
-    overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');document.body.classList.add('is-locked');
+    overlay._returnFocus=document.activeElement instanceof HTMLElement?document.activeElement:null;overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');document.body.classList.add('is-locked');setTimeout(()=>$('#srf-name',overlay)?.focus(),20);
   }
 
   function homeEnhancements(){

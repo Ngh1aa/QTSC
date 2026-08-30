@@ -68,6 +68,63 @@
   backdrop-filter: blur(12px);
 }
 
+/* A consistent decision point prevents content and discovery routes ending abruptly. */
+.inner-section.journey-bridge {
+  color: var(--text-inverse);
+  background:
+    radial-gradient(circle at 84% 18%, rgba(var(--brand-primary-rgb), .32), transparent 34%),
+    var(--surface-dark);
+}
+
+.journey-bridge .container-wide {
+  display: grid;
+  grid-template-columns: minmax(8rem, .55fr) minmax(18rem, 1.55fr) minmax(16rem, .8fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+}
+
+.journey-bridge .micro-label {
+  align-self: start;
+  color: color-mix(in srgb, var(--text-inverse) 68%, transparent);
+}
+
+.journey-bridge h2 {
+  max-inline-size: 18ch;
+  margin: 0 0 var(--space-4);
+  color: inherit;
+  font-size: clamp(2rem, 4vw, 4.25rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+.journey-bridge p {
+  max-inline-size: 58ch;
+  margin: 0;
+  color: color-mix(in srgb, var(--text-inverse) 76%, transparent);
+}
+
+.journey-bridge-actions {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.journey-bridge-actions .btn {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.journey-bridge-actions .btn-secondary {
+  color: var(--text-inverse);
+  border-color: color-mix(in srgb, var(--text-inverse) 28%, transparent);
+  background: transparent;
+}
+
+.journey-bridge-actions .btn-secondary:hover {
+  color: var(--surface-dark);
+  background: var(--text-inverse);
+}
+
 @media (max-width: 900px) {
   .menu-trigger,
   .icon-action,
@@ -77,6 +134,24 @@
 
   .mobile-menu.open {
     box-shadow: -16px 0 48px rgba(23,25,26,.14);
+  }
+
+  .journey-bridge .container-wide {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .journey-bridge .micro-label {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 620px) {
+  .journey-bridge .container-wide {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-bridge .micro-label {
+    grid-column: auto;
   }
 }
 
