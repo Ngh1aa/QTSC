@@ -6,12 +6,13 @@
     document.head.append(extension);
   }
 
-  const feedbackEnabled = ['localhost', '127.0.0.1'].includes(window.location.hostname)
-    || new URLSearchParams(window.location.search).get('feedback') === '1';
+  const currentScript = document.currentScript
+    || document.querySelector('script[src*="ui-feedback-init.js"]');
+  const bundleUrl = currentScript
+    ? new URL('../../ui-feedback.js?v=0.14.0', currentScript.src).href
+    : new URL('ui-feedback.js?v=0.14.0', document.baseURI).href;
 
-  if (!feedbackEnabled) return;
-
-  import('../../ui-feedback.js?v=4ef8421')
+  import(bundleUrl)
     .then(({ createUIFeedback }) => {
       if (typeof createUIFeedback !== 'function') {
         throw new Error('createUIFeedback export not found');
@@ -28,9 +29,10 @@
       }
 
       window.__qtscUIFeedback = feedback;
-      console.info('[QTSC] UI Feedback Tool ready — press Q → W → E');
+      console.info('[QTSC] UI Feedback Tool v0.14.0 ready — press Q → W → E');
     })
     .catch((error) => {
       console.error('[QTSC] UI Feedback Tool failed to load:', error);
     });
 })();
+
