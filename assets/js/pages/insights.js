@@ -6,6 +6,7 @@ const feature = $('.article-feature[data-category]');
 const stack = $('.article-stack');
 const cards = $$('.article-card[data-category]');
 const grid = $('.article-grid');
+const emptyState = $('.empty-state');
 
 function applyFilter(value = 'all') {
   const valid = new Set(buttons.map(button => button.dataset.filter));
@@ -17,7 +18,12 @@ function applyFilter(value = 'all') {
     button.setAttribute('aria-selected', String(active));
   });
 
-  if (feature) feature.hidden = filter !== 'all' && feature.dataset.category !== filter;
+  let visibleFeature = 0;
+  if (feature) {
+    const showFeature = filter === 'all' || feature.dataset.category === filter;
+    feature.hidden = !showFeature;
+    if (showFeature) visibleFeature = 1;
+  }
 
   let visibleCards = 0;
   cards.forEach(card => {
@@ -27,7 +33,8 @@ function applyFilter(value = 'all') {
   });
 
   if (stack) stack.hidden = visibleCards === 0;
-  grid?.classList.toggle('is-filtered', filter !== 'all');
+  if (grid) grid.classList.toggle('is-filtered', filter !== 'all');
+  if (emptyState) emptyState.hidden = (visibleFeature + visibleCards) > 0;
 
   const url = new URL(location.href);
   if (filter === 'all') url.searchParams.delete('cat');
@@ -36,6 +43,10 @@ function applyFilter(value = 'all') {
 }
 
 buttons.forEach(button => button.addEventListener('click', () => applyFilter(button.dataset.filter)));
+
+$$('.empty-state [data-filter]').forEach(btn => btn.addEventListener('click', () => {
+  applyFilter('all');
+}));
 
 const initial = new URLSearchParams(location.search).get('cat') || 'all';
 applyFilter(initial);
