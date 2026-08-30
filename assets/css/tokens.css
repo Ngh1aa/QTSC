@@ -80,9 +80,9 @@
   --radius-card:0px;
 
   /* Image Overlay & Real Photo Background Tokens */
-  --brand-media-overlay:linear-gradient(135deg,rgba(var(--brand-deep-rgb),.28) 0%,rgba(var(--brand-primary-rgb),.20) 50%,rgba(var(--brand-light-rgb),.14) 100%);
-  --brand-dark-hero-bg:linear-gradient(135deg,rgba(20,8,10,.88) 0%,rgba(169,31,44,.84) 50%,rgba(238,70,35,.78) 100%),url("https://www.qtsc.com.vn/uploads/files/2021/03/14/1-goc-Cong-vien-phan-mem-Quang-Trung-02.jpg");
-  --brand-dark-footer-bg:linear-gradient(135deg,rgba(17,17,17,.90) 0%,rgba(169,31,44,.86) 55%,rgba(204,45,49,.82) 100%),url("https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg");
+  --brand-media-overlay:linear-gradient(135deg,rgba(20,8,10,.5) 0%,rgba(169,31,44,.6) 50%,rgba(238,70,35,.5) 100%);
+  --brand-dark-hero-bg:linear-gradient(135deg,rgba(20,8,10,.78) 0%,rgba(169,31,44,.74) 50%,rgba(238,70,35,.68) 100%),url("https://www.qtsc.com.vn/uploads/files/2021/03/14/1-goc-Cong-vien-phan-mem-Quang-Trung-02.jpg");
+  --brand-dark-footer-bg:linear-gradient(135deg,rgba(17,17,17,.86) 0%,rgba(169,31,44,.82) 55%,rgba(204,45,49,.78) 100%),url("https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg");
 
   /* Elevation */
   --shadow-dropdown:0 14px 42px rgba(23,25,26,.08),0 3px 14px rgba(var(--brand-primary-rgb),.05);

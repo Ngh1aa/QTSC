@@ -2,14 +2,22 @@
    Keeps every route visually/behaviourally aligned with index.html. */
 
 /* Header is always an opaque white floating surface over the hero. */
+html body .site-header,
+html body .site-header.scrolled,
+html body .site-header.mega-open{
+  background:rgba(255,255,255,.97) !important;
+  backdrop-filter:blur(16px) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+  border-bottom:1px solid rgba(23,25,26,.1) !important;
+}
+
 html body .header-shell,
 html body .site-header.scrolled .header-shell,
 html body .site-header.mega-open .header-shell{
-  background:#fff !important;
-  background-color:#fff !important;
-  opacity:1 !important;
-  backdrop-filter:none !important;
-  -webkit-backdrop-filter:none !important;
+  background:transparent !important;
+  background-color:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
 }
 
 /* The English route is the official QTSC English website, so the switch is a
@@ -21,21 +29,16 @@ html body.inner-page .site-header,
 html body.inner-page .site-header.scrolled,
 html body.inner-page .site-header.mega-open{
   position:fixed !important;
-  top:12px !important;
+  top:0 !important;
   left:0 !important;
   right:0 !important;
   padding:0 !important;
-  background:transparent !important;
-  border:0 !important;
-  box-shadow:none !important;
-  backdrop-filter:none !important;
-  -webkit-backdrop-filter:none !important;
+  box-shadow:0 8px 28px rgba(23,25,26,.07) !important;
 }
 html body.inner-page .site-header::before,
 html body.inner-page .site-header::after{display:none !important;content:none !important}
 html body.inner-page .header-shell{
   height:76px !important;
-  box-shadow:var(--shadow-dropdown) !important;
 }
 html body.inner-page .site-header.scrolled .header-shell,
 html body.inner-page .site-header.mega-open .header-shell{height:70px !important}
