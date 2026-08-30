@@ -42,7 +42,14 @@
     if (image.closest('.site-footer') && !image.hasAttribute('loading')) image.loading = 'lazy';
   });
 
+  /* Normalize legacy mega-menu destinations after the 2026 IA consolidation. */
   const linkMap = {
+    'Tại sao chọn QTSC': 'about.html#identity',
+    'Giá trị cốt lõi': 'about.html#identity',
+    '25 năm QTSC': 'about.html#direction',
+    'Green & Smart QTSC': 'about.html#future',
+    'Tại sao TP.HCM': 'about.html#future',
+    'Tại sao Việt Nam': 'about.html#future',
     'QTSC DigiTech Center': 'digitech-center.html',
     'Giáo dục & cộng đồng': 'community.html',
     'Thông cáo báo chí': 'media-center.html?type=press',
@@ -51,8 +58,7 @@
   };
   const extras = {
     ecosystem: [
-      ['Cộng đồng QTSC','community.html'],
-      ['Agriculture Center of Excellence','innovation-centers.html#agriculture']
+      ['Cộng đồng QTSC','community.html']
     ],
     insights: [
       ['Newsletter','newsletter.html'],
@@ -63,7 +69,6 @@
   const searchExtras = [
     {type:'Ecosystem',title:'Cộng đồng QTSC',meta:'Trường viện · CEO/CTO Club · Foundation · Museum',url:'community.html',keywords:'cộng đồng community trường viện ceo cto quỹ khuyến học bảo tàng'},
     {type:'Technology',title:'QTSC DigiTech Center',meta:'Digital infrastructure · Cybersecurity',url:'digitech-center.html',keywords:'digitech telecom cyber security center hạ tầng số'},
-    {type:'Innovation',title:'Agriculture Center of Excellence',meta:'IoT · Cloud · Big Data · Agriculture',url:'innovation-centers.html#agriculture',keywords:'agriculture nông nghiệp iot cloud big data testbed'},
     {type:'Media',title:'Góc báo chí QTSC',meta:'Press release · Coverage · Photo · Video',url:'media-center.html',keywords:'góc báo chí thông cáo báo chí hình ảnh video media press'},
     {type:'Newsletter',title:'QTSC Newsletter',meta:'Bản tin định kỳ · Archive',url:'newsletter.html',keywords:'newsletter bản tin qtsc archive đăng ký nhận tin'},
     {type:'Open Data',title:'Dữ liệu mở QTSC',meta:'Water · Air · Groundwater · Testing',url:'open-data.html',keywords:'dữ liệu mở open data nước thải nước cấp không khí nước ngầm pasteur'}
@@ -78,11 +83,7 @@
   if (document.body.classList.contains('page-insights')) loadScript('assets/js/data/insights-data.js');
   if (document.body.classList.contains('page-innovation-centers') || document.body.classList.contains('page-chain') || document.body.classList.contains('page-services')) loadScript('assets/js/data/legacy-detail-extension.js');
 
-  /* Experience polish: opt-in markers (data-journey-pill, data-trust, data-audience-tabs)
-     are honoured automatically by experience-polish.js. We always load it so the
-     intent rail under the hero is available on every page that already ships with
-     `.inner-hero` or `.home-hero`. Skipped on the homepage itself, which already has
-     its own top-task dock. */
+  /* Compatibility polish now owns reveal motion only. */
   if (!document.body.classList.contains('page-home') && !document.body.classList.contains('qtsc-home')) {
     loadScript('assets/js/experience-polish.js');
   }

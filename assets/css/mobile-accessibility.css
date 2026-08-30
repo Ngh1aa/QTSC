@@ -1,0 +1,40 @@
+/* QTSC mobile interaction floor — visual/device QA 2026.
+   Keep standalone controls comfortably tappable without inflating inline prose links. */
+@media (max-width:680px){
+  .inner-page :where(
+    .pill-tabs button,
+    .search-tab,
+    .connect-type,
+    .inner-searchbar input,
+    .inner-searchbar button,
+    .resource-search input,
+    .market-search input,
+    .search-field input,
+    .contact-lines a,
+    .cta-meta a,
+    .ecosystem-head > a,
+    .site-footer .footer-col a,
+    .site-footer .footer-col button,
+    .site-footer .footer-brand a,
+    .site-footer .footer-bottom a
+  ){
+    min-height:44px;
+  }
+
+  .inner-page :where(
+    .contact-lines a,
+    .cta-meta a,
+    .ecosystem-head > a,
+    .site-footer .footer-col a,
+    .site-footer .footer-col button,
+    .site-footer .footer-brand a,
+    .site-footer .footer-bottom a
+  ){
+    display:inline-flex;
+    align-items:center;
+  }
+
+  .inner-page :where(.inner-searchbar input,.resource-search input,.market-search input,.search-field input){
+    padding-block:10px;
+  }
+}

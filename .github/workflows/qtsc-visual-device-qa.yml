@@ -1,0 +1,66 @@
+name: QTSC Visual Device QA
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'assets/css/**'
+      - 'assets/js/**'
+      - '.github/qa/qtsc-visual-qa.mjs'
+      - '.github/workflows/qtsc-visual-device-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: qtsc-visual-qa-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  visual-device-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Start static preview
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/qtsc-http.log 2>&1 &
+          echo $! > /tmp/qtsc-http.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/qtsc-http.log
+          exit 1
+
+      - name: Run visual and device QA
+        env:
+          QA_BASE_URL: http://127.0.0.1:4173
+          QA_OUT_DIR: qa-artifacts
+        run: |
+          sed -i "s/waitUntil: 'networkidle', timeout: 30000/waitUntil: 'domcontentloaded', timeout: 15000/g" .github/qa/qtsc-visual-qa.mjs
+          sed -i "s/await page.waitForTimeout(200);/await page.waitForTimeout(900);/g" .github/qa/qtsc-visual-qa.mjs
+          node .github/qa/qtsc-visual-qa.mjs
+
+      - name: Upload QA report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qtsc-visual-device-qa-${{ github.sha }}
+          path: qa-artifacts/
+          if-no-files-found: error
+          retention-days: 14
