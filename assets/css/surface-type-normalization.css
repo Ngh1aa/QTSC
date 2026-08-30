@@ -57,6 +57,15 @@ html body .inner-section.soft {
   background-image:none !important;
 }
 
+/* Journey bridges are intentional decision surfaces, not normal content
+   sections. Keep them visually distinct from the white reading canvas. */
+html body .inner-section.journey-bridge {
+  background-color:var(--surface-dark) !important;
+  background-image:
+    radial-gradient(circle at 84% 18%,rgba(var(--brand-primary-rgb),.32),transparent 34%) !important;
+  color:var(--text-inverse) !important;
+}
+
 /* Former black emphasis blocks now use the QTSC red-orange overlay style.
    A real campus image sits underneath at low visual priority, matching the
    reference treatment without turning the section into a photo banner. */
