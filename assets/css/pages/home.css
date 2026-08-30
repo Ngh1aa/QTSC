@@ -1,45 +1,19 @@
-/* Homepage v2 — one owned composition, no legacy override cascade. */
-@import url("../home/experience-v2.css");
+/* Homepage 2026 — business-first composition.
+   This manifest intentionally owns a single visual layer to prevent legacy override drift. */
+@import url("../home/business-journey-2026.css");
 
-/* QTSC enterprise refinement - UX/UI upgrade */
-.page-home .home-hero .hero-copy h1{
-  max-width:760px;
-  letter-spacing:-0.045em;
-}
-
-.page-home .hero-lead{
-  max-width:620px;
-  line-height:1.7;
-}
-
-.page-home .top-task-dock a{
-  transition:transform .25s ease, border-color .25s ease, background .25s ease;
-}
-
-.page-home .top-task-dock a:hover{
-  transform:translateY(-4px);
-}
-
-.page-home .decision-card{
-  min-height:420px;
-  display:flex;
-  flex-direction:column;
-}
-
-.page-home .decision-card a{
-  margin-top:auto;
-}
-
-.page-home h2{
-  letter-spacing:-0.035em;
-}
-
-@media(max-width:768px){
-  .page-home .hero-copy h1{
-    letter-spacing:-0.03em;
-  }
-
-  .page-home .decision-card{
-    min-height:auto;
+@media (max-width:680px){
+  .page-home :where(
+    .text-link,
+    .campus-links a,
+    .final-layout a,
+    .site-footer .footer-col a,
+    .site-footer .footer-col button,
+    .site-footer .footer-brand a,
+    .site-footer .footer-bottom a
+  ){
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
   }
 }
