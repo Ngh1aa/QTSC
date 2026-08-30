@@ -1,3 +1,19 @@
 /* Homepage 2026 — business-first composition.
    This manifest intentionally owns a single visual layer to prevent legacy override drift. */
 @import url("../home/business-journey-2026.css");
+
+@media (max-width:680px){
+  .page-home :where(
+    .text-link,
+    .campus-links a,
+    .final-layout a,
+    .site-footer .footer-col a,
+    .site-footer .footer-col button,
+    .site-footer .footer-brand a,
+    .site-footer .footer-bottom a
+  ){
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+  }
+}
