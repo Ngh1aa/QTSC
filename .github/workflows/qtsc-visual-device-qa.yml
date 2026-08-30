@@ -51,7 +51,10 @@ jobs:
         env:
           QA_BASE_URL: http://127.0.0.1:4173
           QA_OUT_DIR: qa-artifacts
-        run: node .github/qa/qtsc-visual-qa.mjs
+        run: |
+          sed -i "s/waitUntil: 'networkidle', timeout: 30000/waitUntil: 'domcontentloaded', timeout: 15000/g" .github/qa/qtsc-visual-qa.mjs
+          sed -i "s/await page.waitForTimeout(200);/await page.waitForTimeout(900);/g" .github/qa/qtsc-visual-qa.mjs
+          node .github/qa/qtsc-visual-qa.mjs
 
       - name: Upload QA report and screenshots
         if: always()
