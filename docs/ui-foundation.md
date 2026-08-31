@@ -1,4 +1,4 @@
-# QTSC UI Foundation v1.0
+# QTSC UI Foundation v1.1
 
 This document is the visual source of truth for the static QTSC UI/UX prototype.
 
@@ -72,15 +72,25 @@ Section hierarchy:
 
 Do not use one global spacing value for every section.
 
-## 5. Radius
+## 5. Radius / geometry
 
-Only:
+The approved prototype uses a **square architectural geometry** to align with the campus/building character and avoid generic rounded-card UI.
 
-- 6px — small controls
-- 10px — standard UI/buttons/inputs
-- 16px — large media/modules
-- 999px — tags/filter chips only
-- 50% — nodes/circular icon controls only
+Current tokens:
+
+- `--radius-sm: 0px`
+- `--radius-md: 0px`
+- `--radius-lg: 0px`
+- `--radius-pill: 0px`
+- `--radius-card: 0px`
+
+Exceptions are allowed only when the geometry itself carries meaning:
+
+- circular network nodes / map points;
+- radial brand graphics;
+- genuinely circular controls where the affordance requires it.
+
+Do not reintroduce rounded cards, pills or soft SaaS geometry without an explicit design-system decision.
 
 ## 6. Elevation
 
@@ -110,19 +120,32 @@ Do not reuse giant brand-story typography on utility screens.
 ## 9. Components
 
 - Buttons use shared `.btn` variants.
-- Directory uses editorial rows, not floating SaaS cards.
+- Directory uses editorial rows or verified identity cards, not generic floating SaaS cards.
 - Icons use the shared SVG mask tokens.
 - Search, filter chips and forms use semantic border/surface tokens.
 - No Unicode icon should be introduced when an SVG system icon exists.
+- KPI/proof rails may contain only dated/verifiable evidence; do not use UI instructions such as “Search”, “Connect” or “Direct” as pseudo-metrics.
 
-## 10. Accessibility baseline
+## 10. Domain-native composition
+
+When a page benefits from real-world/domain intelligence, prefer the lowest useful fidelity:
+
+- campus / wayfinding / building directory for spatial orientation;
+- infrastructure topology for technology/service relationships;
+- verified company identity for ecosystem discovery;
+- verified product/service sources for marketplace trust.
+
+Use these as structural or informational metaphors (L1–L2) by default. Do not add blueprint textures, fake signage or decorative skeuomorphism merely to make pages look different.
+
+## 11. Accessibility baseline
 
 - Normal text contrast target: WCAG 2.2 AA 4.5:1.
 - Large text contrast target: 3:1.
 - All interactive elements need a visible `:focus-visible` state.
 - Primary touch targets should remain comfortably larger than minimum requirements.
+- `#EE4623` is a graphic/brand accent and should not be the default color for small normal-weight text on white; use a darker semantic brand token when contrast is required.
 
-## 11. Consistency checklist
+## 12. Consistency checklist
 
 Before marking a page complete:
 
@@ -132,8 +155,10 @@ Before marking a page complete:
 - [ ] No inline presentation style
 - [ ] No new brand color hard-coded in page CSS
 - [ ] Spacing comes from the spacing scale where practical
-- [ ] Radius uses the 4-value system
+- [ ] Square geometry remains consistent unless an exception has semantic meaning
 - [ ] Card shadow is not added without a functional reason
 - [ ] CTA/icon belongs to the shared component language
 - [ ] Hero family matches the page purpose
+- [ ] Proof rails contain real evidence, not interface mechanics
+- [ ] Domain metaphor, when used, improves recognition/orientation/decision support
 - [ ] Desktop/tablet/mobile hierarchy remains consistent
