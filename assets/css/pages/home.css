@@ -18,6 +18,69 @@
   }
 }
 
+/* Homepage header with luxury translucent frosted-glass opacity */
+.page-home .site-header{
+  position:fixed!important;
+  top:0!important;
+  left:0!important;
+  right:0!important;
+  background:rgba(255,255,255,.48)!important;
+  background-color:rgba(255,255,255,.48)!important;
+  backdrop-filter:blur(20px) saturate(180%)!important;
+  -webkit-backdrop-filter:blur(20px) saturate(180%)!important;
+  border-bottom:1px solid rgba(255,255,255,.35)!important;
+  box-shadow:0 4px 20px rgba(0,0,0,.03)!important;
+}
+.page-home .site-header.scrolled{
+  background:rgba(255,255,255,.78)!important;
+  background-color:rgba(255,255,255,.78)!important;
+  backdrop-filter:blur(24px) saturate(190%)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(190%)!important;
+  border-bottom:1px solid rgba(23,25,26,.08)!important;
+  box-shadow:0 8px 30px rgba(23,25,26,.06)!important;
+}
+.page-home .site-header.mega-open{
+  background:rgba(255,255,255,.96)!important;
+  background-color:rgba(255,255,255,.96)!important;
+}
+.page-home .header-shell{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+
+/* Homepage sections styling */
+.page-home #top-tasks>p,
+.page-home .top-task-dock>p{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  background:var(--brand-gradient-cta, linear-gradient(135deg, #f15a24 0%, #ee4623 100%))!important;
+  color:#fff!important;
+}
+.page-home #top-tasks>p span,
+.page-home .top-task-dock>p span{
+  font-size:18px!important;
+  font-weight:700!important;
+  color:#fff!important;
+}
+.page-home #top-tasks>p small,
+.page-home .top-task-dock>p small{
+  margin-top:5px!important;
+  font-size:11px!important;
+  color:rgba(255,255,255,.92)!important;
+}
+
+.page-home .capability-section{
+  background:#ffffff!important;
+}
+
+.page-home .insight-section{
+  background:#ffffff!important;
+}
+
 /* Homepage header & footer synchronization */
 .page-home .site-footer{
   background:#111111!important;

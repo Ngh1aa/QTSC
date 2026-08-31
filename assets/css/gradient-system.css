@@ -9,25 +9,17 @@ body .text-link{transition:color var(--motion-fast) var(--ease-standard),gap var
 body .text-link:hover{color:var(--brand-primary);gap:13px}
 
 body .header-shell{
-  background:linear-gradient(rgba(255,255,255,.94),rgba(255,255,255,.94)) padding-box,var(--brand-gradient) border-box;
-  border:1px solid transparent;
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  border:0!important;
   border-radius:0!important;
-  box-shadow:var(--shadow-dropdown);
+  box-shadow:none!important;
 }
 body .site-header.scrolled .header-shell,
-body .site-header.mega-open .header-shell{background:linear-gradient(rgba(255,255,255,.985),rgba(255,255,255,.985)) padding-box,var(--brand-gradient) border-box;border-radius:0!important}
+body .site-header.mega-open .header-shell{background:transparent!important;background-image:none!important;border-radius:0!important}
 body .nav-link:after{height:2px;background:var(--brand-gradient);border-radius:0!important}
 body .mega-menu{border-top-color:var(--border-brand);border-radius:0!important}
-body .mega-feature{
-  background:var(--brand-gradient-surface);
-  border:1px solid var(--border-brand);
-  border-radius:0!important;
-  box-shadow:0 18px 42px rgba(var(--brand-primary-rgb),.06);
-  position:relative;
-  overflow:hidden;
-}
-body .mega-feature:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;right:-70px;bottom:-90px;background:radial-gradient(circle,rgba(var(--brand-primary-rgb),.18),transparent 67%);pointer-events:none}
-body .mega-feature strong{background:var(--brand-gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 body .btn-brand{
   background:var(--brand-gradient-cta);

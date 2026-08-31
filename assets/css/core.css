@@ -30,10 +30,11 @@ img{max-width:100%}
 .reveal.in{opacity:1;transform:none}
 
 /* Header */
-.site-header{position:fixed;z-index:1000;left:env(safe-area-inset-left,0);right:env(safe-area-inset-right,0);top:env(safe-area-inset-top,0);background:rgba(255,255,255,.97);border-bottom:1px solid var(--border-subtle);backdrop-filter:blur(16px);border-radius:0!important;box-shadow:none;transition:box-shadow var(--motion-normal) var(--ease-standard)}
-.header-shell{height:76px;display:flex;align-items:center;width:min(calc(100% - 48px),var(--container));margin:auto;padding:0;background:transparent!important;border:0!important;border-radius:0!important;color:var(--text-primary);box-shadow:none!important;transition:height var(--motion-normal) var(--ease-standard)}
-.site-header.scrolled{box-shadow:0 8px 30px rgba(23,25,26,.06)}
-.site-header.scrolled .header-shell,.site-header.mega-open .header-shell{height:68px;background:transparent!important}
+.site-header{position:fixed;z-index:1000;left:env(safe-area-inset-left,0);right:env(safe-area-inset-right,0);top:env(safe-area-inset-top,0);background:rgba(255,255,255,.48)!important;background-color:rgba(255,255,255,.48)!important;border-bottom:1px solid rgba(255,255,255,.35)!important;backdrop-filter:blur(20px) saturate(180%)!important;-webkit-backdrop-filter:blur(20px) saturate(180%)!important;border-radius:0!important;box-shadow:0 4px 20px rgba(0,0,0,.03)!important;transition:background var(--motion-fast) var(--ease-standard),box-shadow var(--motion-normal) var(--ease-standard)}
+.header-shell{height:76px;display:flex;align-items:center;width:min(calc(100% - 48px),var(--container));margin:auto;padding:0;background:transparent!important;background-color:transparent!important;border:0!important;border-radius:0!important;color:var(--text-primary);box-shadow:none!important;transition:height var(--motion-normal) var(--ease-standard)}
+.site-header.scrolled{background:rgba(255,255,255,.78)!important;background-color:rgba(255,255,255,.78)!important;backdrop-filter:blur(24px) saturate(190%)!important;-webkit-backdrop-filter:blur(24px) saturate(190%)!important;border-bottom:1px solid rgba(23,25,26,.08)!important;box-shadow:0 8px 30px rgba(23,25,26,.06)!important}
+.site-header.mega-open{background:rgba(255,255,255,.96)!important;background-color:rgba(255,255,255,.96)!important;backdrop-filter:blur(24px) saturate(190%)!important;-webkit-backdrop-filter:blur(24px) saturate(190%)!important}
+.site-header.scrolled .header-shell,.site-header.mega-open .header-shell{height:68px;background:transparent!important;background-color:transparent!important}
 .brand{display:flex;align-items:center;width:170px;text-decoration:none;border-radius:0!important}
 .brand img{content:url("https://www.qtsc.com.vn/uploads/files/2022/03/08/logo-QTSC-2022-phien-ban-ngang-02.jpg");width:156px;height:48px;object-fit:contain;background:#fff;border-radius:0!important;filter:none!important}
 .brand-fallback{display:none;flex-direction:column;line-height:1}

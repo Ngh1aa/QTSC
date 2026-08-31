@@ -44,8 +44,8 @@ body,button,input,select,textarea{letter-spacing:-.005em}
 
 /* Header: square clean editorial glass */
 .site-header{top:max(10px,env(safe-area-inset-top,0));border-radius:0!important}
-.header-shell{min-height:72px;border-radius:0!important;background:rgba(255,255,255,.955)!important;border:1px solid rgba(42,26,23,.09)!important;box-shadow:0 8px 30px rgba(42,26,23,.05)!important;backdrop-filter:blur(18px) saturate(1.1)}
-.site-header.scrolled .header-shell,.site-header.mega-open .header-shell{background:rgba(255,255,255,.985)!important;border-radius:0!important}
+.header-shell{min-height:72px;border-radius:0!important;background:transparent!important;background-color:transparent!important;border:0!important;box-shadow:none!important}
+.site-header.scrolled .header-shell,.site-header.mega-open .header-shell{background:transparent!important;background-color:transparent!important;border-radius:0!important}
 .nav-link{border-radius:0!important;padding-left:10px;padding-right:10px}
 .nav-link:hover{background:var(--surface-brand-soft)}
 .icon-action,.lang-action,.menu-trigger{min-width:44px;min-height:44px;border-radius:0!important}
@@ -134,7 +134,7 @@ body,button,input,select,textarea{letter-spacing:-.005em}
 .company-card h3{font-size:20px!important;line-height:1.28}.company-card footer{width:100%;margin-top:auto!important;padding-top:22px!important}
 
 /* Inner pages: editorial hero/story pages */
-.inner-page .site-header{position:sticky;padding:8px 0;background:rgba(255,255,255,.96);backdrop-filter:blur(18px);border-radius:0!important}
+.inner-page .site-header{position:sticky;padding:8px 0;background:rgba(255,255,255,.76)!important;backdrop-filter:blur(20px) saturate(180%)!important;-webkit-backdrop-filter:blur(20px) saturate(180%)!important;border-radius:0!important}
 .page-about .inner-hero{padding:136px 0 86px;background:var(--editorial-paper);border-bottom:1px solid var(--border-subtle)}
 .page-about .inner-hero-grid{grid-template-columns:1.2fr .8fr;gap:90px}
 .page-about .inner-hero h1{font-size:clamp(58px,7.2vw,104px);line-height:.91}
