@@ -200,8 +200,7 @@ html body .entity-card,
 html body .resource-card,
 html body .direction-grid article,
 html body .policy-grid article,
-html body .value-card,
-html body .mega-feature {
+html body .value-card {
   background:#fff !important;
   background-image:none !important;
 }

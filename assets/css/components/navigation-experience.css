@@ -8,6 +8,7 @@
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+  font-size: 14.5px !important;
 }
 
 .nav-link:focus-visible,

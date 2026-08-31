@@ -95,7 +95,7 @@
       if (linkMap[label]) a.href = linkMap[label];
     });
     const feature = root.querySelector('.mega-feature');
-    const label = feature?.firstElementChild?.textContent.trim();
+    const label = (feature?.querySelector('.mega-feature-body span') || feature?.firstElementChild)?.textContent.trim();
     const key = label === 'Hệ sinh thái' || label === 'Doanh nghiệp & Giải pháp' ? 'ecosystem' : label === 'Tin & nguồn lực' || label === 'Tin tức & Sự kiện' ? 'insights' : null;
     if (key && extras[key]) {
       const cols = root.querySelectorAll('.mega-col');

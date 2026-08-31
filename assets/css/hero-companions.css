@@ -149,6 +149,8 @@ html body.inner-page .detail-meta span{background:rgba(255,255,255,.12)!importan
   /* SITEMAP — navigation/network composition. */
   body.page-sitemap .inner-hero>.container-wide::before{content:"06"}
   body.page-sitemap .inner-hero>.container-wide::after{content:"PRIMARY NAVIGATION GROUPS\A Q T S C · ECOSYSTEM · BUSINESS\A TECHNOLOGY · EXPLORE · INSIGHTS"}
+  body.page-investment .inner-hero>.container-wide::before,body.page-investment .inner-hero>.container-wide::after{content:none!important;display:none!important}
+  body.page-investment .inner-hero>.container-wide{padding-right:0!important}
 
   /* COMPANY DETAIL — identity composition. */
   body.page-company-detail .detail-hero>.container-wide::before{content:"HDS"}

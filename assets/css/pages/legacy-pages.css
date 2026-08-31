@@ -29,7 +29,8 @@
   .page-services .inner-hero>.container-wide::before{content:"01"}.page-services .inner-hero>.container-wide::after{content:"ONE-STOP BUSINESS SUPPORT\A OFFICE · DIGITAL INFRASTRUCTURE\A CAMPUS SERVICES"}
   .page-amenities .inner-hero>.container-wide::before{content:"09"}.page-amenities .inner-hero>.container-wide::after{content:"CAMPUS AMENITIES\A FOOD · MOBILITY · HEALTHCARE\A ATM · EDUCATION · SPORTS"}
   .page-chain .inner-hero>.container-wide::before{content:"CHAIN";font-size:clamp(38px,3.5vw,58px)}.page-chain .inner-hero>.container-wide::after{content:"QTSC NETWORK MODEL\A SHARED BRAND · INFRASTRUCTURE\A INVESTMENT & OPERATIONS"}
-  .page-investment .inner-hero>.container-wide::before{content:"10"}.page-investment .inner-hero>.container-wide::after{content:"INVESTMENT FIELDS · 2026\A DIGITAL TECHNOLOGY INDUSTRY\A CURRENT OPPORTUNITIES"}
+  .page-investment .inner-hero>.container-wide::before,.page-investment .inner-hero>.container-wide::after{content:none!important;display:none!important}
+  .page-investment .inner-hero>.container-wide{padding-right:0!important}
   .page-incentives .inner-hero>.container-wide::before{content:"2026"}.page-incentives .inner-hero>.container-wide::after{content:"INVESTMENT · LAND · TAX\A DIGITAL TECHNOLOGY INCENTIVES\A OFFICIAL QTSC GUIDANCE"}
   .page-careers .inner-hero>.container-wide::before{content:"CAREERS";font-size:clamp(34px,3vw,52px)}.page-careers .inner-hero>.container-wide::after{content:"QTSC ECOSYSTEM\A TECHNOLOGY JOBS & INTERNSHIPS\A LATEST OPPORTUNITIES"}
   .page-contact .inner-hero>.container-wide::before{content:"02"}.page-contact .inner-hero>.container-wide::after{content:"OFFICIAL CONTACT POINTS\A HEAD OFFICE · QTSC CAMPUS\A PHONE · EMAIL"}

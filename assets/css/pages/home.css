@@ -17,3 +17,23 @@
     align-items:center;
   }
 }
+
+/* Homepage header & footer synchronization */
+.page-home .site-footer{
+  background:#111111!important;
+  background-color:#111111!important;
+  background-image:none!important;
+  color:#fff!important;
+  border-top:1px solid rgba(255,255,255,.18)!important;
+}
+.page-home .site-footer::before,
+.page-home .site-footer::after{
+  display:none!important;
+  content:none!important;
+}
+.page-home .site-footer .footer-col a{
+  color:rgba(255,255,255,.84)!important;
+}
+.page-home .site-footer .footer-col a:hover{
+  color:#ffffff!important;
+}
