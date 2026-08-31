@@ -55,46 +55,11 @@ html body.inner-page .detail-meta span{background:rgba(255,255,255,.12)!importan
 
   /* Shared companion shell. ::before = large signal, ::after = supporting proof. */
   html body.inner-page .inner-hero>.container-wide::before,
-  html body.inner-page .detail-hero>.container-wide::before{
-    position:absolute;
-    right:0;
-    top:50%;
-    transform:translateY(-48%);
-    width:clamp(300px,27vw,410px);
-    height:282px;
-    box-sizing:border-box;
-    padding:30px 30px 24px;
-    border:1px solid rgba(255,255,255,.22);
-    border-radius:0!important;
-    background:
-      radial-gradient(circle at 84% 18%,rgba(255,255,255,.16),transparent 30%),
-      rgba(255,255,255,.075);
-
-    box-shadow:0 24px 60px rgba(78,16,20,.16);
-    backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
-    color:#fff;
-    font-size:clamp(48px,4.4vw,72px);
-    font-weight:500;
-    line-height:.96;
-    letter-spacing:-.045em;
-    white-space:pre-line;
-    pointer-events:none;
-  }
+  html body.inner-page .detail-hero>.container-wide::before,
   html body.inner-page .inner-hero>.container-wide::after,
   html body.inner-page .detail-hero>.container-wide::after{
-    position:absolute;
-    right:30px;
-    top:calc(50% + 40px);
-    width:clamp(245px,22vw,350px);
-    color:rgba(255,255,255,.84);
-    font-size:11px;
-    font-weight:600;
-    line-height:1.85;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    white-space:pre-line;
-    pointer-events:none;
+    display:none !important;
+    content:none !important;
   }
 
   /* ABOUT — credibility/proof composition. */

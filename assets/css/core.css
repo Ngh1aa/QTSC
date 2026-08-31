@@ -142,7 +142,7 @@ img{max-width:100%}
 .mega-inner{width:min(calc(100% - 96px),var(--container));margin:auto;padding:40px 0 48px;display:grid;grid-template-columns:1fr 1fr .8fr;gap:50px}
 .mega-col small{display:block;color:var(--text-tertiary);text-transform:uppercase;font-size:12px;letter-spacing:.08em;margin-bottom:12px}
 .mega-col a{display:flex;justify-content:space-between;padding:9px 0;font-size:14px;text-decoration:none}
-.mega-col a:hover{color:var(--brand-red)}
+.mega-col a:hover{color:#ffffff!important;background:var(--brand-gradient-cta, linear-gradient(135deg, #f15a24 0%, #ee4623 100%))!important;border-radius:4px;padding-left:10px;padding-right:10px;transition:var(--motion-fast)}
 .mega-feature{background:var(--surface-soft);border:1px solid var(--border-subtle);border-radius:0!important;min-height:220px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:0!important}
 .mega-feature.has-media .mega-feature-media{position:absolute;inset:0;z-index:0}
 .mega-feature.has-media .mega-feature-media img{width:100%;height:100%;object-fit:cover;filter:brightness(.68) contrast(1.05);transition:transform var(--motion-normal) var(--ease-standard)}
@@ -226,6 +226,28 @@ img{max-width:100%}
 [style*="background: var(--home-dark)"] *, [style*="background:var(--home-dark)"] *,
 [style*="background: var(--brand-gradient-cta)"] *, [style*="background:var(--brand-gradient-cta)"] * {
   color: #ffffff !important;
+}
+
+@keyframes pulse-btn {
+  0% { box-shadow: 0 0 0 0 rgba(var(--brand-red-rgb), 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(var(--brand-red-rgb), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--brand-red-rgb), 0); }
+}
+
+.btn-brand {
+  animation: pulse-btn 2.5s infinite;
+}
+
+/* Make "Xem chi tiết", "Đọc thêm" links stand out */
+.ecosystem-link i, .extended-card i, .data-card footer small, a > i, a > span:last-child {
+  transition: color var(--motion-fast), transform var(--motion-fast);
+}
+
+.ecosystem-link:hover i, .extended-card:hover i, .data-card:hover footer small {
+  color: var(--brand-red) !important;
+  font-weight: 600;
+  text-decoration: underline;
+  transform: translateX(4px);
 }
 @media(max-width:620px){.header-actions{gap:0}.lang-action{display:block}.footer-main{grid-template-columns:1fr 1fr;gap:38px}.footer-brand{grid-column:1/-1}.footer-col:last-child{grid-column:auto}.footer-bottom{flex-direction:column;gap:8px}.search-dialog h2,.connect-drawer h2{font-size:36px}.global-search-field input{font-size:16px}.global-search-field kbd{display:none}.connect-drawer{padding:25px 20px}.connect-form{grid-template-columns:1fr}.form-field{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}

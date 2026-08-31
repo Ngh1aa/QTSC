@@ -30,7 +30,7 @@
 .inner-page .mega-menu.open{opacity:1;transform:none;pointer-events:auto}
 .inner-page .mega-feature{border:1px solid var(--border-brand);background:var(--brand-gradient-surface)}
 .inner-page .mega-col a{text-decoration:none}
-.inner-page .mega-col a:hover{color:var(--brand-deep)}
+.inner-page .mega-col a:hover{color:#ffffff!important;background:var(--brand-gradient-cta, linear-gradient(135deg, #f15a24 0%, #ee4623 100%))!important;border-radius:4px;padding-left:10px;padding-right:10px;transition:var(--motion-fast)}
 
 /* Brand-story hero */
 .inner-hero{padding:var(--section-lg) 0 var(--section-md);background:var(--surface-soft);border-bottom:1px solid var(--border-subtle)}

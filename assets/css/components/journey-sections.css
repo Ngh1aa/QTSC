@@ -296,6 +296,15 @@
   justify-content:center;
   border-radius:0!important;
 }
+.cta-panel .cta-actions .btn-brand {
+  background: #111111 !important;
+  color: #ff6a39 !important; /* Orange-red */
+  box-shadow: none !important;
+}
+.cta-panel .cta-actions .btn-brand:hover {
+  background: #000000 !important;
+  color: #ff8459 !important;
+}
 
 .cta-panel .cta-actions .btn-secondary,
 .inner-page .cta-panel .cta-actions .btn-secondary{

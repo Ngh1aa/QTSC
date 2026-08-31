@@ -221,12 +221,39 @@ body .final-options button:hover{background:rgba(255,255,255,.12);padding-left:1
 body.inner-page .site-header{background:#ffffff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom-color:rgba(23,25,26,.1);border-radius:0!important}
 body.inner-page .header-shell{box-shadow:none!important;border-radius:0!important}
 body.inner-page .inner-hero{position:relative;overflow:hidden;background:var(--brand-gradient-surface);border-bottom:1px solid var(--border-subtle)}
+
+/* Add a soft orange-red gradient overlay to all hero banners */
+.inner-hero::before, .home-hero::before, .detail-hero::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  right: 0 !important;
+  top: 0 !important;
+  transform: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  background: linear-gradient(135deg, rgba(238, 70, 35, 0.08) 0%, rgba(206, 75, 30, 0.02) 50%, transparent 100%) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+.inner-hero > *, .home-hero > *, .detail-hero > * {
+  position: relative;
+  z-index: 2;
+}
+.hero-media {
+  z-index: 0 !important;
+}
+
 body.inner-page .inner-hero:after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;right:-180px;top:-290px;background:radial-gradient(circle,rgba(var(--brand-primary-rgb),.15),rgba(var(--brand-light-rgb),.05) 38%,transparent 68%);pointer-events:none}
 body.inner-page .inner-hero>.container-wide{position:relative;z-index:1}
 body.inner-page:not(.page-office):not(.page-explore) .inner-hero h1{background:var(--brand-gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
 body.inner-page .breadcrumb a:hover{color:var(--brand-primary)}
 
-body.page-companies .inner-hero,
 body.page-marketplace .inner-hero,
 body.page-insights .inner-hero{background:linear-gradient(135deg,#fff 0%,#fff8f4 60%,#fff 100%);border-bottom-color:var(--border-brand)}
 body.page-office .inner-hero,

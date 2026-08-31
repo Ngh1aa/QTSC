@@ -158,7 +158,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .mega-col a:hover {
-    color: var(--brand-deep);
-    background: var(--brand-gradient-soft);
+    color: #ffffff !important;
+    background: var(--brand-gradient-cta, linear-gradient(135deg, #f15a24 0%, #ee4623 100%)) !important;
   }
 }
