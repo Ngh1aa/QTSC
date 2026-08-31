@@ -237,7 +237,7 @@ body.inner-page .inner-hero{position:relative;overflow:hidden;background:var(--b
   border: 0 !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
-  background: linear-gradient(135deg, rgba(238, 70, 35, 0.08) 0%, rgba(206, 75, 30, 0.02) 50%, transparent 100%) !important;
+  background: linear-gradient(108deg, rgba(108,28,23,.96) 0%, rgba(178,47,30,.90) 55%, rgba(235,89,35,.76) 100%) !important;
   pointer-events: none !important;
   z-index: 1 !important;
 }
