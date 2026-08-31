@@ -130,6 +130,76 @@
 .verified-offering i{font-style:normal;font-size:20px;align-self:start}
 .verified-offering p{grid-column:1/-1;margin:0;color:var(--text-secondary);font-size:13px;line-height:1.6}
 
+/* Force the broader prototype catalogue into a dense capability index.
+   Some legacy review layers still own grid/card rules, so this final layer is intentionally explicit. */
+.page-marketplace .entity-list{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  column-gap:28px!important;
+  row-gap:0!important;
+  border-top:1px solid var(--border-subtle)!important;
+}
+.page-marketplace .entity-list .entity-card{
+  min-height:104px!important;
+  padding:18px 0!important;
+  border:0!important;
+  border-bottom:1px solid var(--border-subtle)!important;
+  background:#fff!important;
+  box-shadow:none!important;
+  transform:none!important;
+  display:grid!important;
+  grid-template-columns:42px minmax(0,1fr) 20px!important;
+  grid-template-rows:auto auto!important;
+  gap:4px 12px!important;
+  align-items:center!important;
+}
+.page-marketplace .entity-list .entity-card:before,
+.page-marketplace .entity-list .entity-card:after{display:none!important;content:none!important}
+.page-marketplace .entity-list .entity-card .entity-mark{
+  grid-column:1!important;
+  grid-row:1 / span 2!important;
+  width:38px!important;
+  height:38px!important;
+  margin:0!important;
+  background:#fff8f4!important;
+  color:var(--brand-deep)!important;
+  border:1px solid var(--border-brand)!important;
+  box-shadow:none!important;
+  font-size:10px!important;
+}
+.page-marketplace .entity-list .entity-card h3{
+  grid-column:2!important;
+  grid-row:1!important;
+  margin:0!important;
+  font-size:16px!important;
+  line-height:1.3!important;
+  font-weight:500!important;
+}
+.page-marketplace .entity-list .entity-card>p{
+  grid-column:2!important;
+  grid-row:2!important;
+  margin:0!important;
+  font-size:12px!important;
+  line-height:1.45!important;
+  color:var(--text-secondary)!important;
+  background:transparent!important;
+  padding:0!important;
+}
+.page-marketplace .entity-list .entity-card footer{
+  grid-column:3!important;
+  grid-row:1 / span 2!important;
+  margin:0!important;
+  padding:0!important;
+  width:auto!important;
+  align-self:center!important;
+}
+.page-marketplace .entity-list .entity-card footer span:first-child{display:none!important}
+.page-marketplace .entity-list .entity-card:hover{
+  padding-left:8px!important;
+  padding-right:8px!important;
+  background:#fff8f4!important;
+}
+
 /* 7) Office selector: treat it as a campus/building directory rather than a generic tab card. */
 .page-office .directory-kicker{
   margin:0 0 12px;
@@ -155,6 +225,16 @@
 /* 8) Softer section rhythm: preserve white dominance while avoiding endless white/rule/white repetition. */
 .inner-page .inner-section.soft,
 .inner-page .ecosystem-strip{background:#faf8f5!important}
+.inner-page .ecosystem-strip,
+.inner-page .ecosystem-strip h2,
+.inner-page .ecosystem-strip h3,
+.inner-page .ecosystem-strip p,
+.inner-page .ecosystem-strip .ecosystem-head,
+.inner-page .ecosystem-strip .ecosystem-link{
+  color:var(--text-primary)!important;
+}
+.inner-page .ecosystem-strip .ecosystem-link p{color:var(--text-secondary)!important}
+.inner-page .ecosystem-strip .ecosystem-link>span{color:var(--brand-deep)!important}
 
 @media(max-width:900px){
   .inner-page .proof-rail.proof-rail--3 .container-wide,
@@ -164,6 +244,7 @@
   .verified-offering:last-child{border-bottom:0!important}
   .page-companies .entity-list.entity-list--identity .entity-card{grid-template-columns:1fr!important}
   .page-companies .entity-list.entity-list--identity .entity-card footer{grid-column:1;grid-row:auto;border-left:0!important;border-top:1px solid var(--border-subtle)!important;padding:12px 0 0!important}
+  .page-marketplace .entity-list{grid-template-columns:1fr!important}
 }
 
 @media(max-width:600px){
