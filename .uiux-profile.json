@@ -35,6 +35,7 @@
     "portfolio-website",
     "production-monitoring-and-maintenance",
     "real-estate-and-building-website",
+    "real-world-artifact-and-domain-metaphor-design",
     "reference-analysis-and-design-to-code",
     "saas-website",
     "security-and-privacy",
@@ -60,6 +61,7 @@
     "Preserve QTSC's white-dominant red-orange digital brand system with #EE4623 as the selected prototype primary token",
     "Reuse existing design tokens, shared components and source architecture before adding local styles or new component patterns",
     "Treat statistics, rankings and proof points as dated evidence and retain source/date context",
+    "Use domain-native campus, building, wayfinding, infrastructure and ecosystem artifacts only when they improve recognition, orientation or decision support; prefer L1-L2 metaphor fidelity over decorative skeuomorphism",
     "Do not claim user research, accessibility conformance, UX improvement, brand-recognition validation or agent reliability without the evidence required by V5",
     "Keep the current static HTML/CSS/JS prototype architecture unless a task explicitly requires a stack migration"
   ]
