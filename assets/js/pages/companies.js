@@ -17,15 +17,15 @@ const apply = () => {
 };
 search?.addEventListener('input', apply);
 $$('[data-filter]').forEach(button => button.addEventListener('click', () => {
-  $$('.pill-tabs button').forEach(item => {item.classList.remove('active');item.setAttribute('aria-selected','false')});
+  $$('.pill-tabs button').forEach(item => {item.classList.remove('active');item.setAttribute('aria-pressed','false')});
   button.classList.add('active');
-  button.setAttribute('aria-selected','true');
+  button.setAttribute('aria-pressed','true');
   apply();
 }));
 /* Reset from empty-state inline link */
 $$('.empty-state [data-filter]').forEach(btn => btn.addEventListener('click', () => {
   const allBtn = $('[data-filter="all"]');
-  if (allBtn) { allBtn.classList.add('active'); allBtn.setAttribute('aria-selected','true'); $$('.pill-tabs button').forEach(x => { if(x!==allBtn){x.classList.remove('active');x.setAttribute('aria-selected','false')} }); }
+  if (allBtn) { allBtn.classList.add('active'); allBtn.setAttribute('aria-pressed','true'); $$('.pill-tabs button').forEach(x => { if(x!==allBtn){x.classList.remove('active');x.setAttribute('aria-pressed','false')} }); }
   if (search) search.value = '';
   apply();
 }));
