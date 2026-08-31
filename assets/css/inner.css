@@ -1,12 +1,12 @@
-@import url("final-polish.css");
-@import url("surface-type-normalization.css");
-@import url("header-hero-parity.css");
-@import url("hero-companions.css");
-@import url("inner-index-parity.css");
-@import url("review/ui-feedback-2026-08-28-1634.css");
-@import url("review/card-layout-refinement-2026-08-28.css");
-@import url("review/card-content-safe-area-2026-08-28.css");
-@import url("service-experience.css");
+@import url("final-polish.css?v=2.5");
+@import url("surface-type-normalization.css?v=2.5");
+@import url("header-hero-parity.css?v=2.5");
+@import url("hero-companions.css?v=2.5");
+@import url("inner-index-parity.css?v=2.5");
+@import url("review/ui-feedback-2026-08-28-1634.css?v=2.5");
+@import url("review/card-layout-refinement-2026-08-28.css?v=2.5");
+@import url("review/card-content-safe-area-2026-08-28.css?v=2.5");
+@import url("service-experience.css?v=2.5");
 
 /* QTSC UI/UX — unified inner-page system */
 .inner-page{background:var(--surface-primary)}

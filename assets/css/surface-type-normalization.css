@@ -154,20 +154,21 @@ html body.page-chain .inner-hero,
 html body.page-community .inner-hero,
 html body.page-awards .inner-hero,
 html body.page-innovation-centers .inner-hero{
-  background-image:var(--qtsc-overlay-story),var(--qtsc-campus-image-alt) !important;
+  background-image:var(--qtsc-overlay-business),var(--qtsc-campus-image-alt) !important;
 }
 html body.page-office .inner-hero,
 html body.page-services .inner-hero,
 html body.page-investment .inner-hero,
 html body.page-incentives .inner-hero,
-html body.page-amenities .inner-hero{
+html body.page-amenities .inner-hero,
+html body.page-companies .inner-hero,
+html body.page-home .home-hero{
   background-image:var(--qtsc-overlay-business),var(--qtsc-campus-image) !important;
 }
-html body.page-companies .inner-hero,
 html body.page-marketplace .inner-hero,
 html body.page-telecom .inner-hero,
 html body.page-digitech-center .inner-hero{
-  background-image:var(--qtsc-overlay-technology),var(--qtsc-campus-image-story) !important;
+  background-image:var(--qtsc-overlay-business),var(--qtsc-campus-image-story) !important;
 }
 html body.page-insights .inner-hero,
 html body.page-media-center .inner-hero,
@@ -179,7 +180,7 @@ html body.page-contact .inner-hero,
 html body.page-policy .inner-hero,
 html body.page-sitemap .inner-hero,
 html body.page-explore .inner-hero{
-  background-image:var(--qtsc-overlay-resource),var(--qtsc-campus-image-alt) !important;
+  background-image:var(--qtsc-overlay-business),var(--qtsc-campus-image-alt) !important;
 }
 html body.inner-page .inner-hero h1,
 html body.inner-page .inner-hero p,
