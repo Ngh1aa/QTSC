@@ -134,7 +134,7 @@ body,button,input,select,textarea{letter-spacing:-.005em}
 .company-card h3{font-size:20px!important;line-height:1.28}.company-card footer{width:100%;margin-top:auto!important;padding-top:22px!important}
 
 /* Inner pages: editorial hero/story pages */
-.inner-page .site-header{position:sticky;padding:8px 0;background:rgba(255,255,255,.76)!important;backdrop-filter:blur(20px) saturate(180%)!important;-webkit-backdrop-filter:blur(20px) saturate(180%)!important;border-radius:0!important}
+.inner-page .site-header{position:sticky;padding:8px 0;background:#ffffff!important;background-color:#ffffff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-radius:0!important;border-bottom:1px solid rgba(23,25,26,.1)!important}
 .page-about .inner-hero{padding:136px 0 86px;background:var(--editorial-paper);border-bottom:1px solid var(--border-subtle)}
 .page-about .inner-hero-grid{grid-template-columns:1.2fr .8fr;gap:90px}
 .page-about .inner-hero h1{font-size:clamp(58px,7.2vw,104px);line-height:.91}

@@ -218,8 +218,8 @@ body .final-options button{transition:background var(--motion-fast),padding var(
 body .final-options button:hover{background:rgba(255,255,255,.12);padding-left:12px;padding-right:12px}
 
 /* ---------- Inner pages ---------- */
-body.inner-page .site-header{background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-bottom-color:var(--border-brand);border-radius:0!important}
-body.inner-page .header-shell{box-shadow:0 10px 34px rgba(23,25,26,.055),0 2px 12px rgba(var(--brand-primary-rgb),.045);border-radius:0!important}
+body.inner-page .site-header{background:#ffffff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom-color:rgba(23,25,26,.1);border-radius:0!important}
+body.inner-page .header-shell{box-shadow:none!important;border-radius:0!important}
 body.inner-page .inner-hero{position:relative;overflow:hidden;background:var(--brand-gradient-surface);border-bottom:1px solid var(--border-subtle)}
 body.inner-page .inner-hero:after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;right:-180px;top:-290px;background:radial-gradient(circle,rgba(var(--brand-primary-rgb),.15),rgba(var(--brand-light-rgb),.05) 38%,transparent 68%);pointer-events:none}
 body.inner-page .inner-hero>.container-wide{position:relative;z-index:1}
