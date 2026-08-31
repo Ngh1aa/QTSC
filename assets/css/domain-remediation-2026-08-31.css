@@ -1,0 +1,183 @@
+/* QTSC domain-remediation layer — 2026-08-31
+   Purpose: reduce template repetition, strengthen QTSC campus/domain DNA,
+   improve contrast, and preserve real imagery/data hierarchy without redesigning the IA. */
+
+/* 1) Accessibility + hierarchy: orange remains a graphic accent; small text uses deeper red. */
+.page-home .decision-card>span,
+.page-home .featured-story>span,
+.page-home .resource-rail a>span,
+.inner-page .ecosystem-link>span,
+.inner-page .decision-cell>span{
+  color:var(--brand-deep)!important;
+}
+
+/* 2) Hero: let the real QTSC campus remain visible instead of over-grading the photo. */
+.page-home .hero-media:after{
+  background:linear-gradient(106deg,
+    rgba(54,18,16,.84) 0%,
+    rgba(116,31,24,.66) 42%,
+    rgba(177,53,30,.34) 72%,
+    rgba(177,53,30,.18) 100%)!important;
+  mix-blend-mode:normal!important;
+}
+.page-home .hero-signal{opacity:.58}
+.page-home .hero-copy h1{
+  font-size:clamp(48px,5.55vw,82px)!important;
+  line-height:.98!important;
+  letter-spacing:-.048em!important;
+  max-width:850px!important;
+}
+.page-home .section-intro h2,
+.page-home .campus-content h2,
+.page-home .decision-heading h2,
+.page-home .final-layout h2{
+  font-size:clamp(38px,4.35vw,64px)!important;
+  line-height:1.02!important;
+  letter-spacing:-.045em!important;
+}
+
+/* 3) Real photography: avoid a universal red multiply wash on decision/utility imagery. */
+.inner-page .inner-media::after,
+.inner-page .office-view::after,
+.inner-page .entity-media::after,
+.inner-page .card-media::after,
+.inner-page .detail-media::after{
+  background:linear-gradient(180deg,rgba(20,18,17,.03),rgba(20,18,17,.16))!important;
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+}
+.inner-page .inner-media img,
+.inner-page .office-view img,
+.inner-page .entity-media img,
+.inner-page .card-media img,
+.inner-page .detail-media img{
+  filter:saturate(.94) contrast(1.02)!important;
+}
+
+/* 4) Evidence rails should contain evidence, not UI instructions disguised as KPIs. */
+.inner-page .proof-cell.is-ui-meta{display:none!important}
+.inner-page .proof-rail.proof-rail--3 .container-wide{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.inner-page .proof-rail.proof-rail--4 .container-wide{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.inner-page .proof-rail.proof-rail--3 .proof-cell,
+.inner-page .proof-rail.proof-rail--4 .proof-cell{border-top:0!important}
+.inner-page .proof-rail.proof-rail--3 .proof-cell:last-child,
+.inner-page .proof-rail.proof-rail--4 .proof-cell:last-child{border-right:0!important}
+
+/* 5) Company directory: editorial identity rows, no fake monogram badges. */
+.page-companies .entity-list.entity-list--identity .entity-card{
+  grid-template-columns:minmax(0,1fr) 220px!important;
+  gap:24px!important;
+  min-height:104px!important;
+  padding:24px 0!important;
+  border-left:0!important;
+  border-right:0!important;
+}
+.page-companies .entity-list.entity-list--identity .entity-card:hover{
+  padding-left:12px!important;
+  padding-right:12px!important;
+  background:#fff8f4!important;
+}
+.page-companies .entity-list.entity-list--identity .entity-card h3{
+  grid-column:1;
+  font-size:clamp(18px,1.6vw,23px)!important;
+  margin:0 0 7px!important;
+}
+.page-companies .entity-list.entity-list--identity .entity-card p{grid-column:1}
+.page-companies .entity-list.entity-list--identity .entity-card footer{
+  grid-column:2;
+  grid-row:1 / span 2;
+  justify-self:stretch;
+  align-self:center;
+  border-left:1px solid var(--border-subtle)!important;
+  padding-left:24px!important;
+}
+
+/* 6) Marketplace: verified first-party offerings are separated from the broader prototype catalogue. */
+.verified-offerings{
+  margin:0 0 44px;
+  border-top:1px solid var(--border-subtle);
+  border-bottom:1px solid var(--border-subtle);
+}
+.verified-offerings-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:24px;
+  padding:18px 0;
+  border-bottom:1px solid var(--border-subtle);
+}
+.verified-offerings-head strong{font-size:15px;font-weight:700}
+.verified-offerings-head span{font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.1em}
+.verified-offerings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.verified-offering{
+  min-height:150px;
+  padding:26px 24px;
+  text-decoration:none;
+  color:inherit;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:18px;
+  border-bottom:1px solid var(--border-subtle);
+  border-right:1px solid var(--border-subtle);
+  background:#fff;
+  transition:background var(--motion-fast) var(--ease-standard);
+}
+.verified-offering:nth-child(even){border-right:0}
+.verified-offering:nth-last-child(-n+2){border-bottom:0}
+.verified-offering:hover{background:#fff8f4}
+.verified-offering small{grid-column:1/-1;color:var(--brand-deep);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.verified-offering strong{font-size:clamp(20px,2vw,28px);line-height:1.16;font-weight:500;letter-spacing:-.03em}
+.verified-offering i{font-style:normal;font-size:20px;align-self:start}
+.verified-offering p{grid-column:1/-1;margin:0;color:var(--text-secondary);font-size:13px;line-height:1.6}
+
+/* 7) Office selector: treat it as a campus/building directory rather than a generic tab card. */
+.page-office .directory-kicker{
+  margin:0 0 12px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--brand-deep);
+}
+.page-office .office-selector.domain-building-directory{
+  border-top:3px solid var(--brand-deep)!important;
+  box-shadow:none!important;
+}
+.page-office .office-selector.domain-building-directory .office-list button{
+  position:relative;
+  padding-left:22px!important;
+}
+.page-office .office-selector.domain-building-directory .office-list button.active{
+  background:#fff8f4!important;
+  box-shadow:inset 4px 0 0 var(--brand-deep)!important;
+}
+
+/* 8) Softer section rhythm: preserve white dominance while avoiding endless white/rule/white repetition. */
+.inner-page .inner-section.soft,
+.inner-page .ecosystem-strip{background:#faf8f5!important}
+
+@media(max-width:900px){
+  .inner-page .proof-rail.proof-rail--3 .container-wide,
+  .inner-page .proof-rail.proof-rail--4 .container-wide{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .verified-offerings-grid{grid-template-columns:1fr}
+  .verified-offering{border-right:0!important;border-bottom:1px solid var(--border-subtle)!important}
+  .verified-offering:last-child{border-bottom:0!important}
+  .page-companies .entity-list.entity-list--identity .entity-card{grid-template-columns:1fr!important}
+  .page-companies .entity-list.entity-list--identity .entity-card footer{grid-column:1;grid-row:auto;border-left:0!important;border-top:1px solid var(--border-subtle)!important;padding:12px 0 0!important}
+}
+
+@media(max-width:600px){
+  .page-home .hero-copy h1{font-size:clamp(40px,11.5vw,54px)!important;letter-spacing:-.04em!important}
+  .page-home .hero-signal{opacity:.35}
+  .page-home .section-intro h2,
+  .page-home .campus-content h2,
+  .page-home .decision-heading h2,
+  .page-home .final-layout h2{font-size:clamp(34px,9.5vw,46px)!important}
+  .inner-page .proof-rail.proof-rail--3 .container-wide,
+  .inner-page .proof-rail.proof-rail--4 .container-wide{grid-template-columns:1fr!important}
+  .inner-page .proof-rail.proof-rail--3 .proof-cell,
+  .inner-page .proof-rail.proof-rail--4 .proof-cell{border-right:0!important;border-top:1px solid rgba(255,255,255,.15)!important}
+  .inner-page .proof-rail.proof-rail--3 .proof-cell:first-child,
+  .inner-page .proof-rail.proof-rail--4 .proof-cell:first-child{border-top:0!important}
+  .verified-offerings-head{align-items:flex-start;flex-direction:column;gap:4px}
+}
