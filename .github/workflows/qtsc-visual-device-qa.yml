@@ -1,5 +1,6 @@
 name: QTSC Visual Device QA
 
+# Full-site visual/device regression gate for public content archetypes.
 on:
   pull_request:
     branches: [main]

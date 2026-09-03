@@ -14,29 +14,52 @@ const viewports = {
   '1440': { width: 1440, height: 1000 }
 };
 
+const allPages = [
+  'index.html',
+  'about.html',
+  'amenities.html',
+  'awards.html',
+  'careers.html',
+  'community.html',
+  'companies.html',
+  'company-detail.html',
+  'contact.html',
+  'digitech-center.html',
+  'explore.html',
+  'incentives.html',
+  'innovation-centers.html',
+  'insights.html',
+  'investment.html',
+  'legal.html',
+  'marketplace.html',
+  'media-center.html',
+  'newsletter.html',
+  'office.html',
+  'open-data.html',
+  'privacy.html',
+  'qtsc-chain.html',
+  'resources.html',
+  'services.html',
+  'sitemap.html',
+  'technology-detail.html',
+  'telecom.html'
+];
+
 const criticalPages = [
   'index.html',
-  'office.html',
-  'investment.html',
-  'incentives.html',
   'companies.html',
   'marketplace.html',
+  'office.html',
   'services.html',
+  'investment.html',
+  'incentives.html',
+  'insights.html',
+  'open-data.html',
   'contact.html'
 ];
 
-const secondaryPages = [
-  'about.html',
-  'explore.html',
-  'technology-detail.html',
-  'telecom.html',
-  'innovation-centers.html',
-  'amenities.html',
-  'careers.html',
-  'resources.html',
-  'insights.html'
-];
-
+const criticalSet = new Set(criticalPages);
+const secondaryPages = allPages.filter(page => !criticalSet.has(page));
 const matrix = [];
 for (const page of criticalPages) {
   for (const viewportName of Object.keys(viewports)) matrix.push([page, viewportName]);
@@ -60,13 +83,13 @@ async function measurePage(page, route, viewportName) {
     const overflowX = Math.max(doc.scrollWidth, body?.scrollWidth || 0) - viewportWidth;
     const visibleMain = document.querySelector('main#main');
     const h1 = document.querySelector('main h1');
-    const buttons = [...document.querySelectorAll('a,button,input,select,textarea')]
+    const controls = [...document.querySelectorAll('button,input,select,textarea,[role="button"]')]
       .filter(el => {
         const r = el.getBoundingClientRect();
         const s = getComputedStyle(el);
         return r.width > 0 && r.height > 0 && s.visibility !== 'hidden' && s.display !== 'none';
       });
-    const smallTargets = buttons.filter(el => {
+    const smallControls = controls.filter(el => {
       const r = el.getBoundingClientRect();
       return r.width < 40 || r.height < 40;
     }).slice(0, 20).map(el => ({
@@ -75,8 +98,10 @@ async function measurePage(page, route, viewportName) {
       width: Math.round(el.getBoundingClientRect().width),
       height: Math.round(el.getBoundingClientRect().height)
     }));
-    const badAnchors = [...document.querySelectorAll('a[href="#"]')].map(a => (a.textContent || '').trim()).filter(Boolean);
-    const duplicateIds = [...document.querySelectorAll('[id]')].map(el => el.id).filter((id, i, arr) => arr.indexOf(id) !== i);
+    const badAnchors = [...document.querySelectorAll('a[href="#"]')]
+      .map(a => (a.textContent || '').trim()).filter(Boolean);
+    const duplicateIds = [...document.querySelectorAll('[id]')]
+      .map(el => el.id).filter((id, i, arr) => arr.indexOf(id) !== i);
     return {
       route,
       viewport: viewportName,
@@ -85,7 +110,7 @@ async function measurePage(page, route, viewportName) {
       hasMain: Boolean(visibleMain),
       hasH1: Boolean(h1 && h1.textContent.trim()),
       mainHeight: visibleMain ? Math.round(visibleMain.getBoundingClientRect().height) : 0,
-      smallTargets,
+      smallControls,
       badAnchors: [...new Set(badAnchors)],
       duplicateIds: [...new Set(duplicateIds)],
       bodyTextLength: (body?.innerText || '').trim().length
@@ -134,7 +159,46 @@ for (const [route, viewportName] of matrix) {
   if (metrics.badAnchors.length) failures.push(`${route} @ ${viewportName}: placeholder href=# links: ${metrics.badAnchors.join(' | ')}`);
   if (localRequestFailures.length) failures.push(`${route} @ ${viewportName}: local asset failures: ${localRequestFailures.join(' | ')}`);
   if (consoleErrors.some(x => /ReferenceError|TypeError|SyntaxError|pageerror:/i.test(x))) failures.push(`${route} @ ${viewportName}: runtime console error: ${consoleErrors.join(' | ')}`);
+  if (['320','375','414'].includes(viewportName) && metrics.smallControls.length) {
+    failures.push(`${route} @ ${viewportName}: small primary controls: ${metrics.smallControls.map(x => `${x.tag} ${x.width}x${x.height} ${x.text}`).join(' | ')}`);
+  }
 
+  await context.close();
+}
+
+async function validateLocalLinks() {
+  const context = await browser.newContext({ viewport: viewports['1440'], reducedMotion: 'reduce' });
+  const page = await context.newPage();
+  const uniqueTargets = new Map();
+  for (const route of allPages) {
+    await page.goto(`${baseURL}/${route}`, { waitUntil: 'domcontentloaded', timeout: 15000 });
+    const hrefs = await page.locator('main a[href], footer a[href]').evaluateAll(nodes => nodes.map(a => a.getAttribute('href')).filter(Boolean));
+    for (const href of hrefs) {
+      if (/^(?:mailto:|tel:|javascript:)/i.test(href)) continue;
+      const target = new URL(href, `${baseURL}/${route}`);
+      if (target.origin !== baseURL) continue;
+      const pathname = target.pathname.replace(/^\//, '') || 'index.html';
+      if (!pathname.endsWith('.html')) continue;
+      const key = `${pathname}${target.hash}`;
+      if (!uniqueTargets.has(key)) uniqueTargets.set(key, { pathname, hash: target.hash, source: route, href });
+    }
+  }
+
+  for (const target of uniqueTargets.values()) {
+    const response = await context.request.get(`${baseURL}/${target.pathname}`);
+    if (!response.ok()) {
+      failures.push(`local link from ${target.source}: ${target.href} → HTTP ${response.status()}`);
+      continue;
+    }
+    if (target.hash) {
+      const id = decodeURIComponent(target.hash.slice(1));
+      const html = await response.text();
+      const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const idPattern = new RegExp(`\\bid=["']${escaped}["']`);
+      if (!idPattern.test(html)) failures.push(`local hash from ${target.source}: ${target.href} → missing #${id}`);
+    }
+  }
+  results.push({ linkIntegrity: true, checkedTargets: uniqueTargets.size });
   await context.close();
 }
 
@@ -155,6 +219,8 @@ async function runInteraction(name, route, viewport, fn) {
     await context.close();
   }
 }
+
+await validateLocalLinks();
 
 await runInteraction('mobile menu open/close + focus', 'index.html', viewports['375'], async page => {
   const trigger = page.locator('#mobileMenuOpen');
@@ -204,7 +270,8 @@ await browser.close();
 const report = {
   generatedAt: new Date().toISOString(),
   headSha: process.env.GITHUB_SHA || null,
-  testedPages: [...criticalPages, ...secondaryPages],
+  testedPages: allPages,
+  criticalPages,
   viewportMatrix: Object.keys(viewports),
   screenshotCount: matrix.length,
   failures,
@@ -216,7 +283,7 @@ const md = [
   '# QTSC Visual / Device QA',
   '',
   `- Head SHA: ${report.headSha || 'local'}`,
-  `- Pages: ${report.testedPages.length}`,
+  `- Public pages: ${report.testedPages.length}`,
   `- Screenshots: ${report.screenshotCount}`,
   `- Viewports: ${report.viewportMatrix.join(', ')} px`,
   `- Result: ${failures.length ? `FAIL (${failures.length})` : 'PASS'}`,
@@ -225,13 +292,14 @@ const md = [
   '',
   ...(failures.length ? failures.map(x => `- ${x}`) : ['- None']),
   '',
-  '## Notes',
+  '## Scope',
   '',
-  '- Critical journeys are rendered at all six breakpoints.',
-  '- Secondary routes are rendered at mobile, tablet and desktop.',
-  '- Screenshots are uploaded as the workflow artifact for human visual inspection.',
-  '- Automated checks cover horizontal overflow, missing primary content, duplicate IDs, placeholder links, local asset failures and runtime JS errors.',
-  '- Interaction checks cover mobile navigation, search, contact drawer, directory filters, marketplace filters and office selector.'
+  '- Ten priority/archetype pages are rendered at all six breakpoints.',
+  '- Every other public page is rendered at mobile, tablet and desktop.',
+  '- Screenshots are uploaded as workflow artifacts for human visual inspection.',
+  '- Automated checks cover horizontal overflow, missing primary content, duplicate IDs, placeholder links, local asset failures, runtime JS errors, small primary controls on mobile and local HTML/hash link integrity.',
+  '- Interaction checks cover mobile navigation, search, contact drawer, directory filters, marketplace filters and office selector.',
+  '- This is regression evidence only; it is not a claim of WCAG conformance or user-validated UX improvement.'
 ].join('\n');
 await fs.writeFile(path.join(outDir, 'report.md'), md);
 console.log(md);
