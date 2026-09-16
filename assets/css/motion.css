@@ -1,0 +1,50 @@
+/* QTSC motion — infrastructure signal / ecosystem routing / civic-tech precision */
+:root{
+  --qtsc-motion-ease:cubic-bezier(.2,.8,.2,1);
+  --qtsc-motion-fast:180ms;
+  --qtsc-motion-med:360ms;
+  --qtsc-motion-slow:720ms;
+}
+
+@keyframes qtsc-hero-settle{from{transform:scale(1.035);filter:saturate(.9) contrast(.98)}to{transform:scale(1);filter:none}}
+@keyframes qtsc-copy-in{from{opacity:0;transform:translate3d(0,14px,0)}to{opacity:1;transform:none}}
+@keyframes qtsc-signal-pass{0%{opacity:.12;transform:translate3d(-18px,0,0) scaleX(.65)}35%{opacity:.65}70%,100%{opacity:.12;transform:translate3d(18px,0,0) scaleX(1)}}
+@keyframes qtsc-proof-pulse{0%{box-shadow:0 0 0 0 rgba(238,70,35,.16)}100%{box-shadow:0 0 0 10px rgba(238,70,35,0)}}
+
+.page-home .hero-media img{animation:qtsc-hero-settle 1.25s var(--qtsc-motion-ease) both}
+.page-home .hero-copy,.page-home .hero-proof{animation:qtsc-copy-in var(--qtsc-motion-slow) var(--qtsc-motion-ease) both}
+.page-home .hero-proof{animation-delay:90ms}
+.page-home .hero-signal i{transform-origin:center;animation:qtsc-signal-pass 5.6s ease-in-out infinite}
+.page-home .hero-signal i:nth-child(2){animation-delay:.45s}.page-home .hero-signal i:nth-child(3){animation-delay:.9s}.page-home .hero-signal i:nth-child(4){animation-delay:1.35s}
+
+.nav-link,.btn,.icon-action,.lang-action,.top-task-dock a,.decision-card,.entity-card,.service-card,.solution-card,.featured-story,.resource-rail a,.ecosystem-link,.proof-cell{
+  transition:transform var(--qtsc-motion-fast) var(--qtsc-motion-ease),box-shadow var(--qtsc-motion-med) var(--qtsc-motion-ease),border-color var(--qtsc-motion-fast) ease,background-color var(--qtsc-motion-fast) ease,color var(--qtsc-motion-fast) ease;
+}
+.desktop-nav .nav-link{position:relative}
+.desktop-nav .nav-link::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform var(--qtsc-motion-med) var(--qtsc-motion-ease)}
+.desktop-nav .nav-link:hover::after,.desktop-nav .nav-link[aria-current="page"]::after{transform:scaleX(1)}
+.btn:active,.icon-action:active,.lang-action:active{transform:translateY(1px) scale(.985)}
+
+/* Task routing behaves like directional wayfinding. */
+.top-task-dock a:hover{transform:translateY(-3px)}
+.top-task-dock a>span:last-child,.hero-text-link span,.btn span[aria-hidden="true"]{display:inline-block;transition:transform var(--qtsc-motion-fast) var(--qtsc-motion-ease)}
+.top-task-dock a:hover>span:last-child,.hero-text-link:hover span,.btn:hover span[aria-hidden="true"]{transform:translate3d(3px,-2px,0)}
+
+/* Domain cards acknowledge interaction with an edge shift rather than generic float. */
+:is(.decision-card,.entity-card,.service-card,.solution-card,.featured-story,.ecosystem-link):hover{transform:translateX(4px)}
+.resource-rail a:hover{transform:translateY(-2px)}
+.proof-cell:hover{animation:qtsc-proof-pulse 760ms ease-out 1}
+
+/* Images move only enough to imply a live campus/system view. */
+:is(.card-media,.entity-media,.inner-media,.office-view,.detail-media) img{transition:transform 780ms var(--qtsc-motion-ease),filter 420ms ease}
+:is(.card-media,.entity-media,.inner-media,.office-view,.detail-media):hover img{transform:scale(1.015)}
+
+@media (max-width:900px){
+  .page-home .hero-signal i{animation-duration:7s}
+  .top-task-dock a:hover,:is(.decision-card,.entity-card,.service-card,.solution-card,.featured-story,.ecosystem-link):hover,.resource-rail a:hover{transform:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .page-home .hero-media img,.page-home .hero-copy,.page-home .hero-proof,.page-home .hero-signal i{opacity:1!important;filter:none!important;transform:none!important}
+}
