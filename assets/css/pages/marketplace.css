@@ -41,7 +41,7 @@
   box-shadow:none;
   display:grid;
   place-items:center;
-  font-size:10px;
+  font-size:12px;
   font-weight:700;
 }
 .page-marketplace .entity-card h3{

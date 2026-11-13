@@ -31,7 +31,7 @@
 }
 .proof-rail .proof-cell:last-child{border-right:0}
 .proof-rail .proof-cell>span{
-  font-size:11px;
+  font-size:12px;
   letter-spacing:.13em;
   text-transform:uppercase;
   color:var(--text-tertiary);
@@ -111,7 +111,7 @@
 }
 .decision-cell:hover{background:var(--surface-soft)}
 .decision-cell>span{
-  font-size:11px;
+  font-size:12px;
   letter-spacing:.13em;
   text-transform:uppercase;
   color:var(--brand-red);
@@ -135,7 +135,7 @@
   border-top:1px dashed var(--border-subtle);
 }
 .decision-cell .decision-meta .chip{
-  font-size:11px;
+  font-size:12px;
   padding:5px 10px;
   border:1px solid var(--border-default);
   border-radius:0!important;
@@ -208,7 +208,7 @@
   transform:translateY(-2px);
 }
 .ecosystem-strip .ecosystem-link>span{
-  font-size:11px;
+  font-size:12px;
   letter-spacing:.13em;
   text-transform:uppercase;
   color:var(--text-tertiary);
@@ -444,7 +444,7 @@
   line-height:1;
 }
 .immersive-hero .immersive-side .side-row span{
-  font-size:11px;
+  font-size:12px;
   letter-spacing:.13em;
   text-transform:uppercase;
   color:rgba(255,255,255,.6);

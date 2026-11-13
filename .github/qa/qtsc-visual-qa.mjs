@@ -1,4 +1,5 @@
-import { chromium } from 'playwright';
+import { createRequire } from 'node:module';
+const { chromium } = createRequire(import.meta.url)('playwright'); // CJS require honours NODE_PATH
 import fs from 'node:fs/promises';
 import path from 'node:path';
 

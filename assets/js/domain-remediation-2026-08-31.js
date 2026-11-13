@@ -2,8 +2,8 @@
   const qsa = (selector, root = document) => [...root.querySelectorAll(selector)];
 
   const textMap = new Map([
-    ['Ho Chi Minh City · Vietnam', 'TP.HCM · Việt Nam'],
-    ['QTSC in numbers · 2026', 'QTSC qua số liệu · 2026'],
+    ['Ho Chi Minh City, Vietnam', 'TP.HCM, Việt Nam'],
+    ['QTSC in numbers, 2026', 'QTSC qua số liệu, 2026'],
     ['One connected ecosystem', 'Hệ sinh thái kết nối'],
     ['The physical network', 'Campus công nghệ 43 ha'],
     ['Decision support', 'Hỗ trợ ra quyết định'],
@@ -16,7 +16,7 @@
     ['From interest to operation', 'Từ nhu cầu đến vận hành'],
     ['Operate at QTSC', 'Vận hành tại QTSC'],
     ['Office enquiry', 'Nhu cầu thuê văn phòng'],
-    ['Investment scope · 2026', 'Phạm vi đầu tư · 2026'],
+    ['Investment scope, 2026', 'Phạm vi đầu tư, 2026'],
     ['Policy evaluation', 'Đối chiếu chính sách'],
     ['From opportunity to discussion', 'Từ cơ hội đến trao đổi'],
     ['Evaluate the ecosystem', 'Đánh giá hệ sinh thái'],
@@ -127,7 +127,7 @@
     if (!selector.previousElementSibling?.classList.contains('directory-kicker')) {
       const kicker = document.createElement('p');
       kicker.className = 'directory-kicker';
-      kicker.textContent = 'Danh mục tòa nhà · QTSC Campus';
+      kicker.textContent = 'Danh mục tòa nhà, QTSC Campus';
       selector.before(kicker);
     }
   }
@@ -167,19 +167,19 @@
         </div>
         <div class="verified-offerings-grid">
           <a class="verified-offering" href="https://www.qtsc.com.vn/san-pham-giai-phap/tang-toc-chuyen-doi-so-voi-private-cloud-tich-hop-iac-giai-phap-toan-dien-tu-qtsc" target="_blank" rel="noopener">
-            <small>Cloud · QTSC</small><strong>Private Cloud tích hợp Infrastructure as Code</strong><i aria-hidden="true">↗</i>
+            <small>Cloud, QTSC</small><strong>Private Cloud tích hợp Infrastructure as Code</strong><i aria-hidden="true">↗</i>
             <p>Tự động hóa triển khai và quản lý hạ tầng CNTT trên nền tảng đám mây riêng của QTSC.</p>
           </a>
           <a class="verified-offering" href="https://www.qtsc.com.vn/san-pham-giai-phap/tang-cuong-phong-thu-an-toan-thong-tin-voi-dich-vu-soc-da-lop-tich-hop-ai-tu-qtsc" target="_blank" rel="noopener">
-            <small>An toàn thông tin · QTSC CyberSec</small><strong>Dịch vụ SOC đa lớp tích hợp AI</strong><i aria-hidden="true">↗</i>
+            <small>An toàn thông tin, QTSC CyberSec</small><strong>Dịch vụ SOC đa lớp tích hợp AI</strong><i aria-hidden="true">↗</i>
             <p>Giám sát tập trung 24/7, phân tích và cảnh báo sớm các rủi ro an toàn thông tin.</p>
           </a>
           <a class="verified-offering" href="https://www.qtsc.com.vn/tin-tuc/trung-tam-du-lieu-qtsc-dat-chung-chi-uptime-tier-iii" target="_blank" rel="noopener">
-            <small>Data Center · QTSC</small><strong>Trung tâm dữ liệu đạt Uptime Tier III</strong><i aria-hidden="true">↗</i>
+            <small>Data Center, QTSC</small><strong>Trung tâm dữ liệu đạt Uptime Tier III</strong><i aria-hidden="true">↗</i>
             <p>Hạ tầng trung tâm dữ liệu QTSC đạt chứng chỉ Tier III về thiết kế trung tâm dữ liệu.</p>
           </a>
           <a class="verified-offering" href="https://www.qtsc.com.vn/san-pham-giai-phap/qtsc-cung-cap-he-thong-giam-sat-thong-tin-toan-dien-tren-khong-gian-mang-social-listening" target="_blank" rel="noopener">
-            <small>AI & dữ liệu · QTSC</small><strong>Hệ thống Social Listening</strong><i aria-hidden="true">↗</i>
+            <small>AI & dữ liệu, QTSC</small><strong>Hệ thống Social Listening</strong><i aria-hidden="true">↗</i>
             <p>Thu thập, phân tích và cảnh báo thông tin trên không gian mạng với các mô hình AI hỗ trợ.</p>
           </a>
         </div>`;

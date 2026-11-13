@@ -1,47 +1,32 @@
-/** Companies directory interactions */
-const { $, $$ } = window.QTSC;
-const search = $('#innerSearch');
-const emptyState = $('.empty-state');
-const apply = () => {
-  const q = (search?.value || '').trim().toLowerCase();
-  const active = $('.pill-tabs .active')?.dataset.filter || 'all';
-  let visible = 0;
-  $$('[data-searchable]').forEach(card => {
-    const categoryMatch = active === 'all' || card.dataset.category === active;
-    const queryMatch = !q || card.textContent.toLowerCase().includes(q);
-    const show = categoryMatch && queryMatch;
-    card.hidden = !show;
-    if (show) visible++;
+/** Companies directory: search, sector pills, building filter, sort, pagination,
+ * URL state (?q=&sector=&building=&sort=&page=) and loading/empty/error states. */
+(() => {
+  const { $, esc } = window.QTSCUI;
+  const { createListing, pillControl, fieldControl } = window.QTSCListing;
+  const seed = window.QTSCStore.seed;
+  const results = $('#companyResults');
+  if (!results) return;
+
+  const buildingSelect = $('#companyBuilding');
+  const buildings = [...new Set(seed.companies.map(c => c.building))].sort((a, b) => a.localeCompare(b, 'vi'));
+  buildingSelect.insertAdjacentHTML('beforeend', buildings.map(b => `<option value="${esc(b)}">${esc(b)}</option>`).join(''));
+
+  const card = c => `<a class="entity-card" href="company-detail.html?id=${encodeURIComponent(c.id)}" data-category="${c.category}" data-company="${esc(c.id)}">`
+    + `<div class="entity-mark">${esc((c.short || c.name).slice(0, 2).toUpperCase())}</div>`
+    + `<h3>${esc(c.name)}</h3><p>${esc(c.sector)}</p><footer><span>${esc(c.building)}</span><span aria-hidden="true"></span></footer></a>`;
+
+  createListing({
+    results, pagerEl: $('#companyPager'), metaEl: $('#companyMeta'), search: $('#innerSearch'),
+    perPage: 12, label: 'doanh nghiệp',
+    load: () => seed.companies,
+    text: c => `${c.name} ${c.short} ${c.sector} ${c.building} ${(c.tags || []).join(' ')}`,
+    filters: [
+      { param: 'sector', control: pillControl($('#companyPills')), match: (c, v) => c.category === v },
+      { param: 'building', control: fieldControl(buildingSelect), match: (c, v) => c.building === v }
+    ],
+    sort: { param: 'sort', default: 'featured', control: fieldControl($('#companySort')),
+      apply: (list, v) => v === 'az' ? [...list].sort((a, b) => a.name.localeCompare(b.name, 'vi')) : v === 'za' ? [...list].sort((a, b) => b.name.localeCompare(a.name, 'vi')) : list },
+    emptyCopy: { title: 'Không tìm thấy doanh nghiệp phù hợp.', text: 'Thử tên viết tắt, lĩnh vực khác hoặc bỏ lọc tòa nhà.' },
+    render: card
   });
-  if (emptyState) emptyState.hidden = visible > 0;
-};
-search?.addEventListener('input', apply);
-$$('[data-filter]').forEach(button => button.addEventListener('click', () => {
-  $$('.pill-tabs button').forEach(item => {
-    item.classList.remove('active');
-    item.setAttribute('aria-pressed','false');
-    item.setAttribute('aria-selected','false');
-  });
-  button.classList.add('active');
-  button.setAttribute('aria-pressed','true');
-  button.setAttribute('aria-selected','true');
-  apply();
-}));
-/* Reset from empty-state inline link */
-$$('.empty-state [data-filter]').forEach(btn => btn.addEventListener('click', () => {
-  const allBtn = $('[data-filter="all"]');
-  if (allBtn) {
-    allBtn.classList.add('active');
-    allBtn.setAttribute('aria-pressed','true');
-    allBtn.setAttribute('aria-selected','true');
-    $$('.pill-tabs button').forEach(x => {
-      if (x !== allBtn) {
-        x.classList.remove('active');
-        x.setAttribute('aria-pressed','false');
-        x.setAttribute('aria-selected','false');
-      }
-    });
-  }
-  if (search) search.value = '';
-  apply();
-}));
+})();

@@ -24,7 +24,7 @@
   /* Text */
   --text-primary:#17191a;
   --text-secondary:#565c60;
-  --text-tertiary:#70777b;
+  --text-tertiary:#62686c;
   --text-inverse:#fff;
 
   /* Surface system — only white and #111111 for page blocks */
@@ -43,7 +43,7 @@
 
   /* Status */
   --status-success:#247a57;
-  --status-warning:#a96d1e;
+  --status-warning:#8a5716;
   --status-error:#b93b3b;
 
   /* Space — 4px scale */

@@ -1,52 +1,20 @@
-/** Insights filtering interactions */
-const { $$, $ } = window.QTSC;
-
-const buttons = $$('[data-filter]');
-const feature = $('.article-feature[data-category]');
-const stack = $('.article-stack');
-const cards = $$('.article-card[data-category]');
-const grid = $('.article-grid');
-const emptyState = $('.empty-state');
-
-function applyFilter(value = 'all') {
-  const valid = new Set(buttons.map(button => button.dataset.filter));
-  const filter = valid.has(value) ? value : 'all';
-
-  buttons.forEach(button => {
-    const active = button.dataset.filter === filter;
-    button.classList.toggle('active', active);
-    button.setAttribute('aria-selected', String(active));
+/** Insights: category pills (?cat=), month filter, search, pagination; each
+ * card opens article.html?id=<article id>. */
+(() => {
+  const { $, esc, fmtDate } = window.QTSCUI;
+  const { createListing, pillControl, fieldControl } = window.QTSCListing;
+  const seed = window.QTSCStore.seed;
+  if (!$('#articleResults')) return;
+  const card = a => `<article class="article-card" data-category="${a.cat}" data-article="${esc(a.id)}"><small>${esc(seed.articleCategories[a.cat])}, ${esc(fmtDate(a.date))}</small><h3>${esc(a.title)}</h3><a href="article.html?id=${encodeURIComponent(a.id)}" aria-label="Đọc tin: ${esc(a.title)}">Đọc tin ↗</a></article>`;
+  createListing({
+    results: $('#articleResults'), pagerEl: $('#articlePager'), metaEl: $('#articleMeta'), search: $('#articleSearch'), perPage: 8, label: 'bài viết',
+    load: () => [...seed.articles].sort((a, b) => b.date.localeCompare(a.date)),
+    text: a => `${a.title} ${seed.articleCategories[a.cat]} ${a.summary}`,
+    filters: [
+      { param: 'cat', control: pillControl($('#articlePills')), match: (a, v) => a.cat === v },
+      { param: 'month', control: fieldControl($('#articleYear')), match: (a, v) => a.date.startsWith(v) }
+    ],
+    emptyCopy: { title: 'Chưa có bài viết phù hợp.', text: 'Thử nhóm tin khác, bỏ lọc thời gian hoặc dùng từ khóa ngắn hơn.' },
+    renderList: slice => `<div class="article-stack">${slice.map(card).join('')}</div>`
   });
-
-  let visibleFeature = 0;
-  if (feature) {
-    const showFeature = filter === 'all' || feature.dataset.category === filter;
-    feature.hidden = !showFeature;
-    if (showFeature) visibleFeature = 1;
-  }
-
-  let visibleCards = 0;
-  cards.forEach(card => {
-    const visible = filter === 'all' || card.dataset.category === filter;
-    card.hidden = !visible;
-    if (visible) visibleCards += 1;
-  });
-
-  if (stack) stack.hidden = visibleCards === 0;
-  if (grid) grid.classList.toggle('is-filtered', filter !== 'all');
-  if (emptyState) emptyState.hidden = (visibleFeature + visibleCards) > 0;
-
-  const url = new URL(location.href);
-  if (filter === 'all') url.searchParams.delete('cat');
-  else url.searchParams.set('cat', filter);
-  history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
-}
-
-buttons.forEach(button => button.addEventListener('click', () => applyFilter(button.dataset.filter)));
-
-$$('.empty-state [data-filter]').forEach(btn => btn.addEventListener('click', () => {
-  applyFilter('all');
-}));
-
-const initial = new URLSearchParams(location.search).get('cat') || 'all';
-applyFilter(initial);
+})();

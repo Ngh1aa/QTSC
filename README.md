@@ -67,13 +67,53 @@ Each HTML page imports its own page stylesheet and page script directly. Shared 
 ## Run locally
 
 ```bash
-python -m http.server 8080
+py -3 -m http.server 8926 --bind 127.0.0.1
 ```
 
-Then open `http://localhost:8080`.
+Then open `http://127.0.0.1:8926`. All links are relative, so the same files work under `/QTSC/` on GitHub Pages.
+
+## Interactive workflows (no backend)
+
+Every workflow runs in the browser. Catalogue data comes from one file,
+`assets/js/data/qtsc-seed.js`; user data (bookings, applications, enquiries,
+demo requests, contact requests, newsletter preferences) is kept in
+**sessionStorage** by `assets/js/prototype/store.js`, so it survives navigation
+and reload within the tab. Confirmations state that nothing was sent.
+
+| Flow | Pages |
+|---|---|
+| Company directory: search, sector, building, sort, pagination | `companies.html` → `company-detail.html?id=` |
+| Technology Marketplace: search, filters, demo / contact-vendor request | `marketplace.html` → `solution-detail.html?id=` |
+| Office: unit finder, site-visit booking, my bookings (reschedule, cancel) | `office.html#units`, `office-unit.html?id=`, `office.html#my-bookings` |
+| Investment: eligibility checker → enquiry | `incentives.html#checker` → `investment.html#enquiry` |
+| News: category and month filters, article detail | `insights.html?cat=` → `article.html?id=` |
+| Download Center: search, filters, official files, browser-generated samples | `resources.html` |
+| Careers: jobs, apply (CV file name only), my applications (withdraw) | `careers.html` → `job-detail.html?id=` |
+| Newsletter subscribe and manage preferences | `newsletter.html#manage` |
+| Contact form (topic via `?topic=`) and the shared "Kết nối QTSC" drawer | `contact.html`, every page |
+| Open data: filters, table, CSV export | `open-data.html#explorer` |
+
+Shared pieces: `assets/js/prototype/ui.js` (loading, empty, error, not-found
+states, validated forms, confirm dialog, downloads, footer toolbar),
+`assets/js/prototype/listing.js` (search + filters + pagination + URL state),
+`assets/css/components/prototype.css`.
+
+The footer of every page has **Đặt lại dữ liệu demo** (restore the seed) and
+**Giả lập lỗi kết nối** (make every simulated request fail, to check error and
+retry states).
+
+## QA scripts
+
+Set `NODE_PATH` to a folder that contains Playwright, start the server above, then:
+
+```bash
+node .github/qa/e2e-prototype.mjs       # end-to-end: every flow, reset, no console errors, no href="#"
+node .github/qa/control-inventory.mjs   # clicks every control on every page, reports dead ones
+QA_BASE_URL=http://127.0.0.1:8926 node .github/qa/qtsc-visual-qa.mjs   # existing device/visual QA
+```
 
 ## Notes
 
-- Prototype data are mock or representative.
+- Prototype data are mock or representative. Office units, job descriptions and open-data readings are representative prototype content; open-data values are labelled on screen as not official.
 - Remote QTSC imagery is used only to preserve brand context in the UI concept.
 - Current red/orange values are prototype approximations. Replace the four brand tokens in `tokens.css` with official QTSC master values when available.

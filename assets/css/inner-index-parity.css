@@ -82,7 +82,7 @@ html body.inner-page .extended-card.featured{
   background-image:var(--brand-gradient-soft)!important;
 }
 html body.inner-page .extended-card>span{
-  font-size:11px!important;
+  font-size:12px!important;
   line-height:1.3!important;
   letter-spacing:.08em!important;
 }

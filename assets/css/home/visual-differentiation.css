@@ -23,7 +23,7 @@
 .proof-row:nth-child(1),.proof-row:nth-child(4){min-height:270px}
 .proof-row:nth-child(3){transform:translateY(28px)}
 .proof-row:nth-child(4){transform:translateY(28px)}
-.proof-row>span{font-size:12px;letter-spacing:.08em;color:var(--brand-primary);margin-bottom:auto}
+.proof-row>span{font-size:12px;letter-spacing:.08em;color:var(--brand-red);margin-bottom:auto}
 .proof-row strong{font-size:clamp(22px,2vw,30px);line-height:1.15;max-width:280px;margin-top:42px}
 .proof-row p{font-size:13px;line-height:1.7;max-width:440px;margin-top:15px}
 .proof-row:after{content:"↗";position:absolute;right:20px;top:20px;width:38px;height:38px;border-radius:0!important;border:1px solid var(--border-brand);display:grid;place-items:center;font-size:14px;color:var(--brand-deep);transition:transform var(--motion-fast),background var(--motion-fast),color var(--motion-fast)}
@@ -83,7 +83,7 @@
 .company-card:after{content:"";position:absolute;right:-70px;top:-82px;width:180px;height:180px;border-radius:0!important;border:1px solid rgba(var(--brand-primary-rgb),.07);box-shadow:0 0 0 34px rgba(var(--brand-primary-rgb),.018),0 0 0 68px rgba(var(--brand-primary-rgb),.012)}
 .company-logo{width:64px;height:64px;border-radius:0!important;font-size:13px;margin-bottom:38px;position:relative;z-index:1;background:#fff;border:1px solid var(--border-brand);box-shadow:0 10px 24px rgba(var(--brand-primary-rgb),.08)}
 .company-card h3{font-size:19px;line-height:1.35;margin:0 0 9px;position:relative;z-index:1}
-.company-card p{display:inline-flex;width:max-content;max-width:100%;padding:5px 8px;border-radius:0!important;background:var(--brand-gradient-soft);color:var(--brand-deep);font-size:11px;position:relative;z-index:1}
+.company-card p{display:inline-flex;width:max-content;max-width:100%;padding:5px 8px;border-radius:0!important;background:var(--brand-gradient-soft);color:var(--brand-deep);font-size:12px;position:relative;z-index:1}
 .company-card footer{margin-top:auto;padding-top:24px;width:100%;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
 .company-card footer span:last-child{width:34px;height:34px;border:1px solid var(--border-subtle);border-radius:0!important;display:grid;place-items:center;background:currentColor;mask:none;-webkit-mask:none;font-size:0}
 .company-card footer span:last-child:after{content:"↗";font-size:13px;color:var(--text-primary)}
@@ -137,7 +137,7 @@
   .eco-node,.eco-node.center,.eco-node.top,.eco-node.right,.eco-node.bottom-right,.eco-node.bottom-left,.eco-node.left{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;width:100%!important;height:68px!important;border:0;border-bottom:1px solid rgba(255,255,255,.12);border-radius:0;background:transparent;display:grid;grid-template-columns:32px 1fr auto;align-items:center;justify-items:start;padding:0 4px;gap:12px;backdrop-filter:none;text-align:left}
   .eco-node i,.eco-node.center i{position:relative;left:auto;top:auto;transform:none;width:12px;height:12px;grid-column:1}
   .eco-node span{grid-column:2;font-size:15px}
-  .eco-node small{grid-column:3;font-size:10px;justify-self:end}
+  .eco-node small{grid-column:3;font-size:12px;justify-self:end}
   .eco-node.active{background:linear-gradient(90deg,rgba(var(--brand-primary-rgb),.15),transparent)}
   .eco-detail{position:relative!important;right:auto!important;bottom:auto!important;transform:none!important;width:100%!important;padding:22px 4px 2px!important;border:0;background:transparent;pointer-events:auto;order:20}
   .eco-detail:before{display:none}
@@ -170,7 +170,7 @@
   .campus-map .map-photo,.campus-map .map-overlay,.campus-map .map-legend{display:none}
   .campus-map .map-pin,.campus-map .map-pin.p1,.campus-map .map-pin.p2,.campus-map .map-pin.p3,.campus-map .map-pin.p4{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:100%;height:62px;display:grid;grid-template-columns:30px 34px 1fr;align-items:center;justify-items:start;border-bottom:1px solid #353638;color:#fff}
   .campus-map .map-pin i{position:relative;width:12px;height:12px;grid-column:1}
-  .campus-map .map-pin span{position:relative;top:auto;grid-column:2;color:#888d90;font-size:11px}
+  .campus-map .map-pin span{position:relative;top:auto;grid-column:2;color:#888d90;font-size:12px}
   .campus-map .map-pin:after{content:attr(data-place);grid-column:3;font-size:14px;font-weight:600;color:#fff}
   .campus-map .map-pin.active{background:linear-gradient(90deg,rgba(var(--brand-primary-rgb),.11),transparent)}
   .campus-map .map-card{position:relative;left:auto;right:auto;bottom:auto;width:100%;margin:18px 0 0;padding:18px;border-radius:0!important;background:#fff}

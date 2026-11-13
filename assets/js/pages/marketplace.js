@@ -1,45 +1,29 @@
-/** Technology marketplace interactions */
-const { $, $$ } = window.QTSC;
-const search = $('#innerSearch');
-const emptyState = $('.empty-state');
-const params = new URLSearchParams(location.search);
-const initial = params.get('technology');
-function activateTab(button){
-  $$('.pill-tabs button').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false')});
-  button.classList.add('active');
-  button.setAttribute('aria-selected','true');
-}
-if (initial) {
-  const button = $$('[data-filter]').find(item => item.dataset.filter.toLowerCase() === initial.toLowerCase());
-  if (button) activateTab(button);
-}
-function applyFilters(){
-  const q=(search?.value||'').trim().toLowerCase();
-  const active=$('.pill-tabs .active')?.dataset.filter||'all';
-  let visible=0;
-  $$('[data-searchable]').forEach(card=>{
-    const categoryMatch=active==='all'||card.dataset.category===active;
-    const queryMatch=!q||card.textContent.toLowerCase().includes(q);
-    const show=categoryMatch&&queryMatch;
-    card.hidden=!show;
-    if(show) visible++;
-  });
-  if(emptyState) emptyState.hidden=visible>0;
-  const next=new URLSearchParams(location.search);
-  active==='all'?next.delete('technology'):next.set('technology',active);
-  history.replaceState(null,'',location.pathname+(next.toString()?`?${next}`:''));
-}
-search?.addEventListener('input',applyFilters);
-$$('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
-  activateTab(button);
-  applyFilters();
-}));
-/* Reset from empty-state inline link */
-$$('.empty-state [data-filter]').forEach(btn=>btn.addEventListener('click',()=>{
-  const allBtn=$('[data-filter="all"]');
-  if(allBtn) activateTab(allBtn);
-  if(search) search.value='';
-  applyFilters();
-}));
-applyFilters();
+/** Technology Marketplace: search, technology pills (?technology=), type,
+ * provider and demo filters, pagination, and links to solution-detail.html?id=. */
+(() => {
+  const { $, esc } = window.QTSCUI;
+  const { createListing, pillControl, fieldControl } = window.QTSCListing;
+  const seed = window.QTSCStore.seed;
+  const results = $('#solutionResults');
+  if (!results) return;
+  const providerSelect = $('#solutionProvider');
+  [...new Set(seed.solutions.map(s => s.provider))].sort((a, b) => a.localeCompare(b, 'vi'))
+    .forEach(p => providerSelect.insertAdjacentHTML('beforeend', `<option value="${esc(p)}">${esc(p)}</option>`));
 
+  createListing({
+    results, pagerEl: $('#solutionPager'), metaEl: $('#solutionMeta'), search: $('#innerSearch'),
+    perPage: 10, label: 'giải pháp',
+    load: () => seed.solutions,
+    text: s => `${s.name} ${s.provider} ${s.focus} ${s.type} ${seed.solutionCategories[s.category]} ${s.summary}`,
+    filters: [
+      { param: 'technology', control: pillControl($('#solutionPills')), match: (s, v) => s.category === v },
+      { param: 'type', control: fieldControl($('#solutionType')), match: (s, v) => s.type === v },
+      { param: 'provider', control: fieldControl(providerSelect), match: (s, v) => s.provider === v },
+      { param: 'demo', control: fieldControl($('#solutionDemo')), match: s => s.demo }
+    ],
+    emptyCopy: { title: 'Chưa có giải pháp khớp với nhu cầu.', text: 'Thử mô tả bài toán bằng từ khóa khác, hoặc gửi nhu cầu để QTSC kết nối đối tác phù hợp.' },
+    render: s => `<a class="entity-card" href="solution-detail.html?id=${encodeURIComponent(s.id)}" data-category="${s.category}" data-solution="${esc(s.id)}">`
+      + `<div class="entity-mark">${esc(s.name.slice(0, 2).toUpperCase())}</div><h3>${esc(s.name)}</h3>`
+      + `<p>${esc(s.provider)}, ${esc(s.type.toLowerCase())}</p><footer><span>${esc(seed.solutionCategories[s.category])}</span><span aria-hidden="true"></span></footer></a>`
+  });
+})();

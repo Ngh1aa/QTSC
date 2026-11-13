@@ -1,0 +1,205 @@
+/* QTSC prototype workflows: filters, states, pagination, forms, records,
+   confirmation dialog and the footer prototype toolbar.
+   Consumes tokens.css; square corners and white surfaces follow ui-foundation.md. */
+
+/* ---------- Readability floor shared by every page (taste-check: no text below 12px) */
+
+/* ---------- Toolbar: search + filters */
+.proto-toolbar{display:grid;gap:14px;margin:0 0 22px}
+.proto-filters{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+.proto-filters .form-field{grid-column:auto;min-width:180px;flex:1 1 180px;max-width:260px}
+.proto-filters .form-field label,.proto-form .form-field label,.proto-form legend{font-size:13px;color:var(--text-secondary);font-weight:600}
+.proto-select,.proto-form select,.proto-form input:not([type="checkbox"]):not([type="radio"]),.proto-form textarea,.proto-filters input{
+  width:100%;min-height:48px;border:1px solid var(--border-default);border-radius:0!important;background:var(--surface-primary);
+  color:var(--text-primary);padding:0 12px;font:inherit;font-size:15px;box-sizing:border-box}
+.proto-form textarea{min-height:120px;padding:12px;resize:vertical}
+.proto-form input[type="file"]{padding:10px 12px}
+.proto-select:focus-visible,.proto-form select:focus-visible,.proto-form input:focus-visible,.proto-form textarea:focus-visible,.proto-filters input:focus-visible{outline:2px solid var(--brand-red);outline-offset:2px}
+.proto-result-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;margin:0 0 6px;color:var(--text-secondary);font-size:14px}
+.proto-result-meta strong{color:var(--text-primary)}
+.proto-link-btn{border:0;background:none;padding:0;min-height:44px;color:var(--brand-red);font:inherit;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.inner-searchbar button,.inner-searchbar input{min-height:44px}
+
+/* ---------- States */
+.state-panel{border:1px dashed var(--border-default);background:var(--surface-primary);padding:36px 24px;text-align:center;margin:18px 0;color:var(--text-secondary)}
+.state-panel strong,.state-panel h1,.state-panel h2{display:block;color:var(--text-primary);font-size:18px;line-height:1.35;font-weight:700;margin:0 0 8px}
+.state-panel h1{font-size:clamp(26px,4vw,36px);font-weight:600}
+.state-panel.is-notfound{padding:56px 24px}
+.state-panel p{margin:0 auto;max-width:56ch;font-size:15px;line-height:1.6}
+.state-panel.is-error{border-style:solid;border-color:rgba(185,59,59,.45)}
+.state-panel.is-error strong,.state-panel.is-error h1,.state-panel.is-error h2{color:var(--status-error)}
+.state-panel.is-loading{display:flex;gap:12px;align-items:center;justify-content:center;border-style:solid;border-color:var(--border-subtle)}
+.state-panel.is-loading strong{margin:0;font-size:15px;font-weight:600}
+.state-spinner{width:20px;height:20px;border:2px solid var(--border-default);border-top-color:var(--brand-red);border-radius:50%!important;animation:proto-spin .8s linear infinite}
+@keyframes proto-spin{to{transform:rotate(360deg)}}
+.skeleton-row{height:72px;margin:10px 0;background:linear-gradient(90deg,#f3f1ef 0%,#faf9f8 50%,#f3f1ef 100%);background-size:200% 100%;animation:proto-shimmer 1.2s ease-in-out infinite}
+@keyframes proto-shimmer{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.state-spinner,.skeleton-row{animation:none}}
+.state-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px}
+
+/* ---------- Pagination */
+.pager{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin:26px 0 0}
+.pager-summary{margin:12px 0 0;font-size:14px;color:var(--text-secondary)}
+.pager .pager-summary{margin:0}
+.pager-buttons{display:flex;flex-wrap:wrap;gap:6px}
+.pager-buttons button{min-width:44px;min-height:44px;border:1px solid var(--border-default);background:var(--surface-primary);color:var(--text-primary);font:inherit;font-size:14px;cursor:pointer;border-radius:0!important}
+.pager-buttons button.active{background:var(--text-primary);color:var(--text-inverse);border-color:var(--text-primary)}
+.pager-buttons button:disabled{color:var(--text-tertiary);cursor:not-allowed;background:var(--surface-primary)}
+.pager-gap{min-width:24px;display:grid;place-items:center;color:var(--text-secondary)}
+
+/* ---------- Cards rendered from data */
+.proto-list{display:grid;gap:0;border-top:1px solid var(--border-subtle)}
+.proto-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 24px;align-items:center;padding:20px 4px;border-bottom:1px solid var(--border-subtle);text-decoration:none;color:var(--text-primary);background:var(--surface-primary)}
+.proto-card:hover{background:#fbfaf9}
+.proto-card h3{font-size:19px;line-height:1.3;margin:0 0 6px;font-weight:600}
+.proto-card p{margin:0;color:var(--text-secondary);font-size:14px;line-height:1.55}
+.proto-card .proto-card-side{display:flex;flex-direction:column;align-items:flex-end;gap:6px;font-size:14px;color:var(--text-secondary);text-align:right}
+.proto-card .proto-card-cta{color:var(--brand-red);font-weight:600;font-size:14px}
+.proto-tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0;padding:0;list-style:none}
+.proto-tags li{font-size:12px;border:1px solid var(--border-subtle);padding:3px 8px;color:var(--text-secondary)}
+.badge{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;font-size:12px;font-weight:700;border:1px solid currentColor;white-space:nowrap}
+.badge.is-ok{color:var(--status-success)}
+.badge.is-warn{color:var(--status-warning)}
+.badge.is-muted{color:var(--text-secondary)}
+.badge.is-error{color:var(--status-error)}
+
+/* ---------- Detail pages rendered from data */
+.proto-detail-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:48px;align-items:start}
+.proto-detail-grid h2{font-size:var(--type-h2,30px);line-height:1.2;margin:0 0 14px;font-weight:600}
+.proto-detail-grid article>p{font-size:16px;line-height:1.7;color:var(--text-secondary);margin:0 0 16px;max-width:68ch}
+.proto-detail-grid ul.proto-bullets{margin:0 0 24px;padding-left:20px;color:var(--text-secondary);line-height:1.7}
+.proto-facts{border:1px solid var(--border-subtle);padding:24px;background:var(--surface-primary)}
+.proto-facts dl{margin:0;display:grid;gap:14px}
+.proto-facts dt{font-size:12px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em}
+.proto-facts dd{margin:2px 0 0;font-size:15px;color:var(--text-primary)}
+.proto-section-title{font-size:22px;margin:32px 0 14px;font-weight:600}
+
+/* ---------- Forms */
+.proto-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px;margin:0;max-width:880px}
+.proto-form .form-field{grid-column:auto;display:flex;flex-direction:column;gap:6px}
+.proto-form .form-field.is-wide,.proto-form fieldset,.proto-form .form-consent,.proto-form .form-actions,.proto-form .form-alert{grid-column:1/-1}
+.proto-form fieldset{border:1px solid var(--border-subtle);padding:14px 16px;margin:0;display:flex;flex-wrap:wrap;gap:8px 18px}
+.proto-form fieldset legend{padding:0 6px}
+.proto-check{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:15px;color:var(--text-primary)}
+.proto-check input{width:18px;height:18px;accent-color:var(--brand-red)}
+.proto-form .form-consent{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-secondary);line-height:1.5}
+.proto-form .form-consent input{width:18px;height:18px;margin-top:2px;accent-color:var(--brand-red);flex:none}
+.form-hint{font-size:13px;color:var(--text-secondary);margin:0}
+.field-error{margin:0;font-size:13px;color:var(--status-error);font-weight:600}
+[aria-invalid="true"]{border-color:var(--status-error)!important}
+.form-alert{border:1px solid var(--border-default);padding:14px 16px;font-size:14px;line-height:1.5;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.form-alert.is-error{border-color:rgba(185,59,59,.5);color:var(--status-error);background:#fdf6f6}
+.form-alert.is-error span{color:var(--text-primary)}
+.form-alert .btn{min-height:44px}
+.proto-form [aria-busy="true"]{cursor:progress}
+.btn[disabled]{opacity:.7;cursor:progress}
+.btn-danger{background:var(--status-error);border-color:var(--status-error);color:var(--text-inverse)!important}
+.btn-danger:hover{background:#9c2f2f}
+.proto-panel{border:1px solid var(--border-subtle);padding:28px;background:var(--surface-primary)}
+.proto-panel h3{font-size:22px;margin:0 0 8px;font-weight:600}
+.proto-panel>p{color:var(--text-secondary);margin:0 0 20px;line-height:1.6}
+
+/* ---------- Success */
+.proto-success{border:1px solid rgba(36,122,87,.45);padding:28px;background:#f6fbf8}
+.proto-success h3{font-size:22px;margin:0 0 10px;font-weight:600}
+.proto-success p{margin:0 0 8px;color:var(--text-primary);line-height:1.6}
+.proto-success-kicker{font-size:13px!important;font-weight:700;color:var(--status-success)!important;text-transform:uppercase;letter-spacing:.06em}
+.proto-ref strong{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:16px}
+.proto-note{font-size:14px!important;color:var(--text-secondary)!important;border-top:1px solid var(--border-subtle);padding-top:10px;margin-top:12px!important}
+.proto-success .state-actions{justify-content:flex-start}
+
+/* ---------- My records (bookings, applications) */
+.proto-records{display:grid;gap:14px}
+.proto-record{border:1px solid var(--border-subtle);padding:20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 20px;align-items:start;background:var(--surface-primary)}
+.proto-record h3{font-size:18px;margin:0 0 6px;font-weight:600}
+.proto-record p{margin:0;color:var(--text-secondary);font-size:14px;line-height:1.6}
+.proto-record .record-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.proto-record .record-actions .btn{min-height:44px}
+.proto-record .record-edit{grid-column:1/-1;border-top:1px solid var(--border-subtle);padding-top:16px}
+.proto-record.is-cancelled{background:#faf9f8}
+
+/* ---------- Data table (open data) */
+.proto-table-wrap{overflow-x:auto;border:1px solid var(--border-subtle);margin-top:8px}
+.proto-table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+.proto-table th,.proto-table td{padding:12px 14px;border-bottom:1px solid var(--border-subtle);text-align:left;white-space:nowrap}
+.proto-table th{font-weight:700;color:var(--text-primary);background:#faf9f8}
+.proto-table td.num{text-align:right;font-variant-numeric:tabular-nums}
+.proto-table caption{caption-side:top;text-align:left;padding:12px 14px;font-size:14px;color:var(--text-secondary)}
+
+/* ---------- Confirm dialog */
+.proto-modal{position:fixed;inset:0;z-index:6000;display:grid;place-items:center;padding:16px}
+.proto-modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.54)}
+.proto-modal-card{position:relative;background:var(--surface-primary);border:1px solid var(--border-subtle);padding:28px;max-width:480px;width:100%;box-shadow:var(--shadow-dialog)}
+.proto-modal-card h2{font-size:22px;margin:0 0 10px;font-weight:600}
+.proto-modal-card p{margin:0;color:var(--text-secondary);line-height:1.6}
+.proto-modal-card .state-actions{justify-content:flex-start}
+
+/* ---------- Footer prototype toolbar */
+.proto-bar{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto;gap:16px 28px;align-items:center;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.86)}
+.proto-bar strong{color:#fff;font-size:15px}
+.proto-bar p{margin:4px 0 0;font-size:14px;line-height:1.5}
+.proto-bar-links{display:flex;flex-wrap:wrap;gap:4px 18px}
+.proto-bar-links a{color:rgba(255,255,255,.86);font-size:14px;min-height:44px;display:inline-flex;align-items:center}
+.proto-bar-links a:hover{color:#fff}
+.proto-bar-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.proto-bar-actions .btn{min-height:44px;font-size:13px}
+.proto-bar-actions [aria-pressed="true"]{background:#fff;color:var(--text-primary)!important;border-color:#fff}
+
+@media (max-width:900px){
+  .proto-detail-grid{grid-template-columns:1fr;gap:28px}
+  .proto-bar{grid-template-columns:1fr}
+  .proto-bar-actions{justify-content:flex-start}
+}
+@media (max-width:640px){
+  .proto-form{grid-template-columns:1fr}
+  .proto-filters .form-field{max-width:none;flex-basis:100%}
+  .proto-card{grid-template-columns:1fr}
+  .proto-card .proto-card-side{align-items:flex-start;text-align:left;flex-direction:row;flex-wrap:wrap;gap:8px 14px}
+  .proto-record{grid-template-columns:1fr}
+  .proto-record .record-actions{justify-content:flex-start}
+  .proto-panel,.proto-success{padding:20px}
+  .inner-searchbar{grid-template-columns:28px minmax(0,1fr) auto}
+  .inner-searchbar input{min-width:0}
+}
+
+/* ---------- Page-specific hooks for prototype workflows */
+.state-actions.is-start{justify-content:flex-start}
+.form-alert.is-info{border-color:var(--border-brand);background:#fff;color:var(--text-primary)}
+.proto-details{margin:16px 0 0;border-top:1px solid var(--border-subtle);padding-top:12px}
+.proto-details summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+.proto-panel .proto-records{list-style:none;margin:16px 0 0;padding:0}
+.resource-card .resource-action{margin-top:auto;align-self:flex-start;min-height:44px;display:inline-flex;align-items:center;gap:6px;padding:0 16px;border:1px solid var(--border-default);background:var(--surface-primary);color:var(--text-primary);font:inherit;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer}
+.resource-card .resource-action:hover{border-color:var(--brand-red);color:var(--brand-red)}
+.resource-card .resource-updated{font-size:13px;margin:0 0 18px}
+.explore-selection{margin:14px 0 0;font-size:15px;color:var(--text-secondary)}
+.explore-selection a{color:var(--brand-red);font-weight:600}
+.place-card[role="button"]{cursor:pointer}
+.place-card[role="button"]:focus-visible{outline:2px solid var(--brand-red);outline-offset:2px}
+.page-office-unit .detail-title,.page-job-detail .detail-title,.page-article .detail-title,.page-solution-detail .detail-title{max-width:22ch}
+.page-article #articleBody h2{margin-top:0}
+main .proto-section-title,main .proto-facts h2,main .proto-panel>h2,main .proto-panel h3{font-size:22px;line-height:1.3;font-weight:600;letter-spacing:0;margin:0 0 12px;max-width:none}
+main .proto-detail-grid article>h2{font-size:clamp(24px,3vw,30px);line-height:1.25;letter-spacing:0}
+main .proto-record h3,main .proto-card h3{font-size:18px;line-height:1.35;letter-spacing:0;margin:0 0 6px}
+main .proto-success h3,main .state-panel h2{font-size:22px;letter-spacing:0}
+
+/* ---------- Shell fixes found by taste-check (wrap, reflow at 320px) */
+.header-connect{white-space:nowrap}
+.ecosystem-head{flex-wrap:wrap;min-width:0}
+.ecosystem-head>*{min-width:0;max-width:100%}
+.ecosystem-head .btn{white-space:normal;text-align:left}
+/* Hover fill of capability rows stays out of the way until hover/focus. */
+.capability-row:not(:hover):not(:focus-visible)::before{visibility:hidden}
+/* Contrast and decoration fixes from taste-check */
+.page-office .office-info{border-left:0}
+.inner-hero::after,.inner-hero:after{display:none}
+@media (max-width:420px){
+  .proof-rail .container-wide{min-width:0;max-width:100%}
+  .proof-cell{min-width:0}
+  .proof-cell strong,.proof-cell em,.proof-cell span{overflow-wrap:anywhere}
+}
+.nowrap{white-space:nowrap}
+html body.inner-page .inner-section-head>.micro-label{margin-bottom:8px}
+#newsletterHost>.form-hint{margin:0 0 18px;font-size:14px}
+.capability-row:not(:hover):not(:focus-visible)::before{display:none}
+/* Active building: dark-red text on the light directory surface (was white on #fff8f4). */
+html body.page-office .office-selector .office-list button.active,html body.page-office .office-selector .office-list button:hover{background:#fff8f4!important;color:var(--brand-deep)!important;box-shadow:inset 0 -3px 0 var(--brand-deep)!important}

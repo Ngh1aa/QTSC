@@ -50,7 +50,7 @@
   transition:background var(--motion-fast) var(--ease-standard),transform var(--motion-fast) var(--ease-standard);
 }
 .qtsc-intent-rail .rail-link b{
-  font-size:10px;
+  font-size:12px;
   color:var(--text-tertiary);
   letter-spacing:.13em;
   font-weight:700;
@@ -94,7 +94,7 @@
   border-radius:0!important;
   background:rgba(var(--brand-primary-rgb),.08);
   color:var(--brand-deep);
-  font-size:11px;
+  font-size:12px;
   font-weight:800;
   letter-spacing:.12em;
   text-transform:uppercase;
@@ -148,7 +148,7 @@
   display:inline-flex;
   align-items:center;
   gap:10px;
-  font-size:11px;
+  font-size:12px;
   letter-spacing:.06em;
   color:var(--text-tertiary);
   margin:0 0 14px;

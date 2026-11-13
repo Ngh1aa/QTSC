@@ -40,7 +40,7 @@ body,button,input,select,textarea{letter-spacing:-.005em}
 .section-top,.inner-section-head{margin-bottom:54px}
 .section-top h2,.inner-section-head h2,.why-intro h2,.market-intro h2,.green-copy h2,.hero h1,.inner-hero h1{text-wrap:balance}
 .section-top p,.inner-section-head p,.prose-grid article p{max-width:64ch}
-.micro-label{letter-spacing:.13em;text-transform:uppercase;font-size:11px}
+.micro-label{letter-spacing:.13em;text-transform:uppercase;font-size:12px}
 
 /* Header: square clean editorial glass */
 .site-header{top:max(10px,env(safe-area-inset-top,0));border-radius:0!important}
