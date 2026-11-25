@@ -1,68 +1,21 @@
-# QTSC UI/UX Redesign Prototype
+# Northbank Technology Park — website prototype
 
-Interactive static prototype focused on QTSC UI/UX behavior rather than production backend integration.
+An interactive static prototype of the website of **Northbank Technology Park**, a fictional technology park on
+the Saigon River in Ho Chi Minh City: offices and labs for rent, a data center, a directory of member companies,
+investment support, news, jobs and open environmental data. Content is in English.
 
-## Source structure
+This repository started as a redesign concept for a real organisation's website (QTSC). On 2026-11-25 it was
+redesigned as a fictional park, so that no real organisation's name, people, tenants, logos or photos are used.
+The repository name and URL stay `QTSC` so existing links keep working. The redesign record is in
+[`docs/redesign/`](docs/redesign/).
 
-```text
-.
-├── index.html
-├── about.html
-├── companies.html
-├── company-detail.html
-├── marketplace.html
-├── technology-detail.html
-├── office.html
-├── explore.html
-├── insights.html
-├── assets/
-│   ├── css/
-│   │   ├── tokens.css          # color, spacing, radius, shadow, motion
-│   │   ├── typography.css      # one shared type scale
-│   │   ├── layout.css          # container, section rhythm, grids
-│   │   ├── core.css            # shared shell/components; imports foundation
-│   │   ├── inner.css           # inner-page hero/layout families
-│   │   ├── components/
-│   │   │   ├── detail.css
-│   │   │   ├── directory.css
-│   │   │   └── timeline.css
-│   │   ├── home/
-│   │   │   ├── hero.css
-│   │   │   ├── ecosystem.css
-│   │   │   ├── business.css
-│   │   │   ├── discovery.css
-│   │   │   ├── legacy-strengths.css
-│   │   │   ├── icon-cleanup.css
-│   │   │   └── responsive.css
-│   │   └── pages/
-│   │       ├── home.css
-│   │       ├── about.css
-│   │       ├── companies.css
-│   │       ├── company-detail.css
-│   │       ├── marketplace.css
-│   │       ├── technology-detail.css
-│   │       ├── office.css
-│   │       ├── explore.css
-│   │       └── insights.css
-│   └── js/
-│       ├── shared.js
-│       └── pages/
-└── docs/
-    ├── source-architecture.md
-    └── ui-foundation.md
-```
+## Everything here is fictional
 
-## UI Foundation
-
-`assets/css/core.css` imports three foundation files in this order:
-
-1. `tokens.css` — semantic brand/text/surface/border tokens, spacing, radius, elevation, motion and icons.
-2. `typography.css` — Manrope and the shared display/heading/body/label scale.
-3. `layout.css` — container width, section spacing hierarchy and grid utilities.
-
-Page CSS should consume these tokens instead of inventing local values. See [`docs/ui-foundation.md`](docs/ui-foundation.md) before adding or redesigning a page.
-
-Each HTML page imports its own page stylesheet and page script directly. Shared design-system primitives stay centralized under the foundation, `core.css`, `inner.css`, reusable components and `assets/js/shared.js`.
+- Northbank, its buildings, member companies, people, prices, numbers, articles and jobs are made up.
+- Email addresses use the reserved `.example` domain; the phone number is a placeholder.
+- Photos are CC0 or public-domain images from Wikimedia Commons; sources are in
+  [`assets/images/photos/CREDITS.md`](assets/images/photos/CREDITS.md).
+- Nothing is sent anywhere. Forms save to `sessionStorage` in the current browser tab only.
 
 ## Run locally
 
@@ -70,50 +23,58 @@ Each HTML page imports its own page stylesheet and page script directly. Shared 
 py -3 -m http.server 8926 --bind 127.0.0.1
 ```
 
-Then open `http://127.0.0.1:8926`. All links are relative, so the same files work under `/QTSC/` on GitHub Pages.
+Then open `http://127.0.0.1:8926`. Links are relative, so the same files work under `/QTSC/` on GitHub Pages.
+
+**Demo tools:** open any page with `?demo=1` to show a small panel with shortcuts, **Fail next requests** (to
+check error and retry states) and **Reset demo data**. It stays on for the tab; `?demo=0` hides it.
+
+## Source structure
+
+```text
+.
+├── *.html                        32 pages, each with <!-- shell:* --> markers
+├── partials/                     head, header, footer and scripts shared by every page (the only source)
+├── scripts/build-shell.cjs       writes the partials into the pages (--check for CI)
+├── assets/
+│   ├── css/
+│   │   ├── tokens.css            colour roles, type scale, spacing, radius, motion
+│   │   ├── base.css              reset, layout grid, header, footer, buttons, page head
+│   │   ├── components.css        rows, cards, listings, forms, states, records, dialogs, demo tools
+│   │   └── pages/*.css           page-only layout (home, space, business, news, about)
+│   ├── js/
+│   │   ├── data/park-seed.js     all catalogue data and the starting user data
+│   │   ├── prototype/            store (sessionStorage), ui kit, listing engine, booking rules
+│   │   ├── site.js               mobile menu, site search, "Get in touch" drawer, toast
+│   │   └── pages/*.js            one script per interactive page
+│   └── images/photos/            CC0 photos, 1920 px and sm/ 960 px
+└── docs/redesign/                inventory, content model, direction gate, page brief, plan
+```
+
+To change the header, footer or shared `<head>`, edit `partials/` and run `node scripts/build-shell.cjs`.
 
 ## Interactive workflows (no backend)
-
-Every workflow runs in the browser. Catalogue data comes from one file,
-`assets/js/data/qtsc-seed.js`; user data (bookings, applications, enquiries,
-demo requests, contact requests, newsletter preferences) is kept in
-**sessionStorage** by `assets/js/prototype/store.js`, so it survives navigation
-and reload within the tab. Confirmations state that nothing was sent.
 
 | Flow | Pages |
 |---|---|
 | Company directory: search, sector, building, sort, pagination | `companies.html` → `company-detail.html?id=` |
-| Technology Marketplace: search, filters, demo / contact-vendor request | `marketplace.html` → `solution-detail.html?id=` |
-| Office: unit finder, site-visit booking, my bookings (reschedule, cancel) | `office.html#units`, `office-unit.html?id=`, `office.html#my-bookings` |
-| Investment: eligibility checker → enquiry | `incentives.html#checker` → `investment.html#enquiry` |
-| News: category and month filters, article detail | `insights.html?cat=` → `article.html?id=` |
-| Download Center: search, filters, official files, browser-generated samples | `resources.html` |
-| Careers: jobs, apply (CV file name only), my applications (withdraw) | `careers.html` → `job-detail.html?id=` |
-| Newsletter subscribe and manage preferences | `newsletter.html#manage` |
-| Contact form (topic via `?topic=`) and the shared "Kết nối QTSC" drawer | `contact.html`, every page |
+| Solutions from members: search, category, demo request, my requests | `marketplace.html` → `solution-detail.html?id=` |
+| Space: building selector, unit finder, visit booking, my visits (reschedule, cancel) | `office.html`, `office-unit.html?id=`, `office.html#my-bookings` |
+| Campus map with building pins | `explore.html` |
+| Investment: eligibility checker → enquiry | `incentives.html#checker` → `investment.html` |
+| News: categories, article detail | `insights.html?cat=` → `article.html?id=` |
+| Downloads with generated sample files | `resources.html` |
+| Jobs: search, apply (CV file name only), my applications (withdraw) | `careers.html` → `job-detail.html?id=` |
+| Newsletter: subscribe, manage, unsubscribe | `newsletter.html#manage` |
+| Contact form (`?topic=`) and the "Get in touch" drawer | `contact.html`, company pages |
 | Open data: filters, table, CSV export | `open-data.html#explorer` |
-
-Shared pieces: `assets/js/prototype/ui.js` (loading, empty, error, not-found
-states, validated forms, confirm dialog, downloads, footer toolbar),
-`assets/js/prototype/listing.js` (search + filters + pagination + URL state),
-`assets/css/components/prototype.css`.
-
-The footer of every page has **Đặt lại dữ liệu demo** (restore the seed) and
-**Giả lập lỗi kết nối** (make every simulated request fail, to check error and
-retry states).
 
 ## QA scripts
 
 Set `NODE_PATH` to a folder that contains Playwright, start the server above, then:
 
 ```bash
-node .github/qa/e2e-prototype.mjs       # end-to-end: every flow, reset, no console errors, no href="#"
+node .github/qa/e2e-prototype.mjs       # every flow, reset, no console errors, no href="#"
 node .github/qa/control-inventory.mjs   # clicks every control on every page, reports dead ones
-QA_BASE_URL=http://127.0.0.1:8926 node .github/qa/qtsc-visual-qa.mjs   # existing device/visual QA
+QA_BASE_URL=http://127.0.0.1:8926 node .github/qa/qtsc-visual-qa.mjs   # device and visual checks
+node scripts/build-shell.cjs --check    # every page carries the current shell
 ```
-
-## Notes
-
-- Prototype data are mock or representative. Office units, job descriptions and open-data readings are representative prototype content; open-data values are labelled on screen as not official.
-- Remote QTSC imagery is used only to preserve brand context in the UI concept.
-- Current red/orange values are prototype approximations. Replace the four brand tokens in `tokens.css` with official QTSC master values when available.

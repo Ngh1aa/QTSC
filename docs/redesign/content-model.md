@@ -1,6 +1,6 @@
 # Content model — Northbank Technology Park
 
-Status: `CHƯA DUYỆT` (proposal for the owner). Language: English.
+Status: `ĐÃ DUYỆT` (owner chose direction A and asked to continue on 2026-11-25; no change requested to the name or content). Language: English.
 
 Everything here is fictional. No real organisation, company, person, address or phone number is used. The
 repository and URL stay `Ngh1aa/QTSC` / `ngh1aa.github.io/QTSC` so existing portfolio links keep working; the

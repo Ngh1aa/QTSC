@@ -1,66 +1,73 @@
-/** Download Center: search (?q=), category (?cat=) and format filters over the
- * seed resources. Official files open from qtsc.com.vn, repository files
- * download directly, and "Tệp mẫu" files are generated in the browser. */
+/* Resources: search (?q=), category pills (?cat=) and format filter (?format=) over seed.resources.
+ * Each download button [data-generate=<id>] builds a plain-text SAMPLE file in the browser. */
 (() => {
-  const { $, $$, esc, fmtDate, download, csv, toast } = window.QTSCUI;
+  const { $, $$, esc, fmtDate, download, toast } = window.QTSCUI;
   const { createListing, pillControl, fieldControl } = window.QTSCListing;
   const store = window.QTSCStore;
   const seed = store.seed;
   if (!$('#resourceGrid')) return;
 
-  const stamp = () => `Tạo lúc ${new Date().toLocaleString('vi-VN')} từ website QTSC (bản prototype). TỆP MẪU, không phải văn bản chính thức.`;
-  const generators = {
-    'office-checklist': () => [
-      'CHECKLIST CHUẨN BỊ THUÊ VĂN PHÒNG TẠI QTSC (TỆP MẪU)', stamp(), '',
-      '1. Quy mô: số nhân sự hiện tại và dự kiến 12 tháng tới.',
-      '2. Diện tích mong muốn (m²) và nhu cầu phòng họp riêng.',
-      '3. Thời điểm cần dọn vào.',
-      '4. Hạ tầng: băng thông, kết nối Data Center, phòng server.',
-      '5. Tiện ích: bãi xe, ăn uống, an ninh ra vào.',
-      '6. Đầu mối liên hệ và thời gian có thể khảo sát.', '',
-      'Đặt lịch khảo sát: office.html#units'
-    ].join('\r\n'),
-    'investment-brief': () => csv([
-      ['Mục', 'Thông tin của dự án', 'Ghi chú'],
-      ['Tên doanh nghiệp', '', ''], ['Lĩnh vực đầu tư', '', 'Phần mềm, nội dung số, R&D, bán dẫn, AI...'],
-      ['Tổng vốn dự kiến (tỷ đồng)', '', ''], ['Số lao động dự kiến', '', ''], ['Tỷ lệ chi phí R&D (%)', '', ''],
-      ['Nhu cầu mặt bằng (m²)', '', ''], ['Thời điểm triển khai', '', ''],
-      ['Ghi chú', 'TỆP MẪU do website tạo', stamp()]
-    ]),
-    'site-visit-guide': () => [
-      'HƯỚNG DẪN THAM QUAN CAMPUS QTSC (TỆP MẪU)', stamp(), '',
-      'Điểm hẹn: sảnh QTSC Building 1, Khu Công viên phần mềm Quang Trung, Phường Trung Mỹ Tây, TP.HCM.',
-      'Gửi xe: bãi xe khách phía trước QTSC Building 1.',
-      'Mang theo: giấy tờ tùy thân để đăng ký ra vào.',
-      'Thời gian: thứ Hai đến thứ Bảy, theo khung giờ đã đặt.',
-      'Liên hệ: (84-28) 3715 8888, qtsc@qtsc.com.vn'
-    ].join('\r\n')
-  };
+  const pills = $('#resourceFilters');
+  pills.insertAdjacentHTML('beforeend', Object.entries(seed.resourceCategories)
+    .map(([key, label]) => `<button type="button" class="pill" data-filter="${esc(key)}" role="tab" aria-selected="false">${esc(label)}</button>`).join(''));
+  const formatSelect = $('#resourceFormat');
+  const formats = [...new Set(seed.resources.map((r) => r.format))].sort();
+  formatSelect.insertAdjacentHTML('beforeend', formats.map((f) => `<option value="${esc(f)}">${esc(f)}</option>`).join(''));
+  const latest = [...seed.resources].sort((a, b) => b.updated.localeCompare(a.updated))[0];
+  $('#resourceFacts').innerHTML = [
+    [String(seed.resources.length), 'documents'],
+    [String(Object.keys(seed.resourceCategories).length), 'categories'],
+    [String(formats.length), 'formats'],
+    [fmtDate(latest.updated, { weekday: false }), 'last update'],
+  ].map(([v, l]) => `<div><strong>${esc(v)}</strong><span>${esc(l)}</span></div>`).join('');
 
-  const action = r => {
-    if (r.kind === 'external') return `<a class="resource-action" href="${esc(r.url)}" target="_blank" rel="noopener">Mở tài liệu gốc (${esc(r.format)}) ↗</a>`;
-    if (r.kind === 'file') return `<a class="resource-action" href="${esc(r.url)}" download="${esc(r.file)}">Tải xuống (${esc(r.format)})</a>`;
-    return `<button type="button" class="resource-action" data-generate="${esc(r.id)}">Tải tệp mẫu (${esc(r.format)})</button>`;
+  /* Body lines for each document; anything not listed gets its description only. */
+  const CONTENT = {
+    'northbank-guide': ['Campus: 38 ha on the north bank of the Saigon River, 7 buildings.', 'Buildings: Atlas, Beacon, Cobalt, Delta Labs, Echo Hall, Forge, Grove.', 'Members: 142 companies from 11 countries, about 18,600 people on site.', 'Becoming a member: book a visit at contact.html?topic=visit.'],
+    'campus-map': ['Main gate: River Road, open 24 hours with card access.', 'Visitor parking: in front of Atlas, 120 spaces.', 'River jetty: shuttle to Thu Thiem every 20 minutes at peak hours.', 'Interactive map: explore.html.'],
+    'fitout-guide': ['1. Send drawings to building services 15 working days before work starts.', '2. Only approved contractors may work on raised floors and ceilings.', '3. Noisy work runs from 18:00 to 07:00 on weekdays.', '4. A final inspection is needed before you move in.'],
+    'office-checklist': ['1. Headcount today and in 12 months.', '2. Floor area needed (m2) and meeting rooms.', '3. Move-in date.', '4. Network: bandwidth, data center link, server room.', '5. Fit-out: furnished suite or your own design.', '6. Access cards, parking and canteen accounts for staff.', '7. Contact person and dates for a site visit.', '', 'Book a visit: office.html'],
+    'visit-request': ['Group name:', 'Number of people (more than 10):', 'Preferred date and time:', 'Buildings you want to see:', 'Contact person, email and phone:'],
+    'event-booking': ['Event name:', 'Room: Echo Hall (600 seats) or meeting room:', 'Date, start and end time:', 'Expected guests:', 'Catering, stage, sound and recording needs:'],
+    'house-rules': ['Access: wear your card where it can be seen.', 'Deliveries: through the service gate, 07:00 to 19:00.', 'Noise: no loud work in shared areas during office hours.', 'Safety: fire drills twice a year, follow the floor warden.', 'Parking: in marked bays only.'],
+    'data-policy': ['We record: name, company, host, time in and out.', 'We keep visitor records for 90 days.', 'Camera footage is kept for 30 days.', 'Ask for your records: privacy.html.'],
+    'annual-review': ['Members at year end: 136.', 'New members during the year: 18.', 'Energy use: down 9% on 2024.', 'Investment in new buildings and equipment: see the full review.'],
   };
-  const render = r => `<article class="resource-card" data-category="${r.cat}" data-resource="${esc(r.id)}"><span>${esc(r.format)}, ${esc(seed.resourceCategories[r.cat])}${r.kind === 'generated' ? ', tệp mẫu' : ''}</span><h2>${esc(r.title)}</h2><p>${esc(r.desc)}</p><p class="resource-updated">Cập nhật ${esc(fmtDate(r.updated))}</p>${action(r)}</article>`;
+  const fileName = (r) => `northbank-${r.id}-SAMPLE.txt`;
+  const build = (r) => [
+    'SAMPLE FILE',
+    `${r.title.toUpperCase()} (${r.format})`,
+    `Northbank Technology Park, ${seed.resourceCategories[r.cat]}. Updated ${fmtDate(r.updated)}.`,
+    `Generated ${new Date().toISOString().slice(0, 10)}. This is a SAMPLE FILE, not an official document.`,
+    '',
+    r.desc,
+    '',
+    ...(CONTENT[r.id] || []),
+  ].join('\r\n');
+
+  const render = (r) => `<article class="resource-card" data-category="${esc(r.cat)}" data-resource="${esc(r.id)}">`
+    + `<h3>${esc(r.title)}</h3><p>${esc(r.desc)}</p>`
+    + `<p class="resource-updated">${esc(r.format)}, ${esc(seed.resourceCategories[r.cat])}, updated ${esc(fmtDate(r.updated))}</p>`
+    + `<button type="button" class="btn btn-secondary resource-action" data-generate="${esc(r.id)}" aria-label="Download ${esc(r.title)}">Download</button></article>`;
 
   createListing({
-    results: $('#resourceGrid'), pagerEl: $('#resourcePager'), metaEl: $('#resourceMeta'), search: $('#resourceSearch'), perPage: 8, label: 'tài liệu',
-    load: () => seed.resources,
-    text: r => `${r.title} ${r.desc} ${r.format} ${seed.resourceCategories[r.cat]}`,
+    results: $('#resourceGrid'), pagerEl: $('#resourcePager'), metaEl: $('#resourceMeta'), search: $('#resourceSearch'),
+    perPage: 10, label: 'documents',
+    load: () => [...seed.resources].sort((a, b) => b.updated.localeCompare(a.updated)),
+    text: (r) => `${r.title} ${r.desc} ${r.format} ${seed.resourceCategories[r.cat]}`,
     filters: [
-      { param: 'cat', control: pillControl($('#resourceFilters')), match: (r, v) => r.cat === v },
-      { param: 'format', control: fieldControl($('#resourceFormat')), match: (r, v) => r.format === v }
+      { param: 'cat', control: pillControl(pills), match: (r, v) => r.cat === v },
+      { param: 'format', control: fieldControl(formatSelect), match: (r, v) => r.format === v },
     ],
-    emptyCopy: { title: 'Không tìm thấy tài liệu phù hợp.', text: 'Thử từ khóa khác hoặc gửi yêu cầu tài liệu cho QTSC.' },
+    emptyCopy: { title: 'No document matches.', text: 'Try another word, another category or all formats.' },
     render,
-    afterRender: (slice, root) => $$('[data-generate]', root).forEach(button => button.addEventListener('click', () => {
-      const r = seed.resources.find(x => x.id === button.dataset.generate);
-      button.disabled = true; button.textContent = 'Đang tạo tệp…';
-      store.request(() => generators[r.id](), { delay: 300 }).then(content => {
-        download(r.file, content, r.format === 'CSV' ? 'text/csv;charset=utf-8' : 'text/plain;charset=utf-8');
-        toast(`Đã tạo ${r.file}. Đây là tệp mẫu, không phải văn bản chính thức.`);
-      }).catch(error => toast(`Chưa tạo được tệp: ${error.message}`)).finally(() => { button.disabled = false; button.textContent = `Tải tệp mẫu (${r.format})`; });
-    }))
+    afterRender: (slice, root) => $$('[data-generate]', root).forEach((button) => button.addEventListener('click', () => {
+      const r = seed.resources.find((x) => x.id === button.dataset.generate);
+      button.disabled = true; button.textContent = 'Preparing…';
+      store.request(() => build(r), { delay: 300 })
+        .then((content) => { download(fileName(r), content, 'text/plain;charset=utf-8'); toast(`Downloaded ${fileName(r)}.`); })
+        .catch((error) => toast(`Download failed: ${error.message}`))
+        .finally(() => { button.disabled = false; button.textContent = 'Download'; });
+    })),
   });
 })();

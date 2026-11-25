@@ -1,0 +1,81 @@
+/* Space group only: find-space panel, unit grid, building picker, visit booking layout and the campus map.
+   Shared blocks live in components.css; colours come from tokens.css. */
+
+/* Find space (office.html) */
+.find-panel { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) auto; align-items: end; gap: var(--space-4); margin-top: var(--space-10); padding: var(--space-5); background: var(--color-surface); border: 1px solid var(--color-line); border-radius: var(--radius); }
+.find-panel .select-field select, .find-panel .select-field input { min-width: 0; width: 100%; min-height: var(--tap); }
+.unit-grid > .state-panel, .unit-grid > .skeleton-row { grid-column: 1 / -1; }
+.unit-grid > .skeleton-row { margin-top: 0; }
+@media (min-width: 901px) { #units .section-head { align-items: center; } }
+
+.building-picker { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-12); align-items: stretch; }
+.building-copy { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-5); }
+.building-copy .kv { align-self: stretch; }
+.building-copy .pill { min-height: var(--tap); }
+.building-name { font-size: var(--text-3xl); line-height: var(--leading-tight); }
+.building-photo { width: 100%; height: 100%; min-height: 360px; object-fit: cover; border-radius: var(--radius); }
+
+.proto-record > .badge { justify-self: end; }
+.proto-record.is-cancelled h3 { color: var(--color-ink-2); }
+
+/* Unit detail (office-unit.html) */
+.booking-layout { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: var(--space-8); align-items: start; }
+.visit-info { display: grid; gap: var(--space-5); padding-top: var(--space-8); }
+.unit-features li { font-size: var(--text-md); }
+
+/* Campus map (explore.html) */
+.explore-layout { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: var(--space-8); align-items: start; }
+.explore-map { position: relative; border: 1px solid var(--color-line); border-radius: var(--radius); overflow: hidden; background: var(--color-surface); }
+.explore-map svg { width: 100%; height: auto; }
+.map-ground { fill: var(--color-surface); }
+.map-road { fill: var(--color-surface-muted); }
+.map-road-label, .map-river-label { fill: var(--color-ink-2); font: 700 14px var(--font); letter-spacing: .14em; }
+.map-lawn { fill: var(--color-success-soft); }
+.map-path { fill: none; stroke: var(--color-line); stroke-width: 10; stroke-linecap: round; }
+.map-river { fill: var(--color-surface-muted); }
+.map-wave { fill: none; stroke: var(--color-line-strong); stroke-width: 2; stroke-linecap: round; }
+.map-jetty { fill: var(--color-line-strong); }
+.map-gates rect { fill: var(--color-ink); }
+.map-buildings rect { fill: var(--color-page); stroke: var(--color-ink); stroke-width: 2; transition: fill var(--dur) var(--ease), stroke var(--dur) var(--ease); }
+.map-buildings rect.is-selected { fill: var(--color-accent-soft); stroke: var(--color-accent); stroke-width: 3; }
+.map-label { fill: var(--color-ink); font: 700 18px var(--font); }
+.map-label-sm { fill: var(--color-ink-2); font-size: 15px; font-weight: 600; }
+
+.explore-pin { position: absolute; display: grid; place-items: center; width: var(--tap); height: var(--tap); transform: translate(-50%, -50%); border: 2px solid var(--color-ink); border-radius: 50%; background: var(--color-surface); color: var(--color-ink); font-weight: 800; font-size: var(--text-sm); transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease); }
+.explore-pin:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.explore-pin[aria-pressed="true"] { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-on-accent); }
+.explore-pin[data-place="atlas"] { left: 19%; top: 25%; }
+.explore-pin[data-place="beacon"] { left: 44.1%; top: 23%; }
+.explore-pin[data-place="cobalt"] { left: 81.5%; top: 25%; }
+.explore-pin[data-place="delta"] { left: 70.5%; top: 52%; }
+.explore-pin[data-place="echo"] { left: 45.1%; top: 51%; }
+.explore-pin[data-place="forge"] { left: 18.8%; top: 56%; }
+.explore-pin[data-place="grove"] { left: 63%; top: 72%; }
+
+.map-legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); margin: var(--space-4) 0 0; }
+.map-legend dt { font-size: var(--text-sm); font-weight: 700; }
+.map-legend dd { margin: 2px 0 0; font-size: var(--text-sm); color: var(--color-ink-2); }
+
+.explore-side { display: grid; gap: var(--space-4); }
+.explore-selection { display: grid; gap: var(--space-2); padding: var(--space-5); background: var(--color-surface); border: 1px solid var(--color-line); border-radius: var(--radius); }
+.explore-selection h3 { font-size: var(--text-2xl); }
+.explore-selection p { color: var(--color-ink-2); font-size: var(--text-sm); }
+.explore-selection .btn { justify-self: start; margin-top: var(--space-2); }
+.place-list { list-style: none; border-top: 1px solid var(--color-line); }
+.place-card { display: grid; grid-template-columns: 28px auto minmax(0, 1fr); gap: var(--space-3); width: 100%; min-height: var(--tap); padding: var(--space-2); border: 0; border-bottom: 1px solid var(--color-line); background: transparent; text-align: left; align-items: center; }
+.place-card strong { font-size: var(--text-md); }
+.place-card > span:last-child { justify-self: end; text-align: right; font-size: var(--text-sm); color: var(--color-ink-2); }
+.place-num { display: grid; place-items: center; width: 28px; height: 28px; border: 1.5px solid var(--color-ink); border-radius: 50%; font-size: var(--text-xs); font-weight: 800; }
+.place-card:hover strong { color: var(--color-accent); }
+.place-card[aria-pressed="true"] { background: var(--color-surface-muted); }
+.place-card[aria-pressed="true"] .place-num { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-on-accent); }
+
+@media (max-width: 900px) {
+  .find-panel { grid-template-columns: 1fr 1fr; margin-top: var(--space-8); padding: var(--space-4); }
+  .find-panel > .btn { grid-column: 1 / -1; }
+  .building-picker, .booking-layout, .explore-layout { grid-template-columns: 1fr; gap: var(--space-6); }
+  .building-photo { min-height: 240px; aspect-ratio: 3 / 2; height: auto; }
+  .visit-info { padding-top: 0; }
+  .map-names, .map-label, .map-road-label, .map-river-label { display: none; }
+  .map-legend { grid-template-columns: 1fr; gap: var(--space-3); }
+}

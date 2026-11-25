@@ -1,4 +1,8 @@
-// QTSC prototype end-to-end test.
+// Northbank prototype end-to-end test (repository still named QTSC).
+// Rewritten on 2026-11-25 for the fictional Northbank content: same steps and behaviour, English copy and new
+// data ids. Demo tools only appear with ?demo=1, so the first step opens the home page with it. The old check that
+// confirmations say "nothing was sent" became a check for the reference number: prototype notes are not shown on
+// screen any more (AGENTS.md rule 3). See docs/redesign/plan.md, "Tests changed".
 //
 //   py -3 -m http.server 8926 --bind 127.0.0.1      (repo root)
 //   NODE_PATH=<folder with playwright> node .github/qa/e2e-prototype.mjs
@@ -6,7 +10,7 @@
 // Covers every main workflow (directory, marketplace + demo request, office
 // booking + my bookings, investment checker + enquiry, insights, resources,
 // careers + my applications, newsletter, contact, open data + CSV), simulated
-// request failure + recovery, session persistence and "Đặt lại dữ liệu demo".
+// request failure + recovery, session persistence and "Reset demo data".
 // Also loads every page and fails on console errors or href="#".
 import { createRequire } from 'node:module';
 import fs from 'node:fs/promises';
@@ -21,7 +25,7 @@ const results = [];
 const consoleErrors = [];
 
 const browser = await chromium.launch({ headless: true });
-const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, acceptDownloads: true, reducedMotion: 'reduce', locale: 'vi-VN' });
+const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, acceptDownloads: true, reducedMotion: 'reduce', locale: 'en-GB' });
 
 // Local files go through a cache with retries (python http.server on Windows can refuse
 // connection bursts); external hosts are blocked so the run is deterministic and offline.
@@ -82,10 +86,10 @@ function visitDate(offset = 2) {
 }
 await fs.mkdir(outDir, { recursive: true });
 
-console.log(`QTSC prototype E2E against ${baseURL}`);
+console.log(`Northbank prototype E2E against ${baseURL}`);
 
 await step('reset to seed before run', async () => {
-  await go('index.html', '[data-proto-reset]');
+  await go('index.html?demo=1', '[data-proto-reset]');
   await page.click('[data-proto-reset]');
   await confirm();
   await page.waitForSelector('[data-proto-reset]');
@@ -104,89 +108,89 @@ await step('every page: loads, no console errors, no href="#"', async () => {
     if (placeholders.length) bad.push(`${file}: ${placeholders.join(' ')}`);
   }
   expect(!bad.length, `href="#" found: ${bad.join(' | ')}`);
-  expect(files.length >= 33, `expected 33+ pages, found ${files.length}`);
+  expect(files.length >= 32, `expected 32+ pages, found ${files.length}`);
 });
 
 await step('company directory: search, filters, pagination, empty state, URL state', async () => {
   await go('companies.html', '#companyResults[data-state="ready"]');
   const first = await page.locator('#companyResults .entity-card').count();
   expect(first === 12, `page 1 should show 12 companies, got ${first}`);
-  await page.click('#companyPager button:has-text("Sau")');
+  await page.click('#companyPager button:has-text("Next")');
   await page.waitForFunction(() => location.search.includes('page=2'));
   await page.click('#companyPills [data-filter="data"]');
   await page.waitForSelector('#companyPills [data-filter="data"][aria-selected="true"]');
   await page.waitForFunction(() => location.search.includes('sector=data') && !location.search.includes('page='));
   const dataCount = await page.locator('#companyResults .entity-card').count();
   expect(dataCount > 0 && dataCount < 12, `data filter count ${dataCount}`);
-  await page.selectOption('#companyBuilding', 'Tòa nhà SBI');
+  await page.selectOption('#companyBuilding', 'Cobalt');
   await page.waitForFunction(() => location.search.includes('building='));
-  await page.fill('#innerSearch', 'zzzz-khong-co');
+  await page.fill('#innerSearch', 'zzzz-no-match');
   await page.waitForSelector('#companyResults[data-state="empty"]');
   await page.click('#companyResults [data-state-action]');
   await page.waitForSelector('#companyResults[data-state="ready"]');
   expect(await page.inputValue('#innerSearch') === '', 'search not cleared');
-  await page.fill('#innerSearch', 'TMA');
-  await page.waitForSelector('#companyResults [data-company="tma"]');
-  await go('companies.html?q=TMA', '#companyResults [data-company="tma"]');
+  await page.fill('#innerSearch', 'Mangrove');
+  await page.waitForSelector('#companyResults [data-company="mangrove"]');
+  await go('companies.html?q=Mangrove', '#companyResults [data-company="mangrove"]');
 });
 
 await step('company detail via ?id= and not-found state', async () => {
-  await page.click('#companyResults [data-company="tma"]');
+  await page.click('#companyResults [data-company="mangrove"]');
   await page.waitForSelector('#detailStateInner[data-state="ready"]', { state: 'attached' });
-  expect((await text('#companyName')) === 'TMA Solutions', 'detail name mismatch');
-  expect(page.url().includes('company-detail.html?id=tma'), 'detail URL should use ?id=');
+  expect((await text('#companyName')) === 'Mangrove AI', 'detail name mismatch');
+  expect(page.url().includes('company-detail.html?id=mangrove'), 'detail URL should use ?id=');
   expect(await page.locator('#companySolutions a[href^="solution-detail.html?id="]').count() > 0, 'company solutions should link to solution detail');
-  await go('company-detail.html?id=khong-ton-tai', '#detailStateInner[data-state="notfound"]');
-  expect(/Không tìm thấy doanh nghiệp/.test(await text('#detailStateInner h1')), 'not-found heading missing');
+  await go('company-detail.html?id=no-such-company', '#detailStateInner[data-state="notfound"]');
+  expect(/Company not found/.test(await text('#detailStateInner h1')), 'not-found heading missing');
 });
 
 await step('marketplace: search, filter, solution detail, demo request validation + success + cancel', async () => {
   await go('marketplace.html', '#solutionResults[data-state="ready"]');
   await page.click('#solutionPills [data-filter="cyber"]');
   await page.waitForSelector('#solutionPills [data-filter="cyber"][aria-selected="true"]');
-  await page.fill('#innerSearch', 'DIGI-XTRACT');
+  await page.fill('#innerSearch', 'DocuSift');
   await page.click('#solutionPills [data-filter="all"]');
-  await page.waitForSelector('#solutionResults .entity-card:has-text("DIGI-XTRACT")');
-  await page.click('#solutionResults .entity-card:has-text("DIGI-XTRACT")');
+  await page.waitForSelector('#solutionResults .entity-card:has-text("DocuSift")');
+  await page.click('#solutionResults .entity-card:has-text("DocuSift")');
   await page.waitForSelector('#detailStateInner[data-state="ready"]', { state: 'attached' });
   await page.click('#solutionRequestForm [type="submit"]');
   await page.waitForSelector('#solutionRequestForm .form-alert.is-error');
   expect(await page.locator('#solutionRequestForm [aria-invalid="true"]').count() >= 4, 'expected inline field errors');
-  await page.fill('#sr-name', 'Lê Thu Hà');
-  await page.fill('#sr-email', 'thuha@congty.vn');
-  await page.fill('#sr-company', 'Công ty Thử Nghiệm');
+  await page.fill('#sr-name', 'Ha Le');
+  await page.fill('#sr-email', 'ha.le@example.com');
+  await page.fill('#sr-company', 'Example Trading');
   await page.fill('#sr-date', visitDate(3));
-  await page.fill('#sr-message', 'Cần số hóa 20.000 hồ sơ khách hàng mỗi tháng.');
+  await page.fill('#sr-message', 'We need to read 20,000 supplier invoices a month.');
   await tick('#solutionRequestForm [name="consent"]');
   await page.click('#solutionRequestForm [type="submit"]');
   await page.waitForSelector('#requestHost .proto-success');
-  expect(/chưa có thông tin nào được gửi/i.test(await text('#requestHost .proto-success')), 'confirmation must say nothing was sent');
+  expect(/^[A-Z]{2}-/.test((await text('#requestHost .proto-ref strong')).trim()), 'confirmation must show a reference');
   await page.waitForSelector('#solutionRequests [data-cancel-request]');
   await page.click('#solutionRequests [data-cancel-request]');
   await confirm();
-  await page.waitForSelector('#solutionRequests .badge:has-text("Đã hủy")');
-  await go('solution-detail.html?id=khong-co', '#detailStateInner[data-state="notfound"]');
+  await page.waitForSelector('#solutionRequests .badge:has-text("Cancelled")');
+  await go('solution-detail.html?id=no-such-solution', '#detailStateInner[data-state="notfound"]');
 });
 
 await step('office: unit filters, unit detail, booking, persistence, reschedule, cancel', async () => {
   await go('office.html', '#unitResults[data-state="ready"]');
-  await page.click('[data-office="helios"]');
-  expect(/Helios/.test(await text('#officeName')), 'building selector should update');
-  await page.selectOption('#unitBuilding', 'helios');
+  await page.click('[data-office="atlas"]');
+  expect(/Atlas/.test(await text('#officeName')), 'building selector should update');
+  await page.selectOption('#unitBuilding', 'atlas');
   await page.selectOption('#unitStatus', 'available');
-  await page.waitForFunction(() => location.search.includes('building=helios') && location.search.includes('status=available'));
-  await page.waitForSelector('#unitResults [data-unit="helios-0405"]');
-  await page.click('#unitResults [data-unit="helios-0405"]');
+  await page.waitForFunction(() => location.search.includes('building=atlas') && location.search.includes('status=available'));
+  await page.waitForSelector('#unitResults [data-unit="atlas-0705"]');
+  await page.click('#unitResults [data-unit="atlas-0705"]');
   await page.waitForSelector('#detailStateInner[data-state="ready"]', { state: 'attached' });
   const sunday = (() => { const d = new Date(); d.setDate(d.getDate() + 1); while (d.getDay() !== 0) d.setDate(d.getDate() + 1); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; })();
   await page.fill('#bk-date', sunday);
   await page.selectOption('#bk-time', '14:00');
-  await page.fill('#bk-name', 'Trần Quốc Bảo');
-  await page.fill('#bk-email', 'bao@congty.vn');
+  await page.fill('#bk-name', 'Bao Tran');
+  await page.fill('#bk-email', 'bao.tran@example.com');
   await page.fill('#bk-phone', '0909123456');
   await tick('#bookingForm [name="consent"]');
   await page.click('#bookingForm [type="submit"]');
-  await page.waitForSelector('#bookingForm .field-error:has-text("Chủ nhật")');
+  await page.waitForSelector('#bookingForm .field-error:has-text("Sunday")');
   await page.fill('#bk-date', visitDate(4));
   await page.click('#bookingForm [type="submit"]');
   await page.waitForSelector('#bookingHost .proto-success');
@@ -200,11 +204,11 @@ await step('office: unit filters, unit detail, booking, persistence, reschedule,
   await page.fill(`[data-reschedule-form="${ref}"] input[name="date"]`, visitDate(6));
   await page.selectOption(`[data-reschedule-form="${ref}"] select[name="time"]`, '09:30');
   await page.click(`[data-reschedule-form="${ref}"] [type="submit"]`);
-  await page.waitForSelector(`[data-booking="${ref}"]:has-text("đã đổi lịch")`);
+  await page.waitForSelector(`[data-booking="${ref}"]:has-text("rescheduled")`);
   await page.click(`[data-cancel-booking="${ref}"]`);
   await confirm();
-  await page.waitForSelector(`[data-booking="${ref}"] .badge:has-text("Đã hủy")`);
-  await go('office-unit.html?id=khong-co', '#detailStateInner[data-state="notfound"]');
+  await page.waitForSelector(`[data-booking="${ref}"] .badge:has-text("Cancelled")`);
+  await go('office-unit.html?id=no-such-unit', '#detailStateInner[data-state="notfound"]');
 });
 
 await step('simulated failure: list error + retry, form error keeps input + retry', async () => {
@@ -220,13 +224,13 @@ await step('simulated failure: list error + retry, form error keeps input + retr
   await page.waitForSelector('[data-proto-fail][aria-pressed="true"]');
   await go('contact.html?topic=office', '#contactForm');
   expect(await page.inputValue('#ct-topic') === 'office', 'topic prefill from ?topic=');
-  await page.fill('#ct-name', 'Phạm Minh Châu');
-  await page.fill('#ct-email', 'chau@congty.vn');
-  await page.fill('#ct-message', 'Cần khảo sát 300 m² văn phòng cho đội R&D từ quý 1/2027.');
+  await page.fill('#ct-name', 'Chau Pham');
+  await page.fill('#ct-email', 'chau.pham@example.com');
+  await page.fill('#ct-message', 'We need about 300 m² for an R&D team from Q1 2027.');
   await tick('#contactForm [name="consent"]');
   await page.click('#contactForm [type="submit"]');
   await page.waitForSelector('#contactForm .form-alert.is-error [data-retry]');
-  expect(await page.inputValue('#ct-name') === 'Phạm Minh Châu', 'input must be kept after failure');
+  expect(await page.inputValue('#ct-name') === 'Chau Pham', 'input must be kept after failure');
   await page.click('[data-proto-fail]');
   await page.waitForSelector('[data-proto-fail][aria-pressed="false"]');
   await page.click('#contactForm [data-retry]');
@@ -234,17 +238,18 @@ await step('simulated failure: list error + retry, form error keeps input + retr
   await page.waitForSelector('#contactHistory .proto-record');
 });
 
-await step('connect drawer stores the request and says nothing was sent', async () => {
-  await go('company-detail.html?id=kms', '[data-detail]:not([hidden]) h1');
+await step('connect drawer stores the request and shows a reference', async () => {
+  await go('company-detail.html?id=mangrove', '[data-detail]:not([hidden]) h1');
   await page.click('#companyContact');
   await page.waitForSelector('#connectOverlay.open #icf-name');
-  expect((await page.inputValue('#icf-need')).includes('KMS Technology'), 'need prefilled with company');
-  await page.fill('#icf-name', 'Võ Thanh Tâm');
-  await page.fill('#icf-email', 'tam@congty.vn');
+  expect((await page.inputValue('#icf-need')).includes('Mangrove AI'), 'need prefilled with company');
+  await page.fill('#icf-name', 'Tam Vo');
+  await page.fill('#icf-email', 'tam.vo@example.com');
   await tick('#innerConnectForm .form-consent input');
   await page.click('#innerConnectForm [type="submit"]');
   await page.waitForSelector('#innerFormSuccess .proto-success');
-  expect(/chưa có thông tin nào được gửi/i.test(await text('#innerFormSuccess')), 'drawer confirmation copy');
+  expect(/^[A-Z]{2}-/.test((await text('#innerFormSuccess .proto-ref strong')).trim()), 'drawer confirmation shows a reference');
+  expect((await page.evaluate(() => window.QTSCStore.list('contacts').length)) >= 1, 'drawer request stored');
   await page.keyboard.press('Escape');
   await page.waitForFunction(() => !document.querySelector('#connectOverlay')?.classList.contains('open'));
 });
@@ -264,10 +269,10 @@ await step('investment: eligibility checker, carry result into enquiry, submit',
   await page.waitForSelector('#enquiryForm');
   await page.waitForSelector('#enquiryDraftNote:not([hidden])');
   expect(await page.inputValue('#eq-sector') === 'semiconductor-ai', 'sector carried from checker');
-  await page.fill('#eq-company', 'Công ty Chip Việt');
-  await page.fill('#eq-name', 'Đỗ Hải Nam');
-  await page.fill('#eq-email', 'nam@chipviet.vn');
-  await page.selectOption('#eq-timeline', 'Trong 6 tháng');
+  await page.fill('#eq-company', 'Example Chips');
+  await page.fill('#eq-name', 'Nam Do');
+  await page.fill('#eq-email', 'nam.do@example.com');
+  await page.selectOption('#eq-timeline', 'Within 6 months');
   await tick('#enquiryForm [name="consent"]');
   await page.click('#enquiryForm [type="submit"]');
   await page.waitForSelector('#enquiryHost .proto-success');
@@ -285,7 +290,7 @@ await step('insights: category filter, article detail, not-found', async () => {
   await page.waitForSelector('#detailStateInner[data-state="ready"]', { state: 'attached' });
   expect(page.url().includes('article.html?id='), 'article URL');
   await page.waitForSelector('#articleExtra a[href^="job-detail.html?id="]');
-  await go('article.html?id=khong-co', '#detailStateInner[data-state="notfound"]');
+  await go('article.html?id=no-such-article', '#detailStateInner[data-state="notfound"]');
 });
 
 await step('resources: search + category, generated sample download', async () => {
@@ -295,10 +300,10 @@ await step('resources: search + category, generated sample download', async () =
   await page.fill('#resourceSearch', 'checklist');
   await page.waitForFunction(() => document.querySelectorAll('#resourceGrid .resource-card').length === 1);
   const [download] = await Promise.all([page.waitForEvent('download'), page.click('[data-generate="office-checklist"]')]);
-  expect(/TEP-MAU/.test(download.suggestedFilename()), `sample file name ${download.suggestedFilename()}`);
+  expect(/SAMPLE/.test(download.suggestedFilename()), `sample file name ${download.suggestedFilename()}`);
   const body = await fs.readFile(await download.path(), 'utf8');
-  expect(/TỆP MẪU/.test(body), 'generated file must be labelled as a sample');
-  await page.fill('#resourceSearch', 'khong-co-tai-lieu');
+  expect(/SAMPLE FILE/.test(body), 'generated file must be labelled as a sample');
+  await page.fill('#resourceSearch', 'no-such-document');
   await page.waitForSelector('#resourceGrid[data-state="empty"]');
 });
 
@@ -306,10 +311,10 @@ await step('careers: search, job detail, apply (CV name only), my applications, 
   await go('careers.html', '#jobResults[data-state="ready"]');
   await page.click('#jobPills [data-filter="engineering"]');
   await page.fill('#jobSearch', 'Data Engineer');
-  await page.waitForSelector('#jobResults [data-job="kms-data-engineer"]');
-  await page.click('#jobResults [data-job="kms-data-engineer"]');
+  await page.waitForSelector('#jobResults [data-job="mangrove-data-engineer"]');
+  await page.click('#jobResults [data-job="mangrove-data-engineer"]');
   await page.waitForSelector('#detailStateInner[data-state="ready"]', { state: 'attached' });
-  await page.fill('#ap-name', 'Ngô Gia Huy');
+  await page.fill('#ap-name', 'Huy Ngo');
   await page.fill('#ap-email', 'huy@example.com');
   await page.fill('#ap-phone', '0912345678');
   await page.setInputFiles('#ap-cv', { name: 'NgoGiaHuy-CV.txt', mimeType: 'text/plain', buffer: Buffer.from('cv') });
@@ -321,23 +326,23 @@ await step('careers: search, job detail, apply (CV name only), my applications, 
   await page.waitForSelector('#applyHost .proto-success');
   const ref = (await text('#applyHost .proto-ref strong')).trim();
   await page.reload({ waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('#applyHost [data-state="empty"]:has-text("đã nộp hồ sơ")');
+  await page.waitForSelector('#applyHost [data-state="empty"]:has-text("already applied")');
   await go('careers.html#my-applications', `#myApplications [data-application="${ref}"]`);
   expect((await text(`[data-application="${ref}"]`)).includes('NgoGiaHuy-CV.pdf'), 'CV file name stored');
   await page.click(`[data-withdraw="${ref}"]`);
   await confirm();
-  await page.waitForSelector(`[data-application="${ref}"] .badge:has-text("Đã rút")`);
-  await go('job-detail.html?id=khong-co', '#detailStateInner[data-state="notfound"]');
+  await page.waitForSelector(`[data-application="${ref}"] .badge:has-text("Withdrawn")`);
+  await go('job-detail.html?id=no-such-job', '#detailStateInner[data-state="notfound"]');
 });
 
 await step('newsletter: validation, subscribe, manage preferences, persistence, unsubscribe', async () => {
   await go('newsletter.html#manage', '#newsletterHost[data-state="subscribe"]');
-  await page.fill('#nl-email', 'linh@congty.vn');
+  await page.fill('#nl-email', 'linh@example.com');
   await page.uncheck('#newsletterForm input[value="updates"]');
   await page.uncheck('#newsletterForm input[value="events"]');
   await tick('#newsletterForm [name="consent"]');
   await page.click('#newsletterForm [type="submit"]');
-  await page.waitForSelector('#newsletterForm .field-error:has-text("ít nhất một chủ đề")');
+  await page.waitForSelector('#newsletterForm .field-error:has-text("at least one topic")');
   await tick('#newsletterForm input[value="careers"]');
   await page.click('#newsletterForm [type="submit"]');
   await page.waitForSelector('#newsletterHost .proto-success');
@@ -346,7 +351,7 @@ await step('newsletter: validation, subscribe, manage preferences, persistence, 
   await tick('#newsletterPrefs input[value="investment"]');
   await tick('#newsletterPrefs input[name="frequency"][value="events"]');
   await page.click('#newsletterPrefs [type="submit"]');
-  await page.waitForSelector('#toast.show:has-text("Đã lưu tùy chọn")');
+  await page.waitForSelector('#toast.show:has-text("Preferences saved")');
   const saved = await page.evaluate(() => window.QTSCStore.value('newsletter'));
   expect(saved.topics.includes('investment') && saved.frequency === 'events', `prefs not saved: ${JSON.stringify(saved)}`);
   await page.click('#nlUnsubscribe');
@@ -356,15 +361,15 @@ await step('newsletter: validation, subscribe, manage preferences, persistence, 
 
 await step('open data: filters, table, CSV export of filtered rows', async () => {
   await go('open-data.html#explorer', '#odResults[data-state="ready"]');
-  await page.selectOption('#odDataset', 'nuoc-thai');
+  await page.selectOption('#odDataset', 'wastewater');
   await page.selectOption('#odParam', 'COD');
   await page.selectOption('#odFrom', '2026-06');
-  await page.waitForFunction(() => location.search.includes('dataset=nuoc-thai') && location.search.includes('from=2026-06'));
+  await page.waitForFunction(() => location.search.includes('dataset=wastewater') && location.search.includes('from=2026-06'));
   const rows = await page.locator('#odResults tbody tr').count();
   expect(rows === 10, `expected 10 rows (2 stations x 5 months), got ${rows}`);
   const [download] = await Promise.all([page.waitForEvent('download'), page.click('#odExport')]);
   const csv = (await fs.readFile(await download.path(), 'utf8')).replace(/^﻿/, '').trim().split(/\r?\n/);
-  expect(csv[0].startsWith('thang,nhom_du_lieu') && csv.length === 11, `CSV rows ${csv.length}`);
+  expect(csv[0].startsWith('month,group,dataset,station,parameter') && csv.length === 11, `CSV header ${csv[0]}, rows ${csv.length}`);
   await page.selectOption('#odStation', { index: 1 });
   await page.selectOption('#odStatus', 'over');
   await page.waitForSelector('#odResults[data-state="empty"], #odResults[data-state="ready"]');
@@ -372,9 +377,9 @@ await step('open data: filters, table, CSV export of filtered rows', async () =>
 
 await step('explore map pins select places', async () => {
   await go('explore.html', '.explore-pin');
-  await page.click('.explore-pin.p2');
-  await page.waitForSelector('.place-card[aria-pressed="true"]:has-text("Helios")');
-  await page.waitForSelector('.explore-selection a[href*="building=helios"]');
+  await page.click('.explore-pin[data-place="atlas"]');
+  await page.waitForSelector('.place-card[data-place="atlas"][aria-pressed="true"]:has-text("Atlas")');
+  await page.waitForSelector('.explore-selection a[href*="building=atlas"]');
 });
 
 await step('reset demo data restores the seed and survives reload', async () => {
@@ -388,12 +393,12 @@ await step('reset demo data restores the seed and survives reload', async () => 
   expect(user.applications.length === 1 && user.contacts.length === 0 && user.enquiries.length === 0 && user.demoRequests.length === 0, 'reset user data');
   await page.click(`[data-cancel-booking="${user.bookings[0].id}"]`);
   await confirm();
-  await page.waitForSelector('#myBookings .badge:has-text("Đã hủy")');
+  await page.waitForSelector('#myBookings .badge:has-text("Cancelled")');
   await page.reload({ waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('#myBookings .badge:has-text("Đã hủy")');
+  await page.waitForSelector('#myBookings .badge:has-text("Cancelled")');
   await page.click('[data-proto-reset]');
   await confirm();
-  await page.waitForSelector('#myBookings .badge:has-text("Đã xác nhận")');
+  await page.waitForSelector('#myBookings .badge:has-text("Confirmed")');
 });
 
 await browser.close();

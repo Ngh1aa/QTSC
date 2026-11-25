@@ -1,6 +1,6 @@
 # Direction gate — home page
 
-Status: `CHƯA DUYỆT`. Mock-ups are static home pages in new markup with the Northbank content and CC0 photos.
+Status: `ĐÃ DUYỆT` — the owner chose **A** on 2026-11-25 ("chọn A, làm tiếp đi").
 Shots: `shots/` (1440 and 390).
 
 | | A — Ember (DNA evolution) | B — Canopy (new direction) |

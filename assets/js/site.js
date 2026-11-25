@@ -157,6 +157,13 @@
     $('#mobileMenuOpen')?.addEventListener('click', openMobileMenu);
     $('#searchOpen')?.addEventListener('click', openSearch);
     $$('[data-open-connect]').forEach((b) => b.addEventListener('click', (event) => { event.preventDefault(); openContact(b.dataset.openConnect || b.dataset.need || 'General question'); }));
+    /* Escape closes whichever overlay is open, wherever focus is. */
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      if ($('#mobileMenu.open')) { closeMobileMenu(); return; }
+      const overlay = $('.overlay.open');
+      if (overlay) close(overlay);
+    });
     document.addEventListener('keydown', (event) => { if (event.key === '/' && !/input|textarea|select/i.test(document.activeElement?.tagName || '')) { event.preventDefault(); openSearch(); } });
     window.matchMedia('(min-width: 901px)').addEventListener('change', (m) => { if (m.matches) closeMobileMenu(); });
   }

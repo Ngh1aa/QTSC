@@ -1,69 +1,106 @@
-/** Office unit detail: office-unit.html?id=<unit id>, with site-visit booking
- * (validated date/slot, simulated request, recoverable error) saved to the session. */
+/* Unit detail (office-unit.html?id=<unit id>): specs, features, photo, other units in the building, and the
+ * visit booking form (rules in prototype/bookings.js) saved to the session. */
 (() => {
   const { $, esc, detailPage, bindForm, successPanel, fmtDate, todayISO, showState } = window.QTSCUI;
   const store = window.QTSCStore;
   const seed = store.seed;
   const booking = window.QTSCBooking;
   if (!$('#unitName')) return;
-  const id = (new URLSearchParams(location.search).get('id') || '').trim();
+  const id = (new URLSearchParams(location.search).get('id') || '').trim().toLowerCase();
+
+  /* Photos per unit (same list in office.js). */
+  const PHOTOS = {
+    'atlas-0705': ['loft-office', 'Open office with tall windows'],
+    'atlas-0402': ['quiet-desk', 'White room with a wooden desk and a wall calendar'],
+    'atlas-1101': ['open-office', 'Open office with desks and glass meeting booths'],
+    'atlas-0910': ['laptop-work', 'Person working on a laptop at a long wooden table'],
+    'beacon-b12': ['lounge', 'Lounge with a sofa, an armchair and a small dining table'],
+    'beacon-b31': ['coworking', 'Furnished lounge with sofas and plants'],
+    'beacon-b45': ['casual-meeting', 'Seating corner with a leather sofa and yellow armchairs'],
+    'delta-l304': ['meeting-room', 'Bright room with a long white table'],
+    'delta-l112': ['glass-roofline', 'Glass roofline of a modern building against a cloudy sky'],
+    'delta-l205': ['server-rack', 'Technician working at an open equipment rack'],
+    'forge-f08': ['outdoor-work', 'Person typing on a laptop at a wooden table'],
+    'forge-f14': ['working-session', 'Two people working on laptops over printed notes'],
+  };
+  const shortDate = (iso) => fmtDate(iso, { weekday: false });
+  const statusLabel = (u) => (u.status === 'leased' ? 'Leased' : u.availableFrom <= todayISO() ? 'Available now' : `Available ${shortDate(u.availableFrom)}`);
+  const statusClass = (u) => (u.status === 'leased' ? 'is-muted' : u.status === 'soon' ? 'is-warn' : 'is-ok');
 
   function mountBooking(unit) {
     const host = $('#bookingHost');
     const form = $('#bookingForm');
     if (unit.status === 'leased') {
-      showState(host, 'empty', { title: 'Không gian này đã cho thuê.', text: `Dự kiến trống lại từ ${fmtDate(unit.availableFrom)}. Bạn có thể xem không gian khác hoặc gửi nhu cầu để QTSC báo khi trống.`, action: { label: 'Xem không gian còn trống', href: 'office.html?status=open#units' } });
-      $('#unitBookLink').textContent = 'Xem tình trạng đặt lịch';
+      showState(host, 'empty', { title: 'This unit is leased.', text: `It may come free from ${fmtDate(unit.availableFrom)}.`, action: { label: 'See open units', href: 'office.html?status=open#units' }, secondary: { label: 'Ask about space', href: 'contact.html?topic=office' } });
+      $('#unitBookLink').textContent = 'See booking status';
       return;
     }
     $('#bk-date').min = todayISO(1);
     $('#bk-date').max = todayISO(90);
     $('#bk-time').insertAdjacentHTML('beforeend', booking.slotOptions(''));
     bindForm(form, {
-      busyLabel: 'Đang đặt lịch…',
-      validate: values => { const problem = booking.issue({ date: values.date, time: values.time, unitId: unit.id }); return problem ? { [problem.field]: problem.message } : {}; },
-      submit: values => store.request(() => store.add('bookings', { unitId: unit.id, date: values.date, time: values.time, name: values.name, email: values.email, phone: values.phone, people: Number(values.people), note: values.note, status: 'confirmed' }, 'BK')),
+      busyLabel: 'Booking…',
+      validate: (values) => { const problem = booking.issue({ date: values.date, time: values.time, unitId: unit.id }); return problem ? { [problem.field]: problem.message } : {}; },
+      submit: (values) => store.request(() => store.add('bookings', { unitId: unit.id, date: values.date, time: values.time, name: values.name, email: values.email, phone: values.phone, people: Number(values.people), note: values.note, status: 'confirmed' }, 'BK')),
       success(record) {
         const panel = successPanel({
-          title: 'Lịch tham quan đã được đặt.',
+          title: 'Your visit is booked.',
           reference: record.id,
-          lines: [`${booking.unitName(unit)}, ngày ${fmtDate(record.date)} lúc ${record.time}, ${record.people} người.`, 'Bạn có thể đổi lịch hoặc hủy trong mục Lịch tham quan của tôi.'],
-          actions: [{ label: 'Xem lịch tham quan của tôi', href: 'office.html#my-bookings' }, { label: 'Đặt thêm lịch', onClick: () => { panel.remove(); form.reset(); form.hidden = false; $('#bk-date').focus(); } }]
+          lines: [`${booking.unitName(unit)}, ${fmtDate(record.date)} at ${record.time}, ${record.people} ${record.people === 1 ? 'person' : 'people'}.`, 'Meet at the Atlas lobby, Park Avenue gate.'],
+          actions: [{ label: 'See my visits', href: 'office.html#my-bookings' }, { label: 'Book another', onClick: () => { panel.remove(); form.reset(); form.hidden = false; $('#bk-date').focus(); } }],
         });
         form.hidden = true;
         host.append(panel);
         panel.focus();
-      }
+      },
     });
   }
 
   detailPage({
-    loadingTitle: 'Đang tải thông tin không gian…',
-    load: () => seed.units.find(u => u.id === id) || null,
+    loadingTitle: 'Loading unit…',
+    load: () => seed.units.find((u) => u.id === id) || null,
     notFound: {
-      title: id ? 'Không tìm thấy không gian này.' : 'Chưa chọn không gian.',
-      text: id ? `Mã không gian “${id}” không còn trong danh mục. Không gian có thể đã được cho thuê hoặc gộp lại.` : 'Hãy chọn một không gian trong danh sách văn phòng.',
-      action: { label: 'Xem không gian còn trống', href: 'office.html#units' },
-      secondary: { label: 'Gửi nhu cầu thuê', href: 'contact.html?topic=office' }
+      title: id ? 'Unit not found.' : 'No unit selected.',
+      text: id ? `There is no unit with the id “${id}”. It may have been leased and taken off the list.` : 'Choose a unit in the list to see its details.',
+      action: { label: 'See open units', href: 'office.html?status=open#units' },
+      secondary: { label: 'Ask about space', href: 'contact.html?topic=office' },
     },
     render(u) {
-      const name = booking.unitName(u);
-      document.title = `${name} — Văn phòng QTSC`;
+      const title = `${u.building}, floor ${u.floor}`;
+      const [img, alt] = PHOTOS[u.id] || ['open-office', 'Open office with desks and glass meeting booths'];
+      document.title = `${title}, ${u.area} m² | Northbank Technology Park`;
+      $('meta[name="description"]')?.setAttribute('content', `${u.area} m² ${u.fitout.toLowerCase()} unit on floor ${u.floor} of ${u.building} at Northbank Technology Park.`);
       $('link[rel="canonical"]')?.setAttribute('href', `https://ngh1aa.github.io/QTSC/office-unit.html?id=${encodeURIComponent(u.id)}`);
-      $('#unitCrumb').textContent = `${u.building}, tầng ${u.floor}`;
-      $('#unitName').textContent = name;
-      $('#unitMetaTags').innerHTML = [seed.unitStatus[u.status], u.fitout, `Mã ${u.id.toUpperCase()}`].map(v => `<span>${esc(v)}</span>`).join('');
-      $('#unitSummary').textContent = `Không gian ${u.area} m² tại tầng ${u.floor}, ${u.building}, phù hợp khoảng ${u.seats} chỗ ngồi. Tình trạng: ${seed.unitStatus[u.status].toLowerCase()}, có thể bàn giao từ ${fmtDate(u.availableFrom)}.`;
-      $('#unitFeatures').innerHTML = u.features.map(f => `<li>${esc(f)}</li>`).join('');
-      $('#unitProof').innerHTML = [['Diện tích', `${u.area} m²`, 'diện tích sử dụng ước tính.'], ['Chỗ ngồi', String(u.seats), 'theo bố trí văn phòng mở.'], ['Bàn giao', fmtDate(u.availableFrom), 'thời điểm dự kiến.'], ['Hoàn thiện', u.fitout, 'hiện trạng bàn giao.']]
-        .map(([l, v, n]) => `<div class="proof-cell"><span>${esc(l)}</span><strong>${esc(v)}</strong><em>${esc(n)}</em></div>`).join('');
-      $('#unitFacts').innerHTML = [['Tòa nhà', u.building], ['Tầng', String(u.floor)], ['Tình trạng', seed.unitStatus[u.status]], ['Đơn giá', 'Xác nhận khi khảo sát'], ['Mã không gian', u.id.toUpperCase()]]
-        .map(([dt, dd]) => `<div><dt>${esc(dt)}</dt><dd>${esc(dd)}</dd></div>`).join('');
-      const siblings = seed.units.filter(x => x.buildingKey === u.buildingKey && x.id !== u.id);
+      $('#unitCrumb').textContent = title;
+      $('#unitName').textContent = title;
+      $('#unitMetaTags').innerHTML = `<span class="badge ${statusClass(u)}">${esc(statusLabel(u))}</span><span class="chip">${esc(u.fitout)}</span><span class="chip">Unit ${esc(u.id.toUpperCase())}</span>`;
+      $('#unitSummary').textContent = `${u.area} m² for about ${u.seats} desks, ${u.features[0].toLowerCase()}.`;
+      $('#unitProof').innerHTML = [
+        [`${u.area} m²`, 'floor area'],
+        [String(u.seats), 'desks'],
+        [shortDate(u.availableFrom), u.status === 'leased' ? 'may come free' : 'available from'],
+        [String(u.floor), `floor of ${u.building}`],
+      ].map(([value, label]) => `<div><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join('');
+      const photo = $('#unitPhoto');
+      photo.src = `assets/images/photos/${img}.webp`;
+      photo.srcset = `assets/images/photos/sm/${img}.webp 960w, assets/images/photos/${img}.webp 1920w`;
+      photo.sizes = '(max-width: 900px) 100vw, 1216px';
+      photo.alt = alt;
+      $('#unitFeatures').innerHTML = u.features.map((f) => `<li>${esc(f)}</li>`).join('');
+      $('#unitFacts').innerHTML = [
+        ['Building', u.building],
+        ['Floor', String(u.floor)],
+        ['Fit-out', u.fitout],
+        ['Status', u.status === 'leased' ? 'Leased' : seed.unitStatus[u.status]],
+        ['Rent', 'Quoted after the visit'],
+        ['Unit ID', u.id.toUpperCase()],
+      ].map(([dt, dd]) => `<dt>${esc(dt)}</dt><dd>${esc(dd)}</dd>`).join('');
+      const siblings = seed.units.filter((x) => x.buildingKey === u.buildingKey && x.id !== u.id);
+      $('#siblingsLink').href = `office.html?building=${encodeURIComponent(u.buildingKey)}#units`;
       $('#unitSiblings').innerHTML = siblings.length
-        ? siblings.map(x => `<a class="proto-card" href="office-unit.html?id=${encodeURIComponent(x.id)}"><div><h3>Tầng ${x.floor}, ${x.area} m²</h3><p>${esc(seed.unitStatus[x.status])}, từ ${esc(fmtDate(x.availableFrom))}</p></div><div class="proto-card-side"><span class="proto-card-cta">Xem</span></div></a>`).join('')
-        : '<div class="state-panel is-empty" data-state="empty"><strong>Chưa có không gian khác trong tòa nhà này.</strong><p>Xem danh sách đầy đủ để so sánh các tòa nhà.</p></div>';
+        ? siblings.map((x) => `<a class="entity-card" href="office-unit.html?id=${encodeURIComponent(x.id)}" data-unit="${esc(x.id)}"><span class="entity-mark" aria-hidden="true">F${x.floor}</span><div><h3>Floor ${x.floor}, ${x.area} m²</h3><p>${esc(x.fitout)}, ${x.seats} desks</p></div><div class="entity-side"><span class="badge ${statusClass(x)}">${esc(statusLabel(x))}</span></div></a>`).join('')
+        : `<div class="state-panel" data-state="empty"><strong>No other units in ${esc(u.building)} right now.</strong><div class="state-actions"><a class="btn btn-secondary" href="office.html#units">All units</a></div></div>`;
       mountBooking(u);
-    }
+    },
   });
 })();

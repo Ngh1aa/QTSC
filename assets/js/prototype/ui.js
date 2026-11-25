@@ -150,7 +150,9 @@
     form.noValidate = true;
     const button = $('[type="submit"]', form);
     const idle = button?.innerHTML;
-    $$('input, select, textarea', form).forEach((f) => f.addEventListener(f.type === 'checkbox' || f.tagName === 'SELECT' || f.type === 'file' ? 'change' : 'blur', () => {
+    /* Re-check a field that shows an error as soon as its value changes (input/change), not on blur: removing the
+     * message on blur moved the submit button under the pointer and swallowed the click on it. */
+    $$('input, select, textarea', form).forEach((f) => f.addEventListener(f.type === 'checkbox' || f.type === 'radio' || f.tagName === 'SELECT' || f.type === 'file' ? 'change' : 'input', () => {
       if (f.getAttribute('aria-invalid') === 'true') { delete f.dataset.customError; setFieldError(f, f.checkValidity() ? '' : messageFor(f)); }
     }));
     const run = async () => {

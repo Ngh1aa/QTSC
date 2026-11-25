@@ -160,11 +160,11 @@ async function runInteraction(name, route, viewport, fn) {
 await runInteraction('mobile menu open/close + focus', 'index.html', viewports['375'], async page => {
   const trigger = page.locator('#mobileMenuOpen');
   await trigger.click();
-  await page.locator('#innerMobileMenu.open').waitFor({ state: 'visible' });
+  await page.locator('#mobileMenu.open').waitFor({ state: 'visible' });
   const expanded = await trigger.getAttribute('aria-expanded');
   if (expanded !== 'true') throw new Error('mobile menu aria-expanded did not become true');
   await page.keyboard.press('Escape');
-  await page.waitForFunction(() => !document.querySelector('#innerMobileMenu')?.classList.contains('open'));
+  await page.waitForFunction(() => !document.querySelector('#mobileMenu')?.classList.contains('open'));
 });
 
 await runInteraction('global search open/escape', 'index.html', viewports['1440'], async page => {
@@ -174,30 +174,30 @@ await runInteraction('global search open/escape', 'index.html', viewports['1440'
   await page.waitForFunction(() => !document.querySelector('#searchOverlay')?.classList.contains('open'));
 });
 
-await runInteraction('contact drawer open/escape', 'office.html', viewports['375'], async page => {
-  await page.locator('[data-open-connect], [data-demo-contact]').first().click();
+await runInteraction('contact drawer open/escape', 'company-detail.html?id=mangrove', viewports['375'], async page => {
+  await page.locator('#companyContact').click();
   await page.locator('#connectOverlay.open').waitFor({ state: 'visible' });
   await page.keyboard.press('Escape');
   await page.waitForFunction(() => !document.querySelector('#connectOverlay')?.classList.contains('open'));
 });
 
 await runInteraction('company filter', 'companies.html', viewports['375'], async page => {
-  await page.locator('.pill-tabs [data-filter="data"]').click();
-  const active = await page.locator('.pill-tabs [data-filter="data"]').getAttribute('aria-selected');
+  await page.locator('#companyPills [data-filter="data"]').click();
+  const active = await page.locator('#companyPills [data-filter="data"]').getAttribute('aria-selected');
   if (active !== 'true') throw new Error('company filter aria-selected not updated');
 });
 
 await runInteraction('marketplace filter', 'marketplace.html', viewports['375'], async page => {
-  await page.locator('.pill-tabs [data-filter="cyber"]').click();
-  const active = await page.locator('.pill-tabs [data-filter="cyber"]').getAttribute('aria-selected');
+  await page.locator('#solutionPills [data-filter="cyber"]').click();
+  const active = await page.locator('#solutionPills [data-filter="cyber"]').getAttribute('aria-selected');
   if (active !== 'true') throw new Error('marketplace filter aria-selected not updated');
 });
 
 await runInteraction('office building selector', 'office.html', viewports['768'], async page => {
   const before = await page.locator('#officeName').textContent();
-  await page.locator('[data-office="helios"]').click();
+  await page.locator('[data-office="beacon"]').click();
   const after = await page.locator('#officeName').textContent();
-  if (!after || after === before || !/Helios/i.test(after)) throw new Error('office selector did not update content');
+  if (!after || after === before || !/Beacon/i.test(after)) throw new Error('office selector did not update content');
 });
 
 await browser.close();

@@ -13,9 +13,7 @@ Sizes: `<name>.webp` is 1920 px wide, `sm/<name>.webp` is 960 px wide. Converted
 |---|---|---|---|---|
 | `casual-meeting.webp` | Casual Meeting Room (Unsplash).jpg | CC0 | Dan Gold danielcgold | https://commons.wikimedia.org/wiki/File:Casual_Meeting_Room_(Unsplash).jpg |
 | `city-dusk.webp` | Cranes in a skyline (Unsplash).jpg | CC0 | Mike Wilson mkwlsn | https://commons.wikimedia.org/wiki/File:Cranes_in_a_skyline_(Unsplash).jpg |
-| `city-night.webp` | City of lights (Unsplash).jpg | CC0 | Luca Bravo lucabravo | https://commons.wikimedia.org/wiki/File:City_of_lights_(Unsplash).jpg |
 | `coworking.webp` | Communal Coworking interior (Unsplash).jpg | CC0 | Dan Gold danielcgold | https://commons.wikimedia.org/wiki/File:Communal_Coworking_interior_(Unsplash).jpg |
-| `developer.webp` | Developer working on an iMac (Unsplash).jpg | CC0 | Lee  Campbell leecampbell | https://commons.wikimedia.org/wiki/File:Developer_working_on_an_iMac_(Unsplash).jpg |
 | `district-aerial.webp` | Comunal Coworking, Lima, Peru (Unsplash 4YAhiaZkUfs).jpg | CC0 | Dan Gold danielcgold | https://commons.wikimedia.org/wiki/File:Comunal_Coworking,_Lima,_Peru_(Unsplash_4YAhiaZkUfs).jpg |
 | `facade-grid.webp` | Belgrade, Office Building at Sremska 5-7 by Zoran Zoran 2016 (Unsplash).jpg | CC0 | Zoran Zoran ser011 | https://commons.wikimedia.org/wiki/File:Belgrade,_Office_Building_at_Sremska_5-7_by_Zoran_Zoran_2016_(Unsplash).jpg |
 | `glass-roofline.webp` | Glass cube architecture (Unsplash).jpg | CC0 | Scott Webb scottwebb | https://commons.wikimedia.org/wiki/File:Glass_cube_architecture_(Unsplash).jpg |

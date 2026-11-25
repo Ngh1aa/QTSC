@@ -1,0 +1,46 @@
+/* Solutions, careers and invest pages only: detail lists, request side column, numbered steps,
+   incentive cards and the checker result. Shared blocks live in components.css. */
+
+/* Lists of features, duties and requirements */
+.feature-list { list-style: none; padding: 0; display: grid; gap: var(--space-2); }
+.prose .feature-list { padding-left: 0; }
+.feature-list li { position: relative; padding-left: var(--space-6); }
+.feature-list li::before { content: ""; position: absolute; left: 0; top: .78em; width: 12px; height: 2px; background: var(--color-accent); }
+.prose h3 + .feature-list { margin-top: calc(var(--space-2) * -1); }
+.prose .kv { margin-top: var(--space-4); }
+
+/* Left column next to a request, application or enquiry form */
+.request-intro { display: grid; gap: var(--space-8); align-content: start; }
+.provider-card:hover h3 { color: var(--color-accent); }
+.provider-card h3 { font-size: var(--text-xl); transition: color var(--dur-fast) var(--ease); }
+.provider-card p { color: var(--color-ink-2); font-size: var(--text-sm); margin-top: var(--space-1); }
+.provider-card .proto-card-side { font-size: var(--text-sm); color: var(--color-ink-2); }
+.draft-note { margin-bottom: var(--space-5); }
+
+/* Numbered steps: rows that are not links */
+.rows.is-steps .row-item { grid-template-columns: 56px minmax(0, 4fr) minmax(0, 7fr); }
+.rows.is-steps .row-item:hover .row-title { color: inherit; }
+
+/* Incentive groups */
+.incentive-card .card-foot { justify-content: flex-start; }
+.chip-list { list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+/* Checker result */
+.checker-result { margin-top: var(--space-6); }
+.checker-result .proto-panel { gap: var(--space-5); }
+.checker-result .proto-bullets { margin-top: var(--space-3); }
+
+.proto-record.is-cancelled h3 { color: var(--color-ink-2); }
+
+@media (max-width: 900px) {
+  .rows.is-steps .row-item { grid-template-columns: 40px minmax(0, 1fr); row-gap: var(--space-1); }
+  .rows.is-steps .row-item .row-text { display: block; grid-column: 2; }
+}
+
+/* CV upload: the native file button gets a full touch target */
+.form-field input[type="file"] { min-height: var(--tap); }
+.form-field input[type="file"]::file-selector-button { min-height: var(--tap); margin-right: var(--space-3); padding: 0 var(--space-4); border: 1px solid var(--color-ink); border-radius: var(--radius); background: transparent; color: var(--color-ink); font: inherit; font-weight: 700; cursor: pointer; }
+.form-field input[type="file"]::file-selector-button:hover { background: var(--color-ink); color: var(--color-on-dark); }
+
+/* Fields keep their own height when the neighbouring field is a taller choice group */
+.form-panel .form-grid { align-items: start; }

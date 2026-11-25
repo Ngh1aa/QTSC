@@ -1,101 +1,194 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Khám phá QTSC Campus</title>
-  <meta name="description" content="Khám phá bản đồ, tòa nhà, R&D Labs, tiện ích, giao thông, 360 tour và dữ liệu mở tại QTSC.">
-  <link rel="canonical" href="https://ngh1aa.github.io/QTSC/explore.html">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="QTSC — Quality Tech Solution Complex">
-  <meta property="og:image" content="https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:title" content="Khám phá QTSC Campus">
-  <meta property="og:description" content="Khám phá bản đồ, tòa nhà, R&D Labs, tiện ích, giao thông, 360 tour và dữ liệu mở tại QTSC.">
-  <meta property="og:url" content="https://ngh1aa.github.io/QTSC/explore.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/core.css">
-  <link rel="stylesheet" href="assets/css/gradient-system.css">
-  <link rel="stylesheet" href="assets/css/inner.css">
-  <link rel="stylesheet" href="assets/css/pages/explore.css">
-  <link rel="stylesheet" href="assets/css/pages/corporate.css">
-<link rel="stylesheet" href="assets/css/components/prototype.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Campus map | Northbank Technology Park</title>
+<meta name="description" content="Map of the seven buildings at Northbank Technology Park, the gates, the jetty and how to get here.">
+<link rel="canonical" href="https://ngh1aa.github.io/QTSC/explore.html">
+<!-- shell:head -->
+<meta name="theme-color" content="#FAF8F5">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<!-- /shell:head -->
+<link rel="stylesheet" href="assets/css/pages/space.css">
 </head>
-<body class="inner-page page-explore" data-page="explore">
-<a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+<body data-page="explore" data-section="space">
+<!-- shell:header -->
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header" id="siteHeader">
-  <div class="header-shell">
-    <a class="brand" href="index.html" aria-label="QTSC Quality Tech Solution Complex, Trang chủ">
-      <img src="https://www.qtsc.com.vn/uploads/files/2022/03/08/logo-QTSC-2022-phien-ban-ngang-02.jpg" alt="QTSC — Quality Tech Solution Complex" width="156" height="48" decoding="async">
-      <span class="brand-fallback"><strong>QTSC</strong><small>Quality Tech Solution Complex</small></span>
+  <div class="container">
+    <a class="brand" href="index.html" aria-label="Northbank Technology Park, home">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0h0a12 12 0 0 1 12 12v0a12 12 0 0 1-12 12H0V12A12 12 0 0 1 12 0z" fill="#C23A17"/><path d="M7.5 17V7.5l9 9V7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Northbank</span>
     </a>
-    <nav class="desktop-nav" aria-label="Điều hướng chính">
-      <a class="nav-link" href="about.html" aria-current="page">Về QTSC</a>
-      <a class="nav-link" href="services.html">Hạ tầng &amp; Dịch vụ</a>
-      <a class="nav-link" href="companies.html">Doanh nghiệp &amp; Giải pháp</a>
-      <a class="nav-link" href="investment.html">Đầu tư &amp; Hợp tác</a>
-      <a class="nav-link" href="insights.html">Tin tức &amp; Sự kiện</a>
-      <a class="nav-link" href="resources.html">Tài nguyên</a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="office.html" data-nav="space" aria-current="page">Space</a>
+      <a href="services.html" data-nav="infrastructure">Infrastructure</a>
+      <a href="companies.html" data-nav="companies">Companies</a>
+      <a href="investment.html" data-nav="invest">Invest</a>
+      <a href="insights.html" data-nav="news">News</a>
+      <a href="careers.html" data-nav="careers">Careers</a>
+      <a href="about.html" data-nav="about">About</a>
     </nav>
     <div class="header-actions">
-      <button class="icon-action" id="searchOpen" type="button" aria-label="Tìm kiếm"><span aria-hidden="true"></span><em>Tìm</em></button>
-      <a class="lang-action" href="https://www.qtsc.com.vn/en" aria-label="English version">EN</a>
-      <button class="btn btn-brand header-connect" type="button" data-open-connect>Kết nối QTSC <span aria-hidden="true">↗</span></button>
-      <button class="menu-trigger" id="mobileMenuOpen" type="button" aria-label="Mở menu" aria-expanded="false"><span></span><span></span></button>
+      <button class="icon-btn" type="button" id="searchOpen" aria-label="Search the site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
+      <a class="btn btn-primary header-visit" href="contact.html?topic=visit">Book a visit</a>
+      <button class="icon-btn menu-btn" type="button" id="mobileMenuOpen" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
 </header>
+<!-- /shell:header -->
 <main id="main">
-  <section class="immersive-hero" style="--immersive-image:url('https://www.qtsc.com.vn/uploads/files/2018/02/12/thumbs-1200-628-2--1/qtsc_flycam_640x320.jpg')"><div class="immersive-photo"></div><div class="immersive-shade"></div><div class="container-wide immersive-content"><div class="immersive-text"><div class="breadcrumb"><a href="index.html">Trang chủ</a><span>/</span><span>Khám phá QTSC</span></div><p class="micro-label">Campus, Explore</p><h1>Explore<br>QTSC.</h1><p class="immersive-lead">Khám phá campus qua bản đồ, tòa nhà, R&D Labs, tiện ích, giao thông, không gian ảo và dữ liệu mở.</p><div class="immersive-actions"><a class="btn btn-brand" href="https://3d.qtsc.com.vn/" target="_blank" rel="noopener">3D / 360 Tour <span>↗</span></a><a class="btn btn-secondary" href="#campusMapTitle">Mở bản đồ campus</a></div></div><div class="immersive-side"><div class="side-row"><span>Diện tích campus</span><strong>43 ha</strong><em>Khu Công viên phần mềm Quang Trung.</em></div><div class="side-row"><span>Năm thành lập</span><strong>2001</strong><em>25 năm phát triển.</em></div><div class="side-row"><span>Điểm chính</span><strong>04</strong><em>tòa nhà, R&amp;D, Café.</em></div><div class="side-row"><span>Dữ liệu mở</span><strong>07</strong><em>nhóm quan trắc môi trường.</em></div></div></div></section>
-  <section class="proof-rail" aria-label="Tóm tắt khám phá QTSC"><div class="container-wide"><div class="proof-cell"><span>Diện tích</span><strong>43 ha</strong><em>Khu Công viên phần mềm Quang Trung.</em></div><div class="proof-cell"><span>Năm thành lập</span><strong>2001</strong><em>25 năm phát triển.</em></div><div class="proof-cell"><span>Tòa nhà</span><strong>QTSC, Helios</strong><em>trụ sở chính & văn phòng.</em></div><div class="proof-cell"><span>R&amp;D</span><strong>DXC, Labs</strong><em>đổi mới sáng tạo.</em></div><div class="proof-cell"><span>Tour</span><strong>3D / 360</strong><em>không gian ảo campus.</em></div></div></section>
-
-  <section class="inner-section" aria-labelledby="campusMapTitle">
-    <div class="container-wide">
-      <div class="inner-section-head"><p class="micro-label">Campus map</p><h2 id="campusMapTitle">Khám phá các điểm chính trong QTSC.</h2></div>
-      <div class="explore-layout">
-        <div class="place-list">
-          <div class="place-card active"><small>Building</small><strong>QTSC Building 1</strong><p>Headquarters, Office, Amenities</p></div>
-          <div class="place-card"><small>Building</small><strong>Helios Building</strong><p>Office, Technology companies</p></div>
-          <div class="place-card"><small>Innovation</small><strong>QTSC R&D Labs</strong><p>Research, Development</p></div>
-          <div class="place-card"><small>Amenity</small><strong>Dining & Café</strong><p>Food, Coffee, Community</p></div>
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="office.html">Space</a><span aria-hidden="true">/</span><span>Campus map</span></nav>
+      <div class="page-head-row">
+        <h1>Seven buildings, one walk along the river.</h1>
+        <div class="page-head-side">
+          <p class="muted">38 hectares between Park Avenue and the Saigon River.</p>
+          <div class="page-actions"><a class="btn btn-primary" href="contact.html?topic=visit">Book a visit</a><a class="btn btn-secondary" href="#getting-here">Getting here</a></div>
         </div>
-        <div class="explore-map"><img src="https://www.qtsc.com.vn/uploads/files/2018/02/12/thumbs-1200-628-2--1/qtsc_flycam_640x320.jpg" alt="QTSC Campus"><button class="explore-pin p1" aria-label="QTSC Building 1"></button><button class="explore-pin p2" aria-label="Helios Building"></button><button class="explore-pin p3" aria-label="QTSC R&D Labs"></button><button class="explore-pin p4" aria-label="Dining and Café"></button></div>
       </div>
     </div>
   </section>
 
-  <section class="inner-section soft explore-utility-section" aria-labelledby="exploreUtilityTitle">
-    <div class="container-wide">
-      <div class="inner-section-head"><p class="micro-label">Explore QTSC</p><h2 id="exploreUtilityTitle">Khám phá campus theo nhu cầu.</h2></div>
-      <div class="explore-utilities">
-        <a class="explore-utility" id="tour" href="https://3d.qtsc.com.vn/" target="_blank" rel="noopener"><span>01</span><strong>3D / 360 Virtual Tour</strong><p>Truy cập trải nghiệm tham quan không gian ảo của QTSC.</p><i>↗</i></a>
-        <a class="explore-utility" id="mobility" href="https://www.qtsc.com.vn/tuyen-xe-bus" target="_blank" rel="noopener"><span>02</span><strong>Bus & Mobility</strong><p>Tra cứu thông tin giao thông và hướng dẫn di chuyển đến QTSC.</p><i>↗</i></a>
-        <a class="explore-utility" id="places" href="amenities.html"><span>03</span><strong>Tiện ích nội khu</strong><p>Ăn uống, café, ngân hàng, ATM, giáo dục, lưu trú, thể thao và các dịch vụ khác.</p><i>↗</i></a>
-        <a class="explore-utility" id="data" href="open-data.html"><span>04</span><strong>Green & Smart Open Data</strong><p>Truy cập các nhóm dữ liệu môi trường và nguồn dữ liệu mở do QTSC công bố.</p><i>↗</i></a>
+  <section class="section explore-section" aria-labelledby="mapTitle">
+    <div class="container">
+      <h2 class="sr-only" id="mapTitle">Campus map</h2>
+      <div class="explore-layout">
+        <div class="explore-map-col">
+          <div class="explore-map">
+            <svg viewBox="0 0 1000 680" role="img" aria-labelledby="mapSvgTitle">
+              <title id="mapSvgTitle">Plan of the Northbank campus: Park Avenue along the north edge, seven buildings around a central lawn, and the river with a jetty along the south edge.</title>
+              <rect class="map-ground" x="0" y="0" width="1000" height="680"/>
+              <rect class="map-road" x="0" y="0" width="1000" height="52"/>
+              <text class="map-road-label" x="500" y="33" text-anchor="middle">PARK AVENUE</text>
+              <rect class="map-lawn" x="560" y="86" width="148" height="196" rx="6"/>
+              <rect class="map-lawn" x="820" y="300" width="112" height="222" rx="6"/>
+              <path class="map-path" d="M60 76 H940 M60 76 V530 M940 76 V530 M60 530 H940 M310 76 V530 M570 76 V530 M60 290 H940"/>
+              <path class="map-river" d="M0 572 C120 556 240 590 380 574 S640 552 780 572 S930 590 1000 570 V680 H0 Z"/>
+              <path class="map-wave" d="M60 626 q40 -12 80 0 t80 0 M420 640 q40 -12 80 0 t80 0 M760 622 q40 -12 80 0 t80 0"/>
+              <text class="map-river-label" x="220" y="660" text-anchor="middle">SAIGON RIVER</text>
+              <rect class="map-jetty" x="652" y="536" width="44" height="78"/>
+              <rect class="map-jetty" x="620" y="596" width="108" height="18"/>
+              <text class="map-label map-label-sm" x="740" y="610">Jetty</text>
+              <g class="map-gates">
+                <rect x="170" y="44" width="80" height="16"/><rect x="820" y="44" width="80" height="16"/><rect x="390" y="526" width="80" height="16"/>
+              </g>
+              <text class="map-label map-label-sm" x="210" y="98" text-anchor="middle">Main gate</text>
+              <text class="map-label map-label-sm" x="860" y="98" text-anchor="middle">East gate</text>
+              <text class="map-label map-label-sm" x="430" y="518" text-anchor="middle">River gate</text>
+              <g class="map-buildings">
+                <rect data-shape="atlas" x="90" y="112" width="200" height="150" rx="4"/>
+                <rect data-shape="beacon" x="336" y="112" width="210" height="118" rx="4"/>
+                <rect data-shape="cobalt" x="720" y="112" width="190" height="150" rx="4"/>
+                <rect data-shape="forge" x="90" y="318" width="196" height="150" rx="4"/>
+                <rect data-shape="echo" x="356" y="300" width="190" height="122" rx="40"/>
+                <rect data-shape="delta" x="600" y="318" width="210" height="104" rx="4"/>
+                <rect data-shape="grove" x="600" y="452" width="200" height="64" rx="4"/>
+              </g>
+              <g class="map-names" aria-hidden="true">
+                <text class="map-label" x="190" y="246" text-anchor="middle">Atlas</text>
+                <text class="map-label" x="441" y="214" text-anchor="middle">Beacon</text>
+                <text class="map-label" x="815" y="246" text-anchor="middle">Cobalt</text>
+                <text class="map-label" x="188" y="452" text-anchor="middle">Forge</text>
+                <text class="map-label" x="451" y="406" text-anchor="middle">Echo Hall</text>
+                <text class="map-label" x="705" y="406" text-anchor="middle">Delta Labs</text>
+                <text class="map-label" x="760" y="492" text-anchor="middle">Grove</text>
+              </g>
+            </svg>
+            <button type="button" class="explore-pin" data-place="atlas" aria-pressed="false">1<span class="sr-only"> Atlas</span></button>
+            <button type="button" class="explore-pin" data-place="beacon" aria-pressed="false">2<span class="sr-only"> Beacon</span></button>
+            <button type="button" class="explore-pin" data-place="cobalt" aria-pressed="false">3<span class="sr-only"> Cobalt</span></button>
+            <button type="button" class="explore-pin" data-place="delta" aria-pressed="false">4<span class="sr-only"> Delta Labs</span></button>
+            <button type="button" class="explore-pin" data-place="echo" aria-pressed="false">5<span class="sr-only"> Echo Hall</span></button>
+            <button type="button" class="explore-pin" data-place="forge" aria-pressed="false">6<span class="sr-only"> Forge</span></button>
+            <button type="button" class="explore-pin" data-place="grove" aria-pressed="false">7<span class="sr-only"> Grove</span></button>
+          </div>
+          <dl class="map-legend">
+            <div><dt>Main gate</dt><dd>Park Avenue, open 24 hours</dd></div>
+            <div><dt>East gate</dt><dd>Deliveries and Cobalt access</dd></div>
+            <div><dt>River gate</dt><dd>Jetty and riverside walk, 06:00 to 22:00</dd></div>
+          </dl>
+        </div>
+        <div class="explore-side">
+          <div class="explore-selection" aria-live="polite"></div>
+          <ol class="place-list" aria-label="Buildings">
+            <li><button type="button" class="place-card" data-place="atlas" aria-pressed="false"><span class="place-num">1</span><strong>Atlas</strong><span>Headquarters offices</span></button></li>
+            <li><button type="button" class="place-card" data-place="beacon" aria-pressed="false"><span class="place-num">2</span><strong>Beacon</strong><span>Flexible offices, coworking</span></button></li>
+            <li><button type="button" class="place-card" data-place="cobalt" aria-pressed="false"><span class="place-num">3</span><strong>Cobalt</strong><span>Data center</span></button></li>
+            <li><button type="button" class="place-card" data-place="delta" aria-pressed="false"><span class="place-num">4</span><strong>Delta Labs</strong><span>Hardware labs</span></button></li>
+            <li><button type="button" class="place-card" data-place="echo" aria-pressed="false"><span class="place-num">5</span><strong>Echo Hall</strong><span>Conference center</span></button></li>
+            <li><button type="button" class="place-card" data-place="forge" aria-pressed="false"><span class="place-num">6</span><strong>Forge</strong><span>Startup center</span></button></li>
+            <li><button type="button" class="place-card" data-place="grove" aria-pressed="false"><span class="place-num">7</span><strong>Grove</strong><span>Canteen, clinic, gym</span></button></li>
+          </ol>
+        </div>
       </div>
     </div>
   </section>
-<section class="ecosystem-strip" aria-label="Tiếp tục hành trình khám phá"><div class="container-wide"><div class="ecosystem-head"><div><p class="micro-label">Tiếp tục hành trình khám phá</p><h2>Đi tiếp sau khi xem bản đồ campus.</h2></div><a class="btn btn-secondary" href="amenities.html">Xem tiện ích ↗</a></div><div class="ecosystem-track"><a class="ecosystem-link" href="amenities.html"><span>Amenities</span><h3>Tiện ích nội khu</h3><p>Ăn uống, café, ngân hàng, ATM, giáo dục, lưu trú.</p><i>Mở trang ↗</i></a><a class="ecosystem-link" href="office.html"><span>Văn phòng</span><h3>Văn phòng tại QTSC</h3><p>Các tòa nhà cho thuê và tiêu chí thuê.</p><i>Mở trang ↗</i></a><a class="ecosystem-link" href="innovation-centers.html"><span>Đổi mới</span><h3>DXCenter &amp; R&amp;D Labs</h3><p>Không gian đổi mới sáng tạo và nghiên cứu.</p><i>Mở trang ↗</i></a><a class="ecosystem-link" href="open-data.html"><span>Open data</span><h3>Dữ liệu mở</h3><p>Bảy nhóm quan trắc môi trường.</p><i>Mở trang ↗</i></a></div></div></section>
-<section class="cta-panel" aria-label="Đặt lịch tham quan"><div class="container-wide"><div class="cta-text"><p class="micro-label">Đặt lịch tham quan</p><h2>Sẵn sàng đến trải nghiệm QTSC?</h2><p>QTSC tiếp nhận đăng ký tham quan campus cho đối tác, nhà đầu tư và doanh nghiệp quan tâm.</p></div><div class="cta-actions"><button class="btn btn-brand" data-demo-contact>Đặt lịch tham quan <span>↗</span></button><a class="btn btn-secondary" href="contact.html">Thông tin liên hệ</a><div class="cta-meta"><a href="https://3d.qtsc.com.vn/" target="_blank" rel="noopener">3D / 360 Tour ↗</a><a href="amenities.html">Tiện ích</a><span>qtsc@qtsc.com.vn, (84-28) 3715 8888</span></div></div></div></section>
-</main>
-<footer class="site-footer">
-  <div class="container-wide footer-main">
-    <div class="footer-brand">
-      <img src="https://www.qtsc.com.vn/uploads/files/2022/03/08/logo-QTSC-2022-phien-ban-ngang-02.jpg" alt="QTSC — Quality Tech Solution Complex" width="160" height="54" loading="lazy" decoding="async">
-      <p>QTSC Building 1, Khu Công viên phần mềm Quang Trung,<br>Phường Trung Mỹ Tây, TP.HCM, Việt Nam.</p>
-      <p><a href="tel:+842837158888">(+84) 28 3715 8888</a><br><a href="mailto:qtsc@qtsc.com.vn">qtsc@qtsc.com.vn</a></p>
+
+  <section class="section" id="getting-here" aria-labelledby="gettingTitle">
+    <div class="container">
+      <div class="section-head"><h2 class="section-title" id="gettingTitle">Getting here</h2><a class="btn btn-secondary" href="amenities.html#getting-around">Parking and bikes</a></div>
+      <div class="card-grid" style="--cols:4">
+        <article class="card"><h3 class="card-title">River shuttle</h3><dl class="spec"><div><dt>Every</dt><dd>20 min</dd></div><div><dt>Trip</dt><dd>25 min</dd></div><div><dt>Last boat</dt><dd>21:00</dd></div></dl></article>
+        <article class="card"><h3 class="card-title">Bus</h3><dl class="spec"><div><dt>Every</dt><dd>10 min</dd></div><div><dt>From center</dt><dd>40 min</dd></div><div><dt>Stop</dt><dd>Main gate</dd></div></dl></article>
+        <article class="card"><h3 class="card-title">Car</h3><dl class="spec"><div><dt>Spaces</dt><dd>1,400</dd></div><div><dt>Chargers</dt><dd>40</dd></div><div><dt>From center</dt><dd>30 min</dd></div></dl></article>
+        <article class="card"><h3 class="card-title">Bike</h3><dl class="spec"><div><dt>Racks</dt><dd>600</dd></div><div><dt>Showers</dt><dd>24</dd></div><div><dt>Path</dt><dd>Riverside</dd></div></dl></article>
+      </div>
     </div>
-    <div class="footer-col"><strong>Khám phá</strong><a href="about.html">Về QTSC</a><a href="explore.html">Campus</a><a href="companies.html">Doanh nghiệp</a><a href="insights.html">Tin tức</a></div>
-    <div class="footer-col"><strong>Kinh doanh</strong><a href="office.html">Văn phòng</a><a href="investment.html">Đầu tư</a><a href="marketplace.html">Giải pháp</a><a href="services.html">Dịch vụ hỗ trợ</a></div>
-    <div class="footer-col"><strong>Tài nguyên</strong><a href="resources.html">Download Center</a><a href="open-data.html">Dữ liệu mở</a><a href="careers.html">Tuyển dụng</a><a href="contact.html">Liên hệ</a></div>
+  </section>
+
+  <section class="section" aria-labelledby="nextTitle">
+    <div class="container">
+      <div class="section-head"><h2 class="section-title" id="nextTitle">On campus</h2></div>
+      <ol class="rows is-compact">
+        <li><a class="row-item" href="office.html"><span class="row-num">01</span><span class="row-title">Find space</span><span class="row-text">Offices and labs in Atlas, Beacon, Delta Labs and Forge.</span><span class="row-go" aria-hidden="true">→</span></a></li>
+        <li><a class="row-item" href="amenities.html"><span class="row-num">02</span><span class="row-title">Amenities</span><span class="row-text">Canteen, cafés, clinic, gym and childcare.</span><span class="row-go" aria-hidden="true">→</span></a></li>
+        <li><a class="row-item" href="services.html"><span class="row-num">03</span><span class="row-title">Services</span><span class="row-text">Licence desk, facilities, security and events.</span><span class="row-go" aria-hidden="true">→</span></a></li>
+      </ol>
+    </div>
+  </section>
+</main>
+<!-- shell:footer -->
+<footer class="site-footer">
+  <div class="footer-cta">
+    <div class="container">
+      <h2>Come and see the space.</h2>
+      <div class="page-actions"><a class="btn btn-primary" href="contact.html?topic=visit">Book a visit</a><a class="btn btn-secondary" href="contact.html">Contact us</a></div>
+    </div>
   </div>
-  <div class="container-wide footer-bottom"><span>© 2026 QTSC — Quality Tech Solution Complex</span><span><a href="privacy.html">Quyền riêng tư</a>, <a href="legal.html">Pháp lý</a>, <a href="sitemap.html">Sitemap</a></span></div>
+  <div class="container">
+    <div class="footer-main">
+      <div>
+        <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0h0a12 12 0 0 1 12 12v0a12 12 0 0 1-12 12H0V12A12 12 0 0 1 12 0z" fill="#C23A17"/><path d="M7.5 17V7.5l9 9V7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Northbank</span></a>
+        <address>Northbank Technology Park<br>River Road, Thủ Đức City<br>Ho Chi Minh City, Vietnam<br><a href="mailto:hello@northbank.example">hello@northbank.example</a></address>
+      </div>
+      <div><h2>Space</h2><ul><li><a href="office.html">Find space</a></li><li><a href="amenities.html">Amenities</a></li><li><a href="explore.html">Campus map</a></li><li><a href="locations.html">Locations</a></li></ul></div>
+      <div><h2>Infrastructure</h2><ul><li><a href="services.html">Services</a></li><li><a href="technology-detail.html">Data center</a></li><li><a href="telecom.html">Connectivity</a></li><li><a href="digitech-center.html">Security center</a></li></ul></div>
+      <div><h2>Companies</h2><ul><li><a href="companies.html">Directory</a></li><li><a href="marketplace.html">Solutions</a></li><li><a href="investment.html">Invest</a></li><li><a href="innovation-centers.html">Forge startups</a></li></ul></div>
+      <div><h2>Northbank</h2><ul><li><a href="about.html">About</a></li><li><a href="insights.html">News</a></li><li><a href="careers.html">Careers</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Northbank Technology Park</span>
+      <nav aria-label="Legal"><a href="privacy.html">Privacy</a><a href="legal.html">Legal</a><a href="sitemap.html">Sitemap</a></nav>
+    </div>
+  </div>
 </footer>
-<div id="toast" class="toast"></div>
-<script src="assets/js/data/qtsc-seed.js"></script><script src="assets/js/prototype/store.js"></script><script src="assets/js/shared.js"></script><script src="assets/js/prototype/ui.js"></script>
+<!-- /shell:footer -->
+<!-- shell:scripts -->
+<script src="assets/js/data/park-seed.js"></script>
+<script src="assets/js/prototype/store.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/prototype/ui.js"></script>
+<script src="assets/js/ui-feedback-init.js?v=0.14.0-qtsc2"></script>
+<!-- /shell:scripts -->
 <script src="assets/js/pages/explore.js"></script>
-<script src="assets/js/site-extension.js"></script>
-<script src="assets/js/ui-feedback-init.js?v=20260830"></script>
-</body></html>
+</body>
+</html>

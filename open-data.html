@@ -1,40 +1,140 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Dữ liệu mở — QTSC Environmental Data</title><meta name="description" content="Truy cập các nhóm dữ liệu môi trường QTSC: nước thải, nước cấp, không khí, nước ngầm, QL1A, nước mặt và kết quả xét nghiệm."><link rel="canonical" href="https://ngh1aa.github.io/QTSC/open-data.html"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/core.css"><link rel="stylesheet" href="assets/css/gradient-system.css"><link rel="stylesheet" href="assets/css/inner.css"><link rel="stylesheet" href="assets/css/pages/corporate.css"><link rel="stylesheet" href="assets/css/components/extended.css">
-<link rel="stylesheet" href="assets/css/pages/legacy-pages.css"><link rel="stylesheet" href="assets/css/pages/content-hubs.css"><link rel="stylesheet" href="assets/css/components/prototype.css">
-</head><body class="inner-page page-extended page-open-data" data-page="open-data"><a class="skip-link" href="#main">Bỏ qua điều hướng</a><header class="site-header" id="siteHeader">
-  <div class="header-shell">
-    <a class="brand" href="index.html" aria-label="QTSC Quality Tech Solution Complex, Trang chủ">
-      <img src="https://www.qtsc.com.vn/uploads/files/2022/03/08/logo-QTSC-2022-phien-ban-ngang-02.jpg" alt="QTSC — Quality Tech Solution Complex" width="156" height="48" decoding="async">
-      <span class="brand-fallback"><strong>QTSC</strong><small>Quality Tech Solution Complex</small></span>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Open data | Northbank Technology Park</title>
+<meta name="description" content="Monthly water and air readings from Northbank Technology Park, free to filter and download as CSV.">
+<link rel="canonical" href="https://ngh1aa.github.io/QTSC/open-data.html">
+<!-- shell:head -->
+<meta name="theme-color" content="#FAF8F5">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<!-- /shell:head -->
+<link rel="stylesheet" href="assets/css/pages/news.css">
+</head>
+<body data-page="open-data" data-section="about">
+<!-- shell:header -->
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <a class="brand" href="index.html" aria-label="Northbank Technology Park, home">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0h0a12 12 0 0 1 12 12v0a12 12 0 0 1-12 12H0V12A12 12 0 0 1 12 0z" fill="#C23A17"/><path d="M7.5 17V7.5l9 9V7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Northbank</span>
     </a>
-    <nav class="desktop-nav" aria-label="Điều hướng chính">
-      <a class="nav-link" href="about.html">Về QTSC</a>
-      <a class="nav-link" href="services.html">Hạ tầng &amp; Dịch vụ</a>
-      <a class="nav-link" href="companies.html">Doanh nghiệp &amp; Giải pháp</a>
-      <a class="nav-link" href="investment.html">Đầu tư &amp; Hợp tác</a>
-      <a class="nav-link" href="insights.html">Tin tức &amp; Sự kiện</a>
-      <a class="nav-link" href="resources.html" aria-current="page">Tài nguyên</a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="office.html" data-nav="space">Space</a>
+      <a href="services.html" data-nav="infrastructure">Infrastructure</a>
+      <a href="companies.html" data-nav="companies">Companies</a>
+      <a href="investment.html" data-nav="invest">Invest</a>
+      <a href="insights.html" data-nav="news">News</a>
+      <a href="careers.html" data-nav="careers">Careers</a>
+      <a href="about.html" data-nav="about" aria-current="page">About</a>
     </nav>
     <div class="header-actions">
-      <button class="icon-action" id="searchOpen" type="button" aria-label="Tìm kiếm"><span aria-hidden="true"></span><em>Tìm</em></button>
-      <a class="lang-action" href="https://www.qtsc.com.vn/en" aria-label="English version">EN</a>
-      <button class="btn btn-brand header-connect" type="button" data-open-connect>Kết nối QTSC <span aria-hidden="true">↗</span></button>
-      <button class="menu-trigger" id="mobileMenuOpen" type="button" aria-label="Mở menu" aria-expanded="false"><span></span><span></span></button>
+      <button class="icon-btn" type="button" id="searchOpen" aria-label="Search the site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
+      <a class="btn btn-primary header-visit" href="contact.html?topic=visit">Book a visit</a>
+      <button class="icon-btn menu-btn" type="button" id="mobileMenuOpen" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
-</header><main id="main"><section class="inner-hero"><div class="container-wide"><div class="breadcrumb"><a href="index.html">Trang chủ</a><span>/</span><span>Tin & nguồn lực</span><span>/</span><span>Dữ liệu mở</span></div><div class="inner-hero-grid"><h1>Dữ liệu mở QTSC.</h1><p>Điểm truy cập thống nhất cho các nhóm quan trắc môi trường và nguồn dữ liệu đang được QTSC công bố công khai.</p></div></div></section>
-<section class="proof-rail" aria-label="Tóm tắt dữ liệu mở QTSC"><div class="container-wide"><div class="proof-cell"><span>Nhóm dữ liệu</span><strong>07</strong><em>Quan trắc môi trường &amp; xét nghiệm.</em></div><div class="proof-cell"><span>Nhóm nước</span><strong>04</strong><em>Thải, Cấp, Ngầm, Mặt.</em></div><div class="proof-cell"><span>Nhóm không khí</span><strong>02</strong><em>Quan trắc Campus, QL1A.</em></div><div class="proof-cell"><span>Xét nghiệm</span><strong>01</strong><em>Kết quả Pasteur.</em></div><div class="proof-cell"><span>Truy cập</span><strong>Open</strong><em>công khai từ QTSC.</em></div></div></section><section class="inner-section"><div class="container-wide"><div class="inner-section-head"><p class="micro-label">Environmental data</p><h2>Bảy nhóm dữ liệu môi trường tại QTSC.</h2><p>Tra cứu theo từng nhóm để tiếp cận thông số, lịch sử quan trắc và các tài liệu liên quan được QTSC công bố.</p></div><div class="open-data-grid"><a class="data-card" href="https://www.qtsc.com.vn/du-lieu-mo/quan-ly-nuoc-thai" target="_blank" rel="noopener"><span>Water, 01</span><h2>Quản lý nước thải</h2><p>Theo dõi các thông số như COD, BOD, pH, chất rắn lơ lửng, nhiệt độ, amoni và các chỉ số liên quan.</p><footer><strong>Open</strong><small>Thông số<br>+ lịch sử ↗</small></footer></a><a class="data-card" href="https://www.qtsc.com.vn/du-lieu-mo/quan-ly-nuoc-cap" target="_blank" rel="noopener"><span>Water, 02</span><h2>Quản lý nước cấp</h2><p>Nhóm dữ liệu phục vụ theo dõi chất lượng và trạng thái nguồn nước cấp trong khu.</p><footer><strong>Open</strong><small>Thông số<br>+ lịch sử ↗</small></footer></a><a class="data-card" href="https://www.qtsc.com.vn/du-lieu-mo/quan-trac-khong-khi" target="_blank" rel="noopener"><span>Air, 03</span><h2>Quan trắc không khí</h2><p>Điểm truy cập dữ liệu quan trắc môi trường không khí tại Khu Công viên phần mềm Quang Trung.</p><footer><strong>Open</strong><small>Thông số<br>+ lịch sử ↗</small></footer></a><a class="data-card" href="https://www.qtsc.com.vn/du-lieu-mo/quan-ly-nuoc-ngam" target="_blank" rel="noopener"><span>Groundwater, 04</span><h2>Quản lý nước ngầm</h2><p>Nhóm thông số và lịch sử theo dõi nước ngầm được QTSC công bố theo từng thời điểm.</p><footer><strong>Open</strong><small>Thông số<br>+ lịch sử ↗</small></footer></a><a class="data-card" href="https://www.qtsc.com.vn/du-lieu-mo/quan-ly-khong-khi-ql1a" target="_blank" rel="noopener"><span>Air, 05</span><h2>Không khí QL1A</h2><p>Nguồn dữ liệu cho khu vực quan trắc không khí liên quan QL1A trong hệ thống dữ liệu QTSC.</p><footer><strong>Open</strong><small>Nguồn QTSC ↗</small></footer></a><a class="data-card" href="https://www.qtsc.com.vn/du-lieu-mo/quan-ly-nuoc-mat-loai-a" target="_blank" rel="noopener"><span>Surface water, 06</span><h2>Nước mặt loại A</h2><p>Nhóm dữ liệu theo dõi nước mặt được công bố cùng hệ thống quan trắc môi trường QTSC.</p><footer><strong>Open</strong><small>Nguồn QTSC ↗</small></footer></a><a class="data-card" href="https://www.qtsc.com.vn/download" target="_blank" rel="noopener"><span>Testing, 07</span><h2>Kết quả xét nghiệm Pasteur</h2><p>Truy cập các tài liệu kiểm nghiệm và chất lượng nước được QTSC công bố trong Download Center.</p><footer><strong>PDF</strong><small>Tài liệu<br>QTSC ↗</small></footer></a></div><div class="data-disclaimer"><strong>Nguồn dữ liệu:</strong> các thông số chi tiết và thời điểm cập nhật được hiển thị tại nguồn QTSC chính thức. Mở từng nhóm dữ liệu để xem bản ghi và lịch sử quan trắc tương ứng.</div></div></section><section class="inner-section soft" id="explorer"><div class="container-wide"><div class="inner-section-head"><p class="micro-label">Tra cứu và xuất dữ liệu</p><h2>Lọc chuỗi quan trắc và tải về CSV.</h2><p>Chọn nhóm dữ liệu, điểm đo, thông số và khoảng thời gian; tệp CSV xuất đúng các dòng đang lọc.</p></div><div class="proto-filters"><div class="form-field"><label for="odDataset">Nhóm dữ liệu</label><select id="odDataset" class="proto-select"><option value="">Tất cả nhóm</option></select></div><div class="form-field"><label for="odStation">Điểm đo</label><select id="odStation" class="proto-select"><option value="">Tất cả điểm đo</option></select></div><div class="form-field"><label for="odParam">Thông số</label><select id="odParam" class="proto-select"><option value="">Tất cả thông số</option></select></div><div class="form-field"><label for="odFrom">Từ tháng</label><select id="odFrom" class="proto-select"><option value="">Đầu kỳ (01/2026)</option><option value="2026-01">Tháng 1/2026</option><option value="2026-02">Tháng 2/2026</option><option value="2026-03">Tháng 3/2026</option><option value="2026-04">Tháng 4/2026</option><option value="2026-05">Tháng 5/2026</option><option value="2026-06">Tháng 6/2026</option><option value="2026-07">Tháng 7/2026</option><option value="2026-08">Tháng 8/2026</option><option value="2026-09">Tháng 9/2026</option><option value="2026-10">Tháng 10/2026</option></select></div><div class="form-field"><label for="odTo">Đến tháng</label><select id="odTo" class="proto-select"><option value="">Cuối kỳ (10/2026)</option><option value="2026-01">Tháng 1/2026</option><option value="2026-02">Tháng 2/2026</option><option value="2026-03">Tháng 3/2026</option><option value="2026-04">Tháng 4/2026</option><option value="2026-05">Tháng 5/2026</option><option value="2026-06">Tháng 6/2026</option><option value="2026-07">Tháng 7/2026</option><option value="2026-08">Tháng 8/2026</option><option value="2026-09">Tháng 9/2026</option><option value="2026-10">Tháng 10/2026</option></select></div><div class="form-field"><label for="odStatus">Đánh giá</label><select id="odStatus" class="proto-select"><option value="">Mọi kết quả</option><option value="ok">Trong ngưỡng</option><option value="over">Vượt ngưỡng</option></select></div></div><div class="proto-result-meta"><div id="odMeta" aria-live="polite"></div><button type="button" class="btn btn-brand" id="odExport">Xuất CSV</button></div><div id="odResults" aria-live="polite"></div><div id="odPager"></div><p class="source-note">Giá trị trong bảng là chuỗi mô phỏng để kiểm thử chức năng lọc và xuất CSV của bản prototype, không phải số liệu quan trắc chính thức. Số liệu chính thức xem tại nguồn QTSC của từng nhóm dữ liệu.</p></div></section>
-<section class="ecosystem-strip" aria-label="Tiếp tục hành trình dữ liệu mở"><div class="container-wide"><div class="ecosystem-head"><div><p class="micro-label">Tiếp tục hành trình khám phá</p><h2>Nguồn dữ liệu và nguồn lực liên quan.</h2></div><a class="btn btn-secondary" href="resources.html">Download Center ↗</a></div><div class="ecosystem-track"><a class="ecosystem-link" href="resources.html"><span>Resources</span><h3>Download Center</h3><p>Tài liệu &amp; hồ sơ QTSC.</p><i>Mở trang ↗</i></a><a class="ecosystem-link" href="insights.html"><span>News</span><h3>Tin tức</h3><p>Cập nhật hoạt động.</p><i>Mở trang ↗</i></a><a class="ecosystem-link" href="explore.html"><span>Campus</span><h3>Khám phá QTSC</h3><p>Bản đồ campus.</p><i>Mở trang ↗</i></a><a class="ecosystem-link" href="about.html"><span>About</span><h3>Về QTSC</h3><p>Tầm nhìn &amp; sứ mệnh.</p><i>Mở trang ↗</i></a></div></div></section>
-<section class="cta-panel" aria-label="Yêu cầu dữ liệu"><div class="container-wide"><div class="cta-text"><p class="micro-label">Yêu cầu dữ liệu</p><h2>Cần bộ dữ liệu khác hoặc giải thích thông số?</h2><p>QTSC tiếp nhận yêu cầu truy cập dữ liệu môi trường, lịch sử quan trắc và giải thích thông số qua kênh liên hệ chính thức.</p></div><div class="cta-actions"><button class="btn btn-brand" data-demo-contact>Yêu cầu dữ liệu <span>↗</span></button><a class="btn btn-secondary" href="resources.html">Download Center</a><div class="cta-meta"><a href="explore.html">Campus</a><a href="about.html">Về QTSC</a><span>qtsc@qtsc.com.vn, (84-28) 3715 8888</span></div></div></div></section></main><footer class="site-footer">
-  <div class="container-wide footer-main">
-    <div class="footer-brand">
-      <img src="https://www.qtsc.com.vn/uploads/files/2022/03/08/logo-QTSC-2022-phien-ban-ngang-02.jpg" alt="QTSC — Quality Tech Solution Complex" width="160" height="54" loading="lazy" decoding="async">
-      <p>QTSC Building 1, Khu Công viên phần mềm Quang Trung,<br>Phường Trung Mỹ Tây, TP.HCM, Việt Nam.</p>
-      <p><a href="tel:+842837158888">(+84) 28 3715 8888</a><br><a href="mailto:qtsc@qtsc.com.vn">qtsc@qtsc.com.vn</a></p>
+</header>
+<!-- /shell:header -->
+<main id="main">
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="resources.html">Resources</a><span aria-hidden="true">/</span><span>Open data</span></nav>
+      <div class="page-head-row">
+        <h1>Open environmental data.</h1>
+        <div class="page-head-side"><p class="muted">Monthly averages from campus stations, January to October 2026.</p><div class="page-actions"><a class="btn btn-primary" href="#explorer">Explore readings</a></div></div>
+      </div>
+      <div class="facts" id="odFacts"></div>
     </div>
-    <div class="footer-col"><strong>Khám phá</strong><a href="about.html">Về QTSC</a><a href="explore.html">Campus</a><a href="companies.html">Doanh nghiệp</a><a href="insights.html">Tin tức</a></div>
-    <div class="footer-col"><strong>Kinh doanh</strong><a href="office.html">Văn phòng</a><a href="investment.html">Đầu tư</a><a href="marketplace.html">Giải pháp</a><a href="services.html">Dịch vụ hỗ trợ</a></div>
-    <div class="footer-col"><strong>Tài nguyên</strong><a href="resources.html">Download Center</a><a href="open-data.html">Dữ liệu mở</a><a href="careers.html">Tuyển dụng</a><a href="contact.html">Liên hệ</a></div>
+  </section>
+
+  <section class="section" aria-labelledby="latestTitle">
+    <div class="container">
+      <div class="section-head"><h2 class="section-title" id="latestTitle">October 2026 at a glance</h2></div>
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="latestTitle">
+        <table class="data-table od-summary">
+          <thead><tr><th scope="col">Dataset</th><th scope="col">Group</th><th scope="col">Stations</th><th scope="col" class="num">Readings</th><th scope="col" class="num">Over limit</th><th scope="col">Status</th><th scope="col"><span class="sr-only">Open</span></th></tr></thead>
+          <tbody id="odSummary"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="explorer" aria-labelledby="explorerTitle">
+    <div class="container">
+      <div class="section-head"><h2 class="section-title" id="explorerTitle">Explore the readings</h2><button class="btn btn-secondary" type="button" id="odExport">Export CSV</button></div>
+      <div class="toolbar">
+        <div class="filter-row od-filters">
+          <label class="select-field" for="odDataset">Dataset<select id="odDataset"><option value="">All datasets</option></select></label>
+          <label class="select-field" for="odParam">Parameter<select id="odParam"><option value="">All parameters</option></select></label>
+          <label class="select-field" for="odStation">Station<select id="odStation"><option value="">All stations</option></select></label>
+          <label class="select-field" for="odStatus">Status<select id="odStatus"><option value="all">Any status</option><option value="ok">Within limit</option><option value="over">Over limit</option></select></label>
+          <label class="select-field" for="odFrom">From<select id="odFrom"><option value="">Earliest</option></select></label>
+          <label class="select-field" for="odTo">To<select id="odTo"><option value="">Latest</option></select></label>
+        </div>
+      </div>
+      <div class="list-meta" id="odMeta" aria-live="polite"></div>
+      <div id="odResults" aria-live="polite"></div>
+      <div id="odPager"></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="aboutDataTitle">
+    <div class="container split">
+      <h2 class="section-title" id="aboutDataTitle">About the data</h2>
+      <dl class="kv">
+        <dt>Collected by</dt><dd>Northbank environment team</dd>
+        <dt>Values</dt><dd>Monthly average per station and parameter</dd>
+        <dt>Limits</dt><dd>The permit limit for each parameter; pH is within limit up to 8.5</dd>
+        <dt>Published</dt><dd>By the 10th of the following month</dd>
+        <dt>Reuse</dt><dd>Free to reuse with credit to Northbank Technology Park</dd>
+        <dt>Questions</dt><dd><a class="text-link" href="mailto:environment@northbank.example">environment@northbank.example</a></dd>
+      </dl>
+    </div>
+  </section>
+</main>
+<!-- shell:footer -->
+<footer class="site-footer">
+  <div class="footer-cta">
+    <div class="container">
+      <h2>Come and see the space.</h2>
+      <div class="page-actions"><a class="btn btn-primary" href="contact.html?topic=visit">Book a visit</a><a class="btn btn-secondary" href="contact.html">Contact us</a></div>
+    </div>
   </div>
-  <div class="container-wide footer-bottom"><span>© 2026 QTSC — Quality Tech Solution Complex</span><span><a href="privacy.html">Quyền riêng tư</a>, <a href="legal.html">Pháp lý</a>, <a href="sitemap.html">Sitemap</a></span></div>
-</footer><div id="toast" class="toast"></div><script src="assets/js/data/qtsc-seed.js"></script><script src="assets/js/prototype/store.js"></script><script src="assets/js/shared.js"></script><script src="assets/js/prototype/ui.js"></script><script src="assets/js/prototype/listing.js"></script><script src="assets/js/pages/open-data.js"></script><script src="assets/js/site-extension.js"></script>
-<script src="assets/js/ui-feedback-init.js?v=20260830"></script></body></html>
+  <div class="container">
+    <div class="footer-main">
+      <div>
+        <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0h0a12 12 0 0 1 12 12v0a12 12 0 0 1-12 12H0V12A12 12 0 0 1 12 0z" fill="#C23A17"/><path d="M7.5 17V7.5l9 9V7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Northbank</span></a>
+        <address>Northbank Technology Park<br>River Road, Thủ Đức City<br>Ho Chi Minh City, Vietnam<br><a href="mailto:hello@northbank.example">hello@northbank.example</a></address>
+      </div>
+      <div><h2>Space</h2><ul><li><a href="office.html">Find space</a></li><li><a href="amenities.html">Amenities</a></li><li><a href="explore.html">Campus map</a></li><li><a href="locations.html">Locations</a></li></ul></div>
+      <div><h2>Infrastructure</h2><ul><li><a href="services.html">Services</a></li><li><a href="technology-detail.html">Data center</a></li><li><a href="telecom.html">Connectivity</a></li><li><a href="digitech-center.html">Security center</a></li></ul></div>
+      <div><h2>Companies</h2><ul><li><a href="companies.html">Directory</a></li><li><a href="marketplace.html">Solutions</a></li><li><a href="investment.html">Invest</a></li><li><a href="innovation-centers.html">Forge startups</a></li></ul></div>
+      <div><h2>Northbank</h2><ul><li><a href="about.html">About</a></li><li><a href="insights.html">News</a></li><li><a href="careers.html">Careers</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Northbank Technology Park</span>
+      <nav aria-label="Legal"><a href="privacy.html">Privacy</a><a href="legal.html">Legal</a><a href="sitemap.html">Sitemap</a></nav>
+    </div>
+  </div>
+</footer>
+<!-- /shell:footer -->
+<!-- shell:scripts -->
+<script src="assets/js/data/park-seed.js"></script>
+<script src="assets/js/prototype/store.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/prototype/ui.js"></script>
+<script src="assets/js/ui-feedback-init.js?v=0.14.0-qtsc2"></script>
+<!-- /shell:scripts -->
+<script src="assets/js/prototype/listing.js"></script>
+<script src="assets/js/pages/open-data.js"></script>
+</body>
+</html>

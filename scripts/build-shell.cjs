@@ -5,6 +5,7 @@
  *
  *   node scripts/build-shell.cjs          rewrite pages
  *   node scripts/build-shell.cjs --check  exit 1 if any page is out of date (for CI)
+ *   node scripts/build-shell.cjs a.html   only the listed pages
  *
  * Partials are the only source for the shell: edit them, then run this script. */
 const fs = require('fs');
@@ -15,7 +16,8 @@ const check = process.argv.includes('--check');
 const names = ['head', 'header', 'footer', 'scripts'];
 const partials = Object.fromEntries(names.map((n) => [n, fs.readFileSync(path.join(root, 'partials', `${n}.html`), 'utf8').replace(/\r\n/g, '\n').trimEnd()]));
 
-const pages = fs.readdirSync(root).filter((f) => f.endsWith('.html')).sort();
+const only = process.argv.slice(2).filter((a) => a.endsWith('.html'));
+const pages = (only.length ? only : fs.readdirSync(root).filter((f) => f.endsWith('.html'))).sort();
 const stale = [];
 const missing = [];
 for (const file of pages) {
