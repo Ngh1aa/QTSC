@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Direction A — Ember | Northbank Technology Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FAF8F5;--surface:#FFFFFF;--ink:#17130F;--ink-2:#55504A;--line:#E6E1DA;--accent:#C23A17;--accent-ink:#FFFFFF;--dark:#17130F;--radius:4px;--max:1280px}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 Manrope,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+header{position:sticky;top:0;z-index:5;background:rgba(250,248,245,.96);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:32px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:18px}
+.logo i{width:22px;height:22px;background:var(--accent);border-radius:50% 50% 50% 0;display:block}
+.nav nav{display:flex;gap:26px;font-size:14px;font-weight:600;color:var(--ink-2);margin-left:auto}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:var(--radius);font-weight:700;font-size:14px;border:1px solid transparent}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}.btn-ghost{border-color:var(--ink);color:var(--ink)}
+.hero{padding:56px 0 0}
+.hero h1{grid-column:1/8;font-size:clamp(44px,6vw,84px);line-height:.98;letter-spacing:-.045em;font-weight:800;margin:0}
+.hero .side{grid-column:9/13;align-self:end;display:flex;flex-direction:column;gap:20px}
+.hero .side p{margin:0;color:var(--ink-2);font-size:17px}
+.hero .actions{display:flex;gap:10px;flex-wrap:wrap}
+.hero-photo{margin-top:40px;position:relative}
+.hero-photo img{width:100%;height:520px;object-fit:cover;border-radius:var(--radius)}
+.router{position:relative;margin:-64px 32px 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);display:grid;grid-template-columns:220px repeat(5,1fr)}
+.router .q{padding:22px;background:var(--dark);color:#fff;font-weight:700;font-size:18px;line-height:1.25;display:flex;align-items:flex-end;border-radius:var(--radius) 0 0 var(--radius)}
+.router a{padding:22px;border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:132px}
+.router a:hover{background:#F6F2EC}.router b{font-size:12px;color:var(--ink-2);font-weight:600}.router span{font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.router span::after{content:"→";color:var(--accent)}
+.metrics{padding:96px 0 0}
+.metrics .row{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--ink)}
+.metrics .row div{padding:20px 20px 0 0}
+.metrics strong{display:block;font-size:52px;letter-spacing:-.04em;font-weight:800;line-height:1}
+.metrics small{display:block;margin-top:10px;color:var(--ink-2);font-size:14px}
+.sec{padding:112px 0 0}
+.sec h2{font-size:clamp(32px,3.6vw,52px);letter-spacing:-.035em;line-height:1.02;margin:0;font-weight:800}
+.rows{margin-top:40px;border-top:1px solid var(--line)}
+.rows a{display:grid;grid-template-columns:60px minmax(0,4fr) minmax(0,5fr) 160px 32px;align-items:center;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}
+.rows a:hover h3{color:var(--accent)}
+.rows .n{font-size:13px;color:var(--ink-2);font-weight:700}
+.rows h3{margin:0;font-size:28px;letter-spacing:-.03em;font-weight:700}
+.rows p{margin:0;color:var(--ink-2);font-size:15px}
+.rows img{width:160px;height:96px;object-fit:cover;border-radius:var(--radius)}
+.rows .go{color:var(--accent);font-size:20px;text-align:right}
+.band{margin-top:112px;background:var(--dark);color:#fff}
+.band .grid{align-items:stretch}
+.band .photo{grid-column:1/8}.band .photo img{width:100%;height:100%;min-height:520px;object-fit:cover}
+.band .copy{grid-column:8/13;padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.band h2{font-size:44px;letter-spacing:-.035em;line-height:1.02;margin:0;font-weight:800}
+.band ul{list-style:none;margin:0;padding:0;border-top:1px solid #3A342E}
+.band li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #3A342E;font-size:15px}
+.band li span{color:#B9B1A8}
+.units{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.unit{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;gap:14px}
+.unit img{width:100%;height:220px;object-fit:cover;border-radius:2px}
+.unit h3{margin:0;font-size:20px;letter-spacing:-.02em}
+.unit dl{display:grid;grid-template-columns:repeat(3,1fr);margin:0;border-top:1px solid var(--line);padding-top:12px}
+.unit dt{font-size:12px;color:var(--ink-2)}.unit dd{margin:2px 0 0;font-weight:700;font-size:15px}
+.chip{align-self:flex-start;font-size:12px;font-weight:700;padding:4px 8px;border-radius:2px;background:#EDE7DF}
+.head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.news{margin-top:40px;display:grid;grid-template-columns:7fr 5fr;gap:24px}
+.news .lead img{width:100%;height:380px;object-fit:cover;border-radius:var(--radius)}
+.news .lead h3{font-size:28px;letter-spacing:-.03em;margin:16px 0 6px;line-height:1.15}
+.news time{font-size:13px;color:var(--ink-2);font-weight:600}
+.news ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.news li a{display:block;padding:20px 0;border-bottom:1px solid var(--line)}
+.news li h3{margin:6px 0 0;font-size:19px;letter-spacing:-.02em;line-height:1.25}
+.cta{margin-top:112px;border-top:1px solid var(--ink);padding:48px 0 96px}
+.cta .grid{align-items:end}.cta h2{grid-column:1/8;font-size:56px;letter-spacing:-.04em;line-height:1;margin:0;font-weight:800}
+.cta .actions{grid-column:9/13;display:flex;gap:10px;justify-content:flex-end}
+footer{background:var(--dark);color:#CFC7BE;padding:56px 0 32px;font-size:14px}
+footer .grid>div{grid-column:span 3}footer h4{color:#fff;margin:0 0 12px;font-size:14px}footer a{display:block;padding:4px 0}
+.legal{margin-top:40px;padding-top:20px;border-top:1px solid #3A342E;display:flex;justify-content:space-between;color:#8F877E;font-size:13px}
+@media(max-width:900px){.wrap{padding:0 16px}.nav nav{display:none}.hero h1,.hero .side{grid-column:1/-1}.hero-photo img{height:300px}
+.router{margin:-32px 0 0;grid-template-columns:1fr 1fr}.router .q{grid-column:1/-1;border-radius:var(--radius) var(--radius) 0 0}.router a{min-height:96px;border-top:1px solid var(--line)}
+.metrics .row{grid-template-columns:1fr 1fr}.metrics strong{font-size:40px}
+.rows a{grid-template-columns:40px 1fr 24px}.rows p,.rows img{display:none}.rows h3{font-size:22px}
+.band .photo,.band .copy{grid-column:1/-1}.band .photo img{min-height:260px}.band .copy{padding:32px 16px}
+.units,.news{grid-template-columns:1fr}.cta h2,.cta .actions{grid-column:1/-1;justify-content:flex-start}.cta h2{font-size:40px}footer .grid>div{grid-column:span 6}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="logo" href="#"><i></i>Northbank</a>
+<nav><a href="#">Space</a><a href="#">Infrastructure</a><a href="#">Companies</a><a href="#">Invest</a><a href="#">News</a><a href="#">Careers</a></nav>
+<a class="btn btn-primary" href="#">Book a visit</a></div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div class="grid">
+    <h1>Where technology companies work, build and grow.</h1>
+    <div class="side"><p>38 hectares on the Saigon River with offices, labs, a data center and 142 member companies.</p>
+      <div class="actions"><a class="btn btn-primary" href="#">Find space</a><a class="btn btn-ghost" href="#">Explore the campus</a></div></div>
+  </div>
+  <div class="hero-photo"><img src="../../../assets/images/photos/towers-sky.webp" alt="Glass office towers seen from below against a pale sky"></div>
+  <div class="router">
+    <div class="q">What do you need?</div>
+    <a href="#"><b>01</b><span>Office or lab space</span></a>
+    <a href="#"><b>02</b><span>Find a company</span></a>
+    <a href="#"><b>03</b><span>Invest here</span></a>
+    <a href="#"><b>04</b><span>Data center</span></a>
+    <a href="#"><b>05</b><span>Visit the campus</span></a>
+  </div>
+</div></section>
+
+<section class="metrics"><div class="wrap"><div class="row">
+  <div><strong>38 ha</strong><small>campus</small></div>
+  <div><strong>142</strong><small>member companies</small></div>
+  <div><strong>18,600</strong><small>people on site</small></div>
+  <div><strong>7</strong><small>buildings</small></div>
+  <div><strong>11</strong><small>countries</small></div>
+</div></div></section>
+
+<section class="sec"><div class="wrap">
+  <h2>One campus. Four things companies come for.</h2>
+  <div class="rows">
+    <a href="#"><span class="n">01</span><h3>Space</h3><p>Offices from 40 m² to full floors, labs in Delta Labs and desks in Beacon.</p><img src="../../../assets/images/photos/sm/open-office.webp" alt=""><span class="go">→</span></a>
+    <a href="#"><span class="n">02</span><h3>Infrastructure</h3><p>Cobalt data center, dual fibre routes and a 24/7 security operations center.</p><img src="../../../assets/images/photos/sm/server-rack.webp" alt=""><span class="go">→</span></a>
+    <a href="#"><span class="n">03</span><h3>Companies</h3><p>A directory of 142 members and a marketplace of their solutions.</p><img src="../../../assets/images/photos/sm/working-session.webp" alt=""><span class="go">→</span></a>
+    <a href="#"><span class="n">04</span><h3>Investment</h3><p>Licences, incentives and a checker that tells you which ones apply.</p><img src="../../../assets/images/photos/sm/facade-grid.webp" alt=""><span class="go">→</span></a>
+  </div>
+</div></section>
+
+<section class="band"><div class="grid" style="gap:0">
+  <div class="photo"><img src="../../../assets/images/photos/district-aerial.webp" alt="Aerial view of a green business district with low buildings and tree-lined streets"></div>
+  <div class="copy"><h2>Seven buildings, one walkable campus.</h2>
+    <ul><li>Atlas <span>Headquarters offices</span></li><li>Beacon <span>Flexible offices</span></li><li>Cobalt <span>Data center</span></li><li>Delta Labs <span>Hardware labs</span></li><li>Echo Hall <span>600-seat conference</span></li><li>Forge <span>Startups</span></li><li>Grove <span>Canteen, clinic, gym</span></li></ul>
+    <a class="btn" style="background:#fff;color:var(--ink);align-self:flex-start" href="#">Open campus map</a></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="head-row"><h2>Available this quarter</h2><a class="btn btn-ghost" href="#">All spaces</a></div>
+  <div class="units">
+    <a class="unit" href="#"><img src="../../../assets/images/photos/sm/loft-office.webp" alt="Open loft office with large windows"><span class="chip">Available now</span><h3>Atlas, floor 7, east wing</h3><dl><div><dt>Size</dt><dd>420 m²</dd></div><div><dt>Desks</dt><dd>60</dd></div><div><dt>Per m²</dt><dd>$18</dd></div></dl></a>
+    <a class="unit" href="#"><img src="../../../assets/images/photos/sm/coworking.webp" alt="Coworking lounge with sofas and plants"><span class="chip">From 1 Feb</span><h3>Beacon, team suite B12</h3><dl><div><dt>Size</dt><dd>85 m²</dd></div><div><dt>Desks</dt><dd>12</dd></div><div><dt>Per m²</dt><dd>$22</dd></div></dl></a>
+    <a class="unit" href="#"><img src="../../../assets/images/photos/sm/meeting-room.webp" alt="Bright meeting room with a long white table"><span class="chip">Available now</span><h3>Delta Labs, lab L3-04</h3><dl><div><dt>Size</dt><dd>160 m²</dd></div><div><dt>Power</dt><dd>3-phase</dd></div><div><dt>Per m²</dt><dd>$26</dd></div></dl></a>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="head-row"><h2>News from the park</h2><a class="btn btn-ghost" href="#">All news</a></div>
+  <div class="news">
+    <a class="lead" href="#"><img src="../../../assets/images/photos/sm/city-dusk.webp" alt="City skyline at dusk with construction cranes"><time>Mon 17 Nov 2026</time><h3>Cobalt data center adds a second 2 MW hall</h3></a>
+    <ul>
+      <li><a href="#"><time>Thu 13 Nov 2026</time><h3>Forge opens applications for its spring startup cohort</h3></a></li>
+      <li><a href="#"><time>Tue 4 Nov 2026</time><h3>Mangrove AI moves its regional team into Atlas</h3></a></li>
+      <li><a href="#"><time>Fri 24 Oct 2026</time><h3>Echo Hall hosts the Saigon Hardware Week</h3></a></li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="cta"><div class="wrap grid"><h2>Come and see the space.</h2><div class="actions"><a class="btn btn-primary" href="#">Book a visit</a><a class="btn btn-ghost" href="#">Contact us</a></div></div></section>
+</main>
+
+<footer><div class="wrap"><div class="grid">
+  <div><a class="logo" href="#" style="color:#fff"><i></i>Northbank</a><p>North bank of the Saigon River<br>Thủ Đức City, Ho Chi Minh City</p></div>
+  <div><h4>Space</h4><a href="#">Find space</a><a href="#">Amenities</a><a href="#">Campus map</a></div>
+  <div><h4>Companies</h4><a href="#">Directory</a><a href="#">Solutions</a><a href="#">Invest</a></div>
+  <div><h4>Northbank</h4><a href="#">About</a><a href="#">News</a><a href="#">Careers</a><a href="#">Contact</a></div>
+</div><div class="legal"><span>© 2026 Northbank Technology Park</span><span>Privacy  Legal  Sitemap</span></div></div></footer>
+</body>
+</html>

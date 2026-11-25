@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Direction B — Canopy | Northbank Technology Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--page:#F3F4EF;--surface:#FFFFFF;--ink:#0F1C17;--ink-2:#4D5A54;--line:#DCE0D8;--accent:#1D5E47;--accent-soft:#E3ECE6;--dark:#0F1C17;--radius:10px;--max:1280px}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:400 16px/1.55 "Instrument Sans",system-ui,sans-serif}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+header{background:var(--page)}
+.nav{display:flex;align-items:center;gap:32px;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em}
+.logo svg{width:26px;height:26px}
+.nav nav{display:flex;gap:28px;font-size:15px;font-weight:500;color:var(--ink-2);margin-left:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid transparent}
+.btn-primary{background:var(--accent);color:#fff}.btn-line{border-color:var(--line);background:var(--surface)}
+.hero{position:relative;margin:8px 32px 0;border-radius:var(--radius);overflow:hidden;min-height:620px;display:flex;align-items:flex-end}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .panel{position:relative;margin:32px;background:var(--surface);border-radius:var(--radius);padding:32px;width:min(560px,100%)}
+.hero h1{margin:0;font-size:clamp(38px,4.6vw,64px);line-height:1.02;letter-spacing:-.035em;font-weight:600}
+.search{margin-top:24px;display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end}
+.search label{font-size:13px;font-weight:600;color:var(--ink-2);display:flex;flex-direction:column;gap:6px}
+.search select{height:44px;border:1px solid var(--line);border-radius:8px;padding:0 12px;font:inherit;background:#fff;color:var(--ink)}
+.facts{display:flex;gap:40px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-2)}
+.facts b{display:block;color:var(--ink);font-size:20px}
+.sec{padding:104px 0 0}
+.sec h2{margin:0;font-size:clamp(30px,3.2vw,44px);letter-spacing:-.03em;line-height:1.05;font-weight:600}
+.head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.intents{margin-top:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.intent{background:var(--surface);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:40px;min-height:200px;border:1px solid var(--line)}
+.intent:hover{border-color:var(--accent)}
+.intent h3{margin:0;font-size:22px;font-weight:600;letter-spacing:-.02em}
+.intent p{margin:6px 0 0;color:var(--ink-2);font-size:15px}
+.intent span{margin-top:auto;font-weight:600;color:var(--accent)}
+.buildings{margin-top:32px;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:240px;gap:16px}
+.bld{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--dark);color:#fff}
+.bld img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bld .tag{position:absolute;left:16px;bottom:16px;right:16px;background:var(--surface);color:var(--ink);border-radius:8px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.bld .tag b{font-size:17px}.bld .tag small{color:var(--ink-2);font-size:13px}
+.b1{grid-column:span 6;grid-row:span 2}.b2,.b3{grid-column:span 3}.b4,.b5{grid-column:span 3}
+.split{margin-top:32px;display:grid;grid-template-columns:7fr 5fr;gap:24px;align-items:stretch}
+.map{background:var(--surface);border-radius:var(--radius);border:1px solid var(--line);padding:16px}
+.map svg{width:100%;height:auto;display:block}
+.list{background:var(--surface);border-radius:var(--radius);border:1px solid var(--line);padding:8px 24px}
+.list a{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.list a:last-child{border-bottom:0}.list small{color:var(--ink-2)}
+.members{margin-top:32px;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.member{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:6px}
+.member b{font-size:17px}.member small{color:var(--ink-2)}
+.dark{margin-top:104px;background:var(--dark);color:#fff;padding:72px 0}.dark h2{margin:0;font-size:clamp(30px,3.2vw,44px);letter-spacing:-.03em;line-height:1.05;font-weight:600}
+.dark .head-row{margin-bottom:32px}.dark h2{color:#fff}.dark .btn-line{background:transparent;border-color:#3B4A43;color:#fff}
+.dark .events{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.event{display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:start;padding:20px;border-radius:var(--radius);background:#1B2A24}
+.event .d{font-size:13px;color:#A9B8B0}.event .d b{display:block;color:#fff;font-size:24px}
+.event span{color:#A9B8B0;font-size:14px}
+footer{padding:56px 0 32px;font-size:14px;color:var(--ink-2)}
+footer .grid>div{grid-column:span 3}footer h4{color:var(--ink);margin:0 0 12px;font-size:14px}footer a{display:block;padding:4px 0}
+.legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:13px}
+@media(max-width:900px){.wrap{padding:0 16px}.nav nav{display:none}.hero{margin:0 16px;min-height:560px}.hero .panel{margin:12px;padding:20px}
+.search{grid-template-columns:1fr}.facts{gap:20px}.intents,.members{grid-template-columns:1fr 1fr}.buildings{grid-template-columns:1fr 1fr;grid-auto-rows:200px}
+.b1,.b2,.b3,.b4,.b5{grid-column:span 2;grid-row:span 1}.split{grid-template-columns:1fr}.dark .events{grid-template-columns:1fr}footer .grid>div{grid-column:span 6}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="#"><svg viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="7" fill="#1D5E47"/><path d="M7 19V7l12 12V7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Northbank</a>
+  <nav><a href="#">Space</a><a href="#">Infrastructure</a><a href="#">Companies</a><a href="#">Invest</a><a href="#">News</a><a href="#">Careers</a></nav>
+  <a class="btn btn-primary" href="#">Book a visit</a></div></header>
+
+<main>
+<section class="hero"><img src="../../../assets/images/photos/city-dusk.webp" alt="City skyline at dusk with towers and construction cranes">
+  <div class="panel">
+    <h1>Space for technology companies to grow.</h1>
+    <form class="search" onsubmit="return false">
+      <label>Space type<select><option>Office</option><option>Lab</option><option>Desks in Beacon</option></select></label>
+      <label>Team size<select><option>1–10 people</option><option>11–50 people</option><option>51–200 people</option><option>200+ people</option></select></label>
+      <button class="btn btn-primary" type="submit">Find space</button>
+    </form>
+    <div class="facts"><span><b>23</b>spaces available</span><span><b>142</b>member companies</span><span><b>38 ha</b>campus</span></div>
+  </div>
+</section>
+
+<section class="sec"><div class="wrap">
+  <h2>What brings you to Northbank?</h2>
+  <div class="intents">
+    <a class="intent" href="#"><div><h3>Set up an office</h3><p>Offices, labs and desks, viewed and booked online.</p></div><span>Find space →</span></a>
+    <a class="intent" href="#"><div><h3>Run on our infrastructure</h3><p>Colocation, cloud and fibre in the Cobalt data center.</p></div><span>See infrastructure →</span></a>
+    <a class="intent" href="#"><div><h3>Work with a member</h3><p>142 companies and the solutions they sell.</p></div><span>Open directory →</span></a>
+    <a class="intent" href="#"><div><h3>Invest in Vietnam</h3><p>Licences and incentives, with a quick eligibility check.</p></div><span>Check eligibility →</span></a>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="head-row"><h2>Seven buildings</h2><a class="btn btn-line" href="#">Campus map</a></div>
+  <div class="buildings">
+    <a class="bld b1" href="#"><img src="../../../assets/images/photos/towers-sky.webp" alt="Glass towers against a pale sky"><span class="tag"><span><b>Atlas</b><br><small>Headquarters offices, 12 floors</small></span><span>→</span></span></a>
+    <a class="bld b2" href="#"><img src="../../../assets/images/photos/sm/coworking.webp" alt="Coworking lounge"><span class="tag"><span><b>Beacon</b><br><small>Flexible offices</small></span><span>→</span></span></a>
+    <a class="bld b3" href="#"><img src="../../../assets/images/photos/sm/server-rack.webp" alt="Technician at a server rack"><span class="tag"><span><b>Cobalt</b><br><small>Data center</small></span><span>→</span></span></a>
+    <a class="bld b4" href="#"><img src="../../../assets/images/photos/sm/developer.webp" alt="Developer at a desktop computer"><span class="tag"><span><b>Forge</b><br><small>Startups</small></span><span>→</span></span></a>
+    <a class="bld b5" href="#"><img src="../../../assets/images/photos/sm/meeting-room.webp" alt="Meeting room"><span class="tag"><span><b>Echo Hall</b><br><small>Conference, 600 seats</small></span><span>→</span></span></a>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="head-row"><h2>Members</h2><a class="btn btn-line" href="#">All 142 companies</a></div>
+  <div class="members">
+    <a class="member" href="#"><b>Lattice Systems</b><small>Software, Atlas</small></a>
+    <a class="member" href="#"><b>Mangrove AI</b><small>Data and AI, Atlas</small></a>
+    <a class="member" href="#"><b>Tessera Health</b><small>Health tech, Beacon</small></a>
+    <a class="member" href="#"><b>Pivot Robotics</b><small>Hardware, Delta Labs</small></a>
+    <a class="member" href="#"><b>Sable Security</b><small>Cybersecurity, Cobalt</small></a>
+  </div>
+</div></section>
+
+<section class="dark"><div class="wrap">
+  <div class="head-row"><h2>On campus this month</h2><a class="btn btn-line" href="#">All events</a></div>
+  <div class="events">
+    <a class="event" href="#"><span class="d"><b>02</b>Dec</span><div><b>Forge demo day</b><br><span>Echo Hall, 2 pm</span></div><span>→</span></a>
+    <a class="event" href="#"><span class="d"><b>09</b>Dec</span><div><b>Data center open house</b><br><span>Cobalt, 10 am</span></div><span>→</span></a>
+    <a class="event" href="#"><span class="d"><b>16</b>Dec</span><div><b>Hiring fair: 30 member companies</b><br><span>Grove, 9 am</span></div><span>→</span></a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><div class="grid">
+  <div><a class="logo" href="#"><svg viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="7" fill="#1D5E47"/><path d="M7 19V7l12 12V7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Northbank</a><p>North bank of the Saigon River<br>Thủ Đức City, Ho Chi Minh City</p></div>
+  <div><h4>Space</h4><a href="#">Find space</a><a href="#">Amenities</a><a href="#">Campus map</a></div>
+  <div><h4>Companies</h4><a href="#">Directory</a><a href="#">Solutions</a><a href="#">Invest</a></div>
+  <div><h4>Northbank</h4><a href="#">About</a><a href="#">News</a><a href="#">Careers</a><a href="#">Contact</a></div>
+</div><div class="legal"><span>© 2026 Northbank Technology Park</span><span>Privacy  Legal  Sitemap</span></div></div></footer>
+</body>
+</html>
