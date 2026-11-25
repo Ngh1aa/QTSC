@@ -1,13 +1,13 @@
-/* QTSC prototype store.
+/* Northbank prototype store (globals keep the original QTSC prefix; the repository is still named QTSC).
  * User data (bookings, applications, enquiries, demo requests, contact requests,
  * newsletter preferences) lives in sessionStorage so it survives navigation and
  * reload within the tab. It is seeded from QTSC_SEED.initialUser and can be
  * reset at any time. `request()` simulates a network round-trip and can be
- * forced to fail from the footer toolbar to exercise recoverable error states.
+ * forced to fail from the demo tools (?demo=1) to exercise recoverable error states.
  */
 (() => {
   const seed = window.QTSC_SEED;
-  if (!seed) { console.warn('[QTSC] seed data missing'); return; }
+  if (!seed) { console.warn('[Northbank] seed data missing'); return; }
   const KEY = 'qtsc-prototype-user';
   const SETTINGS = 'qtsc-prototype-settings';
   const memory = {};
@@ -71,7 +71,7 @@
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           if (settings().failRequests) {
-            const error = new Error('Không kết nối được tới máy chủ QTSC (lỗi giả lập).');
+            const error = new Error('Could not reach the Northbank server (simulated failure).');
             error.code = 'SIMULATED_NETWORK_ERROR';
             reject(error);
             return;

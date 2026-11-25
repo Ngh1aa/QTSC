@@ -4,21 +4,21 @@
   const { todayISO, fmtDate, esc } = window.QTSCUI;
   const seed = store.seed;
 
-  const unitName = unit => `${unit.building}, tầng ${unit.floor}, ${unit.area} m²`;
+  const unitName = unit => `${unit.building}, floor ${unit.floor}, ${unit.area} m²`;
   function issue({ date, time, unitId, excludeId }) {
-    if (!date) return { field: 'date', message: 'Vui lòng chọn ngày tham quan.' };
-    if (date < todayISO(1)) return { field: 'date', message: 'Chọn ngày từ ngày mai trở đi.' };
-    if (date > todayISO(90)) return { field: 'date', message: 'Chỉ nhận lịch trong vòng 90 ngày tới.' };
-    if (new Date(`${date}T00:00:00`).getDay() === 0) return { field: 'date', message: 'QTSC không đón khách tham quan vào Chủ nhật. Vui lòng chọn ngày khác.' };
-    if (!time) return { field: 'time', message: 'Vui lòng chọn khung giờ.' };
+    if (!date) return { field: 'date', message: 'Choose a visit date.' };
+    if (date < todayISO(1)) return { field: 'date', message: 'Choose a date from tomorrow onwards.' };
+    if (date > todayISO(90)) return { field: 'date', message: 'Visits can be booked up to 90 days ahead.' };
+    if (new Date(`${date}T00:00:00`).getDay() === 0) return { field: 'date', message: 'Northbank does not host visits on Sundays. Choose another day.' };
+    if (!time) return { field: 'time', message: 'Choose a time.' };
     const clash = store.list('bookings').find(b => b.id !== excludeId && b.status !== 'cancelled' && b.unitId === unitId && b.date === date && b.time === time);
-    if (clash) return { field: 'time', message: `Bạn đã có lịch ${clash.id} vào khung giờ này. Chọn giờ khác.` };
+    if (clash) return { field: 'time', message: `You already have visit ${clash.id} at this time. Choose another time.` };
     return null;
   }
   const slotOptions = selected => seed.visitSlots.map(s => `<option value="${s}" ${s === selected ? 'selected' : ''}>${s}</option>`).join('');
   const describe = b => {
     const unit = seed.units.find(u => u.id === b.unitId);
-    return { unit, title: unit ? unitName(unit) : 'Không gian đã gỡ khỏi danh mục', when: `${fmtDate(b.date)} lúc ${esc(b.time)}` };
+    return { unit, title: unit ? unitName(unit) : 'Space no longer listed', when: `${fmtDate(b.date)} at ${esc(b.time)}` };
   };
   window.QTSCBooking = { issue, slotOptions, unitName, describe };
 })();

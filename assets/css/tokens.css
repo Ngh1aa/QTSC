@@ -1,158 +1,80 @@
-/* QTSC UI Foundation v1.3 — design tokens
-   Brand accents remain red-orange; page surfaces are normalized to white / #111111. */
-:root{
-  /* Brand */
-  --brand-primary:#EE4623;
-  --brand-deep:#A91F2C;
-  --brand-red:#CC2D31;
-  --brand-orange:#EE4623;
-  --brand-light:#FF8438;
-  /* RGB channels — single source for rgba() alpha compositing */
-  --brand-primary-rgb:238,70,35;
-  --brand-deep-rgb:169,31,44;
-  --brand-red-rgb:204,45,49;
-  --brand-light-rgb:255,132,56;
-  --brand-gradient:linear-gradient(118deg,var(--brand-deep) 0%,var(--brand-red) 42%,var(--brand-orange) 72%,var(--brand-light) 100%);
-  --brand-gradient-cta:linear-gradient(110deg,#CE4B1E 0%,#C43E24 48%,#B62035 100%);
-  --brand-gradient-cta-hover:linear-gradient(110deg,#C9471B 0%,#B93628 48%,#A91F2C 100%);
-  --brand-gradient-soft:linear-gradient(135deg,rgba(var(--brand-deep-rgb),.10) 0%,rgba(var(--brand-primary-rgb),.09) 52%,rgba(var(--brand-light-rgb),.08) 100%);
-  --brand-gradient-surface:#fff;
-  --brand-radial:radial-gradient(circle at 72% 28%,rgba(var(--brand-primary-rgb),.20) 0%,rgba(var(--brand-primary-rgb),.07) 24%,transparent 58%);
-  --brand-glow:0 18px 48px rgba(var(--brand-red-rgb),.20),0 6px 22px rgba(var(--brand-primary-rgb),.16);
-  --brand-glow-soft:0 12px 34px rgba(var(--brand-red-rgb),.10),0 4px 16px rgba(var(--brand-primary-rgb),.08);
+/* Northbank Technology Park — design tokens (direction A "Ember", approved 2026-11-25).
+   One accent colour, warm neutral surfaces, no gradients or glows. */
+:root {
+  color-scheme: light;
 
-  /* Text */
-  --text-primary:#17191a;
-  --text-secondary:#565c60;
-  --text-tertiary:#62686c;
-  --text-inverse:#fff;
+  /* Colour roles */
+  --color-page: #FAF8F5;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F3EFE9;
+  --color-ink: #17130F;
+  --color-ink-2: #55504A;
+  --color-ink-3: #77706A;
+  --color-line: #E6E1DA;
+  --color-line-strong: #CFC8BF;
+  --color-accent: #C23A17;
+  --color-accent-hover: #A5300F;
+  --color-accent-soft: #F8E6DF;
+  --color-on-accent: #FFFFFF;
+  --color-dark: #17130F;
+  --color-dark-2: #2A241F;
+  --color-dark-line: #3A342E;
+  --color-on-dark: #FFFFFF;
+  --color-on-dark-2: #BDB4AA;
+  --color-success: #2E6B4F;
+  --color-success-soft: #E3EFE8;
+  --color-warning: #8A5A12;
+  --color-warning-soft: #F6EBD6;
+  --color-danger: #B3261E;
+  --color-danger-soft: #F8E2DF;
+  --color-focus: #C23A17;
 
-  /* Surface system — only white and #111111 for page blocks */
-  --surface-primary:#fff;
-  --surface-soft:#fff;
-  --surface-muted:#fff;
-  --surface-dark:#111111;
-  --surface-brand-soft:#fff;
-  --surface-brand-muted:#fff;
+  /* Type */
+  --font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 28px;
+  --text-3xl: clamp(30px, 3.4vw, 48px);
+  --text-4xl: clamp(36px, 4.6vw, 64px);
+  --text-display: clamp(42px, 6vw, 84px);
+  --leading-tight: 1.02;
+  --leading-snug: 1.25;
+  --leading-body: 1.6;
+  --tracking-display: -0.045em;
+  --tracking-heading: -0.03em;
 
-  /* Borders */
-  --border-subtle:#e8e5e1;
-  --border-default:#d6d2cd;
-  --border-strong:#afa9a4;
-  --border-brand:rgba(var(--brand-primary-rgb),.22);
+  /* Space (4 px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-section: clamp(72px, 9vw, 112px);
 
-  /* Status */
-  --status-success:#247a57;
-  --status-warning:#8a5716;
-  --status-error:#b93b3b;
-
-  /* Space — 4px scale */
-  --space-1:4px;
-  --space-2:8px;
-  --space-3:12px;
-  --space-4:16px;
-  --space-5:20px;
-  --space-6:24px;
-  --space-8:32px;
-  --space-10:40px;
-  --space-12:48px;
-  --space-14:56px;
-  --space-16:64px;
-  --space-20:80px;
-  --space-24:96px;
-  --space-28:112px;
-  --space-32:128px;
-  --space-36:144px;
-
-  /* Layout */
-  --container:1320px;
-  --gutter:24px;
-  --section-xl:144px;
-  --section-lg:112px;
-  --section-md:80px;
-  --section-sm:56px;
-
-  /* Radius — Square architectural design */
-  --radius-sm:0px;
-  --radius-md:0px;
-  --radius-lg:0px;
-  --radius-pill:0px;
-  --radius-card:0px;
-
-  /* Image Overlay & Real Photo Background Tokens */
-  --brand-media-overlay:linear-gradient(135deg,rgba(20,8,10,.5) 0%,rgba(169,31,44,.6) 50%,rgba(238,70,35,.5) 100%);
-  --brand-dark-hero-bg:linear-gradient(135deg,rgba(20,8,10,.78) 0%,rgba(169,31,44,.74) 50%,rgba(238,70,35,.68) 100%),url("https://www.qtsc.com.vn/uploads/files/2021/03/14/1-goc-Cong-vien-phan-mem-Quang-Trung-02.jpg");
-  --brand-dark-footer-bg:linear-gradient(135deg,rgba(17,17,17,.86) 0%,rgba(169,31,44,.82) 55%,rgba(204,45,49,.78) 100%),url("https://www.qtsc.com.vn/uploads/files/2025/04/29/thumbs-1200-628-2--1/hinh-toan-canh-2025.jpg");
-
-  /* Elevation */
-  --shadow-dropdown:0 14px 42px rgba(23,25,26,.08),0 3px 14px rgba(var(--brand-primary-rgb),.05);
-  --shadow-dialog:0 34px 90px rgba(0,0,0,.18);
+  /* Shape and layout */
+  --radius: 4px;
+  --radius-sm: 2px;
+  --container: 1280px;
+  --gutter: 32px;
+  --header-h: 68px;
+  --tap: 44px;
 
   /* Motion */
-  --ease-standard:cubic-bezier(.2,.8,.2,1);
-  --motion-fast:180ms;
-  --motion-normal:280ms;
-  --motion-enter:550ms;
-
-  /* Icons */
-  --icon-search:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='m16 16 4 4'/%3E%3C/svg%3E");
-  --icon-arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M9 7h8v8'/%3E%3C/svg%3E");
-  --icon-right:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M14 7l5 5-5 5'/%3E%3C/svg%3E");
-  --icon-close:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='m6 6 12 12M18 6 6 18'/%3E%3C/svg%3E");
-
-  /* Backward-compatible aliases */
-  --red:var(--brand-red);
-  --red-deep:var(--brand-deep);
-  --orange:var(--brand-orange);
-  --orange-soft:var(--brand-light);
-  --brand:var(--brand-gradient);
-  --ink:var(--text-primary);
-  --muted:var(--text-secondary);
-  --soft-text:var(--text-tertiary);
-  --line:var(--border-subtle);
-  --surface:var(--surface-soft);
-  --surface-2:var(--surface-muted);
-  --white:var(--surface-primary);
-  --success:var(--status-success);
-  --warning:var(--status-warning);
-  --danger:var(--status-error);
-  --max:var(--container);
-  --r-sm:var(--radius-sm);
-  --r-md:var(--radius-md);
-  --r-lg:var(--radius-lg);
-  --ease:var(--ease-standard);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur-fast: 140ms;
+  --dur: 220ms;
 }
 
-/* Footer: solid black #111111 + clean white typography */
-html body .site-footer{
-  background:#111111!important;
-  background-color:#111111!important;
-  background-image:none!important;
-  color:#fff!important;
-  box-shadow:none!important;
-  border-top:1px solid rgba(255,255,255,.18)!important;
-  border-radius:0!important;
-}
-html body .site-footer::before,
-html body .site-footer::after{
-  content:none!important;
-  display:none!important;
-  background:none!important;
-}
-html body .site-footer .footer-brand p,
-html body .site-footer .footer-col a,
-html body .site-footer .footer-col button,
-html body .site-footer .footer-bottom,
-html body .site-footer .footer-bottom a{
-  color:rgba(255,255,255,.84)!important;
-}
-html body .site-footer .footer-col strong,
-html body .site-footer .footer-col a:hover,
-html body .site-footer .footer-col button:hover,
-html body .site-footer .footer-bottom a:hover{
-  color:#fff!important;
-  text-shadow:none!important;
-}
-html body .site-footer .footer-bottom{
-  border-top-color:rgba(255,255,255,.20)!important;
+@media (max-width: 900px) {
+  :root { --gutter: 16px; --header-h: 60px; }
 }

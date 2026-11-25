@@ -7,7 +7,7 @@ Many are older Unsplash uploads that were released under CC0 before Unsplash cha
 Rules for this project: no photo is presented as a real, named place; people in photos are not named; photos
 showing third-party characters, logos or brand signs were left out.
 
-Sizes: `<name>.webp` is 1600 px wide, `sm/<name>.webp` is 800 px wide. Converted from the Commons thumbnails.
+Sizes: `<name>.webp` is 1920 px wide, `sm/<name>.webp` is 960 px wide. Converted from the Commons thumbnails.
 
 | File | Commons title | Licence | Author | Source |
 |---|---|---|---|---|

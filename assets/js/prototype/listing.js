@@ -1,4 +1,4 @@
-/* QTSC listing engine: search + filters + pagination over a seed collection,
+/* Listing engine: search + filters + pagination over a seed collection,
  * with URL sync, a simulated initial request (loading / error + retry) and an
  * empty state that clears filters. Used by companies, marketplace, office units,
  * insights, resources, careers and open data.
@@ -32,7 +32,7 @@
   }
 
   function createListing(cfg) {
-    const { results, pagerEl, metaEl, search, perPage = 10, label = 'kết quả', load, text, render, filters = [], sort, emptyCopy, afterRender, renderList } = cfg;
+    const { results, pagerEl, metaEl, search, perPage = 10, label = 'results', load, text, render, filters = [], sort, emptyCopy, afterRender, renderList } = cfg;
     let items = null;
     let page = Math.max(1, Number(params().get('page')) || 1);
     const p = params();
@@ -61,10 +61,10 @@
       page = Math.min(page, pages);
       setParams({ ...state(), page, ...(sort && state()[sort.param] === sort.default ? { [sort.param]: '' } : {}) });
       const active = Boolean(state().q) || filters.some(f => f.control.get() !== 'all');
-      if (metaEl) metaEl.innerHTML = `<span><strong>${list.length}</strong> ${esc(label)}${active ? ' phù hợp' : ''}</span>${active ? '<button type="button" class="proto-link-btn" data-clear-filters>Xóa bộ lọc</button>' : ''}`;
+      if (metaEl) metaEl.innerHTML = `<span><strong>${list.length}</strong> ${esc(label)}${active ? ' matching' : ''}</span>${active ? '<button type="button" class="proto-link-btn" data-clear-filters>Clear filters</button>' : ''}`;
       $('[data-clear-filters]', metaEl || document.createElement('div'))?.addEventListener('click', clearAll);
       if (!list.length) {
-        showState(results, 'empty', { ...(emptyCopy || {}), action: { label: 'Xóa bộ lọc và tìm lại', onClick: clearAll } });
+        showState(results, 'empty', { ...(emptyCopy || {}), action: { label: 'Clear filters', onClick: clearAll } });
         if (pagerEl) pagerEl.innerHTML = '';
         results.dataset.state = 'empty';
         return;
@@ -77,21 +77,21 @@
     }
     function fetchItems() {
       results.dataset.state = 'loading';
-      showState(results, 'loading', { title: 'Đang tải danh sách…' });
+      showState(results, 'loading', { title: 'Loading…' });
       if (pagerEl) pagerEl.innerHTML = '';
       store.request(load, { delay: 380 }).then(data => { items = data; draw(); }).catch(error => {
         results.dataset.state = 'error';
-        showState(results, 'error', { text: `${error.message} Bộ lọc của bạn vẫn được giữ.`, action: { label: 'Thử lại', onClick: fetchItems } });
+        showState(results, 'error', { text: `${error.message} Your filters are kept.`, action: { label: 'Try again', onClick: fetchItems } });
       });
     }
     const onChange = () => { page = 1; draw(); };
     let t;
     search?.addEventListener('input', () => { clearTimeout(t); t = setTimeout(onChange, 120); });
-    search?.closest('form, .inner-searchbar')?.querySelector('button')?.addEventListener('click', event => {
+    search?.closest('form, .search-bar')?.querySelector('button')?.addEventListener('click', event => {
       event.preventDefault();
-      if (!search.value.trim()) { search.focus(); window.QTSCUI.toast('Nhập tên, lĩnh vực hoặc từ khóa rồi bấm Tìm.'); return; }
+      if (!search.value.trim()) { search.focus(); window.QTSCUI.toast('Type a name or keyword, then search.'); return; }
       onChange();
-      window.QTSCUI.toast(`Đã tìm “${search.value.trim()}”.`);
+      window.QTSCUI.toast(`Searched for “${search.value.trim()}”.`);
     });
     search?.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); onChange(); } });
     filters.forEach(f => f.control.listen(onChange));
