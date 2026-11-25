@@ -4,6 +4,11 @@ Branch `redesign/northbank`, from `main` at `1a5f660`. Level: Redesign (content,
 "Ember" approved by the owner on 2026-11-25. Page work was split into four groups; three were built by helper
 agents from [`page-brief.md`](page-brief.md), one by the lead, and everything was checked together afterwards.
 
+**Style change, same day:** the owner chose the **Monolith** demo (branch `demo/monolith`, built on top of this
+work) as the current direction. Monolith changes `tokens.css`, the shared component rules (headings, facts, cards,
+rows, tables, brand mark) and the home page; it adds `--weight-display` / `--weight-heading` tokens so no weight
+is hard-coded. All checks below were rerun on Monolith; see "Monolith checks" at the end.
+
 ## Replacement plan (done)
 
 | Old owner | Replaced by | Deleted | Protected by |
@@ -85,3 +90,16 @@ shows PDF, XLSX or DOCX.
 - `docs/*.md` outside `docs/redesign/` describe the earlier QTSC concept and are kept as history.
 - Not done: independent review by a second person, real-device and screen-reader tests, Safari and Firefox.
 - The portfolio case study for QTSC still describes the old concept.
+
+## Monolith checks (2026-11-25)
+
+| Check | Result |
+|---|---|
+| `.github/qa/e2e-prototype.mjs` | 16/16 |
+| `.github/qa/qtsc-visual-qa.mjs` | PASS |
+| `.github/qa/control-inventory.mjs` | 1,622 controls on 32 pages, 0 dead |
+| taste-check, 32 pages × 390 and 1280 | 64 errors, all the `ui-feedback.js` ARIA error; 3 wrapping unit names on the home page at 390 were fixed |
+| `scripts/build-shell.cjs --check` | 32 pages in sync |
+
+Invented for Monolith: the floor counts in the home page building schedule (Beacon 5, Cobalt 3, Delta Labs 4,
+Echo Hall 2, Forge 3, Grove 3; Atlas 12 as before) and the campus coordinates shown above the home title.

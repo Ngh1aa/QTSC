@@ -1,7 +1,24 @@
 # Direction gate — home page
 
-Status: `ĐÃ DUYỆT` — the owner chose **A** on 2026-11-25 ("chọn A, làm tiếp đi").
+Status: `ĐÃ DUYỆT`, then replaced. The owner chose **A** on 2026-11-25 ("chọn A, làm tiếp đi"); the whole site
+was built in A. The same day the owner asked for another demo, "phong cách hiện đại, kiến trúc, quy mô, tầm vóc,
+style minimalism", which became **Monolith** (branch `demo/monolith`), and then chose it: "chọn Monolith, làm
+tiếp các trang con đi". Monolith is the current direction; A stays on branch `redesign/northbank`.
 Shots: `shots/` (1440 and 390).
+
+## Monolith (current)
+
+| | A — Ember | Monolith |
+|---|---|---|
+| Colour | Warm paper, red-orange accent | Concrete `#F3F3F1`, white, black ink; **no accent colour**, black primary buttons |
+| Type | Manrope 800 | Inter Tight, display 300 at up to 152 px, headings 500 |
+| Shape | 4 px corners, leaf mark | Square corners, square mark, letter-spaced wordmark |
+| Cards | Boxed with a border | No box: a black rule on top, photo, text |
+| Tables and figures | Shaded header, boxed | Hairlines, black rule under headers, figures up to 200 px |
+| Home | Intent router, unit cards | Oversized figures, a building schedule, full-bleed architectural photos |
+
+Only `tokens.css`, the component rules in `base.css` / `components.css` and the home page differ; every page uses
+the same markup in both directions.
 
 | | A — Ember (DNA evolution) | B — Canopy (new direction) |
 |---|---|---|

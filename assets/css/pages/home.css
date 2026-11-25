@@ -62,7 +62,8 @@
   .mono-buildings-media { position: static; }
   .mono-buildings-media img { aspect-ratio: 3 / 2; }
   .mono-schedule thead th:nth-child(3), .mono-schedule tbody td:nth-child(3) { display: none; }
-  .mono-units thead th:nth-child(4), .mono-units tbody td:nth-child(4), .mono-units thead th:nth-child(3), .mono-units tbody td:nth-child(3) { display: none; }
+  .mono-units thead th:nth-child(2), .mono-units tbody td:nth-child(2), .mono-units thead th:nth-child(3), .mono-units tbody td:nth-child(3), .mono-units thead th:nth-child(4), .mono-units tbody td:nth-child(4) { display: none; }
+  .mono-units tbody th a { white-space: nowrap; }
   .mono-units tbody td:nth-child(5) { white-space: nowrap; }
   .mono-band .container { top: var(--space-8); }
   .mono-offer, .mono-news { grid-template-columns: 1fr; }
