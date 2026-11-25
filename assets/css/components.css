@@ -85,7 +85,7 @@ a.card:hover .card-title { color: var(--color-accent); }
 .entity-card p { color: var(--color-ink-2); font-size: var(--text-sm); margin-top: 2px; }
 .entity-card .entity-side { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-1); font-size: var(--text-sm); color: var(--color-ink-2); text-align: right; }
 .entity-card::after { content: "→"; color: var(--color-accent); }
-.entity-mark { display: grid; place-items: center; width: 48px; height: 48px; border-radius: var(--radius); background: var(--color-surface-muted); font-weight: 800; font-size: var(--text-sm); letter-spacing: 0; }
+.entity-mark { display: grid; place-items: center; width: 48px; height: 48px; border-radius: var(--radius); background: var(--color-surface-muted); font-weight: var(--weight-heading); font-size: var(--text-sm); letter-spacing: 0; }
 .article-stack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); }
 .article-card { display: flex; flex-direction: column; gap: var(--space-3); }
 .article-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius); }

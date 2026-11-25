@@ -3,7 +3,7 @@
 /* Timeline: one row per milestone, year in the first column. */
 .timeline { list-style: none; border-top: 1px solid var(--color-line); }
 .timeline li { display: grid; grid-template-columns: 120px minmax(0, 4fr) minmax(0, 6fr); gap: var(--space-6); align-items: baseline; padding: var(--space-5) 0; border-bottom: 1px solid var(--color-line); }
-.timeline-year { font-size: var(--text-2xl); font-weight: 800; letter-spacing: var(--tracking-heading); font-variant-numeric: tabular-nums; }
+.timeline-year { font-size: var(--text-2xl); font-weight: var(--weight-display); letter-spacing: var(--tracking-heading); font-variant-numeric: tabular-nums; }
 .timeline strong { font-size: var(--text-lg); }
 .timeline-text { color: var(--color-ink-2); font-size: var(--text-sm); }
 

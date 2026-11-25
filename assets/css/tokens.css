@@ -1,50 +1,55 @@
-/* Northbank Technology Park — design tokens (direction A "Ember", approved 2026-11-25).
-   One accent colour, warm neutral surfaces, no gradients or glows. */
+/* Northbank Technology Park — design tokens, demo "Monolith" (branch demo/monolith).
+   Architectural minimalism: concrete and white surfaces, black ink, no accent colour, square corners,
+   light display type at a large scale. Same roles as direction A, so every page follows these values. */
 :root {
   color-scheme: light;
 
   /* Colour roles */
-  --color-page: #FAF8F5;
+  --color-page: #F3F3F1;
   --color-surface: #FFFFFF;
-  --color-surface-muted: #F3EFE9;
-  --color-ink: #17130F;
-  --color-ink-2: #55504A;
-  --color-ink-3: #77706A;
-  --color-line: #E6E1DA;
-  --color-line-strong: #CFC8BF;
-  --color-accent: #C23A17;
-  --color-accent-hover: #A5300F;
-  --color-accent-soft: #F8E6DF;
+  --color-surface-muted: #E9E9E6;
+  --color-ink: #111111;
+  --color-ink-2: #595956;
+  --color-ink-3: #6E6E6A;
+  --color-line: #D9D9D5;
+  --color-line-strong: #B9B9B4;
+  --color-accent: #111111;
+  --color-accent-hover: #3A3A3A;
+  --color-accent-soft: #E9E9E6;
   --color-on-accent: #FFFFFF;
-  --color-dark: #17130F;
-  --color-dark-2: #2A241F;
-  --color-dark-line: #3A342E;
+  --color-dark: #111111;
+  --color-dark-2: #1C1C1C;
+  --color-dark-line: #343434;
   --color-on-dark: #FFFFFF;
-  --color-on-dark-2: #BDB4AA;
-  --color-success: #2E6B4F;
-  --color-success-soft: #E3EFE8;
-  --color-warning: #8A5A12;
-  --color-warning-soft: #F6EBD6;
-  --color-danger: #B3261E;
-  --color-danger-soft: #F8E2DF;
-  --color-focus: #C23A17;
+  --color-on-dark-2: #A6A6A2;
+  --color-success: #2F5E46;
+  --color-success-soft: #E2ECE6;
+  --color-warning: #7A5512;
+  --color-warning-soft: #F1E8D6;
+  --color-danger: #A32920;
+  --color-danger-soft: #F5E1DE;
+  --color-focus: #111111;
+  --brand-mark: #111111;
+  --brand-mark-ink: #FFFFFF;
 
   /* Type */
-  --font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --weight-display: 300;
+  --weight-heading: 500;
   --text-xs: 12px;
   --text-sm: 14px;
   --text-md: 16px;
   --text-lg: 18px;
   --text-xl: 22px;
   --text-2xl: 28px;
-  --text-3xl: clamp(30px, 3.4vw, 48px);
-  --text-4xl: clamp(36px, 4.6vw, 64px);
-  --text-display: clamp(42px, 6vw, 84px);
-  --leading-tight: 1.02;
-  --leading-snug: 1.25;
+  --text-3xl: clamp(32px, 3.8vw, 56px);
+  --text-4xl: clamp(40px, 5.6vw, 84px);
+  --text-display: clamp(52px, 9vw, 152px);
+  --leading-tight: 1;
+  --leading-snug: 1.2;
   --leading-body: 1.6;
-  --tracking-display: -0.045em;
-  --tracking-heading: -0.03em;
+  --tracking-display: -0.05em;
+  --tracking-heading: -0.02em;
 
   /* Space (4 px base) */
   --space-1: 4px;
@@ -59,22 +64,22 @@
   --space-14: 56px;
   --space-16: 64px;
   --space-20: 80px;
-  --space-section: clamp(72px, 9vw, 112px);
+  --space-section: clamp(88px, 11vw, 160px);
 
   /* Shape and layout */
-  --radius: 4px;
-  --radius-sm: 2px;
-  --container: 1280px;
-  --gutter: 32px;
-  --header-h: 68px;
+  --radius: 0;
+  --radius-sm: 0;
+  --container: 1360px;
+  --gutter: 40px;
+  --header-h: 72px;
   --tap: 44px;
 
   /* Motion */
   --ease: cubic-bezier(.2, .7, .2, 1);
-  --dur-fast: 140ms;
-  --dur: 220ms;
+  --dur-fast: 160ms;
+  --dur: 260ms;
 }
 
 @media (max-width: 900px) {
-  :root { --gutter: 16px; --header-h: 60px; }
+  :root { --gutter: 20px; --header-h: 60px; }
 }

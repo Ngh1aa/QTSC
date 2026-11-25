@@ -7,11 +7,11 @@
 <meta name="description" content="Northbank Technology Park: 38 hectares on the Saigon River with offices, labs, a data center and 142 member companies.">
 <link rel="canonical" href="https://ngh1aa.github.io/QTSC/">
 <!-- shell:head -->
-<meta name="theme-color" content="#FAF8F5">
+<meta name="theme-color" content="#F3F3F1">
 <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/components.css">
@@ -24,7 +24,7 @@
 <header class="site-header" id="siteHeader">
   <div class="container">
     <a class="brand" href="index.html" aria-label="Northbank Technology Park, home">
-      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0h0a12 12 0 0 1 12 12v0a12 12 0 0 1-12 12H0V12A12 12 0 0 1 12 0z" fill="#C23A17"/><path d="M7.5 17V7.5l9 9V7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" style="fill:var(--brand-mark)"/><path d="M7.5 17V7.5l9 9V7" fill="none" style="stroke:var(--brand-mark-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>Northbank</span>
     </a>
     <nav class="main-nav" aria-label="Main">
@@ -45,91 +45,93 @@
 </header>
 <!-- /shell:header -->
 <main id="main">
-  <section class="home-hero">
+  <section class="mono-hero" aria-labelledby="heroTitle">
     <div class="container">
-      <div class="grid-12 home-hero-top">
-        <h1 class="display">Where technology companies work, build and grow.</h1>
-        <div class="home-hero-side">
-          <p>38 hectares on the Saigon River with offices, labs, a data center and 142 member companies.</p>
-          <div class="page-actions"><a class="btn btn-primary" href="office.html">Find space</a><a class="btn btn-secondary" href="explore.html">Explore the campus</a></div>
-        </div>
+      <p class="mono-coord"><span>10°50′ N</span><span>106°45′ E</span><span>Thủ Đức City, Ho Chi Minh City</span></p>
+      <h1 class="mono-title" id="heroTitle">Built to the scale of what you make.</h1>
+      <div class="mono-hero-row">
+        <p>38 hectares on the Saigon River. Offices, labs, a data center and 142 member companies.</p>
+        <div class="page-actions"><a class="btn btn-primary" href="office.html">Find space</a><a class="btn btn-secondary" href="contact.html?topic=visit">Book a visit</a></div>
       </div>
-      <img class="home-hero-photo" src="assets/images/photos/towers-sky.webp" srcset="assets/images/photos/sm/towers-sky.webp 960w, assets/images/photos/towers-sky.webp 1920w" sizes="(max-width: 900px) 100vw, 1216px" width="1920" height="1280" alt="Glass office towers seen from below against a pale sky" fetchpriority="high">
-      <nav class="router" aria-label="What do you need?">
-        <p class="router-q">What do you need?</p>
-        <a href="office.html"><span class="row-num">01</span><span>Office or lab space</span></a>
-        <a href="companies.html"><span class="row-num">02</span><span>Find a company</span></a>
-        <a href="investment.html"><span class="row-num">03</span><span>Invest here</span></a>
-        <a href="technology-detail.html"><span class="row-num">04</span><span>Data center</span></a>
-        <a href="explore.html"><span class="row-num">05</span><span>Visit the campus</span></a>
-      </nav>
+    </div>
+    <img class="mono-hero-photo" src="assets/images/photos/tower-corner.webp" srcset="assets/images/photos/sm/tower-corner.webp 960w, assets/images/photos/tower-corner.webp 1920w" sizes="100vw" width="1920" height="1280" alt="The curved glass facade of a tall office tower against a grey sky" fetchpriority="high">
+  </section>
+
+  <section class="section mono-scale" aria-labelledby="scaleTitle">
+    <div class="container">
+      <h2 class="sr-only" id="scaleTitle">Northbank in numbers</h2>
+      <dl class="mono-figures">
+        <div><dt>Campus on the Saigon River</dt><dd>38<small>ha</small></dd></div>
+        <div><dt>Buildings, from offices to a data center</dt><dd>7</dd></div>
+        <div><dt>Member companies from 11 countries</dt><dd>142</dd></div>
+        <div><dt>People at work on campus every day</dt><dd>18,600</dd></div>
+      </dl>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="facts" style="--facts:5">
-        <div><strong>38 ha</strong><span>campus</span></div>
-        <div><strong>142</strong><span>member companies</span></div>
-        <div><strong>18,600</strong><span>people on site</span></div>
-        <div><strong>7</strong><span>buildings</span></div>
-        <div><strong>11</strong><span>countries</span></div>
+  <section class="section" aria-labelledby="buildingsTitle">
+    <div class="container mono-buildings">
+      <div class="mono-buildings-media">
+        <img src="assets/images/photos/facade-grid.webp" srcset="assets/images/photos/sm/facade-grid.webp 960w, assets/images/photos/facade-grid.webp 1920w" sizes="(max-width: 900px) 100vw, 40vw" width="1920" height="1080" alt="A grid of glass and steel on an office facade" loading="lazy">
+      </div>
+      <div class="mono-buildings-list">
+        <h2 class="section-title" id="buildingsTitle">Seven buildings</h2>
+        <table class="mono-schedule">
+          <thead><tr><th scope="col">No.</th><th scope="col">Building</th><th scope="col">Use</th><th scope="col" class="num">Floors</th></tr></thead>
+          <tbody>
+            <tr><td class="num">01</td><th scope="row"><a href="explore.html?place=atlas">Atlas</a></th><td>Headquarters offices</td><td class="num">12</td></tr>
+            <tr><td class="num">02</td><th scope="row"><a href="explore.html?place=beacon">Beacon</a></th><td>Furnished suites</td><td class="num">5</td></tr>
+            <tr><td class="num">03</td><th scope="row"><a href="explore.html?place=cobalt">Cobalt</a></th><td>Data center</td><td class="num">3</td></tr>
+            <tr><td class="num">04</td><th scope="row"><a href="explore.html?place=delta">Delta Labs</a></th><td>Hardware labs</td><td class="num">4</td></tr>
+            <tr><td class="num">05</td><th scope="row"><a href="explore.html?place=echo">Echo Hall</a></th><td>Conference center, 600 seats</td><td class="num">2</td></tr>
+            <tr><td class="num">06</td><th scope="row"><a href="explore.html?place=forge">Forge</a></th><td>Startup center</td><td class="num">3</td></tr>
+            <tr><td class="num">07</td><th scope="row"><a href="explore.html?place=grove">Grove</a></th><td>Canteen, clinic, gym</td><td class="num">3</td></tr>
+          </tbody>
+        </table>
+        <a class="link-arrow" href="explore.html">Campus map</a>
       </div>
     </div>
+  </section>
+
+  <section class="section mono-band" aria-labelledby="bandTitle">
+    <img src="assets/images/photos/glass-roofline.webp" srcset="assets/images/photos/sm/glass-roofline.webp 960w, assets/images/photos/glass-roofline.webp 1920w" sizes="100vw" width="1920" height="1275" alt="Glass roofline of a low building under a wide sky" loading="lazy">
+    <div class="container"><h2 id="bandTitle">Room for a team of six or a company of six hundred.</h2></div>
   </section>
 
   <section class="section" aria-labelledby="offerTitle">
     <div class="container">
-      <div class="section-head"><h2 class="section-title" id="offerTitle">One campus. Four things companies come for.</h2></div>
-      <ol class="rows">
-        <li><a class="row-item" href="office.html"><span class="row-num">01</span><span class="row-title">Space</span><span class="row-text">Offices from 45 m² to full floors, labs in Delta Labs and furnished suites in Beacon.</span><img src="assets/images/photos/sm/open-office.webp" width="960" height="640" alt="" loading="lazy"><span class="row-go" aria-hidden="true">→</span></a></li>
-        <li><a class="row-item" href="services.html"><span class="row-num">02</span><span class="row-title">Infrastructure</span><span class="row-text">Cobalt data center, two fibre routes and a security operations center open day and night.</span><img src="assets/images/photos/sm/server-rack.webp" width="960" height="640" alt="" loading="lazy"><span class="row-go" aria-hidden="true">→</span></a></li>
-        <li><a class="row-item" href="companies.html"><span class="row-num">03</span><span class="row-title">Companies</span><span class="row-text">A directory of members and the solutions they sell to other businesses.</span><img src="assets/images/photos/sm/working-session.webp" width="960" height="640" alt="" loading="lazy"><span class="row-go" aria-hidden="true">→</span></a></li>
-        <li><a class="row-item" href="investment.html"><span class="row-num">04</span><span class="row-title">Investment</span><span class="row-text">Licences, incentives and a checker that shows which ones may apply to your project.</span><img src="assets/images/photos/sm/facade-grid.webp" width="960" height="640" alt="" loading="lazy"><span class="row-go" aria-hidden="true">→</span></a></li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="campusTitle">
-    <div class="band band-split">
-      <img src="assets/images/photos/district-aerial.webp" srcset="assets/images/photos/sm/district-aerial.webp 960w, assets/images/photos/district-aerial.webp 1920w" sizes="(max-width: 900px) 100vw, 58vw" width="1920" height="1080" alt="Aerial view of a green business district with low buildings and tree-lined streets" loading="lazy">
-      <div class="band-copy">
-        <h2 id="campusTitle">Seven buildings, one walkable campus.</h2>
-        <ul class="band-list">
-          <li>Atlas <span>Headquarters offices</span></li>
-          <li>Beacon <span>Furnished suites</span></li>
-          <li>Cobalt <span>Data center</span></li>
-          <li>Delta Labs <span>Hardware labs</span></li>
-          <li>Echo Hall <span>600-seat conference center</span></li>
-          <li>Forge <span>Startups</span></li>
-          <li>Grove <span>Canteen, clinic, gym</span></li>
-        </ul>
-        <a class="btn btn-light" href="explore.html">Open the campus map</a>
+      <h2 class="section-title" id="offerTitle">What companies come for</h2>
+      <div class="mono-offer">
+        <a href="office.html"><span class="mono-index">01</span><h3>Space</h3><p>Offices from 45 m² to whole floors, labs in Delta Labs and furnished suites in Beacon.</p><span class="link-arrow">Find space</span></a>
+        <a href="services.html"><span class="mono-index">02</span><h3>Infrastructure</h3><p>The Cobalt data center, two fibre routes and a security operations center open day and night.</p><span class="link-arrow">See infrastructure</span></a>
+        <a href="investment.html"><span class="mono-index">03</span><h3>Investment</h3><p>Licences, incentives and a desk that files them for you, from first call to opening day.</p><span class="link-arrow">Invest here</span></a>
       </div>
     </div>
   </section>
 
   <section class="section" aria-labelledby="unitsTitle">
     <div class="container">
-      <div class="section-head"><h2 class="section-title" id="unitsTitle">Available this quarter</h2><a class="btn btn-secondary" href="office.html?status=available">All available space</a></div>
-      <div class="card-grid">
-        <a class="card" href="office-unit.html?id=atlas-0705"><img class="card-media" src="assets/images/photos/sm/loft-office.webp" width="960" height="640" alt="Open office with tall windows" loading="lazy"><span class="badge is-ok">Available 1 Dec</span><h3 class="card-title">Atlas, floor 7</h3><dl class="spec"><div><dt>Size</dt><dd>420 m²</dd></div><div><dt>Desks</dt><dd>60</dd></div><div><dt>Fit-out</dt><dd>Fitted</dd></div></dl></a>
-        <a class="card" href="office-unit.html?id=beacon-b31"><img class="card-media" src="assets/images/photos/sm/coworking.webp" width="960" height="640" alt="Furnished lounge with sofas and plants" loading="lazy"><span class="badge is-ok">Available 1 Dec</span><h3 class="card-title">Beacon, suite B31</h3><dl class="spec"><div><dt>Size</dt><dd>140 m²</dd></div><div><dt>Desks</dt><dd>20</dd></div><div><dt>Fit-out</dt><dd>Furnished</dd></div></dl></a>
-        <a class="card" href="office-unit.html?id=delta-l304"><img class="card-media" src="assets/images/photos/sm/meeting-room.webp" width="960" height="640" alt="Bright room with a long white table" loading="lazy"><span class="badge is-ok">Available 10 Dec</span><h3 class="card-title">Delta Labs, lab L3-04</h3><dl class="spec"><div><dt>Size</dt><dd>160 m²</dd></div><div><dt>Power</dt><dd>3-phase</dd></div><div><dt>Fit-out</dt><dd>Lab ready</dd></div></dl></a>
-      </div>
+      <div class="section-head"><h2 class="section-title" id="unitsTitle">Available now</h2><a class="btn btn-secondary" href="office.html?status=available">All space</a></div>
+      <table class="mono-schedule mono-units">
+        <thead><tr><th scope="col">Space</th><th scope="col" class="num">Size</th><th scope="col" class="num">Desks</th><th scope="col">Fit-out</th><th scope="col">From</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><a href="office-unit.html?id=atlas-0705">Atlas, floor 7</a></th><td class="num">420 m²</td><td class="num">60</td><td>Fitted out</td><td>Tue 1 Dec 2026</td></tr>
+          <tr><th scope="row"><a href="office-unit.html?id=beacon-b31">Beacon, suite B31</a></th><td class="num">140 m²</td><td class="num">20</td><td>Furnished</td><td>Tue 1 Dec 2026</td></tr>
+          <tr><th scope="row"><a href="office-unit.html?id=delta-l304">Delta Labs, lab L3-04</a></th><td class="num">160 m²</td><td class="num">14</td><td>Lab ready</td><td>Thu 10 Dec 2026</td></tr>
+          <tr><th scope="row"><a href="office-unit.html?id=atlas-0402">Atlas, floor 4</a></th><td class="num">180 m²</td><td class="num">26</td><td>Shell and core</td><td>Tue 15 Dec 2026</td></tr>
+          <tr><th scope="row"><a href="office-unit.html?id=forge-f08">Forge, studio F08</a></th><td class="num">45 m²</td><td class="num">6</td><td>Furnished</td><td>Tue 1 Dec 2026</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
   <section class="section" aria-labelledby="newsTitle">
     <div class="container">
-      <div class="section-head"><h2 class="section-title" id="newsTitle">News from the park</h2><a class="btn btn-secondary" href="insights.html">All news</a></div>
-      <div class="home-news">
-        <a class="home-news-lead" href="article.html?id=cobalt-second-hall"><img src="assets/images/photos/sm/city-dusk.webp" width="960" height="640" alt="City skyline at dusk with construction cranes" loading="lazy"><time datetime="2026-11-17">Tue 17 Nov 2026</time><h3>Cobalt data center adds a second 2 MW hall</h3></a>
-        <ul class="home-news-list">
-          <li><a href="article.html?id=forge-spring-cohort"><time datetime="2026-11-13">Fri 13 Nov 2026</time><h3>Forge opens applications for its spring startup cohort</h3></a></li>
-          <li><a href="article.html?id=hiring-fair"><time datetime="2026-11-11">Wed 11 Nov 2026</time><h3>Hiring fair: 30 member companies, one afternoon</h3></a></li>
-          <li><a href="article.html?id=mangrove-moves-atlas"><time datetime="2026-11-04">Wed 4 Nov 2026</time><h3>Mangrove AI moves its regional team into Atlas</h3></a></li>
-        </ul>
+      <div class="section-head"><h2 class="section-title" id="newsTitle">From the park</h2><a class="btn btn-secondary" href="insights.html">All news</a></div>
+      <div class="mono-news">
+        <a href="article.html?id=cobalt-second-hall"><time datetime="2026-11-17">Tue 17 Nov 2026</time><h3>Cobalt data center adds a second 2 MW hall</h3></a>
+        <a href="article.html?id=forge-spring-cohort"><time datetime="2026-11-13">Fri 13 Nov 2026</time><h3>Forge opens applications for its spring startup cohort</h3></a>
+        <a href="article.html?id=hiring-fair"><time datetime="2026-11-11">Wed 11 Nov 2026</time><h3>Hiring fair: 30 member companies, one afternoon</h3></a>
       </div>
     </div>
   </section>
@@ -145,7 +147,7 @@
   <div class="container">
     <div class="footer-main">
       <div>
-        <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0h0a12 12 0 0 1 12 12v0a12 12 0 0 1-12 12H0V12A12 12 0 0 1 12 0z" fill="#C23A17"/><path d="M7.5 17V7.5l9 9V7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Northbank</span></a>
+        <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" style="fill:var(--brand-mark)"/><path d="M7.5 17V7.5l9 9V7" fill="none" style="stroke:var(--brand-mark-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Northbank</span></a>
         <address>Northbank Technology Park<br>River Road, Thủ Đức City<br>Ho Chi Minh City, Vietnam<br><a href="mailto:hello@northbank.example">hello@northbank.example</a></address>
       </div>
       <div><h2>Space</h2><ul><li><a href="office.html">Find space</a></li><li><a href="amenities.html">Amenities</a></li><li><a href="explore.html">Campus map</a></li><li><a href="locations.html">Locations</a></li></ul></div>
